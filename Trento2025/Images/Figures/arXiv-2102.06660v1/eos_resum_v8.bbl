@@ -1,0 +1,934 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{57}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Aoki}\ \emph {et~al.}(2006)\citenamefont {Aoki},
+  \citenamefont {Endrodi}, \citenamefont {Fodor}, \citenamefont {Katz},\ and\
+  \citenamefont {Szabo}}]{Aoki:2006we}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Aoki}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Endrodi}},
+  \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}}, \bibinfo
+  {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}},\ and\ \bibinfo
+  {author} {\bibfnamefont {K.~K.}\ \bibnamefont {Szabo}},\ }\bibfield  {title}
+  {\bibinfo {title} {{The Order of the quantum chromodynamics transition
+  predicted by the standard model of particle physics}},\ }\href
+  {https://doi.org/10.1038/nature05120} {\bibfield  {journal} {\bibinfo
+  {journal} {Nature}\ }\textbf {\bibinfo {volume} {443}},\ \bibinfo {pages}
+  {675} (\bibinfo {year} {2006})},\ \Eprint
+  {https://arxiv.org/abs/hep-lat/0611014} {arXiv:hep-lat/0611014 [hep-lat]}
+  \BibitemShut {NoStop}%
+%%CITATION = HEP-LAT/0611014;%%
+\bibitem [{\citenamefont {Guenther}(2020)}]{Guenther:2020vqg}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~N.}\ \bibnamefont
+  {Guenther}},\ }\bibfield  {title} {\bibinfo {title} {{Overview of the QCD
+  phase diagram - Recent progress from the lattice}},\ }\href@noop {} {\
+  (\bibinfo {year} {2020})},\ \Eprint {https://arxiv.org/abs/2010.15503}
+  {arXiv:2010.15503 [hep-lat]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ratti}(2018)}]{Ratti:2018ksb}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Ratti}},\ }\bibfield  {title} {\bibinfo {title} {{Lattice QCD and heavy ion
+  collisions: a review of recent progress}},\ }\href
+  {https://doi.org/10.1088/1361-6633/aabb97} {\bibfield  {journal} {\bibinfo
+  {journal} {Rept. Prog. Phys.}\ }\textbf {\bibinfo {volume} {81}},\ \bibinfo
+  {pages} {084301} (\bibinfo {year} {2018})},\ \Eprint
+  {https://arxiv.org/abs/1804.07810} {arXiv:1804.07810 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Cristoforetti}\ \emph {et~al.}(2012)\citenamefont
+  {Cristoforetti}, \citenamefont {Di~Renzo},\ and\ \citenamefont
+  {Scorzato}}]{Cristoforetti:2012su}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Cristoforetti}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Di~Renzo}},\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Scorzato}} (\bibinfo {collaboration} {AuroraScience}),\ }\bibfield  {title}
+  {\bibinfo {title} {{New approach to the sign problem in quantum field
+  theories: High density QCD on a Lefschetz thimble}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.86.074506} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {86}},\ \bibinfo
+  {pages} {074506} (\bibinfo {year} {2012})},\ \Eprint
+  {https://arxiv.org/abs/1205.3996} {arXiv:1205.3996 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Alexandru}\ \emph {et~al.}(2016)\citenamefont
+  {Alexandru}, \citenamefont {Basar},\ and\ \citenamefont
+  {Bedaque}}]{Alexandru:2015xva}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Alexandru}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Basar}},\
+  and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Bedaque}},\
+  }\bibfield  {title} {\bibinfo {title} {{Monte Carlo algorithm for simulating
+  fermions on Lefschetz thimbles}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.93.014504} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {93}},\ \bibinfo
+  {pages} {014504} (\bibinfo {year} {2016})},\ \Eprint
+  {https://arxiv.org/abs/1510.03258} {arXiv:1510.03258 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Fukuma}\ \emph {et~al.}(2019)\citenamefont {Fukuma},
+  \citenamefont {Matsumoto},\ and\ \citenamefont {Umeda}}]{Fukuma:2019uot}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Fukuma}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Matsumoto}},\
+  and\ \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Umeda}},\ }\bibfield
+   {title} {\bibinfo {title} {{Implementation of the HMC algorithm on the
+  tempered Lefschetz thimble method}},\ }\href@noop {} {\  (\bibinfo {year}
+  {2019})},\ \Eprint {https://arxiv.org/abs/1912.13303} {arXiv:1912.13303
+  [hep-lat]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Aarts}\ \emph {et~al.}(2013)\citenamefont {Aarts},
+  \citenamefont {James}, \citenamefont {Pawlowski}, \citenamefont {Seiler},
+  \citenamefont {Sexty},\ and\ \citenamefont {Stamatescu}}]{Aarts:2012ft}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Aarts}}, \bibinfo {author} {\bibfnamefont {F.~A.}\ \bibnamefont {James}},
+  \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Pawlowski}}, \bibinfo
+  {author} {\bibfnamefont {E.}~\bibnamefont {Seiler}}, \bibinfo {author}
+  {\bibfnamefont {D.}~\bibnamefont {Sexty}},\ and\ \bibinfo {author}
+  {\bibfnamefont {I.-O.}\ \bibnamefont {Stamatescu}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Stability of complex Langevin dynamics in effective
+  models}},\ }\href {https://doi.org/10.1007/JHEP03(2013)073} {\bibfield
+  {journal} {\bibinfo  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {03}},\
+  \bibinfo {pages} {073}},\ \Eprint {https://arxiv.org/abs/1212.5231}
+  {arXiv:1212.5231 [hep-lat]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sexty}(2014)}]{Sexty:2013ica}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Sexty}},\ }\bibfield  {title} {\bibinfo {title} {{Simulating full QCD at
+  nonzero density using the complex Langevin equation}},\ }\href
+  {https://doi.org/10.1016/j.physletb.2014.01.019} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {729}},\
+  \bibinfo {pages} {108} (\bibinfo {year} {2014})},\ \Eprint
+  {https://arxiv.org/abs/1307.7748} {arXiv:1307.7748 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Scherzer}\ \emph {et~al.}(2020)\citenamefont
+  {Scherzer}, \citenamefont {Seiler}, \citenamefont {Sexty},\ and\
+  \citenamefont {Stamatescu}}]{Scherzer:2019lrh}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Scherzer}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Seiler}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Sexty}},\ and\ \bibinfo
+  {author} {\bibfnamefont {I.-O.}\ \bibnamefont {Stamatescu}},\ }\bibfield
+  {title} {\bibinfo {title} {{Controlling Complex Langevin simulations of
+  lattice models by boundary term analysis}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.101.014501} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo
+  {pages} {014501} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/1910.09427} {arXiv:1910.09427 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Giordano}\ \emph
+  {et~al.}(2020{\natexlab{a}})\citenamefont {Giordano}, \citenamefont {Kapas},
+  \citenamefont {Katz}, \citenamefont {Nogradi},\ and\ \citenamefont
+  {Pasztor}}]{Giordano:2020roi}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Giordano}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Kapas}},
+  \bibinfo {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {Nogradi}},\ and\ \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Pasztor}},\ }\bibfield  {title} {\bibinfo
+  {title} {{New approach to lattice QCD at finite density; results for the
+  critical end point on coarse lattices}},\ }\href
+  {https://doi.org/10.1007/JHEP05(2020)088} {\bibfield  {journal} {\bibinfo
+  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {05}},\ \bibinfo {pages}
+  {088}},\ \Eprint {https://arxiv.org/abs/2004.10800} {arXiv:2004.10800
+  [hep-lat]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Allton}\ \emph {et~al.}(2002)\citenamefont {Allton},
+  \citenamefont {Ejiri}, \citenamefont {Hands}, \citenamefont {Kaczmarek},
+  \citenamefont {Karsch}, \citenamefont {Laermann}, \citenamefont {Schmidt},\
+  and\ \citenamefont {Scorzato}}]{Allton:2002zi}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~R.}\ \bibnamefont
+  {Allton}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Ejiri}},
+  \bibinfo {author} {\bibfnamefont {S.~J.}\ \bibnamefont {Hands}}, \bibinfo
+  {author} {\bibfnamefont {O.}~\bibnamefont {Kaczmarek}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Karsch}}, \bibinfo {author} {\bibfnamefont
+  {E.}~\bibnamefont {Laermann}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Schmidt}},\ and\ \bibinfo {author} {\bibfnamefont
+  {L.}~\bibnamefont {Scorzato}},\ }\bibfield  {title} {\bibinfo {title} {{The
+  QCD thermal phase transition in the presence of a small chemical
+  potential}},\ }\href {https://doi.org/10.1103/PhysRevD.66.074507} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume}
+  {D66}},\ \bibinfo {pages} {074507} (\bibinfo {year} {2002})},\ \Eprint
+  {https://arxiv.org/abs/hep-lat/0204010} {arXiv:hep-lat/0204010 [hep-lat]}
+  \BibitemShut {NoStop}%
+%%CITATION = HEP-LAT/0204010;%%
+\bibitem [{\citenamefont {Allton}\ \emph {et~al.}(2005)\citenamefont {Allton},
+  \citenamefont {Doring}, \citenamefont {Ejiri}, \citenamefont {Hands},
+  \citenamefont {Kaczmarek}, \citenamefont {Karsch}, \citenamefont {Laermann},\
+  and\ \citenamefont {Redlich}}]{Allton:2005gk}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~R.}\ \bibnamefont
+  {Allton}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Doring}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Ejiri}}, \bibinfo
+  {author} {\bibfnamefont {S.~J.}\ \bibnamefont {Hands}}, \bibinfo {author}
+  {\bibfnamefont {O.}~\bibnamefont {Kaczmarek}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Karsch}}, \bibinfo {author} {\bibfnamefont
+  {E.}~\bibnamefont {Laermann}},\ and\ \bibinfo {author} {\bibfnamefont
+  {K.}~\bibnamefont {Redlich}},\ }\bibfield  {title} {\bibinfo {title}
+  {{Thermodynamics of two flavor QCD to sixth order in quark chemical
+  potential}},\ }\href {https://doi.org/10.1103/PhysRevD.71.054508} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume}
+  {D71}},\ \bibinfo {pages} {054508} (\bibinfo {year} {2005})},\ \Eprint
+  {https://arxiv.org/abs/hep-lat/0501030} {arXiv:hep-lat/0501030 [hep-lat]}
+  \BibitemShut {NoStop}%
+%%CITATION = HEP-LAT/0501030;%%
+\bibitem [{\citenamefont {Borsanyi}\ \emph {et~al.}(2012)\citenamefont
+  {Borsanyi}, \citenamefont {Endrodi}, \citenamefont {Fodor}, \citenamefont
+  {Katz}, \citenamefont {Krieg}, \citenamefont {Ratti},\ and\ \citenamefont
+  {Szabo}}]{Borsanyi:2012cr}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Borsanyi}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Endrodi}},
+  \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}}, \bibinfo
+  {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Krieg}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Ratti}},\ and\ \bibinfo {author} {\bibfnamefont {K.~K.}\
+  \bibnamefont {Szabo}},\ }\bibfield  {title} {\bibinfo {title} {{QCD equation
+  of state at nonzero chemical potential: continuum results with physical quark
+  masses at order $mu^2$}},\ }\href {https://doi.org/10.1007/JHEP08(2012)053}
+  {\bibfield  {journal} {\bibinfo  {journal} {JHEP}\ }\textbf {\bibinfo
+  {volume} {08}},\ \bibinfo {pages} {053}},\ \Eprint
+  {https://arxiv.org/abs/1204.6710} {arXiv:1204.6710 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1204.6710;%%
+\bibitem [{\citenamefont {Bazavov}\ \emph {et~al.}(2017)\citenamefont {Bazavov}
+  \emph {et~al.}}]{Bazavov:2017dus}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Bazavov}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{The QCD
+  Equation of State to $\mathcal{O}(\mu_B^6)$ from Lattice QCD}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.95.054504} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D95}},\ \bibinfo {pages}
+  {054504} (\bibinfo {year} {2017})},\ \Eprint
+  {https://arxiv.org/abs/1701.04325} {arXiv:1701.04325 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1701.04325;%%
+\bibitem [{\citenamefont {Kaczmarek}\ \emph {et~al.}(2011)\citenamefont
+  {Kaczmarek}, \citenamefont {Karsch}, \citenamefont {Laermann}, \citenamefont
+  {Miao}, \citenamefont {Mukherjee}, \citenamefont {Petreczky}, \citenamefont
+  {Schmidt}, \citenamefont {Soeldner},\ and\ \citenamefont
+  {Unger}}]{Kaczmarek:2011zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {Kaczmarek}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Karsch}},
+  \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Laermann}}, \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {Miao}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Mukherjee}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Petreczky}}, \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {Schmidt}}, \bibinfo {author} {\bibfnamefont
+  {W.}~\bibnamefont {Soeldner}},\ and\ \bibinfo {author} {\bibfnamefont
+  {W.}~\bibnamefont {Unger}},\ }\bibfield  {title} {\bibinfo {title} {{Phase
+  boundary for the chiral transition in (2+1) -flavor QCD at small values of
+  the chemical potential}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.83.014504} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D83}},\ \bibinfo {pages}
+  {014504} (\bibinfo {year} {2011})},\ \Eprint
+  {https://arxiv.org/abs/1011.3130} {arXiv:1011.3130 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1011.3130;%%
+\bibitem [{\citenamefont {Endrodi}\ \emph {et~al.}(2011)\citenamefont
+  {Endrodi}, \citenamefont {Fodor}, \citenamefont {Katz},\ and\ \citenamefont
+  {Szabo}}]{Endrodi:2011gv}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Endrodi}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}},
+  \bibinfo {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}},\ and\
+  \bibinfo {author} {\bibfnamefont {K.~K.}\ \bibnamefont {Szabo}},\ }\bibfield
+  {title} {\bibinfo {title} {{The QCD phase diagram at nonzero quark
+  density}},\ }\href {https://doi.org/10.1007/JHEP04(2011)001} {\bibfield
+  {journal} {\bibinfo  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {04}},\
+  \bibinfo {pages} {001}},\ \Eprint {https://arxiv.org/abs/1102.1356}
+  {arXiv:1102.1356 [hep-lat]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1102.1356;%%
+\bibitem [{\citenamefont {Bonati}\ \emph {et~al.}(2018)\citenamefont {Bonati},
+  \citenamefont {D'Elia}, \citenamefont {Negro}, \citenamefont {Sanfilippo},\
+  and\ \citenamefont {Zambello}}]{Bonati:2018nut}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Bonati}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {D'Elia}},
+  \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Negro}}, \bibinfo
+  {author} {\bibfnamefont {F.}~\bibnamefont {Sanfilippo}},\ and\ \bibinfo
+  {author} {\bibfnamefont {K.}~\bibnamefont {Zambello}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Curvature of the pseudocritical line in QCD: Taylor
+  expansion matches analytic continuation}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.98.054510} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D98}},\ \bibinfo {pages}
+  {054510} (\bibinfo {year} {2018})},\ \Eprint
+  {https://arxiv.org/abs/1805.02960} {arXiv:1805.02960 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1805.02960;%%
+\bibitem [{\citenamefont {Bazavov}\ \emph {et~al.}(2019)\citenamefont {Bazavov}
+  \emph {et~al.}}]{Bazavov:2018mes}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Bazavov}} \emph {et~al.} (\bibinfo {collaboration} {HotQCD}),\ }\bibfield
+  {title} {\bibinfo {title} {{Chiral crossover in QCD at zero and non-zero
+  chemical potentials}},\ }\href
+  {https://doi.org/10.1016/j.physletb.2019.05.013} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B795}},\
+  \bibinfo {pages} {15} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1812.08235} {arXiv:1812.08235 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1812.08235;%%
+\bibitem [{\citenamefont {D'Elia}\ \emph {et~al.}(2017)\citenamefont {D'Elia},
+  \citenamefont {Gagliardi},\ and\ \citenamefont {Sanfilippo}}]{DElia:2016jqh}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {D'Elia}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Gagliardi}},\
+  and\ \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Sanfilippo}},\
+  }\bibfield  {title} {\bibinfo {title} {{Higher order quark number
+  fluctuations via imaginary chemical potentials in $N_f=2+1$ QCD}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.95.094503} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {95}},\ \bibinfo
+  {pages} {094503} (\bibinfo {year} {2017})},\ \Eprint
+  {https://arxiv.org/abs/1611.08285} {arXiv:1611.08285 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Borsanyi}\ \emph {et~al.}(2018)\citenamefont
+  {Borsanyi}, \citenamefont {Fodor}, \citenamefont {Guenther}, \citenamefont
+  {Katz}, \citenamefont {Szabo}, \citenamefont {Pasztor}, \citenamefont
+  {Portillo},\ and\ \citenamefont {Ratti}}]{Borsanyi:2018grb}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Borsanyi}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}},
+  \bibinfo {author} {\bibfnamefont {J.~N.}\ \bibnamefont {Guenther}}, \bibinfo
+  {author} {\bibfnamefont {S.~K.}\ \bibnamefont {Katz}}, \bibinfo {author}
+  {\bibfnamefont {K.~K.}\ \bibnamefont {Szabo}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Pasztor}}, \bibinfo {author} {\bibfnamefont
+  {I.}~\bibnamefont {Portillo}},\ and\ \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Ratti}},\ }\bibfield  {title} {\bibinfo {title} {{Higher
+  order fluctuations and correlations of conserved charges from lattice QCD}},\
+  }\href {https://doi.org/10.1007/JHEP10(2018)205} {\bibfield  {journal}
+  {\bibinfo  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {10}},\ \bibinfo
+  {pages} {205}},\ \Eprint {https://arxiv.org/abs/1805.04445} {arXiv:1805.04445
+  [hep-lat]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1805.04445;%%
+\bibitem [{\citenamefont {de~Forcrand}\ and\ \citenamefont
+  {Philipsen}(2002)}]{deForcrand:2002hgr}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {de~Forcrand}}\ and\ \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {Philipsen}},\ }\bibfield  {title} {\bibinfo {title} {{The QCD phase diagram
+  for small densities from imaginary chemical potential}},\ }\href
+  {https://doi.org/10.1016/S0550-3213(02)00626-0} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nucl. Phys.}\ }\textbf {\bibinfo {volume} {B642}},\
+  \bibinfo {pages} {290} (\bibinfo {year} {2002})},\ \Eprint
+  {https://arxiv.org/abs/hep-lat/0205016} {arXiv:hep-lat/0205016 [hep-lat]}
+  \BibitemShut {NoStop}%
+%%CITATION = HEP-LAT/0205016;%%
+\bibitem [{\citenamefont {D'Elia}\ and\ \citenamefont
+  {Lombardo}(2003)}]{DElia:2002tig}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {D'Elia}}\ and\ \bibinfo {author} {\bibfnamefont {M.-P.}\ \bibnamefont
+  {Lombardo}},\ }\bibfield  {title} {\bibinfo {title} {{Finite density QCD via
+  imaginary chemical potential}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.67.014505} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D67}},\ \bibinfo {pages}
+  {014505} (\bibinfo {year} {2003})},\ \Eprint
+  {https://arxiv.org/abs/hep-lat/0209146} {arXiv:hep-lat/0209146 [hep-lat]}
+  \BibitemShut {NoStop}%
+%%CITATION = HEP-LAT/0209146;%%
+\bibitem [{\citenamefont {D'Elia}\ \emph {et~al.}(2007)\citenamefont {D'Elia},
+  \citenamefont {Di~Renzo},\ and\ \citenamefont {Lombardo}}]{DElia:2007bkz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {D'Elia}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Di~Renzo}},\
+  and\ \bibinfo {author} {\bibfnamefont {M.~P.}\ \bibnamefont {Lombardo}},\
+  }\bibfield  {title} {\bibinfo {title} {{The Strongly interacting quark gluon
+  plasma, and the critical behaviour of QCD at imaginary mu}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.76.114509} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D76}},\ \bibinfo {pages}
+  {114509} (\bibinfo {year} {2007})},\ \Eprint
+  {https://arxiv.org/abs/0705.3814} {arXiv:0705.3814 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:0705.3814;%%
+\bibitem [{\citenamefont {Cea}\ \emph {et~al.}(2009{\natexlab{a}})\citenamefont
+  {Cea}, \citenamefont {Cosmai}, \citenamefont {D'Elia}, \citenamefont
+  {Manneschi},\ and\ \citenamefont {Papa}}]{Cea:2009ba}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Cea}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Cosmai}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {D'Elia}}, \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {Manneschi}},\ and\ \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Papa}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Analytic continuation of the critical line: Suggestions
+  for QCD}},\ }\href {https://doi.org/10.1103/PhysRevD.80.034501} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume}
+  {80}},\ \bibinfo {pages} {034501} (\bibinfo {year} {2009}{\natexlab{a}})},\
+  \Eprint {https://arxiv.org/abs/0905.1292} {arXiv:0905.1292 [hep-lat]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cea}\ \emph {et~al.}(2009{\natexlab{b}})\citenamefont
+  {Cea}, \citenamefont {Cosmai}, \citenamefont {D'Elia}, \citenamefont
+  {Manneschi},\ and\ \citenamefont {Papa}}]{Cea:2010bz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Cea}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Cosmai}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {D'Elia}}, \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {Manneschi}},\ and\ \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Papa}},\ }\bibfield  {title}
+  {\bibinfo {title} {{On the analytic continuation of the critical line}},\
+  }\href {https://doi.org/10.22323/1.091.0161} {\bibfield  {journal} {\bibinfo
+  {journal} {PoS}\ }\textbf {\bibinfo {volume} {LAT2009}},\ \bibinfo {pages}
+  {161} (\bibinfo {year} {2009}{\natexlab{b}})},\ \Eprint
+  {https://arxiv.org/abs/1001.4439} {arXiv:1001.4439 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Bonati}\ \emph {et~al.}(2014)\citenamefont {Bonati},
+  \citenamefont {D'Elia}, \citenamefont {de~Forcrand}, \citenamefont
+  {Philipsen},\ and\ \citenamefont {Sanfilippo}}]{Bonati:2013tqa}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Bonati}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {D'Elia}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {de~Forcrand}}, \bibinfo
+  {author} {\bibfnamefont {O.}~\bibnamefont {Philipsen}},\ and\ \bibinfo
+  {author} {\bibfnamefont {F.}~\bibnamefont {Sanfilippo}},\ }\bibfield  {title}
+  {\bibinfo {title} {{The chiral phase transition for two-flavour QCD at
+  imaginary and zero chemical potential}},\ }\href
+  {https://doi.org/10.22323/1.187.0219} {\bibfield  {journal} {\bibinfo
+  {journal} {PoS}\ }\textbf {\bibinfo {volume} {LATTICE2013}},\ \bibinfo
+  {pages} {219} (\bibinfo {year} {2014})},\ \Eprint
+  {https://arxiv.org/abs/1311.0473} {arXiv:1311.0473 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Bonati}\ \emph {et~al.}(2015)\citenamefont {Bonati},
+  \citenamefont {D'Elia}, \citenamefont {Mariti}, \citenamefont {Mesiti},
+  \citenamefont {Negro},\ and\ \citenamefont {Sanfilippo}}]{Bonati:2015bha}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Bonati}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {D'Elia}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Mariti}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Mesiti}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Negro}},\ and\ \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Sanfilippo}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Curvature of the chiral pseudocritical line in QCD:
+  Continuum extrapolated results}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.92.054503} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D92}},\ \bibinfo {pages}
+  {054503} (\bibinfo {year} {2015})},\ \Eprint
+  {https://arxiv.org/abs/1507.03571} {arXiv:1507.03571 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1507.03571;%%
+\bibitem [{\citenamefont {Cea}\ \emph {et~al.}(2016)\citenamefont {Cea},
+  \citenamefont {Cosmai},\ and\ \citenamefont {Papa}}]{Cea:2015cya}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Cea}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Cosmai}},\ and\
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Papa}},\ }\bibfield
+  {title} {\bibinfo {title} {{Critical line of 2+1 flavor QCD: Toward the
+  continuum limit}},\ }\href {https://doi.org/10.1103/PhysRevD.93.014507}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo
+  {volume} {D93}},\ \bibinfo {pages} {014507} (\bibinfo {year} {2016})},\
+  \Eprint {https://arxiv.org/abs/1508.07599} {arXiv:1508.07599 [hep-lat]}
+  \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1508.07599;%%
+\bibitem [{\citenamefont {Bellwied}\ \emph
+  {et~al.}(2015{\natexlab{a}})\citenamefont {Bellwied}, \citenamefont
+  {Borsanyi}, \citenamefont {Fodor}, \citenamefont {Guenther}, \citenamefont
+  {Katz}, \citenamefont {Ratti},\ and\ \citenamefont
+  {Szabo}}]{Bellwied:2015rza}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Bellwied}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Borsanyi}},
+  \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Guenther}}, \bibinfo {author}
+  {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}}, \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {Ratti}},\ and\ \bibinfo {author}
+  {\bibfnamefont {K.~K.}\ \bibnamefont {Szabo}},\ }\bibfield  {title} {\bibinfo
+  {title} {{The QCD phase diagram from analytic continuation}},\ }\href
+  {https://doi.org/10.1016/j.physletb.2015.11.011} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B751}},\
+  \bibinfo {pages} {559} (\bibinfo {year} {2015}{\natexlab{a}})},\ \Eprint
+  {https://arxiv.org/abs/1507.07510} {arXiv:1507.07510 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1507.07510;%%
+\bibitem [{\citenamefont {Borsanyi}\ \emph {et~al.}(2020)\citenamefont
+  {Borsanyi}, \citenamefont {Fodor}, \citenamefont {Guenther}, \citenamefont
+  {Kara}, \citenamefont {Katz}, \citenamefont {Parotto}, \citenamefont
+  {Pasztor}, \citenamefont {Ratti},\ and\ \citenamefont
+  {Szabo}}]{Borsanyi:2020fev}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Borsanyi}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}},
+  \bibinfo {author} {\bibfnamefont {J.~N.}\ \bibnamefont {Guenther}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Kara}}, \bibinfo {author}
+  {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Parotto}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Pasztor}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Ratti}},\ and\ \bibinfo {author} {\bibfnamefont {K.~K.}\
+  \bibnamefont {Szabo}},\ }\bibfield  {title} {\bibinfo {title} {{QCD Crossover
+  at Finite Chemical Potential from Lattice Simulations}},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.125.052001} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {125}},\
+  \bibinfo {pages} {052001} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/2002.02821} {arXiv:2002.02821 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Karsch}\ \emph {et~al.}(2011)\citenamefont {Karsch},
+  \citenamefont {Schaefer}, \citenamefont {Wagner},\ and\ \citenamefont
+  {Wambach}}]{Karsch:2010hm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Karsch}}, \bibinfo {author} {\bibfnamefont {B.-J.}\ \bibnamefont
+  {Schaefer}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Wagner}},\
+  and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Wambach}},\
+  }\bibfield  {title} {\bibinfo {title} {{Towards finite density QCD with
+  Taylor expansions}},\ }\href {https://doi.org/10.1016/j.physletb.2011.03.013}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf
+  {\bibinfo {volume} {698}},\ \bibinfo {pages} {256} (\bibinfo {year}
+  {2011})},\ \Eprint {https://arxiv.org/abs/1009.5211} {arXiv:1009.5211
+  [hep-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cea}\ \emph {et~al.}(2012)\citenamefont {Cea},
+  \citenamefont {Cosmai}, \citenamefont {D'Elia}, \citenamefont {Papa},\ and\
+  \citenamefont {Sanfilippo}}]{Cea:2012ev}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Cea}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Cosmai}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {D'Elia}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Papa}},\ and\ \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Sanfilippo}},\ }\bibfield  {title}
+  {\bibinfo {title} {{The critical line of two-flavor QCD at finite isospin or
+  baryon densities from imaginary chemical potentials}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.85.094512} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {85}},\ \bibinfo
+  {pages} {094512} (\bibinfo {year} {2012})},\ \Eprint
+  {https://arxiv.org/abs/1202.5700} {arXiv:1202.5700 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Datta}\ \emph {et~al.}(2017)\citenamefont {Datta},
+  \citenamefont {Gavai},\ and\ \citenamefont {Gupta}}]{Datta:2016ukp}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Datta}}, \bibinfo {author} {\bibfnamefont {R.~V.}\ \bibnamefont {Gavai}},\
+  and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Gupta}},\ }\bibfield
+   {title} {\bibinfo {title} {{Quark number susceptibilities and equation of
+  state at finite chemical potential in staggered QCD with Nt=8}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.95.054512} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D95}},\ \bibinfo {pages}
+  {054512} (\bibinfo {year} {2017})},\ \Eprint
+  {https://arxiv.org/abs/1612.06673} {arXiv:1612.06673 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1612.06673;%%
+\bibitem [{\citenamefont {P\'asztor}\ \emph {et~al.}(2020)\citenamefont
+  {P\'asztor}, \citenamefont {Sz\'ep},\ and\ \citenamefont
+  {Mark\'o}}]{Pasztor:2020dur}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {P\'asztor}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Sz\'ep}},\
+  and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Mark\'o}},\
+  }\bibfield  {title} {\bibinfo {title} {{Apparent convergence of
+  Pad\textbackslash{}'e approximants for the crossover line in finite density
+  QCD}},\ }\href@noop {} {\  (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/2010.00394} {arXiv:2010.00394 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Schmidt}\ \emph {et~al.}(2021)\citenamefont
+  {Schmidt}, \citenamefont {Goswami}, \citenamefont {Nicotra}, \citenamefont
+  {Ziesch\'e}, \citenamefont {Dimopoulos}, \citenamefont {Di~Renzo},
+  \citenamefont {Singh},\ and\ \citenamefont {Zambello}}]{Schmidt:2021pey}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Schmidt}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Goswami}},
+  \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Nicotra}}, \bibinfo
+  {author} {\bibfnamefont {F.}~\bibnamefont {Ziesch\'e}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Dimopoulos}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Di~Renzo}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Singh}},\ and\ \bibinfo {author}
+  {\bibfnamefont {K.}~\bibnamefont {Zambello}},\ }\bibfield  {title} {\bibinfo
+  {title} {{Net-baryon number fluctuations}},\ }in\ \href@noop {} {\emph
+  {\bibinfo {booktitle} {{Criticality in QCD and the Hadron Resonance Gas}}}}\
+  (\bibinfo {year} {2021})\ \Eprint {https://arxiv.org/abs/2101.02254}
+  {arXiv:2101.02254 [hep-lat]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mogliacci}\ \emph {et~al.}(2013)\citenamefont
+  {Mogliacci}, \citenamefont {Andersen}, \citenamefont {Strickland},
+  \citenamefont {Su},\ and\ \citenamefont {Vuorinen}}]{Mogliacci:2013mca}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Mogliacci}}, \bibinfo {author} {\bibfnamefont {J.~O.}\ \bibnamefont
+  {Andersen}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Strickland}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Su}},\
+  and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Vuorinen}},\
+  }\bibfield  {title} {\bibinfo {title} {{Equation of State of hot and dense
+  QCD: Resummed perturbation theory confronts lattice data}},\ }\href
+  {https://doi.org/10.1007/JHEP12(2013)055} {\bibfield  {journal} {\bibinfo
+  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {12}},\ \bibinfo {pages}
+  {055}},\ \Eprint {https://arxiv.org/abs/1307.8098} {arXiv:1307.8098 [hep-ph]}
+  \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1307.8098;%%
+\bibitem [{\citenamefont {Haque}\ \emph {et~al.}(2014)\citenamefont {Haque},
+  \citenamefont {Andersen}, \citenamefont {Mustafa}, \citenamefont
+  {Strickland},\ and\ \citenamefont {Su}}]{Haque:2013sja}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Haque}}, \bibinfo {author} {\bibfnamefont {J.~O.}\ \bibnamefont {Andersen}},
+  \bibinfo {author} {\bibfnamefont {M.~G.}\ \bibnamefont {Mustafa}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Strickland}},\ and\ \bibinfo
+  {author} {\bibfnamefont {N.}~\bibnamefont {Su}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Three-loop HTLpt Pressure and Susceptibilities at Finite
+  Temperature and Density}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.89.061701} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys.Rev.}\ }\textbf {\bibinfo {volume} {D89}},\ \bibinfo {pages}
+  {061701} (\bibinfo {year} {2014})},\ \Eprint
+  {https://arxiv.org/abs/1309.3968} {arXiv:1309.3968 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1309.3968;%%
+\bibitem [{\citenamefont {Haque}\ and\ \citenamefont
+  {Strickland}(2020)}]{Haque:2020eyj}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Haque}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Strickland}},\ }\bibfield  {title} {\bibinfo {title} {{NNLO HTLpt
+  predictions for the curvature of the QCD phase transition line}},\
+  }\href@noop {} {\  (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/2011.06938} {arXiv:2011.06938 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Bellwied}\ \emph
+  {et~al.}(2015{\natexlab{b}})\citenamefont {Bellwied}, \citenamefont
+  {Borsanyi}, \citenamefont {Fodor}, \citenamefont {Katz}, \citenamefont
+  {Pasztor}, \citenamefont {Ratti},\ and\ \citenamefont
+  {Szabo}}]{Bellwied:2015lba}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Bellwied}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Borsanyi}},
+  \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}}, \bibinfo
+  {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Pasztor}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Ratti}},\ and\ \bibinfo {author} {\bibfnamefont {K.~K.}\
+  \bibnamefont {Szabo}},\ }\bibfield  {title} {\bibinfo {title} {{Fluctuations
+  and correlations in high temperature QCD}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.92.114505} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D92}},\ \bibinfo {pages}
+  {114505} (\bibinfo {year} {2015}{\natexlab{b}})},\ \Eprint
+  {https://arxiv.org/abs/1507.04627} {arXiv:1507.04627 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1507.04627;%%
+\bibitem [{\citenamefont {Ding}\ \emph {et~al.}(2015)\citenamefont {Ding},
+  \citenamefont {Mukherjee}, \citenamefont {Ohno}, \citenamefont {Petreczky},\
+  and\ \citenamefont {Schadler}}]{Ding:2015fca}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~T.}\ \bibnamefont
+  {Ding}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Mukherjee}},
+  \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Ohno}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Petreczky}},\ and\ \bibinfo {author}
+  {\bibfnamefont {H.~P.}\ \bibnamefont {Schadler}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Diagonal and off-diagonal quark number susceptibilities
+  at high temperatures}},\ }\href {https://doi.org/10.1103/PhysRevD.92.074043}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo
+  {volume} {D92}},\ \bibinfo {pages} {074043} (\bibinfo {year} {2015})},\
+  \Eprint {https://arxiv.org/abs/1507.06637} {arXiv:1507.06637 [hep-lat]}
+  \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1507.06637;%%
+\bibitem [{\citenamefont {Pratt}\ \emph {et~al.}(2015)\citenamefont {Pratt},
+  \citenamefont {Sangaline}, \citenamefont {Sorensen},\ and\ \citenamefont
+  {Wang}}]{Pratt:2015zsa}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Pratt}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Sangaline}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Sorensen}},\ and\
+  \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Wang}},\ }\bibfield
+  {title} {\bibinfo {title} {{Constraining the Eq. of State of Super-Hadronic
+  Matter from Heavy-Ion Collisions}},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.114.202301} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {114}},\
+  \bibinfo {pages} {202301} (\bibinfo {year} {2015})},\ \Eprint
+  {https://arxiv.org/abs/1501.04042} {arXiv:1501.04042 [nucl-th]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Borsanyi}\ \emph {et~al.}(2010)\citenamefont
+  {Borsanyi}, \citenamefont {Endrodi}, \citenamefont {Fodor}, \citenamefont
+  {Jakovac}, \citenamefont {Katz}, \citenamefont {Krieg}, \citenamefont
+  {Ratti},\ and\ \citenamefont {Szabo}}]{Borsanyi:2010cj}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Borsanyi}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Endrodi}},
+  \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Jakovac}}, \bibinfo {author}
+  {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Krieg}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Ratti}},\ and\ \bibinfo {author} {\bibfnamefont {K.~K.}\
+  \bibnamefont {Szabo}},\ }\bibfield  {title} {\bibinfo {title} {{The QCD
+  equation of state with dynamical quarks}},\ }\href
+  {https://doi.org/10.1007/JHEP11(2010)077} {\bibfield  {journal} {\bibinfo
+  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {11}},\ \bibinfo {pages}
+  {077}},\ \Eprint {https://arxiv.org/abs/1007.2580} {arXiv:1007.2580
+  [hep-lat]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1007.2580;%%
+\bibitem [{\citenamefont {Borsanyi}\ \emph {et~al.}(2014)\citenamefont
+  {Borsanyi}, \citenamefont {Fodor}, \citenamefont {Hoelbling}, \citenamefont
+  {Katz}, \citenamefont {Krieg},\ and\ \citenamefont
+  {Szabo}}]{Borsanyi:2013bia}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Borsanyi}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}},
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Hoelbling}}, \bibinfo
+  {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Krieg}},\ and\ \bibinfo {author}
+  {\bibfnamefont {K.~K.}\ \bibnamefont {Szabo}},\ }\bibfield  {title} {\bibinfo
+  {title} {{Full result for the QCD equation of state with 2+1 flavors}},\
+  }\href {https://doi.org/10.1016/j.physletb.2014.01.007} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B730}},\
+  \bibinfo {pages} {99} (\bibinfo {year} {2014})},\ \Eprint
+  {https://arxiv.org/abs/1309.5258} {arXiv:1309.5258 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1309.5258;%%
+\bibitem [{\citenamefont {Bazavov}\ \emph {et~al.}(2014)\citenamefont {Bazavov}
+  \emph {et~al.}}]{Bazavov:2014pvz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Bazavov}} \emph {et~al.} (\bibinfo {collaboration} {HotQCD}),\ }\bibfield
+  {title} {\bibinfo {title} {{Equation of state in ( 2+1 )-flavor QCD}},\
+  }\href {https://doi.org/10.1103/PhysRevD.90.094503} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D90}},\
+  \bibinfo {pages} {094503} (\bibinfo {year} {2014})},\ \Eprint
+  {https://arxiv.org/abs/1407.6387} {arXiv:1407.6387 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1407.6387;%%
+\bibitem [{\citenamefont {Gunther}\ \emph {et~al.}(2017)\citenamefont
+  {Gunther}, \citenamefont {Bellwied}, \citenamefont {Borsanyi}, \citenamefont
+  {Fodor}, \citenamefont {Katz}, \citenamefont {Pasztor},\ and\ \citenamefont
+  {Ratti}}]{Gunther:2016vcp}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Gunther}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Bellwied}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Borsanyi}}, \bibinfo
+  {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}}, \bibinfo {author}
+  {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Pasztor}},\ and\ \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {Ratti}},\ }\bibfield  {title} {\bibinfo
+  {title} {{The QCD equation of state at finite density from analytical
+  continuation}},\ }\bibfield  {booktitle} {\emph {\bibinfo {booktitle}
+  {{Proceedings, 12th Conference on Quark Confinement and the Hadron Spectrum
+  (Confinement XII): Thessaloniki, Greece}}},\ }\href
+  {https://doi.org/10.1051/epjconf/201713707008} {\bibfield  {journal}
+  {\bibinfo  {journal} {EPJ Web Conf.}\ }\textbf {\bibinfo {volume} {137}},\
+  \bibinfo {pages} {07008} (\bibinfo {year} {2017})},\ \Eprint
+  {https://arxiv.org/abs/1607.02493} {arXiv:1607.02493 [hep-lat]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1607.02493;%%
+\bibitem [{\citenamefont {Bazavov}\ \emph {et~al.}(2020)\citenamefont {Bazavov}
+  \emph {et~al.}}]{Bazavov:2020bjn}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Bazavov}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{Skewness,
+  kurtosis, and the fifth and sixth order cumulants of net baryon-number
+  distributions from lattice QCD confront high-statistics STAR data}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.101.074502} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo
+  {pages} {074502} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/2001.08530} {arXiv:2001.08530 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Fu}\ \emph {et~al.}(2021)\citenamefont {Fu},
+  \citenamefont {Luo}, \citenamefont {Pawlowski}, \citenamefont {Rennecke},
+  \citenamefont {Wen},\ and\ \citenamefont {Yin}}]{Fu:2021oaw}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.-j.}\ \bibnamefont
+  {Fu}}, \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {Luo}}, \bibinfo
+  {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Pawlowski}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Rennecke}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Wen}},\ and\ \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Yin}},\ }\bibfield  {title} {\bibinfo
+  {title} {{Hyper-order baryon number fluctuations at finite temperature and
+  density}},\ }\href@noop {} {\  (\bibinfo {year} {2021})},\ \Eprint
+  {https://arxiv.org/abs/2101.06035} {arXiv:2101.06035 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Bellwied}\ \emph {et~al.}(2020)\citenamefont
+  {Bellwied}, \citenamefont {Borsanyi}, \citenamefont {Fodor}, \citenamefont
+  {Guenther}, \citenamefont {Noronha-Hostler}, \citenamefont {Parotto},
+  \citenamefont {Pasztor}, \citenamefont {Ratti},\ and\ \citenamefont
+  {Stafford}}]{Bellwied:2019pxh}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Bellwied}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Borsanyi}},
+  \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}}, \bibinfo
+  {author} {\bibfnamefont {J.~N.}\ \bibnamefont {Guenther}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Noronha-Hostler}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Parotto}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Pasztor}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Ratti}},\ and\ \bibinfo {author} {\bibfnamefont {J.~M.}\
+  \bibnamefont {Stafford}},\ }\bibfield  {title} {\bibinfo {title}
+  {{Off-diagonal correlators of conserved charges from lattice QCD and how to
+  relate them to experiment}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.101.034506} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo
+  {pages} {034506} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/1910.14592} {arXiv:1910.14592 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Noronha-Hostler}\ \emph {et~al.}(2019)\citenamefont
+  {Noronha-Hostler}, \citenamefont {Parotto}, \citenamefont {Ratti},\ and\
+  \citenamefont {Stafford}}]{Noronha-Hostler:2019ayj}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Noronha-Hostler}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Parotto}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Ratti}},\
+  and\ \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Stafford}},\
+  }\bibfield  {title} {\bibinfo {title} {{Lattice-based equation of state at
+  finite baryon number, electric charge and strangeness chemical potentials}},\
+  }\href {https://doi.org/10.1103/PhysRevC.100.064910} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. C}\ }\textbf {\bibinfo {volume} {100}},\
+  \bibinfo {pages} {064910} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1902.06723} {arXiv:1902.06723 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Monnai}\ \emph {et~al.}(2019)\citenamefont {Monnai},
+  \citenamefont {Schenke},\ and\ \citenamefont {Shen}}]{Monnai:2019hkn}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Monnai}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Schenke}},\
+  and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Shen}},\ }\bibfield
+  {title} {\bibinfo {title} {{Equation of state at finite densities for QCD
+  matter in nuclear collisions}},\ }\href
+  {https://doi.org/10.1103/PhysRevC.100.024907} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. C}\ }\textbf {\bibinfo {volume} {100}},\ \bibinfo
+  {pages} {024907} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1902.05095} {arXiv:1902.05095 [nucl-th]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Friman}\ \emph {et~al.}(2011)\citenamefont {Friman},
+  \citenamefont {Karsch}, \citenamefont {Redlich},\ and\ \citenamefont
+  {Skokov}}]{Friman:2011pf}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Friman}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Karsch}},
+  \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Redlich}},\ and\ \bibinfo
+  {author} {\bibfnamefont {V.}~\bibnamefont {Skokov}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Fluctuations as probe of the QCD phase transition and
+  freeze-out in heavy ion collisions at LHC and RHIC}},\ }\href
+  {https://doi.org/10.1140/epjc/s10052-011-1694-2} {\bibfield  {journal}
+  {\bibinfo  {journal} {Eur.Phys.J.}\ }\textbf {\bibinfo {volume} {C71}},\
+  \bibinfo {pages} {1694} (\bibinfo {year} {2011})},\ \Eprint
+  {https://arxiv.org/abs/1103.3511} {arXiv:1103.3511 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1103.3511;%%
+\bibitem [{\citenamefont {Giordano}\ and\ \citenamefont
+  {P\'asztor}(2019)}]{Giordano:2019slo}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Giordano}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {P\'asztor}},\ }\bibfield  {title} {\bibinfo {title} {{Reliable estimation of
+  the radius of convergence in finite density QCD}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.99.114510} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {99}},\ \bibinfo
+  {pages} {114510} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1904.01974} {arXiv:1904.01974 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Giordano}\ \emph
+  {et~al.}(2020{\natexlab{b}})\citenamefont {Giordano}, \citenamefont {Kapas},
+  \citenamefont {Katz}, \citenamefont {Nogradi},\ and\ \citenamefont
+  {Pasztor}}]{Giordano:2019gev}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Giordano}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Kapas}},
+  \bibinfo {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {Nogradi}},\ and\ \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Pasztor}},\ }\bibfield  {title} {\bibinfo
+  {title} {{Radius of convergence in lattice QCD at finite $\mu_B$ with rooted
+  staggered fermions}},\ }\href {https://doi.org/10.1103/PhysRevD.101.074511}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
+  {volume} {101}},\ \bibinfo {pages} {074511} (\bibinfo {year}
+  {2020}{\natexlab{b}})},\ \Eprint {https://arxiv.org/abs/1911.00043}
+  {arXiv:1911.00043 [hep-lat]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Connelly}\ \emph {et~al.}(2021)\citenamefont
+  {Connelly}, \citenamefont {Johnson}, \citenamefont {Mukherjee},\ and\
+  \citenamefont {Skokov}}]{Connelly:2020pno}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Connelly}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Johnson}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Mukherjee}},\ and\
+  \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Skokov}},\ }\bibfield
+  {title} {\bibinfo {title} {{Universality driven analytic structure of QCD
+  crossover: radius of convergence and QCD critical point}},\ }\href
+  {https://doi.org/10.1016/j.nuclphysa.2020.121834} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nucl. Phys. A}\ }\textbf {\bibinfo {volume} {1005}},\
+  \bibinfo {pages} {121834} (\bibinfo {year} {2021})},\ \Eprint
+  {https://arxiv.org/abs/2004.05095} {arXiv:2004.05095 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Ratti}\ \emph {et~al.}(2007)\citenamefont {Ratti},
+  \citenamefont {Roessner},\ and\ \citenamefont {Weise}}]{Ratti:2007jf}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Ratti}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Roessner}},\
+  and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Weise}},\ }\bibfield
+   {title} {\bibinfo {title} {{Quark number susceptibilities: Lattice QCD
+  versus PNJL model}},\ }\href {https://doi.org/10.1016/j.physletb.2007.03.038}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf
+  {\bibinfo {volume} {649}},\ \bibinfo {pages} {57} (\bibinfo {year} {2007})},\
+  \Eprint {https://arxiv.org/abs/hep-ph/0701091} {arXiv:hep-ph/0701091}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Critelli}\ \emph {et~al.}(2017)\citenamefont
+  {Critelli}, \citenamefont {Noronha}, \citenamefont {Noronha-Hostler},
+  \citenamefont {Portillo}, \citenamefont {Ratti},\ and\ \citenamefont
+  {Rougemont}}]{Critelli:2017oub}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Critelli}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Noronha}},
+  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Noronha-Hostler}},
+  \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Portillo}}, \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {Ratti}},\ and\ \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Rougemont}},\ }\bibfield  {title} {\bibinfo
+  {title} {{Critical point in the phase diagram of primordial quark-gluon
+  matter from black hole physics}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.96.096026} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {96}},\ \bibinfo
+  {pages} {096026} (\bibinfo {year} {2017})},\ \Eprint
+  {https://arxiv.org/abs/1706.00455} {arXiv:1706.00455 [nucl-th]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Parotto}\ \emph {et~al.}(2020)\citenamefont
+  {Parotto}, \citenamefont {Bluhm}, \citenamefont {Mroczek}, \citenamefont
+  {Nahrgang}, \citenamefont {Noronha-Hostler}, \citenamefont {Rajagopal},
+  \citenamefont {Ratti}, \citenamefont {Sch\"afer},\ and\ \citenamefont
+  {Stephanov}}]{Parotto:2018pwx}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Parotto}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Bluhm}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Mroczek}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Nahrgang}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Noronha-Hostler}}, \bibinfo {author}
+  {\bibfnamefont {K.}~\bibnamefont {Rajagopal}}, \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {Ratti}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Sch\"afer}},\ and\ \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Stephanov}},\ }\bibfield  {title} {\bibinfo {title} {{QCD
+  equation of state matched to lattice data and exhibiting a critical point
+  singularity}},\ }\href {https://doi.org/10.1103/PhysRevC.101.034901}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. C}\ }\textbf {\bibinfo
+  {volume} {101}},\ \bibinfo {pages} {034901} (\bibinfo {year} {2020})},\
+  \Eprint {https://arxiv.org/abs/1805.05249} {arXiv:1805.05249 [hep-ph]}
+  \BibitemShut {NoStop}%
+\end{thebibliography}%
