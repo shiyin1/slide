@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {2}Fluctuations and imaginary chemical potentials}{2}{section.2}
+\contentsline {section}{\numberline {3}Analysis details}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Lattice setup}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Correlated fit with priors}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Cross-correlators}{6}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Error Analysis}{8}{subsection.3.4}
+\contentsline {section}{\numberline {4}Phenomenology at finite chemical potential}{9}{section.4}
+\contentsline {section}{\numberline {5}Conclusions and outlook }{12}{section.5}
+\contentsline {section}{\numberline {A}Results for the correlators}{14}{appendix.A}
+\contentsline {section}{\numberline {B}Statistics and lattice details}{14}{appendix.B}

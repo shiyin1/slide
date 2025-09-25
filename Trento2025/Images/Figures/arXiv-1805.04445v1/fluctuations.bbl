@@ -1,0 +1,318 @@
+
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{Aoki:2006we}
+Y.~Aoki, G.~Endrodi, Z.~Fodor, S.~Katz and K.~Szabo, \emph{{The Order of the
+  quantum chromodynamics transition predicted by the standard model of particle
+  physics}}, \href{https://doi.org/10.1038/nature05120}{\emph{Nature}
+  {\bfseries 443} (2006) 675}
+  [\href{https://arxiv.org/abs/hep-lat/0611014}{{\ttfamily hep-lat/0611014}}].
+
+\bibitem{Aoki:2006br}
+Y.~Aoki, Z.~Fodor, S.~Katz and K.~Szabo, \emph{{The QCD transition temperature:
+  Results with physical masses in the continuum limit}},
+  \href{https://doi.org/10.1016/j.physletb.2006.10.021}{\emph{Phys.Lett.}
+  {\bfseries B643} (2006) 46}
+  [\href{https://arxiv.org/abs/hep-lat/0609068}{{\ttfamily hep-lat/0609068}}].
+
+\bibitem{Aoki:2009sc}
+Y.~Aoki, S.~Borsanyi, S.~Durr, Z.~Fodor, S.~D. Katz et~al., \emph{{The QCD
+  transition temperature: results with physical masses in the continuum limit
+  II.}}, \href{https://doi.org/10.1088/1126-6708/2009/06/088}{\emph{JHEP}
+  {\bfseries 0906} (2009) 088}
+  [\href{https://arxiv.org/abs/0903.4155}{{\ttfamily 0903.4155}}].
+
+\bibitem{Borsanyi:2010bp}
+{\scshape Wuppertal-Budapest Collaboration} collaboration, S.~Borsanyi et~al.,
+  \emph{{Is there still any $T_c$ mystery in lattice QCD? Results with physical
+  masses in the continuum limit III}},
+  \href{https://doi.org/10.1007/JHEP09(2010)073}{\emph{JHEP} {\bfseries 1009}
+  (2010) 073} [\href{https://arxiv.org/abs/1005.3508}{{\ttfamily 1005.3508}}].
+
+\bibitem{Bhattacharya:2014ara}
+T.~Bhattacharya, M.~I. Buchoff, N.~H. Christ, H.~T. Ding, R.~Gupta et~al.,
+  \emph{{The QCD phase transition with physical-mass, chiral quarks}},
+  \href{https://arxiv.org/abs/1402.5175}{{\ttfamily 1402.5175}}.
+
+\bibitem{Bazavov:2011nk}
+A.~Bazavov, T.~Bhattacharya, M.~Cheng, C.~DeTar, H.~Ding et~al., \emph{{The
+  chiral and deconfinement aspects of the QCD transition}},
+  \href{https://doi.org/10.1103/PhysRevD.85.054503}{\emph{Phys.Rev.} {\bfseries
+  D85} (2012) 054503} [\href{https://arxiv.org/abs/1111.1710}{{\ttfamily
+  1111.1710}}].
+
+\bibitem{Allton:2002zi}
+C.~Allton, S.~Ejiri, S.~Hands, O.~Kaczmarek, F.~Karsch et~al., \emph{{The QCD
+  thermal phase transition in the presence of a small chemical potential}},
+  \href{https://doi.org/10.1103/PhysRevD.66.074507}{\emph{Phys.Rev.} {\bfseries
+  D66} (2002) 074507} [\href{https://arxiv.org/abs/hep-lat/0204010}{{\ttfamily
+  hep-lat/0204010}}].
+
+\bibitem{Allton:2005gk}
+C.~Allton, M.~Doring, S.~Ejiri, S.~Hands, O.~Kaczmarek et~al.,
+  \emph{{Thermodynamics of two flavor QCD to sixth order in quark chemical
+  potential}},
+  \href{https://doi.org/10.1103/PhysRevD.71.054508}{\emph{Phys.Rev.} {\bfseries
+  D71} (2005) 054508} [\href{https://arxiv.org/abs/hep-lat/0501030}{{\ttfamily
+  hep-lat/0501030}}].
+
+\bibitem{Gavai:2008zr}
+R.~V. Gavai and S.~Gupta, \emph{{QCD at finite chemical potential with six time
+  slices}}, \href{https://doi.org/10.1103/PhysRevD.78.114503}{\emph{Phys. Rev.}
+  {\bfseries D78} (2008) 114503}
+  [\href{https://arxiv.org/abs/0806.2233}{{\ttfamily 0806.2233}}].
+
+\bibitem{Basak:2009uv}
+{\scshape MILC} collaboration, S.~Basak et~al., \emph{{QCD equation of state at
+  non-zero chemical potential}}, {\emph{PoS} {\bfseries LATTICE2008} (2008)
+  171} [\href{https://arxiv.org/abs/0910.0276}{{\ttfamily 0910.0276}}].
+
+\bibitem{Kaczmarek:2011zz}
+O.~Kaczmarek, F.~Karsch, E.~Laermann, C.~Miao, S.~Mukherjee et~al.,
+  \emph{{Phase boundary for the chiral transition in (2+1) -flavor QCD at small
+  values of the chemical potential}},
+  \href{https://doi.org/10.1103/PhysRevD.83.014504}{\emph{Phys.Rev.} {\bfseries
+  D83} (2011) 014504} [\href{https://arxiv.org/abs/1011.3130}{{\ttfamily
+  1011.3130}}].
+
+\bibitem{Fodor:2001au}
+Z.~Fodor and S.~Katz, \emph{{A New method to study lattice QCD at finite
+  temperature and chemical potential}},
+  \href{https://doi.org/10.1016/S0370-2693(02)01583-6}{\emph{Phys.Lett.}
+  {\bfseries B534} (2002) 87}
+  [\href{https://arxiv.org/abs/hep-lat/0104001}{{\ttfamily hep-lat/0104001}}].
+
+\bibitem{deForcrand:2002hgr}
+P.~de~Forcrand and O.~Philipsen, \emph{{The QCD phase diagram for small
+  densities from imaginary chemical potential}},
+  \href{https://doi.org/10.1016/S0550-3213(02)00626-0}{\emph{Nucl. Phys.}
+  {\bfseries B642} (2002) 290}
+  [\href{https://arxiv.org/abs/hep-lat/0205016}{{\ttfamily hep-lat/0205016}}].
+
+\bibitem{DElia:2002tig}
+M.~D'Elia and M.-P. Lombardo, \emph{{Finite density QCD via imaginary chemical
+  potential}}, \href{https://doi.org/10.1103/PhysRevD.67.014505}{\emph{Phys.
+  Rev.} {\bfseries D67} (2003) 014505}
+  [\href{https://arxiv.org/abs/hep-lat/0209146}{{\ttfamily hep-lat/0209146}}].
+
+\bibitem{Fodor:2001pe}
+Z.~Fodor and S.~Katz, \emph{{Lattice determination of the critical point of QCD
+  at finite T and mu}},
+  \href{https://doi.org/10.1088/1126-6708/2002/03/014}{\emph{JHEP} {\bfseries
+  0203} (2002) 014} [\href{https://arxiv.org/abs/hep-lat/0106002}{{\ttfamily
+  hep-lat/0106002}}].
+
+\bibitem{Fodor:2004nz}
+Z.~Fodor and S.~Katz, \emph{{Critical point of QCD at finite T and mu, lattice
+  results for physical quark masses}},
+  \href{https://doi.org/10.1088/1126-6708/2004/04/050}{\emph{JHEP} {\bfseries
+  0404} (2004) 050} [\href{https://arxiv.org/abs/hep-lat/0402006}{{\ttfamily
+  hep-lat/0402006}}].
+
+\bibitem{Bonati:2018nut}
+C.~Bonati, M.~D'Elia, F.~Negro, F.~Sanfilippo and K.~Zambello, \emph{{Curvature
+  of the pseudocritical line in QCD: Taylor expansion matches analytic
+  continuation}},  \href{https://arxiv.org/abs/1805.02960}{{\ttfamily
+  1805.02960}}.
+
+\bibitem{Karsch:2012wm}
+F.~Karsch, \emph{{Determination of Freeze-out Conditions from Lattice QCD
+  Calculations}},
+  \href{https://doi.org/10.2478/s11534-012-0074-3}{\emph{Central Eur.J.Phys.}
+  {\bfseries 10} (2012) 1234}
+  [\href{https://arxiv.org/abs/1202.4173}{{\ttfamily 1202.4173}}].
+
+\bibitem{Bazavov:2012vg}
+A.~Bazavov, H.~Ding, P.~Hegde, O.~Kaczmarek, F.~Karsch et~al.,
+  \emph{{Freeze-out Conditions in Heavy Ion Collisions from QCD
+  Thermodynamics}},
+  \href{https://doi.org/10.1103/PhysRevLett.109.192302}{\emph{Phys.Rev.Lett.}
+  {\bfseries 109} (2012) 192302}
+  [\href{https://arxiv.org/abs/1208.1220}{{\ttfamily 1208.1220}}].
+
+\bibitem{Borsanyi:2013hza}
+S.~Borsanyi, Z.~Fodor, S.~Katz, S.~Krieg, C.~Ratti et~al., \emph{{Freeze-out
+  parameters: lattice meets experiment}},
+  \href{https://doi.org/10.1103/PhysRevLett.111.062005}{\emph{Phys.Rev.Lett.}
+  {\bfseries 111} (2013) 062005}
+  [\href{https://arxiv.org/abs/1305.5161}{{\ttfamily 1305.5161}}].
+
+\bibitem{Borsanyi:2014ewa}
+S.~Borsanyi, Z.~Fodor, S.~Katz, S.~Krieg, C.~Ratti et~al., \emph{{Freeze-out
+  parameters from electric charge and baryon number fluctuations: is there
+  consistency?}},
+  \href{https://doi.org/10.1103/PhysRevLett.113.052301}{\emph{Phys.Rev.Lett.}
+  {\bfseries 113} (2014) 052301}
+  [\href{https://arxiv.org/abs/1403.4576}{{\ttfamily 1403.4576}}].
+
+\bibitem{Ratti:2018ksb}
+C.~Ratti, \emph{{Lattice QCD and heavy ion collisions: a review of recent
+  progress}},  \href{https://arxiv.org/abs/1804.07810}{{\ttfamily 1804.07810}}.
+
+\bibitem{Bazavov:2017tot}
+{\scshape HotQCD} collaboration, A.~Bazavov et~al., \emph{{Skewness and
+  kurtosis of net baryon-number distributions at small values of the baryon
+  chemical potential}},  \href{https://arxiv.org/abs/1708.04897}{{\ttfamily
+  1708.04897}}.
+
+\bibitem{Stephanov:1999zu}
+M.~A. Stephanov, K.~Rajagopal and E.~V. Shuryak, \emph{{Event-by-event
+  fluctuations in heavy ion collisions and the QCD critical point}},
+  \href{https://doi.org/10.1103/PhysRevD.60.114028}{\emph{Phys.Rev.} {\bfseries
+  D60} (1999) 114028} [\href{https://arxiv.org/abs/hep-ph/9903292}{{\ttfamily
+  hep-ph/9903292}}].
+
+\bibitem{Cheng:2007jq}
+M.~Cheng, N.~Christ, S.~Datta, J.~van~der Heide, C.~Jung et~al., \emph{{The QCD
+  equation of state with almost physical quark masses}},
+  \href{https://doi.org/10.1103/PhysRevD.77.014511}{\emph{Phys.Rev.} {\bfseries
+  D77} (2008) 014511} [\href{https://arxiv.org/abs/0710.0354}{{\ttfamily
+  0710.0354}}].
+
+\bibitem{Gunther:2016vcp}
+J.~Gunther, R.~Bellwied, S.~Borsanyi, Z.~Fodor, S.~D. Katz, A.~Pasztor et~al.,
+  \emph{{The QCD equation of state at finite density from analytical
+  continuation}}, \href{https://doi.org/10.1051/epjconf/201713707008}{\emph{EPJ
+  Web Conf.} {\bfseries 137} (2017) 07008}
+  [\href{https://arxiv.org/abs/1607.02493}{{\ttfamily 1607.02493}}].
+
+\bibitem{DElia:2016jqh}
+M.~D'Elia, G.~Gagliardi and F.~Sanfilippo, \emph{{Higher order quark number
+  fluctuations via imaginary chemical potentials in $N_f=2+1$ QCD}},
+  \href{https://doi.org/10.1103/PhysRevD.95.094503}{\emph{Phys. Rev.}
+  {\bfseries D95} (2017) 094503}
+  [\href{https://arxiv.org/abs/1611.08285}{{\ttfamily 1611.08285}}].
+
+\bibitem{Bellwied:2015lba}
+R.~Bellwied, S.~Borsanyi, Z.~Fodor, S.~D. Katz, A.~Pasztor, C.~Ratti et~al.,
+  \emph{{Fluctuations and correlations in high temperature QCD}},
+  \href{https://doi.org/10.1103/PhysRevD.92.114505}{\emph{Phys. Rev.}
+  {\bfseries D92} (2015) 114505}
+  [\href{https://arxiv.org/abs/1507.04627}{{\ttfamily 1507.04627}}].
+
+\bibitem{Roberge:1986mm}
+A.~Roberge and N.~Weiss, \emph{{Gauge Theories With Imaginary Chemical
+  Potential and the Phases of {QCD}}},
+  \href{https://doi.org/10.1016/0550-3213(86)90582-1}{\emph{Nucl.Phys.}
+  {\bfseries B275} (1986) 734}.
+
+\bibitem{Vovchenko:2017xad}
+V.~Vovchenko, A.~Pasztor, Z.~Fodor, S.~D. Katz and H.~Stoecker,
+  \emph{{Repulsive baryonic interactions and lattice QCD observables at
+  imaginary chemical potential}},
+  \href{https://doi.org/10.1016/j.physletb.2017.10.042}{\emph{Phys. Lett.}
+  {\bfseries B775} (2017) 71}
+  [\href{https://arxiv.org/abs/1708.02852}{{\ttfamily 1708.02852}}].
+
+\bibitem{kapusta:book}
+J.~I. Kapusta and C.~Gale, \emph{Finite-Temperature Field Theory}. Cambridge
+  University Press, second~ed., 2006.
+
+\bibitem{Vuorinen:2002ue}
+A.~Vuorinen, \emph{{Quark number susceptibilities of hot QCD up to g**6 ln g}},
+  \href{https://doi.org/10.1103/PhysRevD.67.074032}{\emph{Phys.Rev.} {\bfseries
+  D67} (2003) 074032} [\href{https://arxiv.org/abs/hep-ph/0212283}{{\ttfamily
+  hep-ph/0212283}}].
+
+\bibitem{Philipsen:2014rpa}
+O.~Philipsen and C.~Pinke, \emph{{The nature of the Roberge-Weiss transition in
+  $N_f=2$ QCD with Wilson fermions}}, {\emph{Phys. Rev.} {\bfseries D89} (2014)
+  094504} [\href{https://arxiv.org/abs/1402.0838}{{\ttfamily 1402.0838}}].
+
+\bibitem{Cuteri:2015qkq}
+F.~Cuteri, C.~Pinke, A.~Sciarra, C.~Czaban and O.~Philipsen,
+  \emph{{Roberge-Weiss transition in $N_\text{f}=2$ QCD with Wilson fermions
+  and $N_\tau=6$}}, {\emph{Phys. Rev. D} (2015) 054507}
+  [\href{https://arxiv.org/abs/1512.07180}{{\ttfamily 1512.07180}}].
+
+\bibitem{Bonati:2016pwz}
+C.~Bonati, M.~D'Elia, M.~Mariti, M.~Mesiti, F.~Negro and F.~Sanfilippo,
+  \emph{{Roberge-Weiss endpoint at the physical point of $N_f = 2+1$ QCD}},
+  \href{https://doi.org/10.1103/PhysRevD.93.074504}{\emph{Phys. Rev.}
+  {\bfseries D93} (2016) 074504}
+  [\href{https://arxiv.org/abs/1602.01426}{{\ttfamily 1602.01426}}].
+
+\bibitem{Bonati:2015bha}
+C.~Bonati, M.~D'Elia, M.~Mariti, M.~Mesiti, F.~Negro and F.~Sanfilippo,
+  \emph{{Curvature of the chiral pseudocritical line in QCD: Continuum
+  extrapolated results}},
+  \href{https://doi.org/10.1103/PhysRevD.92.054503}{\emph{Phys. Rev.}
+  {\bfseries D92} (2015) 054503}
+  [\href{https://arxiv.org/abs/1507.03571}{{\ttfamily 1507.03571}}].
+
+\bibitem{Bellwied:2015rza}
+R.~Bellwied, S.~Borsanyi, Z.~Fodor, J.~G{\"u}nther, S.~D. Katz, C.~Ratti
+  et~al., \emph{{The QCD phase diagram from analytic continuation}},
+  \href{https://doi.org/10.1016/j.physletb.2015.11.011}{\emph{Phys. Lett.}
+  {\bfseries B751} (2015) 559}
+  [\href{https://arxiv.org/abs/1507.07510}{{\ttfamily 1507.07510}}].
+
+\bibitem{Cea:2015cya}
+P.~Cea, L.~Cosmai and A.~Papa, \emph{{Critical line of 2+1 flavor QCD: Toward
+  the continuum limit}},
+  \href{https://doi.org/10.1103/PhysRevD.93.014507}{\emph{Phys. Rev.}
+  {\bfseries D93} (2016) 014507}
+  [\href{https://arxiv.org/abs/1508.07599}{{\ttfamily 1508.07599}}].
+
+\bibitem{Bazavov:2017dus}
+A.~Bazavov et~al., \emph{{The QCD Equation of State to $\mathcal{O}(\mu_B^6)$
+  from Lattice QCD}},  \href{https://arxiv.org/abs/1701.04325}{{\ttfamily
+  1701.04325}}.
+
+\bibitem{McNeile:2010ji}
+C.~McNeile, C.~Davies, E.~Follana, K.~Hornbostel and G.~Lepage,
+  \emph{{High-Precision c and b Masses, and QCD Coupling from Current-Current
+  Correlators in Lattice and Continuum QCD}},
+  \href{https://doi.org/10.1103/PhysRevD.82.034512}{\emph{Phys.Rev.} {\bfseries
+  D82} (2010) 034512} [\href{https://arxiv.org/abs/1004.4285}{{\ttfamily
+  1004.4285}}].
+
+\bibitem{Haque:2013sja}
+N.~Haque, J.~O. Andersen, M.~G. Mustafa, M.~Strickland and N.~Su,
+  \emph{{Three-loop HTLpt Pressure and Susceptibilities at Finite Temperature
+  and Density}},
+  \href{https://doi.org/10.1103/PhysRevD.89.061701}{\emph{Phys.Rev.} {\bfseries
+  D89} (2014) 061701} [\href{https://arxiv.org/abs/1309.3968}{{\ttfamily
+  1309.3968}}].
+
+\bibitem{Akaike}
+H.~Akaike{\emph{IEEE Transactions on Automatic Control} {\bfseries 19} (1974)
+  716}.
+
+\bibitem{Durr:2008zz}
+S.~Durr, Z.~Fodor, J.~Frison, C.~Hoelbling, R.~Hoffmann et~al.,
+  \emph{{Ab-Initio Determination of Light Hadron Masses}},
+  \href{https://doi.org/10.1126/science.1163233}{\emph{Science} {\bfseries 322}
+  (2008) 1224} [\href{https://arxiv.org/abs/0906.3599}{{\ttfamily 0906.3599}}].
+
+\bibitem{Luo:2015ewa}
+{\scshape STAR} collaboration, X.~Luo, \emph{{Energy Dependence of Moments of
+  Net-Proton and Net-Charge Multiplicity Distributions at STAR}}, {\emph{PoS}
+  {\bfseries CPOD2014} (2014) 019}
+  [\href{https://arxiv.org/abs/1503.02558}{{\ttfamily 1503.02558}}].
+
+\bibitem{Thader:2016gpa}
+{\scshape STAR} collaboration, J.~Th{\"a}der, \emph{{Higher Moments of
+  Net-Particle Multiplicity Distributions}},
+  \href{https://arxiv.org/abs/1601.00951}{{\ttfamily 1601.00951}}.
+
+\bibitem{Andronic:2005yp}
+A.~Andronic, P.~Braun-Munzinger and J.~Stachel, \emph{{Hadron production in
+  central nucleus-nucleus collisions at chemical freeze-out}},
+  \href{https://doi.org/10.1016/j.nuclphysa.2006.03.012}{\emph{Nucl.Phys.}
+  {\bfseries A772} (2006) 167}
+  [\href{https://arxiv.org/abs/nucl-th/0511071}{{\ttfamily nucl-th/0511071}}].
+
+\bibitem{Alba:2017mqu}
+P.~Alba et~al., \emph{{Constraining the hadronic spectrum through QCD
+  thermodynamics on the lattice}},
+  \href{https://doi.org/10.1103/PhysRevD.96.034517}{\emph{Phys. Rev.}
+  {\bfseries D96} (2017) 034517}
+  [\href{https://arxiv.org/abs/1702.01113}{{\ttfamily 1702.01113}}].
+
+\bibitem{juqueen}
+\emph{Juqueen: Ibm blue gene/q supercomputer system at the j{\"u}lich
+  supercomputing centre},  Tech. Rep. 1 A1, J{\"u}lich Supercomputing Centre,
+  http://dx.doi.org/10.17815/jlsrf-1-18, 2015.
+
+\end{thebibliography}\endgroup

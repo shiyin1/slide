@@ -1,0 +1,794 @@
+\documentclass[%
+    aps,
+    prd,
+    reprint,
+    superscriptaddress,
+    floatfix,
+    nofootinbib,
+    noamsmath,
+    noamssymb
+]{revtex4-2}
+
+% ==============================================================================
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{bm}
+\usepackage{siunitx}
+\usepackage[final]{microtype}
+\usepackage{hyperref}
+
+% ==============================================================================
+
+\newcommand{\mytitle}{From imaginary to real chemical potential QCD with functional methods}
+
+\newcommand{\JLU}{%
+    Institut f\"{u}r Theoretische Physik,
+    Justus-Liebig-Universit\"{a}t Gie\ss{}en,
+    35392 Gie\ss{}en,
+    Germany
+}
+
+\newcommand{\HFHF}{%
+    Helmholtz Forschungsakademie Hessen f\"{u}r FAIR (HFHF),
+    GSI Helmholtzzentrum f\"{u}r Schwerionenforschung,
+    Campus Gie\ss{}en,
+    35392 Gie\ss{}en,
+    Germany
+}
+
+\hypersetup{%
+    pdftitle = {\mytitle},
+    pdfauthor = {Julian Bernhardt, Christian S. Fischer},
+    bookmarksopen = true,
+    colorlinks = true,
+    linkcolor = green!40!black,
+    citecolor = blue!50!black,
+    urlcolor = blue!50!black
+}
+
+\DeclareSIUnit{\MeV}{\mega\electronvolt}
+\DeclareSIUnit{\GeV}{\giga\electronvolt}
+\DeclareSIUnit{\fm}{\femto\meter}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\renewcommand*{\vec}[1]{\bm{#1}}
+\newcommand*{\+}{\hspace*{.08335em}}
+\newcommand*{\?}{\hspace*{-.08335em}}
+\newcommand*{\dd}{\mathrm{d}}
+\newcommand*{\ii}{\mathrm{i}}
+\newcommand*{\bbR}{\mathbb{R}}
+\newcommand*{\bbZ}{\mathbb{Z}}
+\newcommand*{\bbN}{\mathbb{N}}
+\newcommand*{\calZ}{\mathcal{Z}}
+\newcommand*{\muCEP}{\mu_{\textup{B}}^{\textup{CEP}}}
+\newcommand*{\TCEP}{T_{\textup{CEP}}}
+\newcommand*{\Tc}{T_{\textup{c}}}
+\newcommand*{\Nc}{N_{\textup{c}}}
+\newcommand*{\Ksum}{K_{f}^{\+\textup{sum}}}
+\newcommand*{\Kint}{K_{f}^{\+\textup{int}}}
+\newcommand*{\OO}{\operatorname{O}}
+\newcommand*{\gs}{g}
+\newcommand*{\massu}{m_{\textup{u}}}
+\newcommand*{\massd}{m_{\textup{d}}}
+\newcommand*{\masss}{m_{\textup{s}}}
+\newcommand*{\muu}{\mu_{\textup{u}}}
+\newcommand*{\mud}{\mu_{\textup{d}}}
+\newcommand*{\mus}{\mu_{\textup{s}}}
+\newcommand*{\muB}{\mu_{\textup{B}}}
+\newcommand*{\muS}{\mu_{\textup{S}}}
+\newcommand*{\muQ}{\mu_{\textup{Q}}}
+\newcommand*{\cond}{\langle \bar{\psi} \psi \rangle}
+\let\Im\undefined
+\DeclareMathOperator{\Im}{Im}
+
+\sisetup{%
+    separate-uncertainty,
+    per-mode = reciprocal,
+    range-phrase = \text{--},
+    group-digits = false
+}
+
+\definecolor{dgreen}{rgb}{0.1,0.5,0.1}
+\definecolor{lblue}{rgb}{0.2,0.35,1}
+\newcommand{\cJB}[1]{{\color{dgreen}[JB:~#1]}}
+\newcommand{\cCF}[1]{{\color{lblue}[CF:~#1]}}
+
+% ==============================================================================
+
+\begin{document}
+
+\title{\mytitle}
+
+\author{Julian Bernhardt}
+\email{julian.bernhardt@physik.uni-giessen.de}
+\affiliation{\JLU}
+\affiliation{\HFHF}
+
+\author{Christian S.~Fischer}
+\email{christian.fischer@theo.physik.uni-giessen.de}
+\affiliation{\JLU}
+\affiliation{\HFHF}
+
+\begin{abstract}
+We investigate the quality of the extrapolation procedure employed in
+Ref.~\cite{Borsanyi:2020fev} to extract the crossover line at real chemical
+potential from lattice data at imaginary potential. To this end we employ a
+functional approach that does not suffer from the sign problem. We utilize a
+well-studied combination of lattice Yang--Mills theory with a truncated set of
+Dyson--Schwinger equations in Landau gauge for $2 + 1$ quark flavors. This
+system predicts a critical endpoint at moderate temperatures and rather large
+(real) chemical potential with a curvature of the pseudo-critical transition line 
+comparable to recent lattice extrapolations. We determine the light quark condensate 
+and chiral susceptibility at imaginary chemical potentials and perform an analytic
+continuation along the lines described in \cite{Borsanyi:2020fev}. We find that
+the analytically continued crossover line agrees very well (within one percent)
+with the explicitly calculated one for chemical potentials up to about 80 \% of
+the one of the critical end point. The method breaks down in the region where
+the chiral susceptibility as a function of the condensate cannot any longer be
+well described by a polynomial. 
+\end{abstract}
+
+\maketitle
+
+% ==============================================================================
+\section{\label{introduction}%
+    Introduction
+}
+
+One of the major goals in studying the QCD phase diagram is to extract a
+quantitative understanding of the existence, the location and the properties of
+a critical endpoint (CEP). Observables connected to the appearance of the CEP
+have been probed in heavy-ion-collision experiments at RHIC/BNL
+\cite{Bzdak:2019pkr} and HADES (FAIR Phase-0) \cite{Salabura:2020tou}, and will
+be explored in detail in the future CBM/FAIR experiment \cite{Friman:2011zz}.
+
+From a theoretical perspective, a high precision study of the location of the
+CEP is hampered by two very different problems. In lattice QCD, the fermion sign
+problem prohibits direct calculations at real chemical potential, see e.g.
+\cite{Nagata2022} for a review. Extrapolation procedures from zero chemical potential 
+include re-weighting \cite{Hasenfratz:1991ax,Fodor:2001au,Fodor:2001pe,Giordano:2020roi} 
+and Taylor expansion schemes 
+\cite{Allton:2002zi,Gavai:2008zr,Borsanyi:2012cr,Bazavov:2017dus,Giordano:2019gev,Bazavov2019,Bazavov:2020bjn,Bollweg2022}
+allowing for indirect access to important quantities such as pseudo-critical 
+transition temperatures, equations of state and fluctuations of conserved charges 
+at moderate chemical potential \cite{Ratti:2022qgf}. In addition, direct lattice 
+simulations at imaginary chemical potential provide a basis for a number of extrapolation
+procedures into the real chemical potential domain based on the analytic properties
+of the QCD partition function. This procedure has been pioneered by de Forcrand and Philipsen 
+\cite{deForcrand:2002hgr} and has been developed since, see e.g.
+\cite{Borsanyi:2020fev,Borsanyi:2021sxv,Dimopoulos:2021vrk,Borsanyi:2022soo,Borsanyi2022a}
+ and Refs. therein. 
+ 
+ On the other hand, functional approaches to the CEP, i.e.,
+approaches via Dyson--Schwinger equations (DSE) and/or the functional
+renormalization group (FRG), do not suffer from the sign problem and allow for
+a mapping of the whole QCD phase diagram, see e.g. \cite{Fischer:2018sdj} for a
+review and
+\cite{Fischer:2014ata,Isserstedt:2019pgx,Fu:2019hdw,Gao:2020qsj,Gao:2020fbl,Gunkel:2021oya}
+ for recent results. However, they inherently depend on approximations and
+truncations which have to be carefully controlled either in combined approaches
+or by comparison with lattice results in controlled environments where both
+approaches are applicable, such as imaginary chemical potential. This work is
+devoted to the latter. We revisit a truncation scheme of Dyson--Schwinger
+equations that has been used in Ref.~\cite{Gunkel:2021oya} to perform
+calculations at real chemical potential up to the critical endpoint and apply
+it at imaginary baryon chemical potential $\muB$. We perform calculations at
+appropriate values of imaginary $\muB$, where direct comparison with
+corresponding lattice results from Ref.~\cite{Borsanyi:2020fev} is possible. We
+then employ a similar extrapolation procedure as on the lattice and compare the
+extrapolated results for the crossover transition line with the ones explicitly
+calculated in our functional approach. Our results may serve as a quality check
+for the extrapolation method used on the lattice.
+
+The paper is organized as follows. In the next section, we briefly revisit our
+framework. We summarize the truncation scheme of Ref.~\cite{Gunkel:2021oya} in
+Section \ref{DSE-framework} and review the extrapolation procedure from
+imaginary to real chemical potential employed in Ref.~\cite{Borsanyi:2020fev} in
+Section \ref{imu-framework}. In Section \ref{results}, we present and discuss
+our results. We summarize and conclude in Section \ref{summary}.
+
+
+% ==============================================================================
+\section{\label{framework}%
+    Framework
+}
+% ==============================================================================
+
+% ------------------------------------------------------------------------------
+\subsection{\label{DSE-framework}%
+	Truncated set of coupled Dyson--Schwinger equations
+}
+% ------------------------------------------------------------------------------
+
+The central quantity for all following investigations is the dressed quark
+propagator $S_{f}$ of quark flavor $f$ at non-zero temperature $T$ and quark
+chemical potential $\mu_{f}$. Its inverse is parametrized as\footnote{%
+    We work in Euclidean space-time with positive metric signature (++++). The
+    Hermitian $\gamma$-matrices satisfy $\{\gamma_{\nu}, \gamma_{\rho}\} = 2
+    \delta_{\nu \rho}$.%
+}%
+\begin{equation}
+    \label{eq:quark_propagator}
+    %
+    S_{f}^{-1}(p)
+    =
+    \ii \gamma_{4} \tilde{\omega}_{n}^{f} C_{f}(p)
+    +
+    \ii \vec{\gamma} \cdot \vec{p} A_{f}(p)
+    +
+    B_{f}(p)
+\end{equation}
+where $p = (\vec{p}, \tilde{\omega}_{n})$ labels the four-momentum, while
+$\tilde{\omega}_{n}^{f} = \omega_{n} + \ii \mu_{f}$ represents a combination of
+the fermionic Matsubara frequencies $\omega_{n} = (2n + 1) \pi T$, $n \in \bbZ$,
+with the chemical potential. At this point, we already remark that the
+definition of $\tilde{\omega}_{n}^{f}$ universally holds for both real and
+imaginary chemical potentials in our framework. Consequently, imaginary chemical
+potentials effectively correspond to a real shift of the Matsubara frequencies
+\cite{Braun:2009gm,Fischer:2014vxa}. The quark dressing functions $A_{f}$,
+$B_{f}$ and $C_{f}$ in Eq.~\eqref{eq:quark_propagator} encode the
+non-perturbative momentum dependence of the propagator.
+
+We obtain the quark propagator as a solution of its corresponding
+Dyson--Schwinger equation (DSE) illustrated in Fig.~\ref{fig:dses} and given by
+\begin{equation}
+    \label{eq:quark_dse}
+    %
+    S_{f}^{-1}(p)
+    =
+    Z_{2}
+    \bigl(
+        \ii \gamma_{4} \tilde{\omega}_{n}^{f}
+        +
+        \ii \vec{\gamma} \cdot \vec{p}
+        +
+        Z_{m} m_{f}
+    \bigr)
+    -
+    \Sigma_{f}(p)
+    \,,
+\end{equation}
+with $Z_{2}$ and $Z_{m}$ labelling the wave function and mass renormalization
+constants, respectively, which are calculated in vacuum using a
+momentum-subtraction scheme. Additionally, $m_{f}$ denotes the flavor-dependent
+current quark mass. The quark self-energy reads
+\begin{multline}
+    \label{eq:quark_self-energy}
+    %
+    \Sigma_{f}(p)
+    =
+    (\ii \gs)^{2}
+    \frac{4}{3}
+    \frac{Z_{2}}{\tilde{Z}_{3}}
+    T
+    \sum_{\omega_{n}}
+    \int \frac{\dd^{3} q}{(2 \pi)^{3}}
+    D_{\nu\rho}(p - q)
+    \gamma_{\nu}
+    \times
+    \\
+    \times
+    S_{f}(q)
+    \Gamma_{\rho}^{f}(p, q; p-q)_{Q}
+    \,,
+\end{multline}
+where $g$ denotes the strong coupling constant, $\tilde{Z}_{3}$ the ghost
+renormalization constant and $D_{\nu\rho}$ the dressed gluon propagator. The two
+factors of $\ii g$ are pulled out of the vertices such that $\Gamma_{\rho}^{f}$
+represents the reduced dressed quark--gluon vertex. The trace over color space,
+which was already performed, results in the prefactor of $4/3$ for $\Nc = 3$
+colors.
+
+Solving the quark DSE requires knowledge about the gluon $D_{\nu\rho}$ and
+the quark-gluon vertex $\Gamma_{\rho}^{f}$. As in Ref.~\cite{Gunkel:2021oya},
+we use the truncation for the gluon DSE shown in Fig.~\ref{fig:dses}, where all
+Yang--Mills diagrams (one- and two-loop diagrams with ghosts and gluons only)
+are replaced by an inverse quenched gluon propagator that is reconstructed
+from temperature-dependent fits to results of quenched lattice calculations
+\cite{Fischer:2010fx,Maas:2011ez,Eichmann:2015kfa}. Denoting the quenched gluon
+by $D_{\nu\rho}^{\textrm{YM}}$, the truncated gluon DSE is given by
+\begin{equation}
+    \label{eq:gluon_dse}
+    %
+    D_{\nu\rho}^{-1}(p)
+    =
+    \bigl[
+        D_{\nu\rho}^{\textrm{YM}}(p)
+    \bigr]^{-1}
+    +
+    \Pi_{\nu\rho}(p)
+    \,.
+\end{equation}
+Here, $\Pi_{\nu\rho}$ represents the quark loop that is evaluated explicitly
+and reads
+\begin{multline}
+    \label{eq:quark_loop}
+    %
+    \Pi_{\nu\rho}(p)
+    =
+    \frac{(\ii \gs)^{2}}{2}
+    \sum_{f}
+    \frac{Z_{2}}{\tilde{Z}_{3}}
+    T
+    \sum_{\omega_{n}}
+    \int \frac{\dd^{3} q}{(2 \pi)^{3}}
+    \Tr\bigl[
+        \gamma_{\nu}
+        S_{f}(q)
+        \times
+        \\
+        \times
+        \Gamma_{\rho}^{f}(q-p, q; p)_{G}
+        S_{f}(q - p)
+    \bigr]
+    \,,
+\end{multline}
+where the prefactor of $1/2$ again originates in the color trace. The flavor sum
+$f$ runs over $N_f=2+1$ quark flavors, i.e., we work with up, down and strange
+quarks. The influence of the charm quark on the QCD phase diagram has been
+addressed in \cite{Fischer:2014ata} and found to be negligible. The explicit
+inclusion of the quark loop generates an unquenched gluon with contributions
+from all active quark flavors. Consequently, the different quarks also influence
+each other indirectly via the gluon.
+
+The last quantity we need in order to render the previous set of equations
+self-contained is the quark--gluon vertex $\Gamma_{\rho}^{f}$. As in
+Ref.~\cite{Gunkel:2021oya}, we employ a slightly different form of the vertex in
+the quark self-energy and in the quark loop, indicated by subscripts $Q$ and $G$
+in Eqs.~\eqref{eq:quark_self-energy} and \eqref{eq:quark_loop}, respectively.
+Our ansatz reads:
+\begin{align}
+    \Gamma^{f}_{\rho}(p,q;k)_{Q}
+    &=
+    Z_{2}^{f} \gamma_{\rho} \Gamma(k^{2})
+    \,,
+    \\[.25em]
+    \Gamma^{f}_{\rho}(p,q;k)_{G}
+    &=
+    \Gamma^{f, \text{BC}}_{\rho}(p,q)
+    \Gamma(q^{2} + p^{2})
+    \,.
+\end{align}
+Here,
+\begin{multline}
+    \Gamma^{f, \text{BC}}_{\rho}(p,q)
+    =
+    \delta_{\rho i}
+    \gamma^{i}
+    \frac{A_{f}(p) + A_{f}(q)}{2}
+    +
+    \\
+    +
+    \delta_{\rho 4}
+    \gamma^{4}
+    \frac{C_{f}(p) + C_{f}(q)}{2}
+\end{multline}
+denotes the leading Dirac tensor structure of the Ball--Chiu vertex
+\cite{Ball:1980ay} which incorporates to backcoupling effects of the quarks onto
+the vertex, while
+\begin{equation}
+    \Gamma(x)
+    =
+    \frac{d_{1}}{d_{2} + x}
+    +
+    \frac{x}{\Lambda^{2} + x}
+    \biggl(
+        \frac{\alpha(\nu) \beta_{0}}{4 \pi}
+        \ln\bigl(
+            x / \Lambda^{2} + 1
+        \bigr)
+    \biggr)^{2 \delta}
+\end{equation}
+labels a phenomenological vertex dressing function. It consists of an
+enhancement at small momenta (IR) inspired by Slavnov--Taylor identities while
+it ensures the correct perturbative behavior of the propagators in the UV at
+large momenta. The running coupling at the renormalization point
+$\nu=\SI{80}{\GeV}$ reads $\alpha(\nu) = 0.3$, the scales $d_{2} =
+\SI{0.5}{\GeV^{2}}$ and $\Lambda = \SI{1.4}{\GeV}$ are fixed to match the ones
+in the gluon lattice data, and the anomalous dimension is given by $\delta = -9
+\Nc / (44\Nc - 8 N_{f})$, while $\beta_{0} = (11 \Nc - 2 N_{f}) / 3$. We work in
+a setup of $N_f=2+1$ quark flavors, i.e., the isospin-symmetric limit of
+degenerate up and down quarks ($\massu = \massd$, $\muu = \mud$). Furthermore,
+we choose $\mus = 0$ such that the baryon chemical potential is given by $\muB =
+3 \muu$. The quark masses have been determined in Ref.~\cite{Gunkel:2019xnh} in
+the vacuum using the experimental pion and kaon masses. This leads to values of
+$\massu = \SI{1.47}{\MeV}$ and $\masss = \SI{37.8}{\MeV}$ at a renormalization
+point of $\SI{80}{\GeV}$. The vertex strength parameter $d_{1}$ for this
+truncation has been determined in Refs.~\cite{Gunkel:2019xnh,Gunkel:2021oya} to
+obtain a pseudocritical temperature at vanishing chemical potential consistent
+with lattice results for the subtracted condensate. In this work, we use a
+slightly different value that is adapted to the conventions used in
+\cite{Borsanyi:2020fev} for the determination of the pseudocritical temperature
+(see below for details). This leads to $d_{1}=\SI{12.71}{\GeV^{2}}$ (instead of
+$d_{1}=\SI{12.85}{\GeV^{2}}$ as in \cite{Gunkel:2021oya}) in the quark
+self-energy and $\SI{8.49}{\GeV^{2}}$ (same as in \cite{Gunkel:2021oya}) in the
+quark loop.
+
+\begin{figure}[t]
+    \centering%
+    \includegraphics{qDSE.pdf}%
+    \\[1em]%
+    \includegraphics{gDSE.pdf}%
+    \caption{\label{fig:dses}%
+        DSE for the quark propagator (top) and truncated gluon DSE (bottom).
+        Large filled dots indicate dressed quantities; solid and curly lines
+        represent quark and gluon propagators, respectively. There is a separate
+        DSE for each flavor. The large gray dot denotes the quenched gluon
+        propagator that is taken from the lattice while the quark loop is
+        evaluated explicitly. The latter contains an implicit flavor sum.
+    }%
+\end{figure}
+
+With this input, we solve the set of quark and gluon DSEs self-consistently in
+the same numerical setup as described in more detail in
+Refs.~\cite{Isserstedt:2019pgx,Isserstedt:2021acw} and thus obtain the quark and
+gluon propagators as well as quark number and higher susceptibilities for
+arbitrary temperatures and (real or imaginary) chemical potentials.
+
+% ------------------------------------------------------------------------------
+\subsection{\label{imu-framework}%
+	Extrapolating from imaginary to real chemical potential
+}
+% ------------------------------------------------------------------------------
+
+In the following, we detail the extrapolation procedure of Ref.~\cite{Borsanyi:2020fev}
+based on results for the up quark condensate $\cond$ and the chiral susceptibility $\chi$
+at imaginary chemical potential and adapt it to our DSE framework.
+
+With the solutions for the coupled set of DSEs (displayed in
+Fig.~\ref{fig:dses}) at hand, we are able to determine the up-quark condensate
+straightforwardly from its propagator via taking appropriate traces. The
+corresponding quark susceptibility is defined as its derivative with respect to
+the quark mass:
+\begin{align}
+    \label{eq:condensate}
+    \cond(T)
+    &=
+    3 \+ Z_{2}^{f} Z_{m} T
+    \sum_{\omega_{k}}
+    \int_{\vec{q}}
+    \Tr\bigl[ S_{\textup{u}}(q) \bigr]
+    \,,
+    \\
+    \chi(T)
+    &=
+    \frac{\partial \cond(T)}{\partial \massu}
+    \,.
+\end{align}
+The quark susceptibility is numerically determined in our approach via a finite-difference 
+formula.\footnote{In principle, one could also determine the derivative 
+directly, but this is about
+	an order of magnitude more involved in terms of CPU-time. We have tested the quality of
+	the finite difference method in comparable cases and found it to be accurate on the sub-percent 
+	level.} 
+
+The expression for the condensate in Eq.~\ref{eq:condensate} is divergent and
+needs to be regularized. Similar to Ref.~\cite{Borsanyi:2020fev}, we define the
+regularized condensate and susceptibility in the following way:
+\begin{align}\label{cond}
+    \cond_{\text{reg}}(T)
+    &=
+    \bigl[ \cond(T) - \cond(0) \bigr]
+    \frac{\massu}{f_{\pi}^{4}}
+    \,,
+    \\
+    \chi_{\text{reg}}(T)
+    &=
+    \bigl[ \chi(T) - \chi(0) \bigr]
+    \frac{\massu^{2}}{f_{\pi}^{4}}
+    \,,
+\end{align}
+where $f_{\pi} = \SI{130.41}{\MeV}$ indicates the pion decay constant in the vacuum.
+
+\begin{figure}[t]
+    \centering%
+    \includegraphics[scale=1.0]{immu_fits_poly.pdf}%
+    \\[0.5em]
+    \includegraphics[scale=1.0]{immu_fits_spln.pdf}%
+    \caption{\label{fig:immu_fits}%
+        Chiral susceptibility as a function of the chiral condensate for
+        imaginary chemical potentials. The points indicate the DSE data while
+        the curves represent polynomial fits (upper panel) or cubic spline
+        interpolations (lower panel), respectively.
+    }%
+\end{figure}
+
+Utilizing these definitions, we determine the pseudocritical transition
+temperature as follows:
+\begin{enumerate}
+    \item We calculate the regularized condensate $\cond(T)$ and susceptibility
+    $\chi(T)$ for a discrete set of temperatures at each value of imaginary/real
+    chemical potential.
+    \item This data is converted to a discrete set of points with the
+    dependence $\chi(\cond)$.
+    \item We use either a fit to a polynomial of order five or a cubic spline
+    interpolation to determine the peak position of these curves. This yields
+    the value of the condensate at the pseudocritical temperature $\cond(\Tc)$.
+    \item Going back to the discrete set of values for $\cond(T)$ determined in
+    step one, we use an appropriate interpolation procedure to extract $\Tc$
+    from $\cond(\Tc)$.
+\end{enumerate}
+
+
+% ==============================================================================
+\section{\label{results}%
+	Results and discussion
+}
+% ==============================================================================
+
+\begin{figure}[t]
+	\centering%
+	\includegraphics[scale=0.6]{kappa_2_kappa_4.pdf}%
+	\caption{\label{fig:kappa}%
+		Expansion coefficients $\kappa_2$ and $\kappa_4$ for the pseudocritical chiral 
+		transition line parametrized in Eq.(\ref{eq:parametrization_Tc}) from different
+		sources. Lattice QCD results 
+		\cite{Bonati:2015bha,Bellwied:2015rza,Bonati:2018nut,HotQCD:2018pds,Borsanyi:2020fev}
+		are in blue, DSE/FRG results \cite{Fischer:2014ata,Fu:2019hdw,Gao:2020qsj,Gao:2020fbl,Gunkel:2021oya}
+		in red. 
+	}%
+\end{figure}
+
+\begin{figure*}[t]
+	\centering%
+	\includegraphics[scale=1.0]{remu_Tc_PG_comp.pdf}\hfill \includegraphics[scale=0.3]{phaseDiag_07_23.pdf}
+	\\[0.5em]
+	\includegraphics[scale=1.0]{fit_var.pdf}%
+	\\[0.5em]
+    \includegraphics[scale=1.0]{both_Tc_poly.pdf}%
+	\caption{\label{fig:both_Tc}%
+		Upper left diagram: Phase diagram for different definitions of the
+		pseudocritical temperature (see main text for explanations).
+		Upper left diagram: Phase diagram with critical end point determined in different truncation
+		schemes for DSEs and FRGs \cite{Fischer:2014ata,Fu:2019hdw,Gao:2020qsj,Gao:2020fbl,Gunkel:2021oya}.
+	    Middle diagram:
+	    Results for fits to different numbers of point at imaginary potential. $N$ counts the number
+	    of points starting with 1 at zero chemical potential and adding point by point in the direction
+	    of large imaginary chemical potential. 
+		Lower diagram:
+		Pseudocritical transition temperature at both imaginary and real
+		chemical potentials from DSEs (points) and fit (line). The gray band
+		and the red diamonds correspond to the lattice results from Ref.~\cite{Borsanyi:2020fev}.
+	}%
+\end{figure*}
+
+
+\begin{figure*}[t]
+	\centering%
+	\includegraphics[scale=1.0]{remu_fits_poly.pdf}%
+	%
+	\includegraphics[scale=1.0]{remu_fits_spln.pdf}%
+	\caption{\label{fig:remu_fits}%
+		Chiral susceptibility as a function of the chiral condensate for
+		real chemical potentials near the CEP. The points indicate the DSE data
+		while the curves represent polynomial fits (left panel) or cubic spline
+		interpolations (right panel), respectively.
+	}%
+	\vspace{1.5em}
+%\end{figure*}
+%\begin{figure*}[t]
+	\centering%
+	\includegraphics[scale=1.0]{both_reg.pdf}%
+	\caption{\label{fig:both_reg}%
+		Condensate (blue and green) and susceptibility (red and purple) at the
+		pseudocritical temperature for both imaginary and real chemical
+		potentials obtained with both polynomial fits and cubic spline
+		interpolations.
+	}%
+\end{figure*}
+
+In Fig.~\ref{fig:immu_fits}, we display the datasets and resulting curves of
+$\chi(\cond)$ obtained from steps 2 and 3 (defined at the end of the last
+section) for imaginary chemical potentials in the range $\muB / T =( 0, \dots,
+7) \times \ii \pi / 8$. The points indicate DSE data, while the curves represent
+polynomial fits in the upper panel and cubic spline interpolations in the lower
+panel, respectively.
+
+We first notice that both the polynomial fits and the cubic splines match the
+DSE data almost perfectly and yield very similar results. In fact, this
+observation holds true for real chemical potentials up to rather large values.
+As a consequence and for the sake of comparability with the lattice results, we
+restrict ourselves to the polynomial fit results except when noted otherwise.
+
+From Fig.~\ref{fig:immu_fits} it is obvious that our curves $\chi(\cond)$ at
+different rescaled imaginary chemical potential $\mu_B/T$ are close to each
+other, but do not collapse to one curve. We rather find that both peak height
+and peak position vary slightly with imaginary $\mu_B$. That is, the peak
+position is at the largest $\chi$ but smallest $\cond$ for $\muB / T = 0$ while
+it moves to smallest $\chi$ but largest $\cond$ for $\muB / T = 7/8 \pi \ii$. We
+therefore do not confirm the apparent collapse (within error bars) observed in
+Ref.~\cite{Borsanyi:2020fev}, however without attaching great significance to
+this observation. Indeed, in later works, $\mu_B-$dependent corrections to
+simple rescaling laws have been successfully explored
+\cite{Borsanyi:2021sxv,Borsanyi2022a}.
+
+In the next step, we gauge the quality of extrapolations from imaginary to real
+chemical potentials. In the DSE approach, this is possible since explicit
+results at real chemical potential have been determined already in
+Ref.~\cite{Gunkel:2021oya} and have been verified by us independently for this
+work. Using first the inflection point of the subtracted condensate as crossover
+criterion, the phase diagram for the setup of Ref.~\cite{Gunkel:2021oya}
+(``previous work'') and the one of this work with the slightly adapted vertex
+strength parameter $d_1$ (``inflection point'') are shown in
+Fig.~\ref{fig:both_Tc}. We find an almost uniformly shifted phase boundary to
+slightly lower temperatures as expected due to the reduced vertex strength.
+Using the peak of the susceptibility, Eq.~\eqref{cond}, as criterion, we find a
+crossover line at somewhat larger temperatures that merges with the previous
+one, of course, at the critical endpoint. The fits to the condensate using
+polynomials as well as the cubic spline interpolations end up in very similar
+results.
+
+Now we are in a position to compare results obtained from extrapolations with
+explicitly calculated results. To this end, we fit our results for the phase
+boundary at imaginary chemical potentials to the well-known parametrization of
+the pseudocritical transition temperature:
+\begin{equation}
+    \label{eq:parametrization_Tc}
+    \frac{\Tc(\muB)}{\Tc}
+    =
+    1
+    -
+    \kappa_{2} \biggl( \frac{\muB}{\Tc} \biggr)^2
+    -
+    \kappa_{4} \biggl( \frac{\muB}{\Tc} \biggr)^4
+    \,,
+\end{equation}
+where $\Tc = \Tc(\muB = 0)$ and $\kappa_{2}$ labels the curvature. In the left
+half of the lower diagram of Fig.~\ref{fig:both_Tc}, we illustrate the
+pseudocritical temperature obtained for polynomial fits at imaginary chemical
+potentials. The blue square boxes show the results of the DSE calculations,
+while the black curve indicates the fit to the parametrization given in
+Eq.~\eqref{eq:parametrization_Tc}. The resulting fit parameters are given by:
+\begin{equation}\label{kappa}
+    \kappa_{2}^{\text{poly}} = 0.0196 \pm 0.0001
+    \,,
+    \quad
+    \kappa_{4}^{\text{poly}} = 0.00015 \pm 0.00001
+    \,,
+\end{equation}
+with very small error and almost vanishing $\chi^2$-value due to the non-statistical 
+nature of the data. The fit very accurately
+represents the DSE data. If we use cubic spline interpolations, we again end up
+at very similar results, i.e., $\kappa_{2}^{\text{spln}} = 0.0196 \pm 0.0001$ and
+$\kappa_{4}^{\text{spln}} = 0.00014 \pm 0.00001$. This underpins the fact that at imaginary
+chemical potentials, our data points are very well represented by the polynomial
+fit. The difference of the values for $\kappa_{2}$ in Eq.~\eqref{kappa} as
+compared to
+\begin{equation}
+    \kappa_{2}^{\text{infl}}
+    =
+    0.0173
+\end{equation}
+presented in Ref.~\cite{Gunkel:2021oya} and obtained in the same truncation scheme 
+as used in this work is entirely due to the difference in the definition of the 
+pseudocritical temperature from a different regularized order parameter. The 
+resulting shifts of the transition lines seen in the upper diagram of Fig.~\ref{fig:both_Tc} 
+has been discussed above. Since pseudo-critical transition lines from different 
+definitions all end up in the same critical endpoint they naturally have different 
+curvature. For completeness, we show results from different sources in Fig.~\ref{fig:kappa}
+and the resulting critical end point for the DSE/FRG calculations in the upper right 
+diagram of Fig.~\ref{fig:both_Tc}. 
+
+Now, we can analytically continue this fit to real chemical potential and
+compare to DSE results obtained there. This is done and displayed in the middle 
+diagram of Fig.~\ref{fig:both_Tc}. Starting with fits to data at zero chemical potential
+and the two lowest imaginary chemical potential values $N=3$, we add point by 
+point 
+in the direction of large imaginary chemical potential until we included all data at $N=8$.
+We clearly observe that in the quality of the fits improve rapidly until it settles down 
+at about $N=6$. Adding further points brings only very small improvement. We conclude
+from this that going deep in the imaginary chemical potential region is important, but
+one does not need to go all the way to the Roberge-Weiss bound. We could have stopped at
+$N=6$. We furthermore checked that leaving out two arbitrary points in between 
+the one
+with largest imaginary chemical potential and the one with zero chemical potential does
+not change the quality of the fit at all. 
+
+In the lower diagram of Fig.~\ref{fig:both_Tc}, we show our best fit result 
+together 
+with the lattice data of Ref.~\cite{Borsanyi:2020fev} (red diamonds) and their fit result (grey band).
+The discrepancy of our data and the lattice data at large imaginary chemical potential 
+is a measure of the systematic error of our calculation and therefore of our data points.
+This systematic error is small by construction in the vicinity of zero chemical potential,
+but grows into the five percent region for largest imaginary chemical potential. (Naively) 
+assuming the error to be symmetric in $\mu_B$, our CEP could be accurate on the level of 
+ten percent. But, of course, we cannot exclude that new physics effects at large real chemical 
+potential might invalidate this naive estimate. 
+
+In general, we observe a remarkable coincidence between our fit and the DSE data up to rather large
+chemical potentials. Deviations of more than one percent in temperature occur
+only for $\muB > \SI{510}{\MeV}$, i.e. for chemical potential larger than 80 \%
+of the one of the CEP, which in the present truncation is located at around
+$\muB^{\textup{CEP}} \approx \SI{636}{\MeV}$.
+We can infer that the extrapolation from imaginary chemical potentials works
+excellently for a large part of the crossover region well towards the CEP.
+
+In vicinity of the CEP, however, not only does the extrapolation of $\Tc$ cease
+to be valid, the $\chi(\cond)$ curves also can no longer be approximated by a
+polynomial as is illustrated in Fig.~\ref{fig:remu_fits}. There, we show the
+chiral susceptibility as a function of the chiral condensate analogously to
+Fig.~\ref{fig:immu_fits}, this time for real chemical potentials $\muB
+>\SI{420}{\MeV}$ and $\muB = 0$ as a reference. We depict the polynomial fits
+and cubic spline interpolations in the left and right panels, respectively.
+Obviously, the approximation of a fifth-order polynomial breaks down completely
+at around $\muB \gtrsim \SI{600}{\MeV}$. In this region, only the splines
+reliably coincide with the DSE data.
+
+This discrepancy is also visible in Fig.~\ref{fig:both_reg}, where we plot peak
+height and peak position of $\chi(\cond)$ as a function of negative and positive
+values of $(\muB / T)^{2}$ in Fig.~\ref{fig:both_reg}. We show results for the
+polynomial fits as well as the cubic spline interpolations for the sake of
+comparison. We notice again that both peak position and height are not entirely
+constant at imaginary chemical potentials in slight contrast to the lattice
+results discussed in Ref.~\cite{Borsanyi:2020fev}. While the change of the
+condensate is more or less constant for real $\muB$, the critical susceptibility
+does not change much for small chemical potentials but drastically in vicinity
+of the CEP as expected. This is also the region where the polynomial fit and the
+spline interpolation deviate substantially, i.e., where the assumption of a low
+order polynomial breaks down. Again, this is to be expected since the
+susceptibility is singular at the CEP.
+
+We would like to finish our analysis by pointing out that our results fully support 
+the analysis performed in Ref.~\cite{Borsanyi:2020fev}. In the imaginary chemical
+potential region where the lattice fits have been done, there is no difference 
+in quality 
+in using polynomial or spline fits. This is also true for the region of real chemical 
+potential covered by the lattice extrapolation. The (expected) problems with the 
+polynomial fits emerge only at much larger real chemical potential, close to the CEP. 
+
+% ==============================================================================
+\section{\label{summary}%
+    Summary and conclusions
+}
+% ==============================================================================
+
+In this work, we have studied whether the extrapolation procedure from imaginary
+to real chemical potential introduced in Ref.~\cite{Borsanyi:2020fev} in the
+context of lattice QCD is capable to reproduce explicit results for the phase
+transition line at real chemical potential obtained with functional methods. The
+result is very encouraging: up to quite large chemical potentials not very much
+smaller ($\approx 20 \%$) than the one of the critical endpoint, the
+extrapolation works extremely well. For larger chemical potential, the
+extrapolated transition line undershoots the calculated one; at the critical
+chemical potential $\muB^{\textup{CEP}} \approx \SI{636}{\MeV}$, the resulting
+temperature of the extrapolation is about $\SI{13}{\MeV}$ too small. Also, of
+course, it is not possible to extract the location of the CEP from the
+extrapolation procedure. However, comparing the lattice results with 
+the ones of our framework at large imaginary chemical potential and taking this
+as a (naive) measure for the corresponding systematic error of our framework at
+corresponding values for real chemical potential, this indicates a systematic error 
+of the order of 5-10 percent for the location of the CEP. 
+
+An interesting option is to study the different extrapolation procedure 
+brought forward in \cite{Dimopoulos:2021vrk}. An interesting further option is
+to directly determine the location of Lee-Young zeros. This is relegated to future work.
+
+
+% ==============================================================================
+
+\begin{acknowledgments}
+We thank both, Jana N.~Guenther and Philipp Isserstedt for enlightening
+discussions. We furthermore thank Jana N.~Guenther for providing the lattice
+data for comparison and Philipp Isserstedt for crosschecks of the numerical
+code at an early stage of this work. This work has been supported by the
+Helmholtz Graduate School for Hadron and Ion Research (HGS-HIRe) for FAIR, the
+GSI Helmholtzzentrum f\"{u}r Schwerionenforschung and the Deutsche
+Forschungsgemeinschaft (DFG, German Research Foundation) through the
+Collaborative Research Center TransRegio CRC-TR 211 ``Strong-interaction matter
+under extreme conditions''.\\
+Feynman diagrams were drawn with \textsc{JaxoDraw} \cite{Binosi:2008ig}.
+\end{acknowledgments}
+
+% ==============================================================================
+
+\bibliography{ImaginaryMuBibliography}
+
+\end{document}
