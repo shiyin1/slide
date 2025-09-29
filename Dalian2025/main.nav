@@ -12,29 +12,18 @@
 \headcommand {\slideentry {1}{1}{1}{4/4}{QCD phase diagram}{0}}
 \headcommand {\beamer@framepages {4}{4}}
 \headcommand {\beamer@subsectionpages {4}{4}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{5}{Experimental data}}
-\headcommand {\slideentry {1}{2}{1}{5/5}{Experimental data}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{5}{Moat Regime}}
+\headcommand {\slideentry {1}{2}{1}{5/5}{Moat Regime}{0}}
 \headcommand {\beamer@framepages {5}{5}}
+\headcommand {\beamer@sectionpages {3}{5}}
 \headcommand {\beamer@subsectionpages {5}{5}}
-\headcommand {\beamer@subsectionentry {0}{1}{3}{6}{Theoretical predictions}}
-\headcommand {\slideentry {1}{3}{1}{6/6}{Theoretical predictions}{0}}
+\headcommand {\sectionentry {2}{Resultados}{6}{Resultados}{0}}
+\headcommand {\slideentry {2}{0}{1}{6/6}{}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@sectionpages {3}{6}}
-\headcommand {\beamer@subsectionpages {6}{6}}
-\headcommand {\sectionentry {2}{Metodologia}{7}{Metodologia}{0}}
-\headcommand {\slideentry {2}{0}{1}{7/7}{}{0}}
+\headcommand {\slideentry {2}{0}{2}{7/7}{}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {2}{0}{2}{8/8}{}{0}}
-\headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@sectionpages {7}{8}}
-\headcommand {\beamer@subsectionpages {7}{8}}
-\headcommand {\sectionentry {3}{Resultados}{9}{Resultados}{0}}
-\headcommand {\slideentry {3}{0}{1}{9/9}{}{0}}
-\headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {3}{0}{2}{10/10}{}{0}}
-\headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@partpages {1}{10}}
-\headcommand {\beamer@subsectionpages {9}{10}}
-\headcommand {\beamer@sectionpages {9}{10}}
-\headcommand {\beamer@documentpages {10}}
-\headcommand {\gdef \inserttotalframenumber {10}}
+\headcommand {\beamer@partpages {1}{7}}
+\headcommand {\beamer@subsectionpages {6}{7}}
+\headcommand {\beamer@sectionpages {6}{7}}
+\headcommand {\beamer@documentpages {7}}
+\headcommand {\gdef \inserttotalframenumber {7}}
