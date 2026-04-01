@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Moat Regime - CPOD</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cloudflare.com">
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/math/math.js"></script>
+</head>
+
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- Title -->
+<section>
+  <h2 style="font-family: 'Roboto';">Dissecting the moat regime at low energies</h2>
+  <p style="font-weight: bold;">Shi Yin</p>
+  <p style="color: blue;font-size: 30px;">Based on: Fabian Rennecke and <b>SY</b>, arXiv:2510.06712 <p>
+  <p style="color: mediumvioletred;">CPOD 2026, CERN</p>
+  <img src="CRC-TR211long.svg" style="width:20%; height:auto;margin-right:30px;">
+  <img src="image.jpeg" style="width:30%; height:auto;margin-right:20px;">
+  <img src="fQCDLogoFR.png" style="width:25%; height:auto;">
+
+</section>
+
+<!-- OutLine -->
+<section>
+  <h3>Outline</h3>
+  <br>
+  <ul>
+    <li>Moat regime on QCD phase diagram</li><br>
+
+    <li>Mechanism of the moat regime</li><br>
+
+    <li>Connection to experimental observables</li><br>
+
+    <li>Summary and Outlook</li>
+  </ul>
+</section>
+
+<!-- Intro -->
+<section>
+  <h3>Moat regime on QCD phase diagram</h3>
+
+<div style="position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 20px;">
+
+    <!-- 1. 这里的 SVG 是连线层 -->
+    <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10;">
+      <defs>
+        <!-- 定义箭头样式 -->
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+        </marker>
+      </defs>
+      <!-- 连线：x1,y1 是起点（左图），x2,y2 是终点（右图公式或图片） -->
+      <!-- 这里的百分比坐标需要根据你的实际图片位置微调 -->
+      <line class="fragment" x1="70%" y1="70%" x2="25%" y2="35%" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+      <line class="fragment" x1="80%" y1="75%" x2="30%" y2="25%" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+    </svg>
+
+<figure style="margin:0;">
+  <div style="position: relative; z-index: 11; margin-bottom: -50px; font-size: 0.55em; font-weight: bold; color: #333;">
+    Zero-momentum approximation 
+  </div>
+  <img src="phase2.png" style="width:100%; margin-bottom:-15px;">
+  <figcaption style="font-size:0.5em; color:gray; line-height:1.1; margin-top:0;">
+    Fu, Huang, Pawlowski, Rennecke, Wen, <b>SY</b><br>
+    arXiv: 2603.13455
+  </figcaption>
+</figure>
+
+
+<figure style="margin:0;">
+  <div style="position: relative; z-index: 11; margin-bottom: -10px; font-size: 0.55em; font-weight: bold; color: #333;">
+    Static dispersion relation
+  </div>  <div style="margin-bottom: -40px; font-size: 0.5em;">
+    \[ E_\pi(\bold{p}) = \sqrt{Z^{\perp}_\pi\,\bold{p}^2 + m_{\pi}^2} \]
+  </div>
+  <img src="Epi.png" style="width:80%; margin-bottom:-23px;">
+  <figcaption style="font-size:0.5em; color:gray; line-height:1.1; margin-top:0;">
+  </figcaption>
+</figure>
+
+</div>
+
+</section>
+
+<!-- Page -->
+<section>
+  <h3>Moat regime on QCD phase diagram</h3>
+
+<div style="position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 20px;">
+
+<figure style="margin:0;">
+  <div style="position: relative; z-index: 11; margin-bottom: -40px; font-size: 0.55em; font-weight: bold; color: #333;">
+    Full-momentum dependent correlation functions
+  </div>
+  <img src="PhaseDiagram.png" style="width:80%; margin-bottom:-15px;">
+  <div style="position: absolute; top: 15%; left: 45%; 
+              font-size: 0.6em; font-weight: bold; color: blue; 
+              background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px;">
+    Moat
+  </div>
+  <div style="position: absolute; top: 45%; left: 55%; 
+              font-size: 0.6em; font-weight: bold; color: blue; 
+              background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px;">
+    Inhomogeneous
+  </div>
+  <figcaption style="font-size:0.5em; color:gray; line-height:1.1; margin-top:0;">
+    Pawlowski, Rennecke, Sattler, arXiv: 2512.20510
+  </figcaption>
+</figure>
+
+</div>
+  <div style="position: relative; z-index: 11; margin-bottom: -40px; font-size: 0.55em; font-weight: bold; color: #333;">
+    See Franz's talk, tomorrow 15:00
+  </div>
+</section>
+
+<!-- Moat in QM model -->
+<section>
+  <h3>Mechanism of the moat regime</h3>
+
+<div style="position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 20px;">
+
+<figure style="margin:0;">
+  <div style="position: relative; z-index: 11; margin-bottom: -10px; font-size: 0.55em; font-weight: bold; color: #333;">
+    Quark-Meson model 
+  </div>
+   <div style="margin-bottom: 0px; font-size: 0.45em;">
+    \[
+    \begin{aligned} 
+      \mathcal{L}[\phi,q,\bar{q}]&=\bar{q}\big[\gamma_\mu\partial_\mu-\gamma_0 \hat{\mu}\big]q+\frac{1}{2}\,(\partial_\mu\phi)^2\\[2ex]
+      &\quad+h\,\bar{q}(T^0\sigma+i\gamma_5\mathbf{T}\cdot\boldsymbol{\pi})q+U(\rho)-c\sigma\\[2ex]
+      &\quad+ \mathcal{L}_{\rm ct}\,.
+    \end{aligned}   
+    \]
+  </div>
+   <div style="margin-bottom: 0px; font-size: 0.45em;">
+    \[
+    \begin{aligned} 
+      \Sigma_\pi(p^2;T,\mu)=p^2+m^2_\pi+\Pi^\pi_{\mathrm{RPA}}(p^2;T,\mu)
+    \end{aligned}   
+    \]
+  </div>
+  <img src="loop.png" style="width:100%; margin-bottom:-15px;">
+</figure>
+
+<figure style="margin:0;">
+  <div style="position: relative; z-index: 11; margin-bottom: -20px; font-size: 0.55em; font-weight: bold; color: #333;">
+    Moat regime in QM model
+  </div>
+  <img src="QMphase.png" style="width:100%; margin-bottom:-15px;">
+  <figcaption style="font-size:0.5em; color:gray; line-height:1.1; margin-top:0;">
+    Rennecke, <b>SY</b>, arXiv: 2510.06712
+  </figcaption>
+</figure>
+</div>
+</section>
+
+<!-- CA & PH -->
+<section>
+  <h3>Mechanism of the moat regime</h3>
+
+<div style="position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 20px;">
+
+<figure style="margin-bottom:-30px;">
+  <div style="position: relative; z-index: 11; margin-bottom: -10px; font-size: 0.55em; font-weight: bold; color: #333;">
+    Self-energy
+  </div>
+  <div style="margin-bottom:-10px; width: 100%; height: 150px; overflow: hidden;">
+    <img src="loop.png" style="width: 43%; height: 80%; object-fit: cover; object-position: right;">
+  </div>
+  <div style="position: relative; z-index: 11; margin-bottom: -10px; font-size: 0.55em; font-weight: bold; color: red;">
+    Particle Creation and Annihilation (C.A.)
+  </div>
+   <div style="margin-bottom: 0px; font-size: 0.45em;">
+    \[
+    \begin{aligned} 
+      \frac{-1+n_F(E_q(q);T,\pm\mu)+n_F(E_q(q-p);T,\mp\mu)}{E_q(q)+E_q(q-p)}
+    \end{aligned}   
+    \]
+  </div>
+  <div style="position: relative; z-index: 11; margin-bottom: -10px; font-size: 0.55em; font-weight: bold; color: red;">
+    Particle-Hole fluctuation (P.H.)
+  </div>
+   <div style="margin-bottom: 0px; font-size: 0.45em;">
+    \[
+    \begin{aligned} 
+      \frac{n_F(E_q(q);T,\pm\mu)-n_F(E_q(q-p);T,\pm\mu)}{E_q(q)-E_q(q-p)}
+    \end{aligned}   
+    \]
+  </div>
+</figure>
+
+<figure style="margin:0;">
+  <div style="position: relative; z-index: 11; margin-bottom: -10px; font-size: 0.55em; font-weight: bold; color: #333;">
+    Moat regime in QM model
+  </div>
+  <img src="fermi.png" style="width:100%; margin-bottom:-0 px;">
+  <div style="position: absolute; top: 10%; left: 60%; 
+              font-size: 0.6em; font-weight: bold; color: red; 
+              background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px;">
+    C.A.
+  </div>
+  <div style="position: absolute; top: 10%; left: 80%; 
+              font-size: 0.6em; font-weight: bold; color: red; 
+              background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px;">
+    P.H.
+  </div>
+  <figcaption style="position: relative; z-index: 11; font-size:0.5em; color:gray; line-height:1.1; margin-top:0;">
+    Fu, Pawlowski, Pisarski, Rennecke, Wen, <b>SY</b>, arXiv: 2510.06712
+  </figcaption>
+</figure>
+</div>
+  <div class="fragment fade-in" style="
+    position: absolute; 
+    top: 50%; 
+    left: 30%; 
+    transform: translate(-50%, -50%); 
+    z-index: 100;
+    width: 50%;
+    background: white; /* 给图片加个背景，防止透出底下的文字 */
+    box-shadow: 0 0 50px rgba(0,0,0,0.5); /* 加个阴影更有立体感 */
+    padding: 0px;
+    border-radius: 20px;
+  ">
+    <img src="QMphase.png" style="width: 110%; display: block;">
+  <div style="position: absolute; top: 15%; left: 60%; 
+              font-size: 0.6em; font-weight: bold; color: red; 
+              background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px;">
+    C.A.
+  </div>
+  <div style="position: absolute; top: 65%; left: 65%; 
+              font-size: 0.6em; font-weight: bold; color: red; 
+              background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px;">
+    P.H.
+  </div>
+  </div>
+</section>
+
+<!-- Experiment -->
+<section>
+  <h3>Connection to experimental observables</h3>
+
+</section>
+
+<!-- Your work -->
+<section>
+  <h3>Ongoing Work</h3>
+  <ul>
+    <li>FRG calculations</li>
+    <li>Finite temperature Yang–Mills</li>
+    <li>Freeze-out determination</li>
+  </ul>
+</section>
+
+<!-- Summary -->
+<section>
+  <h3>Summary</h3>
+  <ul>
+    <li>Moat modifies IR physics</li>
+    <li>Possible impact on observables</li>
+    <li>Work in progress</li>
+  </ul>
+</section>
+
+</div>
+</div>
+
+<script>
+Reveal.initialize({
+  hash: true,
+  plugins: [ RevealMath.KaTeX ]
+});
+</script>
+
+</body>
+</html>

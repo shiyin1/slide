@@ -2,4 +2,8 @@
 \beamer@sectionintoc {1}{Introduction}{3}{0}{1}
 \beamer@subsectionintoc {1}{1}{QCD phase diagram}{4}{0}{1}
 \beamer@subsectionintoc {1}{2}{Moat Regime}{5}{0}{1}
-\beamer@sectionintoc {2}{Resultados}{6}{0}{2}
+\beamer@sectionintoc {2}{Moat regime in Low energy}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Quark-Meson Model}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Renormalization}{8}{0}{2}
+\beamer@subsectionintoc {2}{3}{Yukawa Coupling}{9}{0}{2}
+\beamer@sectionintoc {3}{Summary and Outlook}{10}{0}{3}
