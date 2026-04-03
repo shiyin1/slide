@@ -18,12 +18,13 @@
 
 <!-- Title -->
 <section>
-  <h2 style="font-family: 'Roboto';">Dissecting the moat regime at low energies</h2>
+  <h2 style="font-family: 'Roboto';text-transform: none;">Dissecting the moat regime at low energies</h2>
   <p style="font-weight: bold;">Shi Yin</p>
-  <p style="color: blue;font-size: 30px;">Based on: Fabian Rennecke and <b>SY</b>, arXiv:2510.06712 <p>
   <p style="color: mediumvioletred;">CPOD 2026, CERN</p>
-  <img src="CRC-TR211long.svg" style="width:20%; height:auto;margin-right:30px;">
-  <img src="image.jpeg" style="width:30%; height:auto;margin-right:20px;">
+  <p style="color: blue;font-size: 25px;">Based on: Fabian Rennecke and <b>SY</b>, arXiv:2510.06712 <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fabian Rennecke and <b>SY</b>, in preparation<p>
+  <img src="CRC-TR211long.svg" style="width:20%; height:auto;margin-right:50px;">
+  <img src="image.jpeg" style="width:30%; height:auto;margin-right:30px;">
   <img src="fQCDLogoFR.png" style="width:25%; height:auto;">
 
 </section>
@@ -33,7 +34,7 @@
   <h3>Outline</h3>
   <br>
   <ul>
-    <li>Moat regime on QCD phase diagram</li><br>
+    <li>Moat regime on the QCD phase diagram</li><br>
 
     <li>Mechanism of the moat regime</li><br>
 
@@ -97,7 +98,7 @@
 <div style="position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 20px;">
 
 <figure style="margin:0;">
-  <div style="position: relative; z-index: 11; margin-bottom: -40px; font-size: 0.55em; font-weight: bold; color: #333;">
+  <div style="position: relative; z-index: 11; margin-bottom: -40px; font-size: 0.65em; font-weight: bold; color: #333;">
     Full-momentum dependent correlation functions
   </div>
   <img src="PhaseDiagram.png" style="width:80%; margin-bottom:-15px;">
@@ -145,6 +146,13 @@
     \[
     \begin{aligned} 
       \Sigma_\pi(p^2;T,\mu)=p^2+m^2_\pi+\Pi^\pi_{\mathrm{RPA}}(p^2;T,\mu)
+    \end{aligned}   
+    \]
+  </div>
+   <div style="margin-bottom: 0px; font-size: 0.45em;">
+    \[
+    \begin{aligned} 
+      Z^\perp_\pi(T,\mu)=\frac{\partial \Sigma_\pi(p^2;T,\mu)}{\partial \bold{p}^2}\bigg|_{p_0=0,\bold{p}=0}
     \end{aligned}   
     \]
   </div>
@@ -244,11 +252,43 @@
   </div>
 </section>
 
+<!-- Other mesons -->
+<section>
+  <h3>Moat regime of other mesons</h3>
+
+<div style="position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 0px;">
+
+<figure style="margin-bottom: 0px; transform: translateY(-100px);">
+  <div style="position: relative; z-index: 11; margin-bottom: 10px; font-size: 0.55em; font-weight: bold; color: red;">
+    Quark-Meson interaction of heavier mesons
+  </div>
+  <div style="margin-bottom: 0px; font-size: 0.45em;">
+    \[
+    \begin{aligned} 
+      &\sigma \sim h_\sigma\,\bar{q}\,T^0\,\sigma\, q\\[2ex]
+      &\eta \sim h_\eta\,\bar{q}\,T^0\,i\gamma_5 \eta\, q\\[2ex]
+      &\rho \sim h_\rho\,\bar{q}\,\bold{T}\,\gamma_\mu\rho^\mu\, q\\[2ex]
+      &a_1 \sim h_{a_1}\,\bar{q}\,\bold{T}\,i\gamma_\mu\gamma_5\,a_1^\mu\, q
+    \end{aligned}   
+    \]
+  </div>
+</figure>
+
+<figure style="margin:0;">
+  <!-- <div style="position: relative; z-index: 11; margin-bottom: -50px; font-size: 0.8em; font-weight: bold; color: #333;">
+    Moat regime for other mesons
+  </div> -->
+  <img src="Zothermeson.png" style="width:110%; margin-bottom:-20 px;">
+  <figcaption style="position: relative; z-index: 11; font-size:0.5em; color:gray; line-height:1.1; margin-top:0;">
+    Rennecke, <b>SY</b>, in preparation
+  </figcaption>
+</figure>
+</section>
+
 <!-- Experiment -->
 <section>
   <h3>Spectral function of Pion</h3>
-<figure style="margin:0; position: relative; display: block; width: 100%; overflow: hidden;">
-    
+<figure style="margin:0; position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; overflow: hidden;">
     <!-- 1. 修正后的 SVG 层：添加了 viewBox 和 preserveAspectRatio -->
     <svg viewBox="0 0 100 100" preserveAspectRatio="none" 
          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20;">
@@ -260,42 +300,51 @@
       
       <!-- 此时坐标直接写数字，25 代表 25% 的位置 -->
       <!-- M: 起点(靠近文字), Q: 弧度控制点, 终点(指向波峰) -->
-      <path d="M 23,91  24,75" 
+      <path d="M 25,46  32,37" 
             stroke="red" stroke-width=".4" fill="none" 
             marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" /> 
-      <path d="M 10,23  16,42" 
+      <path d="M 25,53  30,60" 
             stroke="red" stroke-width=".4" fill="none" 
-            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="2" /> 
-      <path d="M 40,23  34,50" 
+            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" /> 
+      <path d="M 10,44  23,32" 
             stroke="red" stroke-width=".4" fill="none" 
-            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="3" /> 
+            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" /> 
+      <path d="M 10,50  23,67" 
+            stroke="red" stroke-width=".4" fill="none" 
+            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" /> 
+      <path d="M 47,45  40,35" 
+            stroke="red" stroke-width=".4" fill="none" 
+            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" />
+      <path d="M 47,50  40,68" 
+            stroke="red" stroke-width=".4" fill="none" 
+            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" /> 
     </svg>
 
     <!-- 2. 文字标签 -->
-    <div class="fragment" data-fragment-index="1" style="position: absolute; top: 92%; left: 18%; 
+    <div class="fragment" data-fragment-index="1" style="position: absolute; top: 47%; left: 22%; 
                 font-size: 0.4em; font-weight: bold; color: white; 
                 background: rgba(0,0,0,0.7); padding: 2px 5px; border-radius: 3px; z-index: 30;">
       Pole mass
     </div>
-    <div class="fragment" data-fragment-index="2" style="position: absolute; top: 14%; left: 1%; 
+    <div class="fragment" data-fragment-index="1" style="position: absolute; top: 45%; left: 1%; 
                 font-size: 0.4em; font-weight: bold; color: white; 
                 background: rgba(0,0,0,0.7); padding: 2px 5px; border-radius: 3px; z-index: 30;">
       Space-like peak
     </div>
-    <div class="fragment" data-fragment-index="3" style="position: absolute; top: 14%; left: 30%; 
+    <div class="fragment" data-fragment-index="1" style="position: absolute; top: 45%; left: 40%; 
                 font-size: 0.4em; font-weight: bold; color: white; 
                 background: rgba(0,0,0,0.7); padding: 2px 5px; border-radius: 3px; z-index: 30;">
       Decay to two quarks
     </div>
 
     <!-- 3. 3D 动图 -->
-    <img src="spec_mu0T.gif" style="width:100%; display: block;">
+    <img src="spec_mu0T.gif" style="width:70%; display: block; margin-bottom: -30px;">
+    <img src="spec_T50mu.gif" style="width:70%; display: block;">
     
     <figcaption style="font-size:0.5em; color:gray; line-height:1.1; margin-top:5px;">
       Rennecke, <b>SY</b>, arXiv: 2510.06712
     </figcaption>
 </figure>
-
 </section>
 
 
