@@ -1,0 +1,651 @@
+\documentclass[twocolumn,prd,superscriptaddress, colorlinks, linkcolor=refcol, citecolor=refcol, urlcolor=refcol]{revtex4-2}
+\pdfoutput=1
+\usepackage{bm}                            
+\usepackage{graphicx}                                          
+\usepackage{booktabs}                                                 \usepackage{amssymb,amsmath,amsfonts}                                 
+\usepackage{soul}
+\usepackage{orcidlink}             
+\usepackage[utf8]{inputenc}
+\usepackage{slashed}
+\usepackage{cleveref}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb,amsmath,amsfonts}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
+\usepackage[caption=false]{subfig}
+\newcommand{\pol}{{\mathbb P}}
+\newcommand{\pot}{ {\mathcal V} }
+\newcommand{\pth}{{\mathcal P}}
+\newcommand{\wilson}{{\mathcal W}}
+\newcommand{\partition}{{\mathcal Z}}
+\newcommand{\trace}{{\rm Tr}}
+\newcommand{\curve}{{\mathcal C}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\hamil}{{\mathcal H}}
+\newcommand{\rep}{{\mathcal R}}
+\newcommand{\nrep}{{\mathcal N}}
+\newcommand{\tlrep}{\widetilde{{\mathcal R}}}
+\newcommand{\tlnrep}{\widetilde{{\mathcal N}}}
+\newcommand{\chg}{{\mathcal Q}}
+\newcommand{\dr}{\ensuremath{\mathrm{d}}}
+\newcommand{\ii}{\ensuremath{\mathrm{i}}}
+\newcommand{\photonSelfE}{\ensuremath{\Pi}}
+\newcommand{\transvProj}{\ensuremath{P^{\perp}}}
+\newcommand{\cO}{\ensuremath{\mathcal{O}}}
+\newcommand{\cL}{\ensuremath{\mathcal{L}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def \beq  {\begin{equation}}
+\def \eeq  {\end{equation}}
+\def \beqar {\begin{eqnarray}}
+\def \eeqar {\end{eqnarray}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%
+\def\sqr#1#2{{\vcenter{\vbox{\hrule height.#2pt
+\hbox{\vrule width.#2pt height#1pt \kern#1pt
+\vrule width.#2pt}\hrule height.#2pt}}}}
+\def\square{\mathchoice\sqr65\sqr65\sqr{5}3\sqr{5}3}
+\definecolor{refcol}{RGB}{51,80,182}
+\usepackage{microtype}
+\definecolor{red}{rgb}{1,0,0}
+\newcommand{\red}[1]{{\color{red} #1}} 
+\newcommand{\blue}[1]{{\color{blue} #1}} 
+\newcommand{\zn}[1]{\color{orange} #1}
+\newcommand{\cFR}[1]{\textcolor{teal}{#1}}
+\newcommand{\cMCO}[1]{\textcolor{violet}{#1}}
+\newcommand{\sts}[1]{\textcolor{magenta}{#1}}
+\newcommand{\rdp}[1]{\textcolor{blue}{#1}}
+\newcommand{\stella}[2]{\textcolor{magenta}{\sout{#1}\,\,#2}}
+\newcommand{\cLP}[1]{\red{[LP: #1]}}
+\newcommand{\Tr}{\text{Tr\,}}
+\newcommand{\change}[1]{{\textcolor{red}{#1}}}
+
+
+\usepackage{ulem}
+
+\newcommand{\cMW}[1]{\textcolor{cyan}{#1}}
+\newcommand{\deleteMW}[1]{\textcolor{cyan}{\sout{#1}}}
+
+\begin{document}
+
+
+\begin{raggedright}
+%% DO NOT COMMMENT OUT
+    \hfill MIT-CTP 5773, LA-UR-24-30156\\
+\end{raggedright}
+
+
+\title{Dilepton production from moaton quasiparticles}
+
+\author{Zohar Nussinov \, \orcidlink{0000-0001-7947-7829} }
+\email{zohar@wustl.edu}
+\affiliation{Physics Department, Washington University, St. Louis, MO 63130, USA}
+\affiliation{Rudolf Peierls Centre for Theoretical Physics, University of Oxford, Oxford OX1 3PU, United Kingdom}
+\author{Michael C. Ogilvie \, \orcidlink{0000-0002-3586-5237}}
+\email{mco@wustl.edu}
+\affiliation{Physics Department, Washington University, St. Louis, MO 63130, USA}
+\author{Laurin Pannullo \, \orcidlink{0000-0003-4808-5819} }
+\email{lpannullo@physik.uni-bielefeld.de}
+\affiliation{Fakultät für Physik, Universität Bielefeld, 
+%Universitätsstraße 25, 
+D-33615 Bielefeld, Germany}
+\author{ Robert D. Pisarski \,\orcidlink{0000-0002-7862-4759} }
+\email{pisarski@bnl.gov}
+\affiliation{Department of Physics, Brookhaven National Laboratory, Upton, NY 11973}
+\author{Fabian Rennecke \, \orcidlink{0000-0003-1448-677X}}
+\email{fabian.rennecke@theo.physik.uni-giessen.de}
+\affiliation{Institute for Theoretical Physics, Justus Liebig University Giessen, %Heinrich-Buff-Ring 16, 
+35392 Giessen, Germany}
+\affiliation{Helmholtz Research Academy Hesse for FAIR (HFHF), Campus Giessen, Giessen, Germany}
+\author{Stella T.~Schindler \, \orcidlink{0000-0003-3224-4627} }
+\email{schindler@lanl.gov}
+\affiliation{Theoretical Division, Los Alamos National Laboratory, Los Alamos, NM 87545, USA}
+\affiliation{Center for Theoretical Physics, Massachusetts Institute of Technology, 
+%77 Massachusetts Ave., 
+Cambridge, MA 02139, USA}
+\author{Marc Winstel  \, \orcidlink{0000-0003-3470-9926}}
+\email{winstel@itp.uni-frankfurt.de}
+\thanks{corresponding author}
+\affiliation{Institut f{\"u}r Theoretische Physik, J. W. Goethe-Universit{\"a}t, %Frankfurt, Max-von-Laue Stra{\ss}e 1, 
+D-60438 Frankfurt am Main, Germany}
+
+\begin{abstract}
+The phase diagram of QCD probably exhibits a moat regime over a large region of temperature $T$ and chemical potential $\mu\neq0$. A moat regime is characterized by quasiparticle \textit{moatons} (pions) whose energy is  minimal at nonzero spatial momentum. At $\mu\neq 0$, higher mass dimension operators play a critical role in a moat regime. At dimension six, there are nine possible gauge invariant couplings between scalars and photons. For back-to-back dilepton production, only one operator contributes, which significantly enhances production near a moat threshold. This enhancement is an experimental signature of moatons. 
+\end{abstract}
+
+\maketitle
+
+The phase diagram of Quantum Chromodynamics (QCD) at a nonzero temperature $T$ and quark chemical potential $\mu$ (or baryon chemical potential $\mu_B = 3 \mu$), is important for a variety of physical systems, from neutron stars, to heavy ion collisions, to the early universe. 
+We know much about the region of $T \neq 0$ at low $\mu \ll T$ from heavy ion colliders operating at ultra-relativistic energies, such as the Relativistic Heavy Ion Collider (RHIC) at BNL and the Large Hadron Collider at CERN.
+We also have a wealth of understanding of $\mu=0$ behavior from first-principles lattice QCD techniques, which indicate that the chiral transition is crossover at a temperature $T \approx 156.5 \pm 1.5$~MeV
+\cite{HotQCD:2018pds,Borsanyi:2020fev}.
+However, the lattice cannot reach beyond $\mu \sim T$ on classical computers due to  
+the sign problem. 
+A first-principles understanding of heavy ion collisions at moderate energies requires studying QCD at $\mu > T$, and neutron stars 
+have large $\mu \gg T$.  
+
+As $\mu$ increases, it is likely that a Critical End Point (CEP) develops, where a line of crossover
+transitions meets a line of first order transitions
+\cite{Asakawa:1989bq,Stephanov:1998dy,Stephanov:1999zu,Parotto:2018pwx,Bzdak:2019pkr}. From direct computations in QCD using the
+Functional Renormalization Group (FRG) \cite{Fu:2019hdw} and
+Schwinger-Dyson equations \cite{Gao:2020qsj, Gao:2020fbl, Gunkel:2021oya}, as well as reconstructions based on lattice data
+\cite{Basar:2023nkp, Clarke:2024ugt}, this is estimated to occur
+for $(T_\chi,\mu_\chi) \approx (100,200)$~MeV.  This lies in the region $\sqrt{s}/A: 3 \rightarrow 7$~GeV
+in heavy ion collisions.  By perverse coincidence, the Beam Energy Scan by the STAR experiment at RHIC studied collisions down to $\sqrt{s}/A = 7$~GeV, and at $\sqrt{s}/A = 3$~GeV in fixed target mode, but not in between.  
+While intriguing, their results did not find evidence for a CEP.  This region will be studied at the Nuclotron-based Ion Collider Facility
+(NICA) at the Joint Institute for Nuclear Research, and 
+with the Compressed Baryon Matter (CBM) experiment at 
+the Facility for Antiproton and Ion Research (FAIR) at the GSI Helmholtz Center for Heavy Ion Research.
+
+The CEP, while of fundamental significance, may be difficult to probe directly.  In vacuum, the mass of the $\sigma$ meson is large, perhaps $\sim\! 500$~MeV, 
+with a width of similar order, 
+rendering it difficult to extract experimentally. 
+In contrast, at the CEP the $\sigma$ is precisely massless \footnote{To be more precise, the critical mode is a mixture between the $\sigma$, the $\omega^0$ meson and the Polyakov loops, and the relevant mass that vanishes at the CEP is the spacelike screening mass \cite{Haensch:2023sig}.} but pions remain massive.  Because the $\sigma$'s singularity is so far from the origin in vacuum, it must travel a long way, suggesting that the basin of attraction to the CEP can be narrow.
+This naive argument is confirmed by 
+studies of the chiral phase transition, where critical scaling is absent even 
+close to the transition; see Refs.
+\cite{Braun:2010vd, Schaefer:2011ex, Fu:2019hdw, Braun:2020ada, Gao:2021vsf, Fu:2023lcm, Bernhardt:2023hpr, Braun:2023qak, Lu:2023mkn,Fu:2024rto}. 
+
+A compelling target for determining where novel phenomena occur is a ``moat'' regime, which occurs when the dispersion relations of quark correlations
+in meson channels have a global minimum at {\it non}zero spatial momentum.
+The 
+FRG \cite{Fu:2019hdw,Fu:2024rto} indicates  
+that the moat regime in QCD is
+ {\it extensive}, 
+occurring over a {\it large} region of the phase diagram at finite $T$ and $\mu$, 
+including the vicinity of the CEP. 
+As detailed below, a moat regime gives rise to
+exotic behavior involving spatial modulations, which may (but need not) include
+a region with inhomogeneous phases.
+
+In this Letter we propose a striking signature of moat regimes: new
+thresholds with a significant enhancement in dilepton production in heavy ion collisions. Experimental observation of a moat regime would confirm the existence of
+novel phases in QCD, and help locate the CEP.\\
+
+\noindent {\bf Moat regimes at $\mu \neq 0$.} 
+A moat regime is characterized by a dispersion relation exhibiting a local minimum at nonzero momentum, which can induce exotic phase behaviors.
+Often, moat regimes onset when the wave function renormalization constant $Z$ for the quadratic spatial momentum term becomes negative.
+This typically gives rise to a ``disorder line" in the phase diagram
+\cite{stephenson_ising_1970,Schindler:2019ugo,Schindler:2021otf}, 
+separating a region in which the two-point correlation function has exponential falloff at large distances, from a region in which
+it behaves as an exponential times an oscillatory function;
+this ``oscillatory regime'' is similar to Friedel oscillations, which are screened at non-zero temperature \cite{fetter2012quantum}.
+If the dip in the moat dispersion relation
+becomes sufficiently deep, then the
+moat regime may additionally
+develop a finite-momentum
+(i.e., spatially-nonuniform) condensate, such as, e.g., pion, kaon, or superconducting condensates \cite{Overhauser:1960,Migdal:1971,Sawyer:1972cq,Migdal:1973zm,Kaplan:1986yq, Kryjevski:2005qq, Schaefer:2006ds}.
+Direct transitions
+from a spatially homogeneous broken symmetry phase to 
+an inhomogeneous phase may also arise (see Fig.\ \ref{fig:sketch}).
+
+A natural question is whether 
+a moat regime exists in QCD-like theories or
+is an artifact of a given approximation method.
+Moat regimes  are {\it ubiquitous}
+in condensed matter, which like finite-density QCD breaks Lorentz invariance;
+see Refs.~\cite{Yoshimori,Hornnerich,Seul,modulation1,modulation2} 
+and \footnote{This also includes  
+models of magnetic materials \cite{Seul,Yoshimori,Hornnerich,Selke}, elastic stressed systems \cite{Amnon}, liquid crystals \cite{Elihu,LC2}, chemical mixtures and membranes \cite{Seul}, and general Ginzburg-Landau theories describing competing 
+orders \cite{compete_GL}. In these and numerous other arenas, the interplay between the varying order gradient terms leads to low energy states which may obtain their minima at finite wave-vectors. The resulting moat-type structures underlie basic aspects of crystallization \cite{Braz,Braz2}, superconductors in external magnetic fields \cite{FFLO1,FFLO2,FFLO3}, quantum Hall systems \cite{qhstr2,QHE,fogler1,chalker,qhstr1, qhstr3,Pu2024}, and countless others.}.
+Indeed, the term ``moat'' hails from condensed matter \cite{Pu2024,Sedrakyan14}.
+Furthermore, moat regimes naturally arise
+in theories with combined charge and complex conjugation ($\mathcal{CK}$) symmetry \cite{Schindler:2019ugo}.
+Because the Dirac operator is non-Hermitian at $\mu \neq 0$,
+QCD has $\mathcal{CK}$ symmetry \cite{Meisinger:2012va, Schindler:2021otf}.
+This is a particular case of
+broad non-Hermitian
+theories with generalized $\mathcal{PT}$ 
+symmetries~\cite{Bender:1998ke,Bender:2019cwm, Bender:2023cem}.
+
+Moat regimes and their associated phases appear in many models sharing features with QCD. A canonical example is the Gross-Neveu model in $(1+1)$ dimensions. 
+This theory is asymptotically free, spontaneously breaks chiral symmetry
+through dynamical generation of mass, and is tractable when
+the number of fermions $N \rightarrow \infty$.
+The phase diagram at low $\mu < T$ is similar to what we suspect occurs in QCD in the chiral limit: 
+a line of second order transitions extends
+from $\mu = 0$ and $T \neq 0$.
+Due to the emergence of the Peierls transition, 
+this line ends not in a CEP but in a Lifshitz point; for lower $T$, there is a region with spatially inhomogeneous condensates \cite{Thies:2003kk,Basar:2008ki,Basar:2009fg,Lenz:2020bxk,Lenz:2021kzo, Lenz:2021vdz, Nonaka:2021pwm,Pannullo:2023cat,Koenigstein:2023yzv}.  
+Crucially, the Gross-Neveu model has a moat regime
+in a broad region of the $T$-$\mu$ plane \cite{Koenigstein:2021llr} 
+(Fig.\ \ref{fig:sketch}).
+
+Numerous studies of moat regimes have been carried out in (3+1)-dimensional models sharing features of QCD.
+In the Nambu-Jona-Lasino (NJL) model \cite{Nickel:2009wj,Buballa:2015awa,Seul,Lee:2015bva,Hidaka:2015xza,Buballa:2018hux,Carignano:2019ivp}, the presence of an inhomogeneous phase depends strongly upon the regularization scheme, while a moat regime is robust \cite{Pannullo:2024sov}.
+Schwinger-Dyson analysis shows that the symmetric solution is unstable to an inhomogeneous phase at low $T$ and high $\mu$ \cite{Motta:2024agi,Motta:2024rvk}. 
+Disorder lines 
+appear in Polyakov-Nambu-Jona-Lasino (PNJL) models \cite{Nishimura:2014rxa, Nishimura:2014kla}, Polyakov-quark-meson models \cite{Haensch:2023sig}, quark-meson models \cite{Topfel:2024iop}, static quark models at strong coupling \cite{Nishimura:2015lit}, liquid-gas models \cite{Nishimura:2016yue}, and in four-fermion models in $(2+1)$ dimensions \cite{Winstel:2024dqu} \footnote{In perturbative QCD with massless quarks, Friedel oscillations arise as an oscillatory function times a power law fall-off.\cite{Kapusta:1988fi}}. 
+For scalar models with global $O(N)$ symmetry, Goldstone bosons can disorder the system into  a quantum pion liquid \cite{Pisarski:2018bct, Pisarski:2020dnx, Winstel:2024qle}. 
+Moat regimes are more prevalent in models of hadronic physics at nonzero density than inhomogeneous phases. 
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[trim=0cm 0.4cm 0cm 0.3cm,
+    clip,
+    keepaspectratio,
+    width=.9\columnwidth]{GNpd_sketch_colormap.pdf}
+    \caption{
+    A phase diagram sketch based on the Gross-Neveu model in Reference~\cite{Koenigstein:2021llr}, which exhibits \textit{all} three characteristic behaviors of moat regimes: a disorder line, oscillatory regime, and inhomogeneous phase.  Red shading indicates a moat regime, where $Z\!<\!0$. Solid lines separate different phases. Dashed lines indicate qualitative changes in system correlations, related to spatial modulations; the oscillatory regime lies between the disorder line and the inhomogeneous phase.
+    The exact location and nature of each transition is model dependent. However, an extensive moat regime is a common feature of models, and is also seen in FRG analyses of QCD \cite{Fu:2019hdw}.
+    In the Gross-Neveu model, the CEP is replaced by a Lifshitz point due to the emergence of an inhomogeneous phase.
+    }
+     \label{fig:sketch}
+\end{figure}
+
+Refs.\ \cite{Pisarski:2020gkx, Pisarski:2021qof} 
+showed that a moat regime affects
+particle production through 
+two-particle correlations generated by thermodynamic
+fluctuations \cite{Pisarski:2021qof} and Hanbury 
+Brown-Twiss interferometry for pions \cite{Rennecke:2023xhc, Fukushima:2023tpv}.
+In this Letter, we compute how quasiparticle pions in a moat regime,
+which we  
+dub ``moatons'', affect dilepton production.  For technical reasons, we limit ourselves to 
+dileption
+pairs with zero spatial momentum, and leave the  
+analysis of nonzero spatial momentum
+to a later publication.  
+
+Related analyses of dilepton production have been carried out
+in a color superconductor \cite{Nishimura:2022mku}, 
+near a critical endpoint \cite{Nishimura:2023oqn,Nishimura:2024kvz}, and in a chiral spiral
+~\cite{Hayashi:2024sae}
+and 
+\footnote{
+As this work was in preparation, Ref.~\cite{Hayashi:2024sae} appeared, and analyzed
+dilepton production from a specific inhomogeneous phase.
+Ref. \cite{Hayashi:2024sae} includes the modified dispersion relation
+of a dual chiral density wave, but not the changes to the photon-moaton
+vertices.  This is discussed
+in the Supplemental Material.
+}.
+\\
+
+\noindent {\bf Effective Lagrangian for the moat regime.} 
+A simple model of a moat regime is given by the Lagrangian \cite{Pisarski:2018bct,Pisarski:2020dnx}
+\begin{align}\label{eff_lag}  
+  {\cal L} = &\frac{1}{2} (\partial_0 \vec{\phi})^2 
+  + \frac{Z}{2} (\partial_i \vec{\phi})^2 
+   + \frac{1}{2 M^2}(\partial_i^2 \vec{\phi})^2 \nonumber\\
+   &\!+\! \frac{m^2}{2} \vec{\phi}^{\, 2}+ \frac{\lambda}{8}
+   (\vec{\phi}^{\,2})^2 \; ,
+\end{align}
+%
+where $\vec{\phi}=(\sigma,\vec{\pi})$.
+This Lagrangian is written in the preferred frame provided by the thermal bath, using a Euclidean metric.  To maintain
+causality, we insist that time derivatives only enter quadratically.
+
+A moat regime arises in Eq.~\eqref{eff_lag}
+when $Z$ is negative, so the energy has a minimum at non-zero momentum. This was first observed in QCD at finite $T$ and $\mu$ in an FRG analysis \cite{Fu:2019hdw}.
+Consequently, we must include a non-renormalizable term
+quartic in spatial derivatives in Eq.~\eqref{eff_lag}.
+While this term may look unfamiliar,
+it is
+natural in derivative expansions of effective Lagrangians. 
+Examples include systems near second-order phase transitions \cite{Balog:2019rrg} and 
+condensed matter systems  \cite{Yoshimori,Hornnerich,Seul,modulation1,modulation2}
+(where such derivatives may
+be replaced by their discrete lattice counterparts \footnote{On a lattice, the continuum limit $k^4$ term is replaced by a squared lattice Laplacian corresponding to competing nearest and next nearest neighbor interactions.}).
+
+{\it A priori}, we cannot drop 
+higher mass dimension terms 
+when constructing a full effective field theory (EFT) of a moat regime.
+Thus
+our model in Eq.~\eqref{eff_lag} only caricatures an
+EFT about the global minimum of the dispersion relation \footnote{If higher derivative terms dominate with negative coefficients, then even if $Z >0$, it is possible that $E(p)$ about $p=0$ is a local minimum, but that the global minimum of $E(p)$ is at $p\neq0$.},
+valid when 
+$\langle (\partial_i \vec{\phi})^2\rangle \ll M^4$ and 
+$\langle (\vec{\phi})^2\rangle \ll M^2$.
+We cannot rule out additional local minima \footnote{This occurs, e.g., for a roton, where $p = 0$
+is the global minimum, but there is a local minimum for one or more
+$p_{\rm roton} \neq 0$.}; however,
+the dominant effects stem from field configurations at the global minimum,
+as in Refs. \cite{Pisarski:2020gkx, Pisarski:2021qof,Rennecke:2023xhc}, which our model captures.
+For simplicity, we work in the symmetric ($\langle \vec{\phi}\, \rangle = 0$)  regime.\\
+
+\noindent {\bf Dilepton production.} 
+At leading order in
+$\alpha = e^2/4 \pi$, the dilepton production rate 
+is proportional to the photon self energy
+$\photonSelfE^{\mu \nu}$ \cite{McLerran:1984ay}:
+\begin{equation}\label{eq:dilepton-production}
+    \frac{d^4 R}{ dp^4} = \frac{\alpha}{12 \pi^4} \; 
+    \frac{n(\omega)}{-P^2}\;  
+    \mathrm{Im} \; \photonSelfE^{\mu \mu}(p_0, \vec{p})
+    \; .
+\end{equation}
+Here $\omega > 0$ 
+with the Bose function $n(\omega) = 1/({\rm exp}(\omega/T) -1 )$. 
+We analytically
+continued 
+ the Euclidean energy $p_0$ to Minkowski space,  
+$p_0 = - i (\omega + i \epsilon)$, where $\epsilon \to 0^+$
+so $-P^2 = P_M^2 = \omega^2 - \vec{p}^{\, 2}$, where $P_M$ is a Minkowski $4$-vector.
+
+In vacuum, vector meson dominance implies that pion production
+proceeds entirely through virtual $\rho_\mu$ mesons
+\cite{OConnell:1995nse}. In heavy ion collisions, successful
+fits to the dilepton excess below the
+$\rho_\mu$ meson peak are usually obtained by a broadened $\rho_\mu$ in nuclear matter
+\cite{Rapp:1999ej,Rapp:2016xzw,Rapp:2024grb}.
+In contrast, our analysis is valid in the chirally restored phase, cf.\ Fig.~\ref{fig:sketch}.
+Here, we study additional contributions from moatonic pions.
+
+We consider the possible dimension-6 terms that can contribute to dilepton production in a QCD moat regime in four dimensions, where a spin zero field $\vec{\phi}$ carries dimensions of mass. We compare this to the chiral perturbation theory Lagrangian in the Supplementary material.
+To obey gauge invariance of couplings to the 
+photon field $(A_\mu)$, we replace
+$\partial_\mu \rightarrow D_\mu$ in Eq.~\eqref{eff_lag},
+%
+\begin{equation}
+  \frac{1}{2} (D_0 \vec{\phi})^2  + \frac{Z}{2} (D_i \vec{\phi})^2 \;
+  + \frac{1}{2 M^2} (D_i^2 \vec{\phi})^2
+  \,,
+  \label{der_ints1}
+\end{equation}
+%
+% 
+where the covariant derivative acts as
+$D_\mu\vec\phi =(\partial_\mu\sigma,\,\partial_\mu\pi^1-eA_\mu\pi^2,\,\partial_\mu\pi^2+eA_\mu\pi^1,\,\partial_\mu\pi^3)$.
+This can be written as 
+$D_\mu \cdot \vec{\phi} = (\partial_\mu  - i e t_2 A_\mu
+\cdot ) \vec{\phi}$ ;
+$t_2$ is the corresponding Pauli matrix, which acts only on 
+the $\pi^1$ and $\pi^2$ directions, and is zero 
+otherwise; these form charged pions as
+ $\pi^\pm = (\pi^1 \pm i \pi^2)/\sqrt{2}$.
+\footnote{
+This can be derived in a matrix form, where 
+$\Phi = \sigma + i \pi^a \sigma^a$, with $\sigma^a$ the Pauli matrices.
+Under a gauge transformation,
+$\Phi \rightarrow {\rm e}^{i e \theta \sigma^3} 
+\Phi {\rm e}^{- i e \theta \sigma^3}$, 
+with $D_\mu = \partial_\mu - i e A_\mu [ \sigma^3, ]$. 
+For example, charged pions contribute to the usual kinetic term as
+$|(\partial_\mu - i e A_\mu) \pi^+|^2$.
+}.
+%
+
+There are additional terms involving two derivatives and 
+four $\vec{\phi}$'s \cite{Pisarski:2020dnx},
+%
+\begin{align}
+  & \frac{C_1}{M^2} (D_0 \vec{\phi})^2 \vec{\phi}^{\, 2} + \frac{C_2}{M^2} 
+  (D_i \vec{\phi})^2\vec{\phi}^{\, 2}
+  \nonumber\\
+  &  + \frac{C_3}{M^2} (\vec{\phi} \cdot D_0 \vec{\phi})^{\, 2} 
+  + \frac{C_4}{M^2}(\vec{\phi} \cdot D_i\vec{\phi})^2 \, .
+  \label{der_ints2}
+\end{align}
+%
+Since the thermal bath provides a preferred frame of reference,
+the coefficients of terms involving temporal and spatial derivatives may differ. Gauge invariance requires that  photons  only  couple through the field strength, $F_{\mu \nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$, giving 
+%
+\begin{equation}
+  \left(\frac{C_5}{M^2} F_{0 i}^2 + \frac{C_6}{ M^2} F_{i j}^2 \right)
+  \vec{\phi}^{\, 2} \; .
+\label{der_ints3}
+\end{equation}
+%
+The above terms are mundane, but there is also
+%
+\begin{align}
+&\frac{ e\, C_7}{M^2}\, F_{0 i} \left( D_0 \vec{\phi} \cdot
+i t_2 \cdot D_{i} \vec{\phi}\right) 
+&+ \frac{ e\, C_8}{M^2}\, F_{i j} \left( D_i \vec{\phi} \cdot 
+i t_2 \cdot
+D_j \vec{\phi} \right) \; .
+\label{der_ints4}
+\end{align}
+%
+In terms of charged pions,
+%
+\begin{align}
+\frac{i e\, C_7}{M^2} &
+F_{0 i}\, \left( D_0 \pi^+ D_i \pi^- - D_i \pi^+ D_0 \pi^-
+\right)
+\nonumber \\
+&+ \frac{i e\, C_8}{M^2} F_{i j} \left(\, D_i \pi^+ D_j \pi^-
+\right)\; .
+\end{align}
+%
+In this form their invariance under charge conjugation is clear, 
+as then $A_\mu \rightarrow - A_\mu$ and $\pi^+
+\leftrightarrow \pi^-$.
+These terms are invariant under time reversal as they have an even number of powers of $\partial_0$ and $A_0$
+\footnote{
+There is also a term which is odd under charge conjugation,
+$\sim F_{0 i} (D_0 \vec{\phi} \cdot D_i \vec{\phi})$.
+Unlike the other electromagnetic couplings, this
+term couples a photon to both charged and neutral  
+(the $\sigma$ and $\pi^3$) fields.  If $\mu \neq 0$ implies net electrical charge,
+then the coefficient of this term must vanish at $\mu = 0$.
+}.
+
+Eqs.~(\ref{der_ints1})-(\ref{der_ints4}) 
+represent the complete set of operators to sixth order
+in the mass dimension.  Other terms, 
+e.g., 
+$(D_i D_j \vec{\phi})\cdot (D_i D_j \vec{\phi})$
+and $(D_i D_j \vec{\phi})\cdot (D_j D_i \vec{\phi})$,
+are linear combinations of the above.
+We emphasize that all these new operators, including the ones in Eq.~\eqref{der_ints1}, are dictated by gauge symmetry. 
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+    \centering
+    \includegraphics[trim=0cm 0.4cm 0cm 0.3cm,
+    clip,
+    keepaspectratio]{./dispersionAndDilepton2.pdf}
+   \caption{(Left) Dispersion relations for various choices of $Z$ and $M$ in Eq.~\eqref{propagator} and (Right) their corresponding dilepton production rate in Eq.~\eqref{eq:dilepton-production} as a function of $\omega$ at $T= 0.5 m_{\rm eff}$. The normal dispersion relation has $Z=1$, $M = \infty$ and $m_\mathrm{eff}=m$. Both pions with a shallow moat (curve A, with $k_M / m_{\rm eff} = 1.0$ and $M /  m_{\rm eff} = 1.5  $) and pions with a deep moat (curve B, with $k_M / m_{\rm eff} = 1.5$ and $M /  m_{\rm eff} = 1.0  $) {\it dramatically}
+   enhances dilepton production.  Note, however, that the value of $m_{\rm eff}$
+   {\it does} change as $T$ and $\mu$ vary. 
+   As discussed in the text, the terms $C_{1-6}$ never contribute,
+   while we set $C_7 = C_8=0$.}
+   \label{fig:dispersionAndDilepton}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%  
+
+Next, we examine which operators in Eqs. \eqref{der_ints1}-\eqref{der_ints4} contribute to Eq. \eqref{eq:dilepton-production}.
+Only the
+imaginary part of $\Pi^{\mu\nu}$ enters Eq.~\eqref{eq:dilepton-production}, so
+we can drop the terms in Eqs.~\eqref{der_ints2}-\eqref{der_ints3}, as they only affect
+tadpole-like diagrams.
+There is a contribution to dilepton production
+from the $(D_i^2 \vec{\phi})^2$ term in Eq.~\eqref{der_ints1}, 
+through the trilinear coupling between
+$A_i(P)$, 
+$\pi^+(K)$, and $\pi^-(-P-K)$.  This vertex is
+%
+\begin{equation}
+  \Gamma^j(P,K) = i e\! \left( 2 k + p \right)^j \!\left[Z+   \frac{1}{M^2}\! \Big(\vec{k}^{\, 2} +
+  \big(\vec{k} + \vec{p}\big)^2\Big) \right] \, .
+  \label{trilinear_vertex}
+\end{equation}
+%
+From Eq. (\ref{eff_lag}), the (effective) pion propagator in the moat
+regime is 
+%
+\begin{align}
+  \Delta^{-1}(K) &= k_0^2  + Z \vec{k}^{\, 2} +  \frac{(\vec{k}^2)^2}{M^2} + m^2 \label{propagator}
+ \\ &= k_0^2 + \frac{\left(\vec{k}^2 - k_M^2\right)^2}{M^2} + m_{\mathrm{eff}}^2 \; ,\nonumber
+\end{align}
+%
+where the moat momentum $k_M$ satisfies $k_M^2 = - Z M^2 / 2$, and the effective mass is
+$m_{\mathrm{eff}}^2 = m^2 - Z^2 M^2 / 4$.
+A moat arises when
+$Z$ is negative and $k_M^2$ is positive.  
+%
+
+It is readily verified
+that the vertex in
+Eq. \eqref{trilinear_vertex} satisfies the Ward identity
+%
+\begin{equation}
+  P^\mu \, \Gamma^\mu(P,K) = i e \left[ \Delta^{-1}(K+P) - \Delta^{-1}(K) \right] \; .
+  \label{ward_identity}
+\end{equation}
+%
+The Ward identity 
+implies that the photon self-energy is always transverse,
+$P^\mu\,  \photonSelfE^{\mu \nu}(P) = 0$.
+Note that this would not be the case without the new contribution $\sim 1/M^2$. 
+
+In this Letter we compute   
+dilepton pair production at rest in the frame
+of the thermal medium, with $\vec{p} = 0$,
+where only spatial components, $\mathrm{Im}\, \photonSelfE^{ii}$, enter.  
+To illustrate the effect, we only include the coupling
+to photons from Eq. (\ref{der_ints1}), and set the couplings
+$C_7 = C_8 = 0$.  The case of
+$\vec{p} \neq 0$, with these new couplings,
+will be analyzed in future work.
+
+The leading 
+contributions to ${\rm Im}\,\, \Pi^{\mu\nu}$ come from 
+the moaton-anti-moaton production diagram,
+%
+\begin{equation}
+    \Pi^{i i}(p_0) = e^2 T \sum_{n'} \int \frac{\dr^3 k}{(2\pi)^3} \left(\Gamma^i\right)^2 \, \Delta(P+K) \, \Delta(P) \; ,
+    \label{eq:loop}
+\end{equation}
+%
+where $K=(2 \pi n' T ,\vec k)$.
+Evaluating the bosonic Matsubara frequency sum over $n'$,
+%
+\begin{align}
+    {\rm Im}\,\Pi_{jj}(\omega) ={}& 4\alpha \theta(\omega^2- 4 m_{\rm eff}^2) \left[1+2 n\!\left(\frac{\omega}{2}\right)\right]
+    \nonumber \\
+    &\quad \times \frac{  \sqrt{\omega^2 - 4 m_{\rm eff}^2}}{ M \, \omega } \sum_{k_\pm}  k_\pm^3 \theta(k_\pm)
+\label{eq:photonselfenergy_moat}
+\end{align}
+%
+where
+%
+\begin{equation}
+    k_\pm^2 = k_M^2 \pm 
+    \frac{M \sqrt{\omega^2 - 4 m_{\rm eff}^2}  }{2}  \;
+\end{equation}
+is the spatial momentum of the moatons.  As the moatons
+are back to back, their momenta have the same magnitude.
+Near threshold, where
+$\omega^2 \approx 4 m_{\rm eff}^2- i\epsilon$, we can approximate  
+$\vec{k} \approx k_M \widehat{k} + \delta \vec{k}$,
+where $\widehat{k}^2 = 1$.
+About this point, the energy is quadratic in 
+$\delta \vec{k}$,
+%
+\begin{equation}
+    E_\pm(\vec{k}) \approx m_{\rm eff} +
+    \frac{2 \, k_M^2}{m_{\rm eff}\, M^2} (\widehat{k} \cdot \delta \vec{k})^2 
+    + \ldots 
+    \end{equation}
+%
+For pions with a normal dispersion relation
+$E^2 = k^2 + m^2$, the photon self-energy is
+\begin{align}
+    {\rm Im}\,\Pi_{jj}\!=\! \frac{\alpha}{2}  \theta(\omega^2 - 4m^2) \!\left[1+2n\!\left(\frac{\omega}{2}\right)\right]\! %\times 
+    %\nonumber\\
+    \frac{(\omega^2 - 4m^2)^{\frac{3}{2}}} {\omega}\!.
+    \label{eq:normal}
+\end{align}
+% 
+
+The result for dilepton production from moatons, 
+Eq. (\ref{eq:photonselfenergy_moat}), obscures
+an interesting cancellation.
+For $\vec{p} = 0$, for the imaginary part of the loop integral,
+energy momentum conservation imposes
+%
+\begin{equation}
+    \delta(\omega^2 - 4 m_{\rm eff}^2) = 
+    \frac{M^2}{2 k_M^2} \frac{\delta(k - k_\pm)}{|\hat{k} \cdot \delta \vec{k}|} \; ,
+    \label{delta_sing}
+\end{equation}
+%
+where the numerator on the right hand side arises from the Jacobian going from a $\delta$-function in $\omega$ to one in $k$.
+This factor would produce a van-Hove singularity, as arises for dilepton production from plasminos in the hard thermal loop approximation \cite{Braaten:1990wp}.
+For moatons near threshold, however, 
+%
+\begin{equation}
+    \Gamma^j(P,K) \approx 2i e k^j
+    \left[ \frac{4 k_M}{M^2} ( \hat{k} \cdot \delta \vec{k}) \right]
+    \label{vertex_canc}
+    \; 
+\end{equation}
+%
+vanishes as $\delta \vec{k} \rightarrow 0$,
+and there is no van Hove singularity.  Consequently
+the dilepton rate turns on smoothly at threshold. 
+Preliminary numerical computations of Eq.~\eqref{eq:dilepton-production} at $\vec p \neq 0$ indicate that the threshold behavior with contributions from time-like moatons remains qualitatively similar.
+We will report on these investigations in a future publication.
+
+The left panel of Fig. (\ref{fig:dispersionAndDilepton}) illustrates three
+dispersion relations: normal, a shallow moat,
+and a deep moat;
+the right panel illustrates their corresponding dilepton production rates. 
+These curves have qualitatively similar shapes,
+but the dilepton rate is {\it significantly}
+enhanced for moatons, regardless of the moat depth. 
+The moaton threshold occurs at a nonzero spatial momentum $k_M$ with phase space $\sim k_M^2 dk$,
+whereas the normal pion threshold is at $k=0$.
+
+The detailed contribution of moatons to dilepton production is dependent upon effective models.  Nevertheless, surely $m_{\rm eff}$
+is of order $m_\pi$.  Thus moaton production should appear
+as an excess starting at energies $\sim 2 m_\pi$, above
+the usual contributions from a broadened $\rho_\mu$-meson
+\cite{Rapp:1999ej,Rapp:2000zd, Rapp:2016xzw}.  This should
+be a distinctive experimental signature.
+We note that there is also dilepton production near second-order transitions, which generates an excess starting from zero energy ~\cite{Nishimura:2022mku,Nishimura:2023oqn,Nishimura:2024kvz}.
+This is kinematically distinct; also, for the reasons discussed above, that from moatons is enhanced over such contributions.\\
+
+\noindent {\bf Outlook.} 
+A large body of literature suggests that 
+QCD probably exhibits a moat regime in a broad swath
+of the $T$-$\mu$ plane.
+In this Letter, we showed that enhancement of dilepton production is an important signature of a moat regime.
+Our principal shortcoming is that we cannot
+predict values for parameters like $M$ and $Z$,
+and thus $k_M$ and $m_{\rm eff}$.
+Importantly, the value of $m_{\rm eff}$ depends
+{\it strongly} upon $T$ and $\mu$, and can only be computed
+in an effective model.
+We expect that $M$ is a few times $m_\pi$, and $m_{\rm eff}$ is moderately less than $m_\pi$. Work is 
+in progress on extracting these parameters using the FRG \cite{frg_moat}.  This shows that the moat regime is in the spacelike regime, with a significant width for the spectral density.  In future work, we will extend our results 
+to $p \neq 0$.
+It will be interesting to see if a van Hove singularity, which is washed out at $\vec{p} = 0$ by the vertices in Eq. (\ref{vertex_canc}), emerges when $p \neq 0$.
+Inevitably, this singularity is smoothed out by the finite width of moatons.
+
+Assuming that freezeout occurs in the moat regime, moat signals from dilepton production and HBT interferometry \cite{Pisarski:2021qof,Rennecke:2023xhc} 
+should be observable at the BES at RHIC and CBM at FAIR.   
+
+\acknowledgments
+L.P.\ acknowledges discussions with G.\ Markó;
+R.D.P., with T. Kunihiro and M. Kitazawa;
+S.T.S.,  with I.\ Stewart; 
+F.R. and R.D.P., for
+stimulating discussions with K. Hayashi, 
+and emails with him and Y.\ Tsue.
+Z.N.\ was supported by a Leverhulme Trust International
+Professorship grant number LIP-202-014 at Oxford (S. L. Sondhi). R.D.P. is supported by the U.S. Department of Energy under contract DE-SC0012704, and thanks the Alexander v.\ Humboldt
+Foundation for their support.
+L.P., F.R.\ and M.W.\ are supported by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) through the Collaborative
+Research Center TransRegio CRC-TR 211 “Strong-interaction matter under extreme conditions” – project number
+315477589 – TRR 211.
+M.W.\ acknowledges the support of the Helmholtz Graduate School for Hadron and Ion Research.
+%
+L.P. acknowledges the support of the Giersch Foundation.
+S.T.S. was supported by the U.S. Department of Energy, Office of Science, Office of Nuclear Physics from DE-SC0011090; the U.S. National Science Foundation through a Graduate Research Fellowship under Grant No. 1745302; fellowships from the MIT Physics Department and School of Science; and the Hoffman Distinguished Postdoctoral Fellowship through the LDRD Program of Los Alamos National Laboratory under Project 20240786PRD1. Los Alamos National Laboratory is operated by Triad National Security, LLC, for the National Nuclear Security Administration of the U.S. Department of Energy (Contract Nr. 892332188CNA000001). 
+
+
+
+\appendix
+
+\hfill
+\bibliography{combined}
+\input{supplementary_material_v2} 
+\end{document}

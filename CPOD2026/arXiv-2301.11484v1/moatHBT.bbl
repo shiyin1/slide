@@ -1,0 +1,608 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{48}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Aoki}\ \emph {et~al.}(2006)\citenamefont {Aoki},
+  \citenamefont {Endrodi}, \citenamefont {Fodor}, \citenamefont {Katz},\ and\
+  \citenamefont {Szabo}}]{Aoki:2006we}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Aoki}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Endrodi}},
+  \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}}, \bibinfo
+  {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}},\ and\ \bibinfo
+  {author} {\bibfnamefont {K.~K.}\ \bibnamefont {Szabo}},\ }\bibfield  {title}
+  {\bibinfo {title} {{The Order of the quantum chromodynamics transition
+  predicted by the standard model of particle physics}},\ }\href
+  {https://doi.org/10.1038/nature05120} {\bibfield  {journal} {\bibinfo
+  {journal} {Nature}\ }\textbf {\bibinfo {volume} {443}},\ \bibinfo {pages}
+  {675} (\bibinfo {year} {2006})},\ \Eprint
+  {https://arxiv.org/abs/hep-lat/0611014} {arXiv:hep-lat/0611014} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Borsanyi}\ \emph {et~al.}(2010)\citenamefont
+  {Borsanyi}, \citenamefont {Fodor}, \citenamefont {Hoelbling}, \citenamefont
+  {Katz}, \citenamefont {Krieg}, \citenamefont {Ratti},\ and\ \citenamefont
+  {Szabo}}]{Borsanyi:2010bp}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Borsanyi}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Fodor}},
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Hoelbling}}, \bibinfo
+  {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Katz}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Krieg}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Ratti}},\ and\ \bibinfo {author} {\bibfnamefont {K.~K.}\
+  \bibnamefont {Szabo}} (\bibinfo {collaboration} {Wuppertal-Budapest}),\
+  }\bibfield  {title} {\bibinfo {title} {{Is there still any $T_c$ mystery in
+  lattice QCD? Results with physical masses in the continuum limit III}},\
+  }\href {https://doi.org/10.1007/JHEP09(2010)073} {\bibfield  {journal}
+  {\bibinfo  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {09}},\ \bibinfo
+  {pages} {073}},\ \Eprint {https://arxiv.org/abs/1005.3508} {arXiv:1005.3508
+  [hep-lat]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bazavov}\ \emph {et~al.}(2019)\citenamefont {Bazavov}
+  \emph {et~al.}}]{HotQCD:2018pds}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Bazavov}} \emph {et~al.} (\bibinfo {collaboration} {HotQCD}),\ }\bibfield
+  {title} {\bibinfo {title} {{Chiral crossover in QCD at zero and non-zero
+  chemical potentials}},\ }\href
+  {https://doi.org/10.1016/j.physletb.2019.05.013} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {795}},\
+  \bibinfo {pages} {15} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1812.08235} {arXiv:1812.08235 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Fischer}(2019)}]{Fischer:2018sdj}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont
+  {Fischer}},\ }\bibfield  {title} {\bibinfo {title} {{QCD at finite
+  temperature and chemical potential from Dyson\textendash{}Schwinger
+  equations}},\ }\href {https://doi.org/10.1016/j.ppnp.2019.01.002} {\bibfield
+  {journal} {\bibinfo  {journal} {Prog. Part. Nucl. Phys.}\ }\textbf {\bibinfo
+  {volume} {105}},\ \bibinfo {pages} {1} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1810.12938} {arXiv:1810.12938 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Fu}\ \emph {et~al.}(2020)\citenamefont {Fu},
+  \citenamefont {Pawlowski},\ and\ \citenamefont {Rennecke}}]{Fu:2019hdw}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.-j.}\ \bibnamefont
+  {Fu}}, \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Pawlowski}},\
+  and\ \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Rennecke}},\
+  }\bibfield  {title} {\bibinfo {title} {{QCD phase structure at finite
+  temperature and density}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.101.054032} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo
+  {pages} {054032} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/1909.02991} {arXiv:1909.02991 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Gao}\ and\ \citenamefont
+  {Pawlowski}(2021)}]{Gao:2020fbl}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Gao}}\ and\ \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
+  {Pawlowski}},\ }\bibfield  {title} {\bibinfo {title} {{Chiral phase structure
+  and critical end point in QCD}},\ }\href
+  {https://doi.org/10.1016/j.physletb.2021.136584} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {820}},\
+  \bibinfo {pages} {136584} (\bibinfo {year} {2021})},\ \Eprint
+  {https://arxiv.org/abs/2010.13705} {arXiv:2010.13705 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Glozman}\ \emph {et~al.}(2022)\citenamefont
+  {Glozman}, \citenamefont {Philipsen},\ and\ \citenamefont
+  {Pisarski}}]{Glozman:2022lda}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~Y.}\ \bibnamefont
+  {Glozman}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Philipsen}},\
+  and\ \bibinfo {author} {\bibfnamefont {R.~D.}\ \bibnamefont {Pisarski}},\
+  }\bibfield  {title} {\bibinfo {title} {{Chiral spin symmetry and the QCD
+  phase diagram}},\ }\href {https://doi.org/10.1140/epja/s10050-022-00895-4}
+  {\bibfield  {journal} {\bibinfo  {journal} {Eur. Phys. J. A}\ }\textbf
+  {\bibinfo {volume} {58}},\ \bibinfo {pages} {247} (\bibinfo {year} {2022})},\
+  \Eprint {https://arxiv.org/abs/2204.05083} {arXiv:2204.05083 [hep-ph]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Son}(1999)}]{Son:1998uk}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~T.}\ \bibnamefont
+  {Son}},\ }\bibfield  {title} {\bibinfo {title} {{Superconductivity by long
+  range color magnetic interaction in high density quark matter}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.59.094019} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {59}},\ \bibinfo
+  {pages} {094019} (\bibinfo {year} {1999})},\ \Eprint
+  {https://arxiv.org/abs/hep-ph/9812287} {arXiv:hep-ph/9812287} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pisarski}\ and\ \citenamefont
+  {Rischke}(2000)}]{Pisarski:1999tv}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~D.}\ \bibnamefont
+  {Pisarski}}\ and\ \bibinfo {author} {\bibfnamefont {D.~H.}\ \bibnamefont
+  {Rischke}},\ }\bibfield  {title} {\bibinfo {title} {{Color superconductivity
+  in weak coupling}},\ }\href {https://doi.org/10.1103/PhysRevD.61.074017}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
+  {volume} {61}},\ \bibinfo {pages} {074017} (\bibinfo {year} {2000})},\
+  \Eprint {https://arxiv.org/abs/nucl-th/9910056} {arXiv:nucl-th/9910056}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Alford}\ \emph {et~al.}(2008)\citenamefont {Alford},
+  \citenamefont {Schmitt}, \citenamefont {Rajagopal},\ and\ \citenamefont
+  {Sch\"afer}}]{Alford:2007xm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~G.}\ \bibnamefont
+  {Alford}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Schmitt}},
+  \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Rajagopal}},\ and\
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Sch\"afer}},\ }\bibfield
+  {title} {\bibinfo {title} {{Color superconductivity in dense quark matter}},\
+  }\href {https://doi.org/10.1103/RevModPhys.80.1455} {\bibfield  {journal}
+  {\bibinfo  {journal} {Rev. Mod. Phys.}\ }\textbf {\bibinfo {volume} {80}},\
+  \bibinfo {pages} {1455} (\bibinfo {year} {2008})},\ \Eprint
+  {https://arxiv.org/abs/0709.4635} {arXiv:0709.4635 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Fukushima}\ and\ \citenamefont
+  {Hatsuda}(2011)}]{Fukushima:2010bq}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Fukushima}}\ and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Hatsuda}},\ }\bibfield  {title} {\bibinfo {title} {{The phase diagram of
+  dense QCD}},\ }\href {https://doi.org/10.1088/0034-4885/74/1/014001}
+  {\bibfield  {journal} {\bibinfo  {journal} {Rept. Prog. Phys.}\ }\textbf
+  {\bibinfo {volume} {74}},\ \bibinfo {pages} {014001} (\bibinfo {year}
+  {2011})},\ \Eprint {https://arxiv.org/abs/1005.4814} {arXiv:1005.4814
+  [hep-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lovato}\ \emph {et~al.}(2022)\citenamefont {Lovato}
+  \emph {et~al.}}]{Lovato:2022vgq}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Lovato}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{Long Range
+  Plan: Dense matter theory for heavy-ion collisions and neutron stars}},\
+  }\href@noop {} {\  (\bibinfo {year} {2022})},\ \Eprint
+  {https://arxiv.org/abs/2211.02224} {arXiv:2211.02224 [nucl-th]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Buballa}\ and\ \citenamefont
+  {Carignano}(2015)}]{Buballa:2014tba}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Buballa}}\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Carignano}},\ }\bibfield  {title} {\bibinfo {title} {{Inhomogeneous chiral
+  condensates}},\ }\href {https://doi.org/10.1016/j.ppnp.2014.11.001}
+  {\bibfield  {journal} {\bibinfo  {journal} {Prog. Part. Nucl. Phys.}\
+  }\textbf {\bibinfo {volume} {81}},\ \bibinfo {pages} {39} (\bibinfo {year}
+  {2015})},\ \Eprint {https://arxiv.org/abs/1406.1367} {arXiv:1406.1367
+  [hep-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lee}\ \emph {et~al.}(2015)\citenamefont {Lee},
+  \citenamefont {Nakano}, \citenamefont {Tsue}, \citenamefont {Tatsumi},\ and\
+  \citenamefont {Friman}}]{Lee:2015bva}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.-G.}\ \bibnamefont
+  {Lee}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Nakano}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Tsue}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Tatsumi}},\ and\ \bibinfo {author}
+  {\bibfnamefont {B.}~\bibnamefont {Friman}},\ }\bibfield  {title} {\bibinfo
+  {title} {{Landau-Peierls instability in a Fulde-Ferrell type inhomogeneous
+  chiral condensed phase}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.92.034024} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {92}},\ \bibinfo
+  {pages} {034024} (\bibinfo {year} {2015})},\ \Eprint
+  {https://arxiv.org/abs/1504.03185} {arXiv:1504.03185 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Hidaka}\ \emph {et~al.}(2015)\citenamefont {Hidaka},
+  \citenamefont {Kamikado}, \citenamefont {Kanazawa},\ and\ \citenamefont
+  {Noumi}}]{Hidaka:2015xza}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Hidaka}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Kamikado}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Kanazawa}},\ and\
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Noumi}},\ }\bibfield
+  {title} {\bibinfo {title} {{Phonons, pions and quasi-long-range order in
+  spatially modulated chiral condensates}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.92.034003} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {92}},\ \bibinfo
+  {pages} {034003} (\bibinfo {year} {2015})},\ \Eprint
+  {https://arxiv.org/abs/1505.00848} {arXiv:1505.00848 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pisarski}\ \emph {et~al.}(2019)\citenamefont
+  {Pisarski}, \citenamefont {Skokov},\ and\ \citenamefont
+  {Tsvelik}}]{Pisarski:2018bct}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~D.}\ \bibnamefont
+  {Pisarski}}, \bibinfo {author} {\bibfnamefont {V.~V.}\ \bibnamefont
+  {Skokov}},\ and\ \bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+  {Tsvelik}},\ }\bibfield  {title} {\bibinfo {title} {{Fluctuations in cool
+  quark matter and the phase diagram of Quantum Chromodynamics}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.99.074025} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {99}},\ \bibinfo
+  {pages} {074025} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1801.08156} {arXiv:1801.08156 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pisarski}\ \emph {et~al.}(2020)\citenamefont
+  {Pisarski}, \citenamefont {Tsvelik},\ and\ \citenamefont
+  {Valgushev}}]{Pisarski:2020dnx}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~D.}\ \bibnamefont
+  {Pisarski}}, \bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+  {Tsvelik}},\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Valgushev}},\ }\bibfield  {title} {\bibinfo {title} {{How transverse thermal
+  fluctuations disorder a condensate of chiral spirals into a quantum spin
+  liquid}},\ }\href {https://doi.org/10.1103/PhysRevD.102.016015} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume}
+  {102}},\ \bibinfo {pages} {016015} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/2005.10259} {arXiv:2005.10259 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pisarski}(2021)}]{Pisarski:2021aoz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~D.}\ \bibnamefont
+  {Pisarski}},\ }\bibfield  {title} {\bibinfo {title} {{Remarks on nuclear
+  matter: How an $\omega_0$ condensate can spike the speed of sound, and a
+  model of $Z(3)$ baryons}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.103.L071504} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {103}},\
+  \bibinfo {pages} {L071504} (\bibinfo {year} {2021})},\ \Eprint
+  {https://arxiv.org/abs/2101.05813} {arXiv:2101.05813 [nucl-th]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pisarski}\ and\ \citenamefont
+  {Rennecke}(2021)}]{Pisarski:2021qof}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~D.}\ \bibnamefont
+  {Pisarski}}\ and\ \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Rennecke}},\ }\bibfield  {title} {\bibinfo {title} {{Signatures of Moat
+  Regimes in Heavy-Ion Collisions}},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.127.152302} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {127}},\
+  \bibinfo {pages} {152302} (\bibinfo {year} {2021})},\ \Eprint
+  {https://arxiv.org/abs/2103.06890} {arXiv:2103.06890 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Rennecke}\ and\ \citenamefont
+  {Pisarski}(2022)}]{Rennecke:2021ovl}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Rennecke}}\ and\ \bibinfo {author} {\bibfnamefont {R.~D.}\ \bibnamefont
+  {Pisarski}},\ }\bibfield  {title} {\bibinfo {title} {{Moat Regimes in QCD and
+  their Signatures in Heavy-Ion Collisions}},\ }\href
+  {https://doi.org/10.22323/1.400.0016} {\bibfield  {journal} {\bibinfo
+  {journal} {PoS}\ }\textbf {\bibinfo {volume} {CPOD2021}},\ \bibinfo {pages}
+  {016} (\bibinfo {year} {2022})},\ \Eprint {https://arxiv.org/abs/2110.02625}
+  {arXiv:2110.02625 [hep-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pisarski}\ \emph {et~al.}(2021)\citenamefont
+  {Pisarski}, \citenamefont {Rennecke}, \citenamefont {Tsvelik},\ and\
+  \citenamefont {Valgushev}}]{Pisarski:2020gkx}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~D.}\ \bibnamefont
+  {Pisarski}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Rennecke}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Tsvelik}},\ and\ \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Valgushev}},\ }\bibfield  {title}
+  {\bibinfo {title} {{The Lifshitz Regime and its Experimental Signals}},\
+  }\href {https://doi.org/10.1016/j.nuclphysa.2020.121910} {\bibfield
+  {journal} {\bibinfo  {journal} {Nucl. Phys. A}\ }\textbf {\bibinfo {volume}
+  {1005}},\ \bibinfo {pages} {121910} (\bibinfo {year} {2021})},\ \Eprint
+  {https://arxiv.org/abs/2005.00045} {arXiv:2005.00045 [nucl-th]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Hanbury~Brown}\ and\ \citenamefont
+  {Twiss}(1956)}]{HanburyBrown:1956bqd}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Hanbury~Brown}}\ and\ \bibinfo {author} {\bibfnamefont {R.~Q.}\ \bibnamefont
+  {Twiss}},\ }\bibfield  {title} {\bibinfo {title} {{A Test of a new type of
+  stellar interferometer on Sirius}},\ }\href
+  {https://doi.org/10.1038/1781046a0} {\bibfield  {journal} {\bibinfo
+  {journal} {Nature}\ }\textbf {\bibinfo {volume} {178}},\ \bibinfo {pages}
+  {1046} (\bibinfo {year} {1956})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Goldhaber}\ \emph {et~al.}(1960)\citenamefont
+  {Goldhaber}, \citenamefont {Goldhaber}, \citenamefont {Lee},\ and\
+  \citenamefont {Pais}}]{Goldhaber:1960sf}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Goldhaber}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Goldhaber}}, \bibinfo {author} {\bibfnamefont {W.-Y.}\ \bibnamefont {Lee}},\
+  and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Pais}},\ }\bibfield
+  {title} {\bibinfo {title} {{Influence of Bose-Einstein statistics on the
+  anti-proton proton annihilation process}},\ }\href
+  {https://doi.org/10.1103/PhysRev.120.300} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {120}},\ \bibinfo {pages}
+  {300} (\bibinfo {year} {1960})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Heinz}(1996)}]{Heinz:1996bs}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {U.~W.}\ \bibnamefont
+  {Heinz}},\ }\bibfield  {title} {\bibinfo {title} {{Hanbury-Brown/Twiss
+  interferometry for relativistic heavy ion collisions: Theoretical aspects}},\
+  }in\ \href@noop {} {\emph {\bibinfo {booktitle} {{International Summer School
+  on Correlations and Clustering Phenomena in Subatomic Physics}}}}\ (\bibinfo
+  {year} {1996})\ pp.\ \bibinfo {pages} {137--177},\ \Eprint
+  {https://arxiv.org/abs/nucl-th/9609029} {arXiv:nucl-th/9609029} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Heinz}\ and\ \citenamefont
+  {Jacak}(1999)}]{Heinz:1999rw}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {U.~W.}\ \bibnamefont
+  {Heinz}}\ and\ \bibinfo {author} {\bibfnamefont {B.~V.}\ \bibnamefont
+  {Jacak}},\ }\bibfield  {title} {\bibinfo {title} {{Two particle correlations
+  in relativistic heavy ion collisions}},\ }\href
+  {https://doi.org/10.1146/annurev.nucl.49.1.529} {\bibfield  {journal}
+  {\bibinfo  {journal} {Ann. Rev. Nucl. Part. Sci.}\ }\textbf {\bibinfo
+  {volume} {49}},\ \bibinfo {pages} {529} (\bibinfo {year} {1999})},\ \Eprint
+  {https://arxiv.org/abs/nucl-th/9902020} {arXiv:nucl-th/9902020} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Wiedemann}\ and\ \citenamefont
+  {Heinz}(1999)}]{Wiedemann:1999qn}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {U.~A.}\ \bibnamefont
+  {Wiedemann}}\ and\ \bibinfo {author} {\bibfnamefont {U.~W.}\ \bibnamefont
+  {Heinz}},\ }\bibfield  {title} {\bibinfo {title} {{Particle interferometry
+  for relativistic heavy ion collisions}},\ }\href
+  {https://doi.org/10.1016/S0370-1573(99)00032-0} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rept.}\ }\textbf {\bibinfo {volume} {319}},\
+  \bibinfo {pages} {145} (\bibinfo {year} {1999})},\ \Eprint
+  {https://arxiv.org/abs/nucl-th/9901094} {arXiv:nucl-th/9901094} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Weiner}(2000)}]{Weiner:1999th}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~M.}\ \bibnamefont
+  {Weiner}},\ }\bibfield  {title} {\bibinfo {title} {{Boson interferometry in
+  high-energy physics}},\ }\href
+  {https://doi.org/10.1016/S0370-1573(99)00114-3} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rept.}\ }\textbf {\bibinfo {volume} {327}},\
+  \bibinfo {pages} {249} (\bibinfo {year} {2000})},\ \Eprint
+  {https://arxiv.org/abs/hep-ph/9904389} {arXiv:hep-ph/9904389} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Lisa}\ \emph {et~al.}(2005)\citenamefont {Lisa},
+  \citenamefont {Pratt}, \citenamefont {Soltz},\ and\ \citenamefont
+  {Wiedemann}}]{Lisa:2005dd}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont
+  {Lisa}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Pratt}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Soltz}},\ and\ \bibinfo
+  {author} {\bibfnamefont {U.}~\bibnamefont {Wiedemann}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Femtoscopy in relativistic heavy ion collisions}},\
+  }\href {https://doi.org/10.1146/annurev.nucl.55.090704.151533} {\bibfield
+  {journal} {\bibinfo  {journal} {Ann. Rev. Nucl. Part. Sci.}\ }\textbf
+  {\bibinfo {volume} {55}},\ \bibinfo {pages} {357} (\bibinfo {year} {2005})},\
+  \Eprint {https://arxiv.org/abs/nucl-ex/0505014} {arXiv:nucl-ex/0505014}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ablyazimov}\ \emph {et~al.}(2017)\citenamefont
+  {Ablyazimov} \emph {et~al.}}]{CBM:2016kpk}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Ablyazimov}} \emph {et~al.} (\bibinfo {collaboration} {CBM}),\ }\bibfield
+  {title} {\bibinfo {title} {{Challenges in QCD matter physics --The scientific
+  programme of the Compressed Baryonic Matter experiment at FAIR}},\ }\href
+  {https://doi.org/10.1140/epja/i2017-12248-y} {\bibfield  {journal} {\bibinfo
+  {journal} {Eur. Phys. J. A}\ }\textbf {\bibinfo {volume} {53}},\ \bibinfo
+  {pages} {60} (\bibinfo {year} {2017})},\ \Eprint
+  {https://arxiv.org/abs/1607.01487} {arXiv:1607.01487 [nucl-ex]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Bzdak}\ \emph {et~al.}(2020)\citenamefont {Bzdak},
+  \citenamefont {Esumi}, \citenamefont {Koch}, \citenamefont {Liao},
+  \citenamefont {Stephanov},\ and\ \citenamefont {Xu}}]{Bzdak:2019pkr}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Bzdak}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Esumi}},
+  \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Koch}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Liao}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Stephanov}},\ and\ \bibinfo {author} {\bibfnamefont
+  {N.}~\bibnamefont {Xu}},\ }\bibfield  {title} {\bibinfo {title} {{Mapping the
+  Phases of Quantum Chromodynamics with Beam Energy Scan}},\ }\href
+  {https://doi.org/10.1016/j.physrep.2020.01.005} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rept.}\ }\textbf {\bibinfo {volume} {853}},\
+  \bibinfo {pages} {1} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/1906.00936} {arXiv:1906.00936 [nucl-th]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Almaalol}\ \emph {et~al.}(2022)\citenamefont
+  {Almaalol} \emph {et~al.}}]{Almaalol:2022xwv}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Almaalol}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{QCD
+  Phase Structure and Interactions at High Baryon Density: Continuation of BES
+  Physics Program with CBM at FAIR}},\ }\href@noop {} {\  (\bibinfo {year}
+  {2022})},\ \Eprint {https://arxiv.org/abs/2209.05009} {arXiv:2209.05009
+  [nucl-ex]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cooper}\ and\ \citenamefont
+  {Frye}(1974)}]{Cooper:1974mv}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Cooper}}\ and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Frye}},\
+  }\bibfield  {title} {\bibinfo {title} {{Comment on the Single Particle
+  Distribution in the Hydrodynamic and Statistical Thermodynamic Models of
+  Multiparticle Production}},\ }\href {https://doi.org/10.1103/PhysRevD.10.186}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
+  {volume} {10}},\ \bibinfo {pages} {186} (\bibinfo {year} {1974})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Makhlin}\ and\ \citenamefont
+  {Sinyukov}(1987)}]{Makhlin:1986fd}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~N.}\ \bibnamefont
+  {Makhlin}}\ and\ \bibinfo {author} {\bibfnamefont {Y.~M.}\ \bibnamefont
+  {Sinyukov}},\ }\bibfield  {title} {\bibinfo {title} {{The Pion Interferometry
+  Theory for the Hydrodynamic Stage of Multiple Processes}},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {Yad. Fiz.}\ }\textbf {\bibinfo
+  {volume} {46}},\ \bibinfo {pages} {637} (\bibinfo {year} {1987})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pratt}(1984)}]{Pratt:1984su}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Pratt}},\ }\bibfield  {title} {\bibinfo {title} {{Pion Interferometry for
+  Exploding Sources}},\ }\href {https://doi.org/10.1103/PhysRevLett.53.1219}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
+  {\bibinfo {volume} {53}},\ \bibinfo {pages} {1219} (\bibinfo {year}
+  {1984})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pratt}(1986)}]{Pratt:1986cc}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Pratt}},\ }\bibfield  {title} {\bibinfo {title} {{Pion Interferometry of
+  Quark-Gluon Plasma}},\ }\href {https://doi.org/10.1103/PhysRevD.33.1314}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
+  {volume} {33}},\ \bibinfo {pages} {1314} (\bibinfo {year}
+  {1986})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Poisson}(2009)}]{Poisson:2009pwt}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Poisson}},\ }\href {https://doi.org/10.1017/CBO9780511606601} {\emph
+  {\bibinfo {title} {{A Relativist's Toolkit: The Mathematics of Black-Hole
+  Mechanics}}}}\ (\bibinfo  {publisher} {Cambridge University Press},\ \bibinfo
+  {year} {2009})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fukushima}(2014)}]{Fukushima:2014sia}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Fukushima}},\ }\bibfield  {title} {\bibinfo {title} {{Spectral
+  representation of the particle production out of equilibrium - Schwinger
+  mechanism in pulsed electric fields}},\ }\href
+  {https://doi.org/10.1088/1367-2630/16/7/073031} {\bibfield  {journal}
+  {\bibinfo  {journal} {New J. Phys.}\ }\textbf {\bibinfo {volume} {16}},\
+  \bibinfo {pages} {073031} (\bibinfo {year} {2014})},\ \Eprint
+  {https://arxiv.org/abs/1402.3002} {arXiv:1402.3002 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Bulava}\ and\ \citenamefont
+  {Hansen}(2019)}]{Bulava:2019kbi}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Bulava}}\ and\ \bibinfo {author} {\bibfnamefont {M.~T.}\ \bibnamefont
+  {Hansen}},\ }\bibfield  {title} {\bibinfo {title} {{Scattering amplitudes
+  from finite-volume spectral functions}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.100.034521} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {100}},\ \bibinfo
+  {pages} {034521} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1903.11735} {arXiv:1903.11735 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Kadanoff}\ and\ \citenamefont
+  {Baym}(2018)}]{Kadanoff2018QuantumSM}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~P.}\ \bibnamefont
+  {Kadanoff}}\ and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Baym}},\ }\bibfield  {title} {\bibinfo {title} {Quantum statistical
+  mechanics : Green's function methods in equilibrium and nonequilibrium
+  problems}\ }(\bibinfo {year} {2018})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Berges}(2004)}]{Berges:2004yj}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Berges}},\ }\bibfield  {title} {\bibinfo {title} {{Introduction to
+  nonequilibrium quantum field theory}},\ }\href
+  {https://doi.org/10.1063/1.1843591} {\bibfield  {journal} {\bibinfo
+  {journal} {AIP Conf. Proc.}\ }\textbf {\bibinfo {volume} {739}},\ \bibinfo
+  {pages} {3} (\bibinfo {year} {2004})},\ \Eprint
+  {https://arxiv.org/abs/hep-ph/0409233} {arXiv:hep-ph/0409233} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Makhlin}\ and\ \citenamefont
+  {Sinyukov}(1988)}]{Makhlin:1987gm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~N.}\ \bibnamefont
+  {Makhlin}}\ and\ \bibinfo {author} {\bibfnamefont {Y.~M.}\ \bibnamefont
+  {Sinyukov}},\ }\bibfield  {title} {\bibinfo {title} {{Hydrodynamics of Hadron
+  Matter Under Pion Interferometric Microscope}},\ }\href
+  {https://doi.org/10.1007/BF01560393} {\bibfield  {journal} {\bibinfo
+  {journal} {Z. Phys. C}\ }\textbf {\bibinfo {volume} {39}},\ \bibinfo {pages}
+  {69} (\bibinfo {year} {1988})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Schlei}\ \emph {et~al.}(1992)\citenamefont {Schlei},
+  \citenamefont {Ornik}, \citenamefont {Plumer},\ and\ \citenamefont
+  {Weiner}}]{Schlei:1992jj}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.~R.}\ \bibnamefont
+  {Schlei}}, \bibinfo {author} {\bibfnamefont {U.}~\bibnamefont {Ornik}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Plumer}},\ and\ \bibinfo
+  {author} {\bibfnamefont {R.~M.}\ \bibnamefont {Weiner}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Transverse expansion and effective radii of sources in
+  high-energy collisions}},\ }\href
+  {https://doi.org/10.1016/0370-2693(92)90883-6} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {293}},\
+  \bibinfo {pages} {275} (\bibinfo {year} {1992})}\BibitemShut {NoStop}%
+\bibitem [{Note1()}]{Note1}%
+  \BibitemOpen
+  \bibinfo {note} {See, e.g., Eq.\ (85) in \cite {Heinz:1996bs}}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Schindler}\ \emph {et~al.}(2020)\citenamefont
+  {Schindler}, \citenamefont {Schindler}, \citenamefont {Medina},\ and\
+  \citenamefont {Ogilvie}}]{Schindler:2019ugo}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont
+  {Schindler}}, \bibinfo {author} {\bibfnamefont {S.~T.}\ \bibnamefont
+  {Schindler}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Medina}},\
+  and\ \bibinfo {author} {\bibfnamefont {M.~C.}\ \bibnamefont {Ogilvie}},\
+  }\bibfield  {title} {\bibinfo {title} {{Universality of Pattern Formation}},\
+  }\href {https://doi.org/10.1103/PhysRevD.102.114510} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {102}},\
+  \bibinfo {pages} {114510} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/1906.07288} {arXiv:1906.07288 [hep-lat]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Florkowski}(2010)}]{Florkowski:2010zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {Florkowski}},\ }\href@noop {} {\emph {\bibinfo {title} {{Phenomenology of
+  Ultra-Relativistic Heavy-Ion Collisions}}}}\ (\bibinfo {year}
+  {2010})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zhang}\ \emph {et~al.}(2016)\citenamefont {Zhang},
+  \citenamefont {Ma}, \citenamefont {Chen},\ and\ \citenamefont
+  {Zhong}}]{Zhang:2016tbf}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Zhang}}, \bibinfo {author} {\bibfnamefont {Y.~G.}\ \bibnamefont {Ma}},
+  \bibinfo {author} {\bibfnamefont {J.~H.}\ \bibnamefont {Chen}},\ and\
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Zhong}},\ }\bibfield
+  {title} {\bibinfo {title} {{Beam energy dependence of Hanbury-Brown-Twiss
+  radii from a blast-wave model}},\ }\href
+  {https://doi.org/10.1155/2016/9414239} {\bibfield  {journal} {\bibinfo
+  {journal} {Adv. High Energy Phys.}\ }\textbf {\bibinfo {volume} {2016}},\
+  \bibinfo {pages} {9414239} (\bibinfo {year} {2016})},\ \Eprint
+  {https://arxiv.org/abs/1602.01564} {arXiv:1602.01564 [nucl-th]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Sinyukov}\ \emph {et~al.}(1998)\citenamefont
+  {Sinyukov}, \citenamefont {Lednicky}, \citenamefont {Akkelin}, \citenamefont
+  {Pluta},\ and\ \citenamefont {Erazmus}}]{Sinyukov:1998fc}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Sinyukov}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Lednicky}},
+  \bibinfo {author} {\bibfnamefont {S.~V.}\ \bibnamefont {Akkelin}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Pluta}},\ and\ \bibinfo {author}
+  {\bibfnamefont {B.}~\bibnamefont {Erazmus}},\ }\bibfield  {title} {\bibinfo
+  {title} {{Coulomb corrections for interferometry analysis of expanding hadron
+  systems}},\ }\href {https://doi.org/10.1016/S0370-2693(98)00653-4} {\bibfield
+   {journal} {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume}
+  {432}},\ \bibinfo {pages} {248} (\bibinfo {year} {1998})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pratt}(1997)}]{Pratt:1997pw}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Pratt}},\ }\bibfield  {title} {\bibinfo {title} {{Validity of the smoothness
+  assumption for calculating two-boson correlations in high-energy
+  collisions}},\ }\href {https://doi.org/10.1103/PhysRevC.56.1095} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. C}\ }\textbf {\bibinfo {volume}
+  {56}},\ \bibinfo {pages} {1095} (\bibinfo {year} {1997})}\BibitemShut
+  {NoStop}%
+\end{thebibliography}%
