@@ -60,7 +60,7 @@
 <section>
   <h3 style="font-family: 'Rockwell';text-transform: none; font-size: 0.9em;">Moat regime on QCD phase diagram</h3>
 
-<div style="position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 20px;">
+<div style="position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 0px;">
 
     <!-- 1. 这里的 SVG 是连线层 -->
     <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10;">
@@ -72,13 +72,26 @@
       </defs>
       <!-- 连线：x1,y1 是起点（左图），x2,y2 是终点（右图公式或图片） -->
       <!-- 这里的百分比坐标需要根据你的实际图片位置微调 -->
-      <line class="fragment" x1="70%" y1="70%" x2="25%" y2="35%" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
-      <line class="fragment" x1="80%" y1="75%" x2="30%" y2="25%" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+      <line class="fragment" x1="70%" y1="56%" x2="25%" y2="35%" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+      <line class="fragment" x1="80%" y1="60%" x2="32%" y2="30%" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
     </svg>
 
 <figure style="margin:0;">
-  <div style="position: relative; z-index: 11; margin-bottom: -50px; font-size: 0.55em; font-weight: bold; color: #333;">
-    Zero-momentum approximation 
+  <div style="position: absolute; 
+              top: 18.5%; left: 34.8%; 
+              width: 11.5%; height: 42%; 
+              background: rgba(128, 128, 128, 0.5); 
+              z-index: 12; 
+              pointer-events: none;
+              border-radius: 5px;">
+  </div>
+  <div style="position: absolute; top: 25%; left: 35%; 
+              font-size: 0.35em; font-weight: bold; color: black; 
+              padding: 2px 5px; border-radius: 3px;">
+    not computed
+  </div>
+  <div style="position: relative; z-index: 11; margin-bottom: -30px; font-size: 0.45em; font-weight: bold; color: #333; padding-left: 35px;">
+     Zero-momentum approximation for matter sector
   </div>
   <img src="phase2.png" style="width:100%; margin-bottom:-15px;">
   <figcaption style="font-size:0.5em; color:gray; line-height:1.1; margin-top:0;">
@@ -95,15 +108,16 @@
   <div style="margin-bottom: -40px; font-size: 0.5em;">
     \[ E_\pi(\bold{p}) = \sqrt{Z^{\perp}_\pi\,\bold{p}^2 + m_{\pi}^2} \]
   </div>
-  <img src="Epi.png" style="width:80%; margin-bottom:-23px;">
+  <img src="Epi.png" style="width:80%; margin-bottom:0px;">
   <figcaption style="font-size:0.5em; color:gray; line-height:1.1; margin-top:0;">
+    Fu, Pawlowski, Pisarski, Rennecke, Wen, <b>SY</b>, arXiv: 2510.06712
   </figcaption>
-  <div style="position: absolute; top: 40%; left: 78%; 
+  <div style="position: absolute; top: 30%; left: 78%; 
               font-size: 0.35em; font-weight: bold; color: red; 
               padding: 2px 5px; border-radius: 3px;">
     \[ Z^{\perp}_\pi(p=0)>0 \]
   </div>
-  <div style="position: absolute; top: 77%; left: 65%; 
+  <div style="position: absolute; top: 64%; left: 65%; 
               font-size: 0.35em; font-weight: bold; color: blue; 
               padding: 2px 5px; border-radius: 3px;">
     \[ Z^{\perp}_\pi(p=0)<0 \]
@@ -301,11 +315,11 @@
 
 <div style="position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 0px;">
 
-<figure style="margin-bottom: 0px; transform: translateY(-100px);">
-  <div style="position: relative; z-index: 11; margin-bottom: 10px; font-size: 0.55em; font-weight: bold; color: red;">
+<figure style="margin-bottom: 0px; transform: translateY(-150px);">
+  <div style="position: relative; z-index: 11; margin-bottom: 20px; font-size: 0.55em; font-weight: bold; color: red;">
     Quark-Meson interaction of heavier mesons
   </div>
-  <div style="margin-bottom: 0px; font-size: 0.45em;">
+  <div style="margin-bottom: 0px; font-size: 0.5em;">
     \[
     \begin{aligned} 
       &\sigma \sim h_\sigma\,\bar{q}\,T^0\,\sigma\, q\\[2ex]
@@ -318,10 +332,10 @@
 </figure>
 
 <figure style="margin:0;">
-  <!-- <div style="position: relative; z-index: 11; margin-bottom: -50px; font-size: 0.8em; font-weight: bold; color: #333;">
-    Moat regime for other mesons
-  </div> -->
-  <img src="Zothermeson.png" style="width:110%; margin-bottom:-20 px;">
+  <div style="position: relative; z-index: 11; margin-bottom: -40px; font-size: 0.6em; font-weight: bold; color: #333;">
+    All tend towards a moat regime due to the similar structure of self-energy
+  </div>
+  <img src="Zothermeson.png" style="width:110%; margin-bottom:-30 px;">
   <figcaption style="position: relative; z-index: 11; font-size:0.5em; color:gray; line-height:1.1; margin-top:0;">
     Rennecke, <b>SY</b>, in preparation
   </figcaption>
@@ -427,7 +441,7 @@
       \[
       \rho_\pi(\omega,\bold{p}) \sim \delta(\omega-E_{\mathrm{moat}})
       \]
-      <p style="font-size: 0.7em; color: blue; margin-top: 10px;">
+      <p style="font-size: 0.8em; color: blue; margin-top: 10px;">
         Time-like behavior of the spectral function
       </p>
     </div>
@@ -494,6 +508,52 @@
       Rennecke, <b>SY</b>, in preparation
     </figcaption>
 </figure>
+</section>
+
+<section style="font-family: 'Rockwell';">
+  <h3 style="font-family: 'Rockwell';text-transform: none; font-size: 0.9em; margin-bottom: -15px;">Spectral function of Pion from fRG-QCD</h3>
+  <div style="position: absolute; top: 7%; left: 37%; 
+              font-size: 0.6em; font-weight: bold; color: blue; 
+              background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px; z-index: 20;">
+    Space-like Peak
+  </div>
+  <div style="position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 750px; margin: auto;">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" 
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20;">
+      <defs>
+        <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="red" />
+        </marker>
+      </defs>
+      <!-- 此时坐标直接写数字，25 代表 25% 的位置 -->
+      <!-- M: 起点(靠近文字), Q: 弧度控制点, 终点(指向波峰) -->
+      <path d="M 25,42  28,52" 
+            stroke="red" stroke-width=".4" fill="none" 
+            marker-end="url(#arrowhead-red)" /> 
+      <path d="M 75,42  59.5,61" 
+            stroke="red" stroke-width=".4" fill="none" 
+            marker-end="url(#arrowhead-red)" /> 
+      <path d="M 22,20  37,7" 
+            stroke="red" stroke-width=".4" fill="none" 
+            marker-end="url(#arrowhead-red)" /> 
+      <path d="M 70,20  60,7" 
+            stroke="red" stroke-width=".4" fill="none" 
+            marker-end="url(#arrowhead-red)" /> 
+    </svg>
+    <!-- 第一行：前两张图 -->
+    <img src="rhomub0T160_QCD.png" style="width: 100%;">
+    <img src="rhomub630T114_QCD.png" style="width: 100%;">
+
+    <!-- 第二行：第三张图，横跨两列 -->
+    <div style="grid-column: 1 / span 2; text-align: center; margin-top: -30px;">
+      <img src="phase.png" style="width: 60%;">
+    <figcaption style="font-size:0.5em; color:gray; line-height:1.1; margin-top:-20px; font-family: 'Arial';">
+      Fu, Pawlowski, Pisarski, Rennecke, Wen, <b>SY</b>, arXiv: 2510.06712
+    </figcaption>
+    </div>
+    <div style="position: absolute; top: 53.5%; left: 29%; width: 8px; height: 8px; background: red; border-radius: 50%; transform: translate(-50%, -50%);"></div>
+    <div style="position: absolute; top: 62%; left: 58.9%; width: 8px; height: 8px; background: red; border-radius: 50%; transform: translate(-50%, -50%);"></div>
+  </div>
 </section>
 
 <!-- OutLine -->
