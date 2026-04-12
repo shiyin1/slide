@@ -449,65 +449,52 @@
 </section>
 
 <!-- Experiment -->
-<section>
-  <h3 style="font-family: 'Rockwell';text-transform: none; font-size: 0.9em; margin-bottom: -25px;">Spectral function of Pion</h3>
-<figure style="margin:0; position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; overflow: hidden;">
-    <!-- 1. 修正后的 SVG 层：添加了 viewBox 和 preserveAspectRatio -->
-    <svg viewBox="0 0 100 100" preserveAspectRatio="none" 
+<section style="font-family: 'Rockwell';">
+  <h3 style="font-family: 'Rockwell';text-transform: none; font-size: 0.9em; margin-bottom: -15px;">Spectral function of Pion</h3>
+  <div style="position: absolute; top: 7%; left: 37%; 
+              font-size: 0.6em; font-weight: bold; color: blue; 
+              background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px; z-index: 20;" class="fragment" data-fragment-index="1">
+    Space-like Peak
+  </div>
+  <!-- 统一大画布：使用 Grid 布局控制图片 -->
+  <div style="position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 750px; margin: auto;">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" 
          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20;">
       <defs>
         <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
           <polygon points="0 0, 10 3.5, 0 7" fill="red" />
         </marker>
       </defs>
-      
       <!-- 此时坐标直接写数字，25 代表 25% 的位置 -->
       <!-- M: 起点(靠近文字), Q: 弧度控制点, 终点(指向波峰) -->
-      <path d="M 25,46  32,37" 
+      <path d="M 25,45  27,67" 
+            stroke="red" stroke-width=".4" fill="none" 
+            marker-end="url(#arrowhead-red)" /> 
+      <path d="M 75,45  60,80" 
+            stroke="red" stroke-width=".4" fill="none" 
+            marker-end="url(#arrowhead-red)" /> 
+      <path d="M 22,20  37,7" 
             stroke="red" stroke-width=".4" fill="none" 
             marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" /> 
-      <path d="M 25,53  30,60" 
-            stroke="red" stroke-width=".4" fill="none" 
-            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" /> 
-      <path d="M 10,44  23,32" 
-            stroke="red" stroke-width=".4" fill="none" 
-            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" /> 
-      <path d="M 10,50  23,67" 
-            stroke="red" stroke-width=".4" fill="none" 
-            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" /> 
-      <path d="M 47,45  40,35" 
-            stroke="red" stroke-width=".4" fill="none" 
-            marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" />
-      <path d="M 47,50  40,68" 
+      <path d="M 70,20  60,7" 
             stroke="red" stroke-width=".4" fill="none" 
             marker-end="url(#arrowhead-red)" class="fragment" data-fragment-index="1" /> 
     </svg>
+    <!-- 第一行：前两张图 -->
+    <img src="rho_mu0T155.png" style="width: 100%;">
+    <img src="rho_T50mu280.png" style="width: 100%;">
 
-    <!-- 2. 文字标签 -->
-    <div class="fragment" data-fragment-index="1" style="position: absolute; top: 47%; left: 22%; 
-                font-size: 0.4em; font-weight: bold; color: white; 
-                background: rgba(0,0,0,0.7); padding: 2px 5px; border-radius: 3px; z-index: 30;">
-      Pole mass
-    </div>
-    <div class="fragment" data-fragment-index="1" style="position: absolute; top: 45%; left: 1%; 
-                font-size: 0.4em; font-weight: bold; color: white; 
-                background: rgba(0,0,0,0.7); padding: 2px 5px; border-radius: 3px; z-index: 30;">
-      Space-like peak
-    </div>
-    <div class="fragment" data-fragment-index="1" style="position: absolute; top: 45%; left: 40%; 
-                font-size: 0.4em; font-weight: bold; color: white; 
-                background: rgba(0,0,0,0.7); padding: 2px 5px; border-radius: 3px; z-index: 30;">
-      Decay to two quarks
+    <!-- 第二行：第三张图，横跨两列 -->
+    <div style="grid-column: 1 / span 2; text-align: center; margin-top: -30px;">
+      <img src="QMphase.png" style="width: 60%;">
     </div>
 
-    <!-- 3. 3D 动图 -->
-    <img src="spec_mu0T.gif" style="width:70%; display: block; margin-bottom: -28px;">
-    <img src="spec_T50mu.gif" style="width:70%; display: block;">
-    
-    <figcaption style="font-size:0.5em; color:gray; line-height:1.1; margin-top:5px;">
-      Rennecke, <b>SY</b>, in preparation
-    </figcaption>
-</figure>
+    <!-- 全局圆点定位 (相对于整个 grid 容器) -->
+    <!-- 点3 & 点4：在下方大图 -->
+    <div style="position: absolute; top: 68%; left: 27.5%; width: 8px; height: 8px; background: green; border-radius: 50%; transform: translate(-50%, -50%);"></div>
+    <div style="position: absolute; top: 81.5%; left: 58.9%; width: 8px; height: 8px; background: green; border-radius: 50%; transform: translate(-50%, -50%);"></div>
+
+  </div>
 </section>
 
 <section style="font-family: 'Rockwell';">
