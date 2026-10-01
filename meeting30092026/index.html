@@ -1,0 +1,1278 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Group Meeting - 30.09.2026</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+
+  <style>
+    /* 页面标题：与 CPOD2026 相同的 Rockwell 风格 */
+    .reveal h2, .reveal h3 { font-family: 'Rockwell'; text-transform: none; }
+    .reveal h3 { font-size: 0.9em; }
+
+    /* 多图并排容器 */
+    .fig-row { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 20px; }
+    .reveal figure { position: relative; margin: 0; }
+
+    /* 图上方的小标题 */
+    .fig-title { position: relative; z-index: 11; font-size: 0.55em; font-weight: bold; color: #333; }
+    .fig-title.red { color: red; }
+
+    /* 图注（引用） */
+    .reveal figcaption { position: relative; z-index: 11; font-size: 0.5em; color: gray; line-height: 1.1; margin-top: 0; }
+
+    /* 公式块 */
+    .eq { font-size: 0.45em; }
+
+    /* 叠加在图上的标注，用 top/left 百分比定位 */
+    .tag { position: absolute; z-index: 20; font-size: 0.6em; font-weight: bold; color: blue;
+           background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px; }
+    .tag.red { color: red; }
+    .tag.dark { font-size: 0.4em; color: white; background: rgba(0,0,0,0.7); }
+
+    /* 箭头层：viewBox 0-100，坐标即百分比 */
+    .arrows { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; }
+
+    /* 点击后弹出的浮层 */
+    .popup { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;
+             width: 50%; background: white; box-shadow: 0 0 50px rgba(0,0,0,0.5); border-radius: 20px; padding: 10px; }
+
+    /* Outline 中未激活的条目 */
+    .reveal li.dim { opacity: 0.3; }
+
+    /* 动画页的重播按钮 */
+    .replay-btn { font-size: 0.45em; padding: 4px 16px; border: 1.5px solid #c71585; border-radius: 16px;
+                  background: white; color: #c71585; cursor: pointer; font-family: Arial, sans-serif; }
+    .replay-btn:hover { background: #c71585; color: white; }
+
+    /* 占位图：换成真正图片后删除 */
+    .placeholder { display: flex; align-items: center; justify-content: center; width: 400px; height: 280px;
+                   border: 2px dashed #bbb; color: #999; font-size: 0.5em; }
+  </style>
+</head>
+
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- Title -->
+<section>
+  <h2>Title of the talk</h2>
+  <p style="font-weight: bold;">Shi Yin (尹诗)</p>
+  <p style="color: mediumvioletred;">Group Meeting, 30.09.2026</p>
+  <!-- 参考文献容器（不需要可删除） -->
+  <div style="color: blue; font-size: 20px; display: flex; justify-content: center; text-align: left; margin: 20px 0;">
+    <span style="white-space: nowrap; margin-right: 10px;">Based on:</span>
+    <div>
+      1. Author A and <b>SY</b>, arXiv:xxxx.xxxxx <br>
+      2. Author B and <b>SY</b>, in preparation
+    </div>
+  </div>
+  <img src="CRC-TR211long.svg" style="width:20%; height:auto; margin-right:50px;">
+  <img src="image.jpeg" style="width:30%; height:auto; margin-right:30px;">
+  <img src="fQCDLogoFR.png" style="width:25%; height:auto;">
+</section>
+
+<!-- Outline：每进入一个新部分就复制一页，把当前条目的 class="dim" 去掉 -->
+<section>
+  <h3>Outline</h3>
+  <br>
+  <ul>
+    <li>Section 1</li><br>
+    <li class="dim">Section 2</li><br>
+    <li class="dim">Summary and Outlook</li>
+  </ul>
+</section>
+
+<!-- 重离子碰撞动画：进入本页自动循环播放，点击动画重新开始（代码见文件末尾） -->
+<section id="hic-slide">
+  <h3 style="margin-bottom: 0;">Heavy-ion collisions</h3>
+  <canvas id="hic-canvas" style="width: 900px; height: 460px; cursor: pointer;"></canvas>
+</section>
+
+<!-- 探测器动画：粒子飞入探测器（横截面示意），点击重新开始（代码见文件末尾） -->
+<section id="det-slide">
+  <h3 style="margin-bottom: 0;">Particles entering the detector</h3>
+  <canvas id="det-canvas" style="width: 900px; height: 440px; cursor: pointer;"></canvas>
+</section>
+
+<!-- 对撞 vs 固定靶动画：上为加速器、中为侧视图事件、下为 dN/dy 累积，循环播放，点击重新开始（代码见文件末尾） -->
+<section id="fxt-slide">
+  <h3 style="margin-bottom: 0;">Collider vs. fixed target</h3>
+  <canvas id="fxt-canvas" style="width: 900px; height: 520px; cursor: pointer;"></canvas>
+</section>
+
+<!-- 巨正则系综动画：接收度内粒子只占一小部分，逐事件统计；只播放一次，按 Replay 重播（代码见文件末尾） -->
+<section id="gce-slide">
+  <h3 style="margin-bottom: 0;">Why a grand canonical ensemble?</h3>
+  <canvas id="gce-canvas" style="width: 900px; height: 440px;"></canvas>
+  <div style="text-align: right; width: 900px; margin: -10px auto 0;">
+    <button id="gce-replay" class="replay-btn">&#8635; Replay</button>
+  </div>
+</section>
+
+<!-- 单图 + 标注 -->
+<section>
+  <h3>Single figure with labels</h3>
+  <div class="fig-row">
+    <figure>
+      <div class="fig-title">Subtitle above the figure</div>
+      <!-- <img src="figure.png" style="width:80%;"> -->
+      <div class="placeholder">figure.png</div>
+      <div class="tag" style="top: 20%; left: 60%;">Label</div>
+      <div class="tag red fragment" style="top: 60%; left: 30%;">Appears on click</div>
+      <figcaption>Author A, <b>SY</b>, arXiv: xxxx.xxxxx</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 左公式 + 右图 -->
+<section>
+  <h3>Equations and figure</h3>
+  <div class="fig-row">
+    <figure>
+      <div class="fig-title">Model</div>
+      <div class="eq">
+        \[
+        \begin{aligned}
+          \mathcal{L}[\phi,q,\bar{q}]&=\bar{q}\big[\gamma_\mu\partial_\mu-\gamma_0 \hat{\mu}\big]q+\frac{1}{2}\,(\partial_\mu\phi)^2\\[2ex]
+          &\quad+h\,\bar{q}(T^0\sigma+i\gamma_5\mathbf{T}\cdot\boldsymbol{\pi})q+U(\rho)-c\sigma
+        \end{aligned}
+        \]
+      </div>
+      <div class="eq fragment">
+        \[ E_\pi(\mathbf{p}) = \sqrt{Z^{\perp}_\pi\,\mathbf{p}^2 + m_{\pi}^2} \]
+      </div>
+    </figure>
+
+    <figure>
+      <div class="fig-title">Result</div>
+      <!-- <img src="figure.png" style="width:100%;"> -->
+      <div class="placeholder">figure.png</div>
+      <figcaption>Author A, <b>SY</b>, in preparation</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 两图并排 + 箭头 -->
+<section>
+  <h3>Two figures with arrows</h3>
+  <div class="fig-row">
+    <!-- 箭头：M 起点 → 终点，数字为百分比坐标 -->
+    <svg class="arrows" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <defs>
+        <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="red" />
+        </marker>
+      </defs>
+      <path class="fragment" data-fragment-index="1" d="M 50,15 30,40" stroke="red" stroke-width=".4" fill="none" marker-end="url(#arrow-red)" />
+      <path class="fragment" data-fragment-index="1" d="M 50,15 70,40" stroke="red" stroke-width=".4" fill="none" marker-end="url(#arrow-red)" />
+    </svg>
+    <div class="tag red fragment" data-fragment-index="1" style="top: 5%; left: 44%;">Peak</div>
+
+    <figure>
+      <div class="fig-title">Case 1</div>
+      <div class="placeholder">left.png</div>
+    </figure>
+    <figure>
+      <div class="fig-title">Case 2</div>
+      <div class="placeholder">right.png</div>
+    </figure>
+  </div>
+  <figcaption style="text-align: center;">Author A, <b>SY</b>, arXiv: xxxx.xxxxx</figcaption>
+</section>
+
+<!-- 点击弹出浮层 -->
+<section>
+  <h3>Pop-up overlay</h3>
+  <div class="fig-row">
+    <figure>
+      <div class="placeholder">background.png</div>
+    </figure>
+  </div>
+  <div class="popup fragment fade-in">
+    <div style="color: black; font-size: 0.6em;">
+      \[ \rho_\pi(\omega,\mathbf{p}) \sim \delta(\omega-E_{\mathrm{moat}}) \]
+      <p style="font-size: 0.8em; color: blue; margin-top: 10px;">Key message in the pop-up</p>
+    </div>
+  </div>
+</section>
+
+<!-- Summary -->
+<section>
+  <h3>Summary and Outlook</h3>
+  <ul style="font-size: 0.75em;">
+    <li>First point</li>
+    <li>Second point</li>
+    <li style="color: blue;">Outlook / next steps</li>
+  </ul>
+</section>
+
+<!-- Back up -->
+<section>
+  <h3>Back up: ...</h3>
+  <div class="fig-row">
+    <figure><div class="placeholder">backup1.png</div></figure>
+    <figure><div class="placeholder">backup2.png</div></figure>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  plugins: [ RevealMath.KaTeX ]
+});
+</script>
+
+<!-- 重离子碰撞动画 -->
+<script>
+(function () {
+  const slide = document.getElementById('hic-slide');
+  const canvas = document.getElementById('hic-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 900, H = 460, S = 2;          // S：内部分辨率倍数，保证清晰
+  canvas.width = W * S; canvas.height = H * S;
+  ctx.scale(S, S);
+
+  // 可复现的随机数，每次打开画面一致
+  let seed = 7;
+  const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const lerp = (a, b, s) => a + (b - a) * s;
+  const clamp = (x, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, x));
+
+  // 几何与时间参数（单位：像素、秒）
+  const cx = W / 2, cy = 190;
+  const R = 70, gamma = 5, b = 50;        // 核半径、洛伦兹收缩因子、碰撞参数
+  const tc = 2.2;                         // 碰撞时刻
+  const tq = tc + 3.2;                    // QGP 结束、开始强子化
+  const th = tq + 1.5;                    // 强子化结束、冻结
+  const tEnd = th + 3.0, tLoop = tEnd + 0.8;
+  const v = 380 / tc;                     // 核的速度
+  const rxEnd = 162, ryEnd = (R - b / 2) + 55;
+
+  const stages = [
+    { name: 'Approach',      end: tc,       desc: 'Two Lorentz-contracted nuclei approach at nearly the speed of light' },
+    { name: 'Collision',     end: tc + 0.7, desc: 'Participant nucleons in the overlap region collide; spectators fly on' },
+    { name: 'QGP',           end: tq,       desc: 'A hot, dense quark–gluon plasma forms and expands (~1–10 fm/c)' },
+    { name: 'Hadronization', end: th,       desc: 'The plasma cools; quarks and gluons are confined into hadrons' },
+    { name: 'Freeze-out',    end: Infinity, desc: 'Hadrons stop interacting and stream to the detector' }
+  ];
+
+  // 核子：球内均匀分布，横向位置落在另一个核内的是参与者
+  function makeNucleus(dir, yc) {
+    const list = [];
+    while (list.length < 110) {
+      const x = 2 * rand() - 1, y = 2 * rand() - 1, z = 2 * rand() - 1;
+      if (x * x + y * y + z * z > 1) continue;
+      list.push({ x: x * R, y: y * R, z: z * R, proton: rand() < 0.4 });
+    }
+    list.forEach(n => {
+      const dy = yc + n.y + yc;             // 相对另一个核中心（位于 -yc）的横向距离
+      n.part = dy * dy + n.z * n.z < R * R;
+    });
+    list.sort((p, q) => p.z - q.z);
+    return { dir, yc, list };
+  }
+  const nuclei = [makeNucleus(1, -b / 2), makeNucleus(-1, b / 2)];
+
+  // QGP 中的部分子：红绿蓝为夸克（色荷），黄色为胶子
+  const partonColors = ['#e53935', '#43a047', '#1e88e5', '#fbc02d'];
+  const partons = [];
+  while (partons.length < 160) {
+    const u = 2 * rand() - 1, w = 2 * rand() - 1;
+    if (u * u + w * w > 1) continue;
+    partons.push({ u, w, p1: 6.3 * rand(), p2: 6.3 * rand(), col: partonColors[Math.floor(rand() * 4)] });
+  }
+
+  // 强子：π、K、p，速度随位置增大（集体流）
+  const hadronTypes = [
+    { frac: 0.65, col: '#1565c0', r: 4 },
+    { frac: 0.20, col: '#2e7d32', r: 5 },
+    { frac: 0.15, col: '#e57373', r: 6 }
+  ];
+  const hadrons = [];
+  while (hadrons.length < 90) {
+    const u = 2 * rand() - 1, w = 2 * rand() - 1;
+    if (u * u + w * w > 1) continue;
+    const x = rand();
+    const type = x < 0.65 ? hadronTypes[0] : x < 0.85 ? hadronTypes[1] : hadronTypes[2];
+    hadrons.push({ x0: cx + u * rxEnd, y0: cy + w * ryEnd,
+                   vx: u * 120 + (rand() - 0.5) * 40, vy: w * 80 + (rand() - 0.5) * 40, type });
+  }
+
+  // 温度 T：1 最热（白黄）→ 0 最冷（暗红）
+  function tempColor(T) {
+    const cold = [200, 40, 20], mid = [255, 140, 0], hot = [255, 245, 190];
+    const [a, c, s] = T > 0.5 ? [mid, hot, (T - 0.5) * 2] : [cold, mid, T * 2];
+    return a.map((x, i) => Math.round(lerp(x, c[i], s)));
+  }
+
+  function dot(x, y, r, col, alpha) {
+    ctx.globalAlpha = alpha;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fillStyle = col; ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+
+  function glow(x, y, rx, ry, rgb, alpha) {
+    ctx.save();
+    ctx.translate(x, y); ctx.scale(rx, ry);
+    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
+    g.addColorStop(0, `rgba(${rgb},${alpha})`);
+    g.addColorStop(0.6, `rgba(${rgb},${alpha * 0.6})`);
+    g.addColorStop(1, `rgba(${rgb},0)`);
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(0, 0, 1, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+
+  function drawLegend() {
+    const items = [[['#e57373'], 'p'], [['#90a4ae'], 'n'],
+                   [['#e53935', '#43a047', '#1e88e5'], 'quarks'], [['#fbc02d'], 'gluons'],
+                   [['#1565c0'], '\u03c0'], [['#2e7d32'], 'K']];
+    ctx.font = '13px Arial'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    let x = 20;
+    items.forEach(([cols, label]) => {
+      cols.forEach(col => { dot(x, 16, cols.length > 1 ? 3 : 5, col, 1); x += 7; });
+      ctx.fillStyle = '#555'; ctx.fillText(label, x + 2, 16);
+      x += 15 + ctx.measureText(label).width;
+    });
+    ctx.textBaseline = 'alphabetic';
+  }
+
+  function drawTimeline(t) {
+    const cur = stages.findIndex(st => t < st.end);
+    const bx = 30, bw = (W - 60) / stages.length, by = H - 78, bh = 30;
+    ctx.textAlign = 'center';
+    stages.forEach((st, i) => {
+      ctx.fillStyle = i === cur ? '#c71585' : i < cur ? '#f3c6de' : '#eee';
+      ctx.fillRect(bx + i * bw + 3, by, bw - 6, bh);
+      ctx.fillStyle = i === cur ? '#fff' : '#555';
+      ctx.font = 'bold 14px Arial';
+      ctx.fillText(st.name, bx + i * bw + bw / 2, by + 20);
+    });
+    ctx.fillStyle = '#333'; ctx.font = '16px Arial';
+    ctx.fillText(stages[cur].desc, W / 2, by + bh + 28);
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    drawLegend();
+
+    // 场景区域裁剪，避免粒子画到时间轴上
+    ctx.save();
+    ctx.beginPath(); ctx.rect(0, 28, W, H - 115); ctx.clip();
+
+    // 束流轴
+    ctx.setLineDash([6, 6]); ctx.strokeStyle = '#ccc'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(20, cy); ctx.lineTo(W - 20, cy); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#aaa'; ctx.font = '12px Arial'; ctx.textAlign = 'right';
+    ctx.fillText('beam axis', W - 20, cy - 6);
+
+    // QGP 火球：先纵向快速膨胀，同时冷却变色
+    if (t >= tc && t < th) {
+      const s = clamp((t - tc) / (tq - tc)), e = 1 - (1 - s) * (1 - s);
+      const rx = 12 + (rxEnd - 12) * e, ry = (R - b / 2) + 55 * e;
+      const fa = clamp((t - tc) / 0.3) * (t < tq ? 1 : 1 - (t - tq) / (th - tq));
+      glow(cx, cy, rx * 1.15, ry * 1.15, tempColor(1 - s).join(','), 0.9 * fa);
+      partons.forEach(p => {
+        const x = cx + (p.u + 0.08 * Math.sin(7 * t + p.p1)) * rx * 0.9;
+        const y = cy + (p.w + 0.08 * Math.cos(6 * t + p.p2)) * ry * 0.9;
+        dot(x, y, 2.5, p.col, fa);
+      });
+    }
+
+    // 碰撞瞬间的闪光
+    if (t >= tc && t < tc + 0.7) {
+      const s = (t - tc) / 0.7;
+      glow(cx, cy, 20 + 120 * s, 20 + 120 * s, '255,220,90', 0.8 * (1 - s));
+    }
+
+    // 核子：参与者在碰撞后消失，旁观者继续飞行
+    ctx.textAlign = 'center'; ctx.font = 'bold 15px Arial';
+    nuclei.forEach(nu => {
+      const xc = cx + nu.dir * v * (t - tc), yc = cy + nu.yc;
+      nu.list.forEach(n => {
+        let alpha = 1, x = xc + n.x / gamma;
+        if (n.part && t > tc) {
+          alpha = 1 - (t - tc) / 0.35;
+          x = cx + n.x / gamma;
+          if (alpha <= 0) return;
+        }
+        ctx.globalAlpha = alpha;
+        ctx.beginPath(); ctx.ellipse(x, yc + n.y, 3.6, 8, 0, 0, 2 * Math.PI);
+        ctx.fillStyle = n.proton ? '#e57373' : '#90a4ae'; ctx.fill();
+        ctx.strokeStyle = 'rgba(0,0,0,0.35)'; ctx.lineWidth = 0.6; ctx.stroke();
+        ctx.globalAlpha = 1;
+      });
+      ctx.fillStyle = '#333';
+      if (t < tc - 0.2) {
+        ctx.fillText(nu.dir > 0 ? 'Pb →' : '← Pb', xc, yc - R - 12);
+      } else if (t > tc + 0.4 && t < tq) {
+        const ly = nu.dir > 0 ? cy - b / 2 - R - 12 : cy + b / 2 + R + 22;
+        ctx.fillText('spectators', xc, ly);
+      }
+    });
+
+    // 强子：强子化时出现，冻结后留下径迹
+    if (t >= tq) {
+      const age = t - tq, a = clamp(age / 0.8) * clamp((tEnd - t) / 0.6);
+      hadrons.forEach(h => {
+        const x = h.x0 + h.vx * age, y = h.y0 + h.vy * age;
+        if (t > th) {
+          ctx.globalAlpha = 0.25 * a;
+          ctx.strokeStyle = h.type.col; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(h.x0, h.y0); ctx.lineTo(x, y); ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
+        dot(x, y, h.type.r, h.type.col, a);
+      });
+    }
+
+    ctx.restore();
+    drawTimeline(t);
+  }
+
+  // 播放控制：只在本页可见时运行
+  let start = null, raf = null;
+  function frame(now) {
+    if (start === null) start = now;
+    let t = (now - start) / 1000;
+    if (t > tLoop) { start = now; t = 0; }
+    draw(t);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (!raf) { start = null; raf = requestAnimationFrame(frame); } }
+  function stop() { cancelAnimationFrame(raf); raf = null; }
+  function sync() { Reveal.getCurrentSlide() === slide ? play() : stop(); }
+
+  canvas.addEventListener('click', () => { stop(); play(); });
+  Reveal.on('ready', sync);
+  Reveal.on('slidechanged', sync);
+  draw(tq - 1);   // 静态画面（如导出 PDF）显示 QGP 阶段
+})();
+</script>
+
+<!-- 探测器动画 -->
+<script>
+(function () {
+  const slide = document.getElementById('det-slide');
+  const canvas = document.getElementById('det-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 900, H = 440, S = 2;
+  canvas.width = W * S; canvas.height = H * S;
+  ctx.scale(S, S);
+
+  let seed = 11;
+  const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const clamp = (x, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, x));
+
+  // 探测器几何：横截面，束流垂直于屏幕（半径单位：像素）
+  const cx = 225, cy = 215;
+  const pipe = 6, si = [16, 24, 32], tpc = [42, 140], tof = [144, 150], emc = [156, 182], muon = [192, 204];
+  const nEmc = 64, nMuon = 24;
+
+  // 时间参数（秒）
+  const speed = 110;                      // β = 1 时的速度（像素/秒）
+  const t0 = 0.4, tFade = 4.8, tLoop = 6.0;
+
+  // 粒子种类：颜色与上一页一致；β 用于体现 TOF 测速（重粒子稍慢）
+  const types = {
+    pi:    { col: '#1565c0', label: 'π±', beta: 1.00 },
+    K:     { col: '#2e7d32', label: 'K±',      beta: 0.95 },
+    p:     { col: '#e57373', label: 'p',            beta: 0.85 },
+    e:     { col: '#8e24aa', label: 'e±',      beta: 1.00 },
+    mu:    { col: '#37474f', label: 'μ±', beta: 1.00 },
+    gamma: { col: '#f9a825', label: 'γ',       beta: 1.00, dashed: true }
+  };
+
+  // 逐步积分得到径迹：charge = 0 为直线；shrink > 0 为能量损失导致的螺旋（looper）
+  function makeTrack(type, phi, Rc, charge, stopR, eDep, shrink = 0) {
+    const pts = [[cx, cy]], hits = [];
+    const lMax = charge ? 2 * Math.PI * Rc : Infinity;
+    let x = 0, y = 0, th = phi, l = 0, r = 0, emcL = null, emcIdx = 0, muL = null, muIdx = 0;
+    while (r < stopR && l < lMax) {
+      if (charge) th += charge / (Rc * (1 - shrink * l / lMax));
+      x += Math.cos(th); y += Math.sin(th); l += 1;
+      const rPrev = r; r = Math.hypot(x, y);
+      pts.push([cx + x, cy + y]);
+      const ang = (Math.atan2(y, x) + 2 * Math.PI) % (2 * Math.PI);
+      if (charge) [...si, (tof[0] + tof[1]) / 2].forEach(rl => {
+        if (rPrev < rl && r >= rl) hits.push({ l, x: cx + x, y: cy + y });
+      });
+      if (rPrev < emc[0] && r >= emc[0]) { emcL = l; emcIdx = Math.floor(ang / (2 * Math.PI) * nEmc); }
+      if (rPrev < muon[0] && r >= muon[0]) { muL = l; muIdx = Math.floor(ang / (2 * Math.PI) * nMuon); }
+    }
+    return { type, pts, hits, len: l, emcL, emcIdx, eDep, muL, muIdx };
+  }
+
+  const tracks = [];
+  const phi = () => 2 * Math.PI * rand();
+  const sign = () => (rand() < 0.5 ? -1 : 1);
+  for (let i = 0; i < 10; i++) tracks.push(makeTrack(types.pi, phi(), 90 + 500 * rand(), sign(), emc[1], 0.25));
+  for (let i = 0; i < 2; i++)  tracks.push(makeTrack(types.pi, phi(), 30 + 10 * rand(), sign(), emc[1], 0, 0.45));
+  for (let i = 0; i < 3; i++)  tracks.push(makeTrack(types.K, phi(), 120 + 400 * rand(), sign(), emc[1], 0.25));
+  for (let i = 0; i < 2; i++)  tracks.push(makeTrack(types.p, phi(), 100 + 200 * rand(), sign(), emc[1], 0.3));
+  for (let i = 0; i < 4; i++)  tracks.push(makeTrack(types.gamma, phi(), 0, 0, 170, 1));
+  const phiEE = phi();                    // 一对 e⁺e⁻（双轻子）
+  tracks.push(makeTrack(types.e, phiEE, 220, 1, 170, 1));
+  tracks.push(makeTrack(types.e, phiEE + 0.25, 220, -1, 170, 1));
+  tracks.push(makeTrack(types.mu, phi(), 900, sign(), muon[1], 0.15));   // μ 子穿透所有层
+
+  function ring(r1, r2, fill, stroke) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r2, 0, 2 * Math.PI);
+    ctx.moveTo(cx + r1, cy); ctx.arc(cx, cy, r1, 0, 2 * Math.PI, true);
+    ctx.fillStyle = fill; ctx.fill();
+    if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = 1; ctx.stroke(); }
+  }
+
+  function segment(r1, r2, i, n, fill, stroke) {
+    const a1 = 2 * Math.PI * i / n, a2 = 2 * Math.PI * (i + 1) / n;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r2, a1, a2); ctx.arc(cx, cy, r1, a2, a1, true); ctx.closePath();
+    ctx.fillStyle = fill; ctx.fill();
+    ctx.strokeStyle = stroke; ctx.lineWidth = 0.8; ctx.stroke();
+  }
+
+  function drawPanel() {
+    const x0 = 480;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#333'; ctx.font = 'bold 15px Arial';
+    ctx.fillText('Detector layers', x0, 30);
+    const layers = [
+      ['#999', 'Beam pipe'],
+      ['#78909c', 'Inner tracker (silicon)'],
+      ['rgba(144,202,249,0.5)', 'Time Projection Chamber (TPC)'],
+      ['#b0bec5', 'Time-of-flight (TOF)'],
+      ['#ffcc80', 'Electromagnetic calorimeter'],
+      ['#bcaaa4', 'Muon chambers']
+    ];
+    ctx.font = '14px Arial';
+    layers.forEach(([col, label], i) => {
+      const y = 56 + 24 * i;
+      ctx.fillStyle = col; ctx.fillRect(x0, y - 6, 22, 12);
+      ctx.fillStyle = '#333'; ctx.fillText(label, x0 + 32, y);
+    });
+
+    ctx.font = 'bold 15px Arial';
+    ctx.fillText('Particles', x0, 212);
+    ctx.font = '14px Arial';
+    Object.values(types).forEach((tp, i) => {
+      const x = x0 + 130 * (i % 3), y = 238 + 24 * Math.floor(i / 3);
+      ctx.strokeStyle = tp.col; ctx.lineWidth = 2;
+      ctx.setLineDash(tp.dashed ? [5, 4] : []);
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 26, y); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#333'; ctx.fillText(tp.label, x + 34, y);
+    });
+
+    const notes = [
+      'Transverse view: beams ⊥ screen',
+      'Magnetic field bends charged tracks, radius ∝ pT / |q|',
+      'Low-pT particles curl up inside the TPC',
+      'Photons leave no track, only energy in the calorimeter',
+      'Muons pass through all layers'
+    ];
+    ctx.fillStyle = '#444';
+    notes.forEach((s, i) => ctx.fillText('• ' + s, x0, 310 + 22 * i));
+    ctx.fillStyle = '#999'; ctx.font = 'italic 12px Arial';
+    ctx.fillText('Schematic, not to scale', x0, 425);
+    ctx.textBaseline = 'alphabetic';
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    const fade = 1 - clamp((t - tFade) / (tLoop - tFade - 0.2));
+    const lNow = tr => clamp((t - t0) * speed * tr.type.beta, 0, tr.len);
+
+    // 量能器与 μ 子探测器：累计各单元被击中的情况
+    const eTower = new Array(nEmc).fill(0), muHit = new Array(nMuon).fill(0);
+    tracks.forEach(tr => {
+      const l = lNow(tr);
+      if (tr.emcL !== null && l >= tr.emcL) eTower[tr.emcIdx] += tr.eDep * clamp((l - tr.emcL) / 20);
+      if (tr.muL !== null && l >= tr.muL) muHit[tr.muIdx] = 1;
+    });
+
+    // 探测器各层（由外向内）
+    for (let i = 0; i < nMuon; i++)
+      segment(muon[0], muon[1], i, nMuon, muHit[i] ? `rgba(121,85,72,${0.8 * fade})` : '#efebe9', '#bcaaa4');
+    for (let i = 0; i < nEmc; i++)
+      segment(emc[0], emc[1], i, nEmc, '#f5f5f5', '#cfd8dc');
+    for (let i = 0; i < nEmc; i++)
+      if (eTower[i] > 0) segment(emc[0], emc[1], i, nEmc, `rgba(255,152,0,${clamp(eTower[i]) * fade})`, '#cfd8dc');
+    ring(tof[0], tof[1], '#cfd8dc', '#b0bec5');
+    ring(tpc[0], tpc[1], 'rgba(144,202,249,0.15)', '#90caf9');
+    ctx.strokeStyle = '#78909c'; ctx.lineWidth = 1.5;
+    si.forEach(r => { ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.stroke(); });
+    ctx.strokeStyle = '#999';
+    ctx.beginPath(); ctx.arc(cx, cy, pipe, 0, 2 * Math.PI); ctx.stroke();
+
+    // 碰撞顶点的闪光
+    if (t >= t0 - 0.1 && t < t0 + 0.5) {
+      const s = (t - t0 + 0.1) / 0.6;
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, 10 + 30 * s);
+      g.addColorStop(0, `rgba(255,220,90,${0.9 * (1 - s)})`); g.addColorStop(1, 'rgba(255,220,90,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, 10 + 30 * s, 0, 2 * Math.PI); ctx.fill();
+    }
+
+    // 径迹与击中点
+    tracks.forEach(tr => {
+      const l = lNow(tr), n = Math.floor(l);
+      if (n < 1) return;
+      ctx.globalAlpha = fade;
+      ctx.strokeStyle = tr.type.col; ctx.lineWidth = 1.6;
+      ctx.setLineDash(tr.type.dashed ? [5, 4] : []);
+      ctx.beginPath(); ctx.moveTo(tr.pts[0][0], tr.pts[0][1]);
+      for (let i = 1; i <= n; i++) ctx.lineTo(tr.pts[i][0], tr.pts[i][1]);
+      ctx.stroke(); ctx.setLineDash([]);
+
+      tr.hits.forEach(h => {
+        if (l < h.l) return;
+        const age = (l - h.l) / speed;
+        ctx.fillStyle = '#263238';
+        ctx.beginPath(); ctx.arc(h.x, h.y, 2.2, 0, 2 * Math.PI); ctx.fill();
+        if (age < 0.3) {
+          ctx.globalAlpha = fade * (1 - age / 0.3);
+          ctx.strokeStyle = tr.type.col; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.arc(h.x, h.y, 2 + 20 * age, 0, 2 * Math.PI); ctx.stroke();
+          ctx.globalAlpha = fade;
+        }
+      });
+
+      if (l < tr.len) {
+        ctx.fillStyle = tr.type.col;
+        ctx.beginPath(); ctx.arc(tr.pts[n][0], tr.pts[n][1], 3, 0, 2 * Math.PI); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    });
+
+    drawPanel();
+  }
+
+  // 播放控制：只在本页可见时运行
+  let start = null, raf = null;
+  function frame(now) {
+    if (start === null) start = now;
+    let t = (now - start) / 1000;
+    if (t > tLoop) { start = now; t = 0; }
+    draw(t);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (!raf) { start = null; raf = requestAnimationFrame(frame); } }
+  function stop() { cancelAnimationFrame(raf); raf = null; }
+  function sync() { Reveal.getCurrentSlide() === slide ? play() : stop(); }
+
+  canvas.addEventListener('click', () => { stop(); play(); });
+  Reveal.on('ready', sync);
+  Reveal.on('slidechanged', sync);
+  draw(tFade - 0.1);   // 静态画面（如导出 PDF）显示完整事件
+})();
+</script>
+
+<!-- 对撞 vs 固定靶动画 -->
+<script>
+(function () {
+  const slide = document.getElementById('fxt-slide');
+  const canvas = document.getElementById('fxt-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 900, H = 520, S = 2;
+  canvas.width = W * S; canvas.height = H * S;
+  ctx.scale(S, S);
+
+  const clamp = (x, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, x));
+  const MAGENTA = '#c71585', ORANGE = '#ef6c00', DET = '#5c7d99';
+  const species = ['#1565c0', '#2e7d32', '#e57373'];          // π、K、p，与前几页一致
+
+  // 每个事件用独立的可复现随机数（mulberry32）
+  function rng(k) {
+    let a = k * 9973 + 12345;
+    return () => {
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  const gauss = r => Math.sqrt(-2 * Math.log(1 - r())) * Math.cos(2 * Math.PI * r());
+  const deg = Math.PI / 180;
+  const etaOf = th => -Math.log(Math.tan(th / 2));
+
+  // 物理参数：同一 Au 束流（每核子总能量 E）分别用于对撞和打靶
+  const mN = 0.938, E = 3.85;
+  const gam = E / mN, yBeam = Math.acosh(gam);
+  const sqrtsC = 2 * E, sqrtsF = Math.sqrt(2 * mN * mN + 2 * mN * E);
+  const sigma = s => Math.sqrt(Math.log(s / (2 * mN)));        // Landau 流体：dN/dy 宽度 σ² = ln(√s / 2m_N)
+
+  // 几何（像素）：上部加速器环，中部侧视图（束流沿 x），下部 dN/dy
+  const ringY = 98, ringRy = 34;
+  const oy = 238, half = 76;                                   // 侧视图束流轴、半高度
+  const r1 = 22, r2 = 70, L = 72;                              // 对撞：桶部探测器内外半径、半长
+  const thMin = 7 * deg, thMax = 55 * deg;                     // 固定靶：前向谱仪极角覆盖
+  const stations = [45, 85, 125, 170, 215, 260];               // 固定靶：径迹探测站到靶的距离
+  const cols = [
+    { x0: 0,   name: 'Collider',     ex: 'e.g. RHIC (STAR BES), LHC',      fixed: false,
+      ox: 225, sqrts: sqrtsC, yCM: 0,         nTr: 40, acc: [-Math.asinh(L / r2), Math.asinh(L / r2)] },
+    { x0: 450, name: 'Fixed target', ex: 'e.g. SIS18, SPS, STAR FXT, FAIR', fixed: true,
+      ox: 540, sqrts: sqrtsF, yCM: yBeam / 2, nTr: 20, acc: [etaOf(thMax), etaOf(thMin)] }
+  ];
+  cols.forEach(c => { c.sig = sigma(c.sqrts); });
+
+  // 时间参数（秒）：每个事件周期 P 内，核靠近 → 碰撞 → 径迹飞出 → 淡出
+  const v = 170;                                               // β ≈ 1 的速度（像素/秒）
+  const tc = 0.65, tFade = tc + 2.0, P = tc + 2.65;
+  const omega = 4 * Math.PI / (3 * P);                         // 环中束团角速度：每个周期在 IP 交叉两次
+
+  // 一个事件：快度 y 按高斯分布抽样，飞行方向用无质量近似 y ≈ η
+  function makeEvent(c, k) {
+    const r = rng(2 * k + (c.fixed ? 1 : 0)), tracks = [];
+    for (let i = 0; i < c.nTr; i++) {
+      const y = c.yCM + c.sig * gauss(r);
+      const u = r(), col = species[u < 0.65 ? 0 : u < 0.85 ? 1 : 2];
+      const sgn = r() < 0.5 ? -1 : 1;
+      const th = 2 * Math.atan(Math.exp(-y));
+      const cs = Math.cos(th), sn = Math.max(Math.sin(th), 1e-3);
+      const inAcc = y > c.acc[0] && y < c.acc[1];
+      let len;                                                 // 径迹终点：接收度内停在探测器，否则飞出画面
+      if (!c.fixed) len = inAcc ? r2 / sn : Math.min(215 / Math.abs(cs), half / sn);
+      else if (inAcc) len = Math.min(stations[stations.length - 1] / cs, half / sn);
+      else len = Math.min((cs > 0 ? 340 : 82) / Math.abs(cs), half / sn);
+      tracks.push({ y, cs, sn: sgn * sn, len, inAcc, col });
+    }
+    return tracks;
+  }
+
+  // dN/dy 直方图：按时间确定已碰撞的事件数，逐个补齐
+  const yMin = -3, yMax = 3.2, bw = 0.2, nBin = Math.round((yMax - yMin) / bw);
+  let hist, nEv;
+  function reset() { hist = cols.map(() => new Array(nBin).fill(0)); nEv = 0; }
+  reset();
+  function advance(T) {
+    const target = T < tc ? 0 : Math.floor((T - tc) / P) + 1;
+    if (target < nEv) reset();
+    while (nEv < target) {
+      cols.forEach((c, j) => makeEvent(c, nEv).forEach(tr => {
+        const b = Math.floor((tr.y - yMin) / bw);
+        if (b >= 0 && b < nBin) hist[j][b]++;
+      }));
+      nEv++;
+    }
+  }
+
+  function dot(x, y, r, col, alpha = 1) {
+    ctx.globalAlpha = alpha;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fillStyle = col; ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+
+  function glow(x, y, r, alpha) {
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, `rgba(255,210,70,${alpha})`); g.addColorStop(1, 'rgba(255,210,70,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  function text(str, x, y, col, font = '12px Arial', align = 'center') {
+    ctx.font = font; ctx.fillStyle = col; ctx.textAlign = align; ctx.textBaseline = 'middle';
+    ctx.fillText(str, x, y);
+  }
+
+  // 带上下标的文字：_{...} 为下标，^{...} 为上标
+  function rich(str, x, y, size, col, bold = false, align = 'left') {
+    const parts = str.split(/(_\{[^}]*\}|\^\{[^}]*\})/).filter(Boolean).map(s =>
+      s.startsWith('_{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: size * 0.28 } :
+      s.startsWith('^{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: -size * 0.38 } :
+      { t: s, sz: size, dy: 0 });
+    const font = sz => `${bold ? 'bold ' : ''}${sz}px Arial`;
+    let w = 0;
+    parts.forEach(p => { ctx.font = font(p.sz); p.w = ctx.measureText(p.t).width; w += p.w; });
+    let xx = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillStyle = col;
+    parts.forEach(p => { ctx.font = font(p.sz); ctx.fillText(p.t, xx, y + p.dy); xx += p.w; });
+  }
+
+  function nucleus(x, y, rx, ry, col, alpha) {
+    ctx.globalAlpha = alpha;
+    ctx.beginPath(); ctx.ellipse(x, y, rx, ry, 0, 0, 2 * Math.PI);
+    ctx.fillStyle = col; ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,0.35)'; ctx.lineWidth = 0.8; ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  // 加速器俯视示意：对撞为两束反向流动、在 IP 交叉；固定靶为一束慢引出打靶
+  function drawAccelerator(c, T) {
+    const cx = c.x0 + (c.fixed ? 130 : 220), rx = c.fixed ? 100 : 160;
+    const pt = phi => [cx + rx * Math.cos(phi), ringY + ringRy * Math.sin(phi)];
+    const [ipx, ipy] = pt(Math.PI / 2);
+    const bunch = (phi, col) => { const [x, y] = pt(phi); dot(x, y, 4.5, col); };
+
+    ctx.strokeStyle = '#e0e0e0'; ctx.lineWidth = 8;
+    ctx.beginPath(); ctx.ellipse(cx, ringY, rx, ringRy, 0, 0, 2 * Math.PI); ctx.stroke();
+
+    if (!c.fixed) {
+      ctx.fillStyle = 'rgba(144,202,249,0.7)'; ctx.fillRect(ipx - 14, ipy - 8, 28, 16);
+      ctx.strokeStyle = DET; ctx.lineWidth = 1; ctx.strokeRect(ipx - 14, ipy - 8, 28, 16);
+      const per = 2 * Math.PI / 3;
+      const dt = (((omega * (T - tc)) % per) + per) % per / omega;   // 距上次在 IP 交叉的时间
+      if (dt < 0.35) glow(ipx, ipy, 6 + 40 * dt, 0.9 * (1 - dt / 0.35));
+      for (let k = 0; k < 3; k++) {
+        bunch(Math.PI / 2 - omega * (T - tc) + per * k, MAGENTA);
+        bunch(Math.PI / 2 + omega * (T - tc) + per * k, ORANGE);
+      }
+      text('← beam 1', cx - 60, 54, MAGENTA, 'bold 12px Arial');
+      text('beam 2 →', cx + 60, 54, ORANGE, 'bold 12px Arial');
+      text('detector at the interaction point', ipx, ipy + 19, DET);
+    } else {
+      const xt = c.x0 + 330, dtS = 0.08, travel = (xt - ipx) / v;
+      ctx.strokeStyle = '#e0e0e0'; ctx.lineWidth = 4;
+      ctx.beginPath(); ctx.moveTo(ipx, ipy); ctx.lineTo(xt, ipy); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(xt + 8, ipy - 5); ctx.lineTo(xt + 64, ipy - 18); ctx.lineTo(xt + 64, ipy + 18); ctx.lineTo(xt + 8, ipy + 5);
+      ctx.closePath(); ctx.fillStyle = 'rgba(144,202,249,0.7)'; ctx.fill();
+      ctx.strokeStyle = DET; ctx.lineWidth = 1; ctx.stroke();
+      // 慢引出：粒子连续流出，打在靶上
+      for (let j = Math.floor(T / dtS); j >= 0; j--) {
+        const x = ipx + v * (T - j * dtS);
+        if (x > xt) break;
+        dot(x, ipy, 1.8, MAGENTA, 0.8);
+      }
+      if (T > travel) { const s = ((T - travel) % dtS) / dtS; glow(xt, ipy, 7 + 5 * s, 0.8 * (1 - s)); }
+      ctx.fillStyle = '#616161'; ctx.fillRect(xt - 1.5, ipy - 7, 3, 14);
+      for (let k = 0; k < 3; k++) bunch(Math.PI / 2 - omega * T + 2 * Math.PI * k / 3, MAGENTA);
+      text('← beam', cx, 54, MAGENTA, 'bold 12px Arial');
+      text('slow extraction', (ipx + xt) / 2 + 20, ipy + 19, '#888');
+      text('target', xt, ipy - 15, '#616161');
+      text('detector', xt + 40, ipy + 29, DET);
+    }
+  }
+
+  // 侧视图：一次碰撞事件，接收度内的径迹为彩色，其余为灰色
+  function drawSideView(c, tau, tracks) {
+    const x0 = c.x0, ox = c.ox;
+    ctx.save();
+    ctx.beginPath(); ctx.rect(x0 + 8, oy - half, 424, 2 * half); ctx.clip();
+    ctx.fillStyle = '#fafafa'; ctx.fillRect(x0 + 8, oy - half, 424, 2 * half);
+    ctx.setLineDash([6, 6]); ctx.strokeStyle = '#ccc'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0 + 8, oy); ctx.lineTo(x0 + 432, oy); ctx.stroke();
+    ctx.setLineDash([]);
+    text('side view', x0 + 14, oy - half + 10, '#999', 'italic 11px Arial', 'left');
+
+    if (!c.fixed) {
+      [oy - r2, oy + r1].forEach(yTop => {
+        ctx.fillStyle = 'rgba(144,202,249,0.3)'; ctx.fillRect(ox - L, yTop, 2 * L, r2 - r1);
+        ctx.strokeStyle = '#90caf9'; ctx.lineWidth = 1; ctx.strokeRect(ox - L, yTop, 2 * L, r2 - r1);
+      });
+      text('barrel detector', ox, oy - (r1 + r2) / 2, DET);
+    } else {
+      const zL = stations[stations.length - 1];
+      [-1, 1].forEach(s => {
+        ctx.beginPath();
+        ctx.moveTo(ox, oy); ctx.lineTo(ox + half / Math.tan(thMax), oy + s * half);
+        ctx.lineTo(ox + zL, oy + s * half); ctx.lineTo(ox + zL, oy + s * zL * Math.tan(thMin));
+        ctx.closePath(); ctx.fillStyle = 'rgba(144,202,249,0.18)'; ctx.fill();
+        ctx.fillStyle = '#90a4ae';
+        stations.forEach(dz => {
+          const lo = dz * Math.tan(thMin), hi = Math.min(dz * Math.tan(thMax), half - 2);
+          ctx.fillRect(ox + dz - 2, oy + s * lo, 4, s * (hi - lo));
+        });
+      });
+      ctx.fillStyle = '#616161'; ctx.fillRect(ox - 1.5, oy - 26, 3, 52);
+      text('target', ox, oy + 36, '#616161');
+      text('forward', ox + 300, oy - 62, DET);
+      text('detector', ox + 300, oy - 48, DET);
+    }
+
+    // 入射核：束流核洛伦兹收缩，固定靶的靶核静止
+    const R = 20;
+    if (tau < tc + 0.2) {
+      const a = tau < tc ? 1 : 1 - (tau - tc) / 0.2, d = Math.max(tc - tau, 0) * v;
+      nucleus(ox - d, oy, R / gam, R, MAGENTA, a);
+      if (!c.fixed) nucleus(ox + d, oy, R / gam, R, ORANGE, a);
+      else nucleus(ox, oy, R, R, '#90a4ae', 0.8 * a);
+      if (tau < tc - 0.1) {
+        text(`γ ≈ ${gam.toFixed(1)}`, ox - d, oy - R - 9, MAGENTA, 'bold 12px Arial');
+        if (!c.fixed) text(`γ ≈ ${gam.toFixed(1)}`, ox + d, oy - R - 9, ORANGE, 'bold 12px Arial');
+        else text('at rest', ox, oy - R - 9, '#607d8b', 'bold 12px Arial');
+      }
+    }
+    if (tau >= tc && tau < tc + 0.5) glow(ox, oy, 8 + 60 * (tau - tc), 0.9 * (1 - (tau - tc) / 0.5));
+
+    // 径迹
+    if (tau > tc) {
+      const l0 = (tau - tc) * v, fade = 1 - clamp((tau - tFade) / (P - tFade - 0.1));
+      tracks.forEach(tr => {
+        const l = Math.min(l0, tr.len), x = ox + l * tr.cs, y = oy - l * tr.sn;
+        ctx.globalAlpha = fade * (tr.inAcc ? 0.9 : 0.6);
+        ctx.strokeStyle = tr.inAcc ? tr.col : '#bbb'; ctx.lineWidth = tr.inAcc ? 1.6 : 1;
+        ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(x, y); ctx.stroke();
+        ctx.globalAlpha = 1;
+        if (l < tr.len) dot(x, y, 2.5, tr.inAcc ? tr.col : '#bbb', fade);
+      });
+    }
+    ctx.restore();
+  }
+
+  // 实验室系快度分布：直方图逐事件累积，虚线为期望的高斯分布
+  function drawRapidity(c, j) {
+    const py0 = 336, py1 = 420, x0 = c.x0 + 30, x1 = c.x0 + 405, dMax = 17;
+    const X = y => x0 + (y - yMin) / (yMax - yMin) * (x1 - x0);
+    const Y = d => py1 - Math.min(d / dMax, 1) * (py1 - py0);
+    const inAcc = y => y > c.acc[0] && y < c.acc[1];
+
+    ctx.fillStyle = 'rgba(144,202,249,0.25)';
+    ctx.fillRect(X(c.acc[0]), py0, X(c.acc[1]) - X(c.acc[0]), py1 - py0);
+    text('acceptance', (X(c.acc[0]) + X(c.acc[1])) / 2, py0 + 8, '#1565c0', '11px Arial');
+
+    if (nEv > 0) hist[j].forEach((n, b) => {
+      const y = yMin + b * bw;
+      ctx.fillStyle = inAcc(y + bw / 2) ? 'rgba(21,101,192,0.55)' : '#d0d0d0';
+      const top = Y(n / (nEv * bw));
+      ctx.fillRect(X(y) + 0.5, top, X(y + bw) - X(y) - 1, py1 - top);
+    });
+
+    ctx.setLineDash([4, 3]); ctx.strokeStyle = '#555'; ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    for (let y = yMin; y <= yMax + 1e-9; y += 0.05) {
+      const d = c.nTr / (c.sig * Math.sqrt(2 * Math.PI)) * Math.exp(-((y - c.yCM) ** 2) / (2 * c.sig ** 2));
+      y === yMin ? ctx.moveTo(X(y), Y(d)) : ctx.lineTo(X(y), Y(d));
+    }
+    ctx.stroke();
+    ctx.setLineDash([3, 3]); ctx.strokeStyle = '#333'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(X(c.yCM), py0); ctx.lineTo(X(c.yCM), py1); ctx.stroke();
+    ctx.setLineDash([]);
+    rich(c.fixed ? `y_{cm} = y_{beam}/2 ≈ ${c.yCM.toFixed(2)}` : 'y_{cm} = 0', X(c.yCM), py0 - 8, 12, '#333', false, 'center');
+    text('dN/dy', x0, py0 - 8, '#333', '12px Arial', 'left');
+
+    // 坐标轴、刻度与束流/靶的快度
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, py1); ctx.lineTo(x1, py1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x1 + 6, py1); ctx.lineTo(x1 - 2, py1 - 4); ctx.lineTo(x1 - 2, py1 + 4); ctx.closePath();
+    ctx.fillStyle = '#555'; ctx.fill();
+    rich('y_{lab}', x1 + 9, py1, 13, '#333');
+    for (let n = -3; n <= 3; n++) {
+      ctx.beginPath(); ctx.moveTo(X(n), py1); ctx.lineTo(X(n), py1 + 4); ctx.stroke();
+      text(String(n), X(n), py1 + 12, '#555');
+    }
+    const marks = c.fixed ? [[0, '#607d8b', 'target'], [yBeam, MAGENTA, 'beam']]
+                          : [[-yBeam, ORANGE, 'beam 2'], [yBeam, MAGENTA, 'beam 1']];
+    marks.forEach(([y, col, label]) => {
+      ctx.beginPath(); ctx.moveTo(X(y), py1 - 8); ctx.lineTo(X(y) - 5, py1); ctx.lineTo(X(y) + 5, py1); ctx.closePath();
+      ctx.fillStyle = col; ctx.fill();
+      text(label, X(y), py1 + 26, col, 'bold 12px Arial');
+    });
+  }
+
+  const notes = [
+    [`√s_{NN} = 2E_{beam} = ${sqrtsC.toFixed(1)} GeV`,
+     'CM = lab: symmetric around y = 0, mid-rapidity at 90°',
+     'Low √s: luminosity drops (beams hard to focus)'],
+    [`√s_{NN} = √(2m_{N}² + 2m_{N}E_{beam}) = ${sqrtsF.toFixed(1)} GeV`,
+     'CM boosted forward: acceptance in y_{cm} shifts with √s',
+     'Dense target: high interaction rate']
+  ];
+
+  function draw(T) {
+    advance(T);
+    ctx.clearRect(0, 0, W, H);
+    rich(`Same Au beam in both cases: E_{beam} = ${E} GeV per nucleon, γ ≈ ${gam.toFixed(1)}, y_{beam} ≈ ${yBeam.toFixed(2)}`,
+         W / 2, 12, 13, '#888', false, 'center');
+    ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(W / 2, 26); ctx.lineTo(W / 2, H - 6); ctx.stroke();
+
+    const k = Math.floor(T / P), tau = T - k * P;
+    cols.forEach((c, j) => {
+      text(c.name, c.x0 + 10, 34, '#333', 'bold 17px Arial', 'left');
+      ctx.font = 'bold 17px Arial';
+      text(c.ex, c.x0 + 20 + ctx.measureText(c.name).width, 35, '#888', '12px Arial', 'left');
+      drawAccelerator(c, T);
+      drawSideView(c, tau, makeEvent(c, k));
+      drawRapidity(c, j);
+      rich(notes[j][0], c.x0 + 10, 468, 14, MAGENTA, true);
+      rich('• ' + notes[j][1], c.x0 + 10, 488, 13, '#333');
+      rich('• ' + notes[j][2], c.x0 + 10, 506, 13, '#333');
+    });
+  }
+
+  // 播放控制：只在本页可见时运行
+  let start = null, raf = null;
+  function frame(now) {
+    if (start === null) start = now;
+    draw((now - start) / 1000);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (!raf) { start = null; raf = requestAnimationFrame(frame); } }
+  function stop() { cancelAnimationFrame(raf); raf = null; }
+  function sync() { Reveal.getCurrentSlide() === slide ? play() : stop(); }
+
+  canvas.addEventListener('click', () => { stop(); play(); });
+  Reveal.on('ready', sync);
+  Reveal.on('slidechanged', sync);
+  draw(12 * P + tc + 1.2);   // 静态画面（如导出 PDF）显示径迹与累积的分布
+})();
+</script>
+
+<!-- 巨正则系综动画 -->
+<script>
+(function () {
+  const slide = document.getElementById('gce-slide');
+  const canvas = document.getElementById('gce-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 900, H = 440, S = 2;
+  canvas.width = W * S; canvas.height = H * S;
+  ctx.scale(S, S);
+
+  const clamp = (x, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, x));
+  const MAGENTA = '#c71585';
+
+  // 每个事件用独立的可复现随机数（mulberry32）
+  function rng(k) {
+    let a = k * 9973 + 12345;
+    return () => {
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  // 几何：上方为整个系统（横轴为快度），中间阴影为探测器接收度
+  const bx0 = 30, bx1 = 870, by0 = 34, by1 = 196, cx = (bx0 + bx1) / 2;
+  const f = 0.1;                          // 接收度占总快度范围的比例
+  const wHalf = f * (bx1 - bx0) / 2;
+  const nTot = 300, lambda = nTot * f;    // 每个事件的总粒子数（固定）、接收度内平均数
+  const colors = ['#1565c0', '#2e7d32', '#e57373'];
+
+  // 时间参数（秒）：先慢放 nSlow 个事件，再快进累积 nFast 个事件
+  const tStart = 0.5, dEv = 1.6, tExp = 0.9, nSlow = 6;
+  const tFast0 = tStart + nSlow * dEv, tFast1 = tFast0 + 3, nFast = 3000;
+  const tEnd = tFast1 + 1.5;              // 所有要点出现后停在最终画面
+
+  function makeEvent(k) {
+    const r = rng(k), ps = [];
+    let nIn = 0;
+    for (let i = 0; i < nTot; i++) {
+      const xf = bx0 + 4 + (bx1 - bx0 - 8) * r();
+      const y = by0 + 6 + (by1 - by0 - 12) * r();
+      const c = r();
+      const inAcc = Math.abs(xf - cx) < wHalf;
+      if (inAcc) nIn++;
+      ps.push({ xf, y, col: colors[c < 0.65 ? 0 : c < 0.85 ? 1 : 2], inAcc });
+    }
+    return { ps, nIn };
+  }
+  let shown = { k: -1 };
+  function getEvent(k) {
+    if (shown.k !== k) shown = { k, ev: makeEvent(k) };
+    return shown.ev;
+  }
+
+  // 直方图：按时间确定应完成的事件数，逐个补齐
+  let hist, nDone, sum, sum2;
+  function reset() { hist = new Array(nTot + 1).fill(0); nDone = 0; sum = 0; sum2 = 0; }
+  reset();
+  function eventsDone(t) {
+    if (t < tStart + tExp) return 0;
+    if (t < tFast0) return Math.min(nSlow, Math.floor((t - tStart - tExp) / dEv) + 1);
+    return nSlow + Math.floor(nFast * clamp((t - tFast0) / (tFast1 - tFast0)));
+  }
+  function advance(t) {
+    const target = eventsDone(t);
+    if (target < nDone) reset();
+    while (nDone < target) {
+      const n = makeEvent(nDone).nIn;
+      hist[n]++; sum += n; sum2 += n * n; nDone++;
+    }
+  }
+
+  // 泊松分布（巨正则系综中理想气体的粒子数分布）
+  const poisson = n => {
+    let lf = 0;
+    for (let i = 2; i <= n; i++) lf += Math.log(i);
+    return Math.exp(-lambda + n * Math.log(lambda) - lf);
+  };
+
+  function dot(x, y, r, col, alpha) {
+    ctx.globalAlpha = alpha;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fillStyle = col; ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+
+  function drawSystem(t) {
+    ctx.fillStyle = '#fafafa'; ctx.fillRect(bx0, by0, bx1 - bx0, by1 - by0);
+    ctx.strokeStyle = '#bbb'; ctx.lineWidth = 1; ctx.strokeRect(bx0, by0, bx1 - bx0, by1 - by0);
+    ctx.fillStyle = 'rgba(199,21,133,0.08)'; ctx.fillRect(cx - wHalf, by0, 2 * wHalf, by1 - by0);
+
+    // 当前显示的事件及其阶段
+    let k = -1, s = 0;
+    if (t >= tStart && t < tFast0) { k = Math.floor((t - tStart) / dEv); s = t - tStart - k * dEv; }
+    else if (t >= tFast0) { k = Math.max(nDone - 1, 0); s = dEv; }
+    const done = k >= 0 && s >= tExp;
+    if (k >= 0) {
+      const ev = getEvent(k), e = clamp(s / tExp), ease = 1 - Math.pow(1 - e, 3);
+      ev.ps.forEach(p => {
+        const hi = done && p.inAcc;
+        dot(cx + (p.xf - cx) * ease, p.y, hi ? 3.5 : 2.5, p.col, done && !p.inAcc ? 0.2 : 0.85);
+      });
+    }
+
+    ctx.setLineDash([5, 4]); ctx.strokeStyle = MAGENTA; ctx.lineWidth = 1.5;
+    ctx.strokeRect(cx - wHalf, by0, 2 * wHalf, by1 - by0);
+    ctx.setLineDash([]);
+
+    // 标题行
+    ctx.textBaseline = 'middle'; ctx.font = 'bold 14px Arial';
+    ctx.textAlign = 'left'; ctx.fillStyle = '#333';
+    if (k >= 0) ctx.fillText(`Event #${k + 1}`, bx0, 20);
+    ctx.textAlign = 'right'; ctx.font = '14px Arial';
+    ctx.fillText(`N_tot = ${nTot} in every event`, bx1, 20);
+    ctx.textAlign = 'center'; ctx.fillStyle = MAGENTA; ctx.font = 'bold 14px Arial';
+    ctx.fillText('detector acceptance', cx, 20);
+
+    // 接收度内的计数与交换箭头
+    if (done) {
+      const ev = getEvent(k);
+      ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.fillRect(cx - 32, by0 + 5, 64, 20);
+      ctx.fillStyle = MAGENTA; ctx.font = 'bold 15px Arial';
+      ctx.fillText(`N = ${ev.nIn}`, cx, by0 + 15);
+      [cx - wHalf, cx + wHalf].forEach(x => {
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.beginPath(); ctx.arc(x, (by0 + by1) / 2, 13, 0, 2 * Math.PI); ctx.fill();
+        ctx.fillStyle = MAGENTA; ctx.font = 'bold 20px Arial';
+        ctx.fillText('⇄', x, (by0 + by1) / 2 - 1);
+      });
+    }
+
+    // 快度轴与区域说明
+    const ay = by1 + 14;
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(bx0, ay); ctx.lineTo(bx1, ay); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(bx1, ay); ctx.lineTo(bx1 - 8, ay - 4); ctx.lineTo(bx1 - 8, ay + 4); ctx.closePath();
+    ctx.fillStyle = '#555'; ctx.fill();
+    ctx.font = '13px Arial'; ctx.textAlign = 'right';
+    ctx.fillText('rapidity y', bx1, ay + 14);
+    ctx.textAlign = 'center'; ctx.fillStyle = '#888';
+    ctx.fillText('rest of the fireball: heat bath & reservoir', (bx0 + cx - wHalf) / 2, ay + 14);
+    ctx.fillText('rest of the fireball: heat bath & reservoir', (bx1 + cx + wHalf) / 2 - 30, ay + 14);
+    ctx.fillStyle = MAGENTA; ctx.font = 'bold 13px Arial';
+    ctx.fillText(`f ≈ ${Math.round(f * 100)}%`, cx, ay + 14);
+  }
+
+  function drawBullets(t) {
+    const items = [
+      [0,              '#333',  '15px Arial',      'Every event: total N and charges fixed (canonical)'],
+      [tStart + tExp,  '#333',  '15px Arial',      'Detector sees only a fraction f ≪ 1 of all particles'],
+      [tStart + dEv + tExp, '#333', '15px Arial',  'The rest is a heat bath & reservoir: exchanges E, Q'],
+      [tFast0,         MAGENTA, 'bold 15px Arial', '⇒ Grand canonical ensemble in the acceptance (T, μ)'],
+      [tFast1,         '#333',  '15px Arial',      'Var(N) / ⟨N⟩ = 1 − f → 1 (Poisson) for f ≪ 1'],
+      [tFast1 + 1,     '#888',  'italic 13px Arial', 'Requires Δy(corr), Δy(thermal) ≪ Δy(acc) ≪ Δy(total)']
+    ];
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    items.forEach(([t1, col, font, text], i) => {
+      const a = clamp((t - t1) / 0.4);
+      if (a <= 0) return;
+      ctx.globalAlpha = a; ctx.fillStyle = col; ctx.font = font;
+      ctx.fillText((i === 3 || i === 5 ? '' : '• ') + text, bx0, 262 + 30 * i);
+      ctx.globalAlpha = 1;
+    });
+  }
+
+  function drawHistogram() {
+    const hx0 = 540, hx1 = 870, hy0 = 268, hy1 = 400, nMin = 10, nMax = 50;
+    const bw = (hx1 - hx0) / (nMax - nMin + 1);
+    const pMax = poisson(Math.floor(lambda)), yScale = (hy1 - hy0) / (pMax * 1.15);
+    const xOf = n => hx0 + (n - nMin + 0.5) * bw;
+
+    if (nDone > 0) {
+      ctx.fillStyle = 'rgba(21,101,192,0.55)';
+      for (let n = nMin; n <= nMax; n++) {
+        // 慢放阶段每个事件叠一格，快进后按概率归一化
+        const h = nDone <= nSlow ? hist[n] * 18 : hist[n] / nDone * yScale;
+        ctx.fillRect(xOf(n) - bw / 2 + 0.5, hy1 - h, bw - 1, h);
+      }
+    }
+    // 泊松曲线在快进开始后出现
+    if (nDone > nSlow) {
+      ctx.strokeStyle = MAGENTA; ctx.lineWidth = 2; ctx.setLineDash([5, 3]);
+      ctx.beginPath();
+      for (let n = nMin; n <= nMax; n++) {
+        const y = hy1 - poisson(n) * yScale;
+        n === nMin ? ctx.moveTo(xOf(n), y) : ctx.lineTo(xOf(n), y);
+      }
+      ctx.stroke(); ctx.setLineDash([]);
+    }
+
+    // 坐标轴与刻度
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(hx0, hy1); ctx.lineTo(hx1, hy1); ctx.stroke();
+    ctx.fillStyle = '#555'; ctx.font = '12px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    for (let n = nMin; n <= nMax; n += 10) {
+      ctx.beginPath(); ctx.moveTo(xOf(n), hy1); ctx.lineTo(xOf(n), hy1 + 4); ctx.stroke();
+      ctx.fillText(n, xOf(n), hy1 + 13);
+    }
+    ctx.font = '13px Arial';
+    ctx.fillText('N in acceptance (event by event)', (hx0 + hx1) / 2, hy1 + 30);
+
+    // 图例与统计量
+    ctx.textAlign = 'left'; ctx.font = '12px Arial';
+    ctx.fillStyle = 'rgba(21,101,192,0.55)'; ctx.fillRect(hx0, hy0 - 4, 14, 9);
+    ctx.fillStyle = '#333'; ctx.fillText('events', hx0 + 20, hy0);
+    if (nDone > nSlow) {
+      ctx.strokeStyle = MAGENTA; ctx.lineWidth = 2; ctx.setLineDash([5, 3]);
+      ctx.beginPath(); ctx.moveTo(hx0, hy0 + 18); ctx.lineTo(hx0 + 14, hy0 + 18); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#333'; ctx.fillText('Poisson (GCE)', hx0 + 20, hy0 + 18);
+    }
+    if (nDone >= 2) {
+      const mean = sum / nDone, ratio = (sum2 / nDone - mean * mean) / mean;
+      ctx.textAlign = 'right'; ctx.fillStyle = '#333'; ctx.font = '13px Arial';
+      ctx.fillText(`${nDone} events`, hx1, hy0);
+      ctx.fillText(`⟨N⟩ = ${mean.toFixed(1)}`, hx1, hy0 + 18);
+      ctx.fillText(`Var/⟨N⟩ = ${ratio.toFixed(2)}`, hx1, hy0 + 36);
+    }
+    ctx.textBaseline = 'alphabetic';
+  }
+
+  function draw(t) {
+    advance(t);
+    ctx.clearRect(0, 0, W, H);
+    drawSystem(t);
+    drawBullets(t);
+    drawHistogram();
+  }
+
+  // 播放控制：首次进入本页播放一遍，停在最终画面；之后只有按 Replay 才重播
+  let start = null, raf = null, finished = false;
+  function frame(now) {
+    if (start === null) start = now;
+    const t = (now - start) / 1000;
+    if (t >= tEnd) { draw(tEnd); raf = null; finished = true; return; }
+    draw(t);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { stop(); start = null; raf = requestAnimationFrame(frame); }
+  function stop() { cancelAnimationFrame(raf); raf = null; }
+  function sync() {
+    if (Reveal.getCurrentSlide() !== slide) stop();
+    else if (!finished && !raf) play();
+  }
+
+  document.getElementById('gce-replay').addEventListener('click', play);
+  Reveal.on('ready', sync);
+  Reveal.on('slidechanged', sync);
+  draw(tEnd);   // 静态画面（如导出 PDF）显示收敛后的直方图
+})();
+</script>
+
+</body>
+</html>
