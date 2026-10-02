@@ -15,6 +15,18 @@
     .reveal h2, .reveal h3 { font-family: 'Rockwell'; text-transform: none; }
     .reveal h3 { font-size: 0.9em; }
 
+    /* 边框：画在 .slides 容器上（960×700），所有页共用 */
+    :root { --accent1: #c71585; }
+    .reveal .slides::before { content: ''; position: absolute; pointer-events: none;
+                              inset: -16px -22px -16px -22px; border: 1.5px solid #e6cfe0; border-radius: 16px;
+                              box-shadow: 0 2px 14px rgba(199,21,133,0.08); }
+
+    /* 页脚：标题页隐藏（标题页 section 带 data-state="is-title"） */
+    .deck-footer { position: absolute; left: 24px; bottom: 6px; z-index: 30; font-size: 13px; color: #999;
+                   font-family: 'Source Sans Pro', Helvetica, sans-serif; }
+    .deck-footer b { color: var(--accent1); font-weight: 600; }
+    .reveal-viewport.is-title .deck-footer { display: none; }
+
     /* 多图并排容器 */
     .fig-row { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 20px; }
     .reveal figure { position: relative; margin: 0; }
@@ -50,6 +62,19 @@
                   background: white; color: #c71585; cursor: pointer; font-family: Arial, sans-serif; }
     .replay-btn:hover { background: #c71585; color: white; }
 
+    /* O(4) vs Z2 页的控件与两栏说明 */
+    .sym-ctrl { display: flex; justify-content: center; align-items: center; gap: 40px;
+                font-size: 0.42em; font-family: Arial, sans-serif; color: #333; }
+    .sym-ctrl input[type=range] { width: 220px; vertical-align: middle; accent-color: #c71585; }
+    .sym-ctrl input[type=checkbox] { accent-color: #c71585; }
+    .reveal ul.sym-col { width: 420px; margin: 6px 0 0; font-size: 0.42em; line-height: 1.5; text-align: left; }
+
+    /* CEP 与伊辛模型页的要点列表 */
+    .sweep-btn { font-size: 0.42em; padding: 3px 14px; margin: 0 6px; border: 1.5px solid var(--c); border-radius: 16px;
+                 background: white; color: var(--c); cursor: pointer; font-family: Arial, sans-serif; }
+    .sweep-btn:hover, .sweep-btn.active { background: var(--c); color: white; }
+    .reveal ul.ising-list { display: block; width: 880px; margin: 4px auto 0; font-size: 0.42em; line-height: 1.45; text-align: left; }
+
     /* 占位图：换成真正图片后删除 */
     .placeholder { display: flex; align-items: center; justify-content: center; width: 400px; height: 280px;
                    border: 2px dashed #bbb; color: #999; font-size: 0.5em; }
@@ -58,24 +83,29 @@
 
 <body>
 <div class="reveal">
+<div class="deck-footer"><b>Shi Yin</b> &nbsp;·&nbsp; Alumni Seminar, 09.10.2026</div>
 <div class="slides">
 
 <!-- Title -->
-<section>
-  <h2>Title of the talk</h2>
-  <p style="font-weight: bold;">Shi Yin (尹诗)</p>
-  <p style="color: mediumvioletred;">Group Meeting, 30.09.2026</p>
+<section data-state="is-title">
+  <h3>From critical scaling to baryon number fluctuations: probing the QCD critical point</h3>
+  <p style="font-weight: bold;">Shi Yin</p>
+  <p style="color: mediumvioletred;">Alumni Seminar, 09.10.2026</p>
   <!-- 参考文献容器（不需要可删除） -->
   <div style="color: blue; font-size: 20px; display: flex; justify-content: center; text-align: left; margin: 20px 0;">
     <span style="white-space: nowrap; margin-right: 10px;">Based on:</span>
     <div>
-      1. Author A and <b>SY</b>, arXiv:xxxx.xxxxx <br>
-      2. Author B and <b>SY</b>, in preparation
+      1. Fu, Luo, Pawlowski, Rennecke and <b>SY</b>, <a href="https://arxiv.org/abs/2308.15508" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:2308.15508</a> <br>
+      2. Recchi and <b>SY</b>, <a href="https://arxiv.org/abs/2609.17328" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:2609.17328</a> <br>
+      3. <b>SY</b>, in preparation
     </div>
   </div>
-  <img src="CRC-TR211long.svg" style="width:20%; height:auto; margin-right:50px;">
-  <img src="image.jpeg" style="width:30%; height:auto; margin-right:30px;">
-  <img src="fQCDLogoFR.png" style="width:25%; height:auto;">
+  <p style="font-size: smaller;">With the help of
+    <img src="Claude%20Logo%20PNG%20SVG%20Vector.png" alt="Claude" style="height: 1.15em; width: auto; margin: 0 0 0 6px; vertical-align: -0.22em;">
+  </p>
+  <img src="CRC-TR211long.svg" style="width:15%; height:auto; margin-right:150px;">
+  <img src="image.jpeg" style="width:25%; height:auto; margin-right:100px;">
+  <img src="fQCDLogoFR.png" style="width:20%; height:auto;">
 </section>
 
 <!-- Outline：每进入一个新部分就复制一页，把当前条目的 class="dim" 去掉 -->
@@ -114,6 +144,60 @@
   <div style="text-align: right; width: 900px; margin: -10px auto 0;">
     <button id="gce-replay" class="replay-btn">&#8635; Replay</button>
   </div>
+</section>
+
+<!-- O(4) vs Z2：左为 Z2 双势阱，右为 O(4) 墨西哥帽；小球显示涨落模式，滑块调温度，勾选加入显式破缺（代码见文件末尾） -->
+<section id="sym-slide">
+  <h3 style="margin-bottom: 0;">O(4) vs. Z<sub>2</sub>: shape of the effective potential</h3>
+  <canvas id="sym-canvas" style="width: 900px; height: 310px;"></canvas>
+  <div class="sym-ctrl">
+    <label>T / T<sub>c</sub> <input id="sym-t" type="range" min="0.5" max="1.3" step="0.01" value="0.5"> <span id="sym-t-val">0.50</span></label>
+    <label><input id="sym-h" type="checkbox"> explicit breaking \(-h\sigma\)</label>
+  </div>
+  <div class="fig-row" style="align-items: flex-start; gap: 40px;">
+    <ul class="sym-col">
+      <li>\(U(\sigma)=\tfrac{a}{2}\sigma^2+\tfrac{\lambda}{4}\sigma^4-h\sigma\), one real field</li>
+      <li>two isolated vacua \(\pm\sigma_0\): no flat direction, all modes massive</li>
+      <li>3D Ising class: QCD critical endpoint</li>
+    </ul>
+    <ul class="sym-col">
+      <li>\(U(\rho)-h\sigma\), &nbsp;\(\rho=\tfrac12(\sigma^2+\vec\pi^{\,2})\)</li>
+      <li>valley of vacua \(S^3\): flat directions \(\Rightarrow\) 3 Goldstone pions, \(m_\pi^2=U'(\rho_0)=h/\sigma_0\)</li>
+      <li>3D O(4) class: chiral transition (\(N_f=2,\ m_q=0\))</li>
+    </ul>
+  </div>
+  <p class="fragment" style="font-size: 0.45em; color: blue; margin: 8px 0 0;">
+    \(h\neq0\): the pion direction stays curved, \(m_\pi^2=h/\sigma_0>0\) &rArr; only the \(\sigma\) direction can turn flat
+    &rArr; a critical point at \(m_q\neq0\) (e.g. the QCD CEP) is Z<sub>2</sub>, not O(4)
+  </p>
+</section>
+
+<!-- CEP 与伊辛模型：三个相图沿 r < 0、r = 0、r > 0 扫过 h，下方为共同的 U(φ) 与 φ(h)；按钮播放对应颜色的过程，点击画布清空（代码见文件末尾） -->
+<section id="ising-slide">
+  <h3 style="margin-bottom: 0;">Why is the QCD CEP an Ising critical point?</h3>
+  <canvas id="ising-canvas" style="width: 900px; height: 380px; cursor: pointer;"></canvas>
+  <div style="margin-top: -6px;">
+    <button class="sweep-btn" data-k="0" style="--c: #1565c0;">&#9654; r &lt; 0: first-order line</button>
+    <button class="sweep-btn" data-k="1" style="--c: #d32f2f;">&#9654; r = 0: critical point</button>
+    <button class="sweep-btn" data-k="2" style="--c: #2e7d32;">&#9654; r &gt; 0: crossover</button>
+  </div>
+  <ul class="ising-list">
+    <li>Only <b>one</b> mode turns soft (\(\xi\to\infty\)): one real field \(\phi\) &rArr; \(U(\phi)=\tfrac{r}{2}\phi^2+\tfrac{u}{4}\phi^4-h\phi\) &nbsp;(\(\phi^3\) removed by a shift)</li>
+    <li>First-order line \(=\{h=0,\ r<0\}\): two degenerate minima (\(\uparrow/\downarrow\), liquid/gas, hadrons/quark matter)</li>
+    <li>Same \(d=3\) and same order parameter &rArr; same exponents \(\beta\simeq0.326,\ \gamma\simeq1.237,\ \nu\simeq0.630,\ \delta\simeq4.79\)</li>
+  </ul>
+  <p class="fragment" style="font-size: 0.45em; color: blue; margin: 6px 0 0;">
+    In QCD the Z<sub>2</sub> is not a symmetry of the Lagrangian: it <b>emerges</b> at the CEP.
+    \(\phi\) mixes \(\sigma\), \(n_B\) and \(\varepsilon\); &nbsp;\((T,\mu_B)\to(r,h)\) is a non-universal map
+  </p>
+</section>
+
+<!-- Ripples of the QCD critical point：CEP 周围的涟漪（示意），中心为很小的 scaling 区，freeze-out 曲线穿过涟漪区；循环播放，点击重新开始（代码见文件末尾） -->
+<section id="ripple-slide">
+  <h3 style="margin-bottom: 0;">Ripples of the QCD critical point</h3>
+  <canvas id="ripple-canvas" style="width: 900px; height: 460px; cursor: pointer;"></canvas>
+  <figcaption style="text-align: center; margin-top: 14px;">W.-j. Fu, X. Luo, J. M. Pawlowski, F. Rennecke, <b>SY</b>,
+    <a href="https://arxiv.org/abs/2308.15508" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:2308.15508</a></figcaption>
 </section>
 
 <!-- 单图 + 标注 -->
@@ -228,6 +312,7 @@
 <script>
 Reveal.initialize({
   hash: true,
+  margin: 0.1,          // 留出边框的位置
   slideNumber: 'c/t',
   plugins: [ RevealMath.KaTeX ]
 });
@@ -457,7 +542,7 @@ Reveal.initialize({
   function sync() { Reveal.getCurrentSlide() === slide ? play() : stop(); }
 
   canvas.addEventListener('click', () => { stop(); play(); });
-  Reveal.on('ready', sync);
+  Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
   Reveal.on('slidechanged', sync);
   draw(tq - 1);   // 静态画面（如导出 PDF）显示 QGP 阶段
 })();
@@ -674,7 +759,7 @@ Reveal.initialize({
   function sync() { Reveal.getCurrentSlide() === slide ? play() : stop(); }
 
   canvas.addEventListener('click', () => { stop(); play(); });
-  Reveal.on('ready', sync);
+  Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
   Reveal.on('slidechanged', sync);
   draw(tFade - 0.1);   // 静态画面（如导出 PDF）显示完整事件
 })();
@@ -1015,7 +1100,7 @@ Reveal.initialize({
   function sync() { Reveal.getCurrentSlide() === slide ? play() : stop(); }
 
   canvas.addEventListener('click', () => { stop(); play(); });
-  Reveal.on('ready', sync);
+  Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
   Reveal.on('slidechanged', sync);
   draw(12 * P + tc + 1.2);   // 静态画面（如导出 PDF）显示径迹与累积的分布
 })();
@@ -1268,9 +1353,734 @@ Reveal.initialize({
   }
 
   document.getElementById('gce-replay').addEventListener('click', play);
-  Reveal.on('ready', sync);
+  Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
   Reveal.on('slidechanged', sync);
   draw(tEnd);   // 静态画面（如导出 PDF）显示收敛后的直方图
+})();
+</script>
+
+<!-- O(4) vs Z2 有效势 -->
+<script>
+(function () {
+  const slide = document.getElementById('sym-slide');
+  const canvas = document.getElementById('sym-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 900, H = 310, S = 2;
+  canvas.width = W * S; canvas.height = H * S;
+  ctx.scale(S, S);
+
+  const clamp = (x, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, x));
+  const MAGENTA = '#c71585', BLUE = '#1565c0', RED = '#d32f2f';
+
+  // 势 U = a/2 φ² + 1/4 φ⁴ − hσ，a = 2(T/Tc − 1)；场的单位取 T = Tc/2 时的 σ₀ = 1
+  const hVal = 0.12, RMAX = 1.6, ZMAX = 0.35, ZCUT = 0.2;   // ZCUT：墨西哥帽帽沿的截断高度
+  let a = -1, h = 0, s0 = 1, mSig2 = 2, mPi2 = 0;
+  const Uz = x => a * x * x / 2 + x ** 4 / 4 - h * x;
+  const dUz = x => a * x + x ** 3 - h;
+  const Uo = (x, y) => { const r2 = x * x + y * y; return a * r2 / 2 + r2 * r2 / 4 - h * x; };
+
+  function setParams(t, hOn) {
+    a = 2 * (t - 1); h = hOn ? hVal : 0;
+    if (!h) s0 = a < 0 ? Math.sqrt(-a) : 0;
+    else {                                // 解 aσ + σ³ = h 的正根
+      let lo = 0, hi = 2;
+      for (let i = 0; i < 50; i++) { const m = (lo + hi) / 2; a * m + m ** 3 < h ? lo = m : hi = m; }
+      s0 = (lo + hi) / 2;
+    }
+    mSig2 = a + 3 * s0 * s0;              // 径向曲率 U' + 2ρ₀U''
+    mPi2 = a + s0 * s0;                   // 角向曲率 U'(ρ₀) = h/σ₀
+    buildSurface();
+  }
+
+  // 带上下标的文字：_{...} 为下标，^{...} 为上标
+  function rich(str, x, y, size, col, bold = false, align = 'left') {
+    const parts = str.split(/(_\{[^}]*\}|\^\{[^}]*\})/).filter(Boolean).map(s =>
+      s.startsWith('_{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: size * 0.28 } :
+      s.startsWith('^{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: -size * 0.38 } :
+      { t: s, sz: size, dy: 0 });
+    const font = sz => `${bold ? 'bold ' : ''}${sz}px Arial`;
+    let w = 0;
+    parts.forEach(p => { ctx.font = font(p.sz); p.w = ctx.measureText(p.t).width; w += p.w; });
+    let xx = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillStyle = col;
+    parts.forEach(p => { ctx.font = font(p.sz); ctx.fillText(p.t, xx, y + p.dy); xx += p.w; });
+  }
+
+  function arrow(x0, y0, x1, y1, col = '#555') {
+    const ang = Math.atan2(y1 - y0, x1 - x0);
+    ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x1, y1);
+    ctx.lineTo(x1 - 8 * Math.cos(ang - 0.4), y1 - 8 * Math.sin(ang - 0.4));
+    ctx.lineTo(x1 - 8 * Math.cos(ang + 0.4), y1 - 8 * Math.sin(ang + 0.4));
+    ctx.closePath(); ctx.fill();
+  }
+
+  function ball(x, y, r) {
+    const g = ctx.createRadialGradient(x - r / 3, y - r / 3, r / 5, x, y, r);
+    g.addColorStop(0, '#f8bbd9'); g.addColorStop(1, MAGENTA);
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  function marker(x, y, filled) {
+    ctx.beginPath(); ctx.arc(x, y, 4.5, 0, 2 * Math.PI);
+    ctx.lineWidth = 2; ctx.strokeStyle = RED; ctx.stroke();
+    if (filled) { ctx.fillStyle = RED; ctx.fill(); }
+  }
+
+  // ---------- 左：Z2 双势阱 U(σ) ----------
+  const zx0 = 225, zsx = 112, zy0 = 150, zsy = 280;   // σ = 0、U = 0 的位置与缩放
+  const ZX = x => zx0 + zsx * x, ZY = u => zy0 - zsy * u;
+
+  function drawZ2(bx) {
+    arrow(ZX(-1.75), zy0, ZX(1.8), zy0);
+    arrow(zx0, ZY(-0.4), zx0, ZY(0.42));
+    rich('σ', ZX(1.8), zy0 + 13, 15, '#555', false, 'right');
+    rich('U(σ)', zx0 + 8, ZY(0.42) + 4, 14, '#555');
+
+    ctx.save();
+    ctx.beginPath(); ctx.rect(20, ZY(ZMAX + 0.03), 410, 240); ctx.clip();
+    ctx.strokeStyle = BLUE; ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    for (let x = -RMAX; x <= RMAX + 1e-9; x += 0.01) x === -RMAX ? ctx.moveTo(ZX(x), ZY(Uz(x))) : ctx.lineTo(ZX(x), ZY(Uz(x)));
+    ctx.stroke();
+
+    // 局部极小：实心为真空，空心为亚稳态
+    const mins = [];
+    for (let x = -RMAX; x < RMAX; x += 0.005) if (dUz(x) < 0 && dUz(x + 0.005) >= 0) mins.push(x + 0.0025);
+    const xg = mins.reduce((p, q) => (Uz(q) < Uz(p) ? q : p), mins[0]);
+    mins.forEach(x => marker(ZX(x), ZY(Uz(x)), !h || x === xg));
+    if (!h && a < -0.06) {
+      rich('−σ_{0}', ZX(-s0), ZY(Uz(s0)) + 17, 14, RED, true, 'center');
+      rich('+σ_{0}', ZX(s0), ZY(Uz(s0)) + 17, 14, RED, true, 'center');
+    }
+
+    // 小球沿曲线法向抬高一个半径
+    const rb = 9, k = -(zsy / zsx) * dUz(bx), nl = Math.hypot(k, 1);
+    ball(ZX(bx) + rb * k / nl, ZY(Uz(bx)) - rb / nl, rb);
+    ctx.restore();
+  }
+
+  // ---------- 右：O(4) 墨西哥帽 U(σ, π)（π₂、π₃ 方向不画） ----------
+  const ocx = 680, ocy = 165, osx = 90, osz = 150, osd = 55, AZ = 0.45;
+  const ca = Math.cos(AZ), sa = Math.sin(AZ);
+  const depth = (x, y) => x * sa + y * ca;                 // 越大越远
+  const proj = (x, y, z) => [ocx + osx * (x * ca - y * sa), ocy - osz * z - osd * depth(x, y)];
+  const NU = 16, NP = 60;
+  const lowCol = [25, 70, 150], highCol = [210, 228, 248];
+  let quads = [];
+
+  // 沿每条径向找曲面被 ZCUT 截断的半径，使帽沿是一圈等高线
+  function rEdge(phi) {
+    const f = r => a * r * r / 2 + r ** 4 / 4 - h * r * Math.cos(phi);
+    if (f(RMAX) <= ZCUT) return RMAX;
+    let rm = 0, fm = 0;
+    for (let i = 1; i <= 80; i++) { const r = RMAX * i / 80; if (f(r) < fm) { fm = f(r); rm = r; } }
+    let lo = rm, hi = RMAX;
+    for (let i = 0; i < 30; i++) { const m = (lo + hi) / 2; f(m) <= ZCUT ? lo = m : hi = m; }
+    return lo;
+  }
+
+  function buildSurface() {
+    const P = [];
+    for (let j = 0; j <= NP; j++) {
+      const phi = 2 * Math.PI * j / NP, re = rEdge(phi), row = [];
+      for (let i = 0; i <= NU; i++) {
+        const r = re * i / NU, x = r * Math.cos(phi), y = r * Math.sin(phi);
+        row.push({ x, y, z: Uo(x, y) });
+      }
+      P.push(row);
+    }
+    const L = [-0.3, -0.5, 0.81], kz = osz / osx;
+    quads = [];
+    for (let j = 0; j < NP; j++) for (let i = 0; i < NU; i++) {
+      const q = [P[j][i], P[j][i + 1], P[j + 1][i + 1], P[j + 1][i]];
+      const u = [q[2].x - q[0].x, q[2].y - q[0].y, (q[2].z - q[0].z) * kz];
+      const v = [q[3].x - q[1].x, q[3].y - q[1].y, (q[3].z - q[1].z) * kz];
+      const n = [u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]];
+      const nn = Math.hypot(...n) || 1;
+      const shade = 0.6 + 0.4 * Math.abs((n[0] * L[0] + n[1] * L[1] + n[2] * L[2]) / nn);
+      const zc = q.reduce((s, p) => s + p.z, 0) / 4, s = clamp((zc + 0.4) / 0.6);
+      const col = lowCol.map((c, m) => Math.round((c + (highCol[m] - c) * s) * shade));
+      quads.push({ d: q.reduce((s, p) => s + depth(p.x, p.y), 0) / 4,
+                   pts: q.map(p => proj(p.x, p.y, p.z)), col: `rgb(${col})` });
+    }
+  }
+
+  function drawO4(bxy) {
+    const items = quads.map(q => ({ d: q.d, f: () => {
+      ctx.beginPath(); q.pts.forEach(([x, y], m) => (m ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.closePath();
+      ctx.fillStyle = q.col; ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 0.5; ctx.stroke();
+    } }));
+
+    // 真空流形：h = 0 时为谷底一圈（红环），h ≠ 0 时只剩 σ 轴上一点
+    if (!h && a < -0.06) {
+      const zv = Uo(s0, 0);
+      for (let j = 0; j < NP; j++) {
+        const p1 = 2 * Math.PI * j / NP, p2 = 2 * Math.PI * (j + 1) / NP;
+        const [x1, y1] = [s0 * Math.cos(p1), s0 * Math.sin(p1)], [x2, y2] = [s0 * Math.cos(p2), s0 * Math.sin(p2)];
+        items.push({ d: (depth(x1, y1) + depth(x2, y2)) / 2 - 0.06, f: () => {
+          ctx.strokeStyle = RED; ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.moveTo(...proj(x1, y1, zv)); ctx.lineTo(...proj(x2, y2, zv)); ctx.stroke();
+        } });
+      }
+    } else items.push({ d: depth(s0, 0) - 0.06, f: () => marker(...proj(s0, 0, Uo(s0, 0)), true) });
+
+    const [bx, by] = bxy, [px, py] = proj(bx, by, Uo(bx, by));
+    items.push({ d: depth(bx, by) - 0.08, f: () => ball(px, py - 8, 8) });
+
+    items.sort((p, q) => q.d - p.d).forEach(it => it.f());
+
+    // 坐标方向示意
+    const gx = 500, gy = 255, o = proj(0, 0, 0);
+    [[0.4, 0, 0, 'σ'], [0, 0.5, 0, 'π'], [0, 0, 0.2, 'U']].forEach(([x, y, z, lab]) => {
+      const [qx, qy] = proj(x, y, z), dx = qx - o[0], dy = qy - o[1];
+      arrow(gx, gy, gx + dx, gy + dy, '#777');
+      rich(lab, gx + dx * 1.3, gy + dy * 1.3, 13, '#555', false, 'center');
+    });
+  }
+
+  // ---------- 文字 ----------
+  function status() {
+    if (!h && Math.abs(a) < 0.06) return [
+      ['T ≈ T_{c}: the bottom flattens, U ∝ σ^{4}', 'm_{σ} → 0: critical fluctuations of σ'],
+      ['T ≈ T_{c}: all four directions soft at once', 'm_{σ} = m_{π} → 0']];
+    if (h) return [
+      ['tilt −hσ lifts the degeneracy', 'one true vacuum, m_{σ}^{2} = U″(σ_{0}) > 0'],
+      ['tilted hat: unique vacuum on the σ axis', 'swinging along the valley costs energy: m_{π}^{2} = h/σ_{0} > 0']];
+    if (a < 0) return [
+      ['two isolated vacua ±σ_{0}: a discrete choice', 'curved in every direction: m_{σ}^{2} = U″(σ_{0}) > 0'],
+      ['continuous valley of vacua (S^{3}, red ring)', 'rolling along the flat valley is free: m_{π} = 0']];
+    return [
+      ['single minimum at σ = 0', 'curvature m_{σ}^{2} = U″(0) > 0'],
+      ['single minimum at the origin', 'σ and π equivalent: m_{σ} = m_{π}']];
+  }
+
+  function drawText() {
+    const m = x => Math.sqrt(Math.max(x, 0)).toFixed(2);
+    rich('Z_{2}:  σ → −σ', 20, 14, 16, '#333', true);
+    rich('O(4):  rotations of (σ, π_{1}, π_{2}, π_{3})', 470, 14, 16, '#333', true);
+    rich(`m_{σ} = ${m(mSig2)}`, 430, 36, 13, '#777', false, 'right');
+    rich(`m_{σ} = ${m(mSig2)},   m_{π} = ${m(mPi2)}`, 880, 36, 13, '#777', false, 'right');
+    status().forEach(([l1, l2], i) => {
+      const x = i ? 675 : 225;
+      rich(l1, x, 282, 14, '#333', false, 'center');
+      rich(l2, x, 301, 14, MAGENTA, true, 'center');
+    });
+    ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(450, 8); ctx.lineTo(450, 268); ctx.stroke();
+  }
+
+  // ---------- 小球运动：振动频率 ∝ 该方向的曲率（质量） ----------
+  let phS = 0, phP = 1.2, th = 0.6;
+  function ballO4() {
+    if (s0 < 0.12) return [s0 + 0.2 * Math.sin(phS), 0.2 * Math.sin(phP)];
+    const r = s0 + 0.06 * Math.sin(phS), phi = h ? 0.9 * Math.sin(phP) : th;
+    return [r * Math.cos(phi), r * Math.sin(phi)];
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    drawZ2(s0 + 0.18 * Math.sin(phS));
+    drawO4(ballO4());
+    drawText();
+  }
+
+  // 播放控制：只在本页可见时运行
+  let last = null, raf = null;
+  function frame(now) {
+    const dt = last === null ? 0 : Math.min((now - last) / 1000, 0.1);
+    last = now;
+    phS += 3.5 * Math.sqrt(Math.max(mSig2, 0.01)) * dt;
+    phP += 3.5 * Math.sqrt(Math.max(mPi2, 0.01)) * dt;
+    th += 0.9 * dt;
+    draw();
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (!raf) { last = null; raf = requestAnimationFrame(frame); } }
+  function stop() { cancelAnimationFrame(raf); raf = null; }
+  function sync() { Reveal.getCurrentSlide() === slide ? play() : stop(); }
+
+  const tIn = document.getElementById('sym-t'), hIn = document.getElementById('sym-h');
+  function update() {
+    setParams(+tIn.value, hIn.checked);
+    document.getElementById('sym-t-val').textContent = (+tIn.value).toFixed(2);
+    draw();
+  }
+  tIn.addEventListener('input', update);
+  hIn.addEventListener('change', update);
+  Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
+  Reveal.on('slidechanged', sync);
+  update();   // 静态画面（如导出 PDF）显示 T = Tc/2 的破缺相
+})();
+</script>
+
+<!-- CEP 与伊辛模型 -->
+<script>
+(function () {
+  const slide = document.getElementById('ising-slide');
+  const canvas = document.getElementById('ising-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 900, H = 380, S = 2;
+  canvas.width = W * S; canvas.height = H * S;
+  ctx.scale(S, S);
+
+  const clamp = (x, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, x));
+  const RED = '#d32f2f', DARK = '#333';
+  // 三次扫描：r < 0（一级相变线）、r = 0（临界点）、r > 0（crossover）
+  const sweeps = [
+    { r: -1, col: '#1565c0', label: 'r < 0', state: 'first-order line' },
+    { r: 0,  col: RED,       label: 'r = 0', state: 'critical point' },
+    { r: 1,  col: '#2e7d32', label: 'r > 0', state: 'crossover' }
+  ];
+  const hMax = 0.5;                       // h = hMax · hn，hn ∈ [−1, 1]
+
+  // 时间参数（秒）：按下按钮后先停 pause，再用 dur 扫过 h，最后停 hold 让小球落定
+  const pause = 0.3, dur = 3.0, hold = 0.6;
+  // 状态：done[j] 为已画完的曲线，cur 为当前（或最近）播放的过程，null 表示清空
+  let done = [true, true, true], cur = 2, hn = 1;   // 初始静态画面（如导出 PDF）显示三条完整曲线
+  const endOf = j => (j === cur ? hn : done[j] ? 1 : null);
+
+  // 平衡态：U = r/2 φ² + φ⁴/4 − hφ 的全局极小（r < 0、h = 0 时取 +）
+  function phiEq(r, h) {
+    let lo = 1e-6, hi = 2;
+    for (let i = 0; i < 50; i++) { const m = (lo + hi) / 2; r * m + m ** 3 < Math.abs(h) ? lo = m : hi = m; }
+    return (h < 0 ? -1 : 1) * (lo + hi) / 2;
+  }
+
+  // 带上下标的文字：_{...} 为下标，^{...} 为上标
+  function rich(str, x, y, size, col, bold = false, align = 'left') {
+    const parts = str.split(/(_\{[^}]*\}|\^\{[^}]*\})/).filter(Boolean).map(s =>
+      s.startsWith('_{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: size * 0.28 } :
+      s.startsWith('^{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: -size * 0.38 } :
+      { t: s, sz: size, dy: 0 });
+    const font = sz => `${bold ? 'bold ' : ''}${sz}px Arial`;
+    let w = 0;
+    parts.forEach(p => { ctx.font = font(p.sz); p.w = ctx.measureText(p.t).width; w += p.w; });
+    let xx = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillStyle = col;
+    parts.forEach(p => { ctx.font = font(p.sz); ctx.fillText(p.t, xx, y + p.dy); xx += p.w; });
+  }
+
+  function arrow(x0, y0, x1, y1, col = '#555') {
+    const ang = Math.atan2(y1 - y0, x1 - x0);
+    ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x1, y1);
+    ctx.lineTo(x1 - 7 * Math.cos(ang - 0.4), y1 - 7 * Math.sin(ang - 0.4));
+    ctx.lineTo(x1 - 7 * Math.cos(ang + 0.4), y1 - 7 * Math.sin(ang + 0.4));
+    ctx.closePath(); ctx.fill();
+  }
+
+  function dot(x, y, r, col, ring = '#fff') {
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fillStyle = col; ctx.fill();
+    if (ring) { ctx.strokeStyle = ring; ctx.lineWidth = 1.5; ctx.stroke(); }
+  }
+
+  function ball(x, y, r) {
+    const g = ctx.createRadialGradient(x - r / 3, y - r / 3, r / 5, x, y, r);
+    g.addColorStop(0, '#f8bbd9'); g.addColorStop(1, '#c71585');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  function curve(f, a, b, n = 60) {
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) { const [x, y] = f(a + (b - a) * i / n); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.stroke();
+  }
+
+  // ---------- 上排：三个相图，path(r, hn) 给出 (r, h) 在各自相图中的像素位置 ----------
+  const py0 = 44, py1 = 168;
+  const panels = [
+    { x0: 10, title: 'Ising magnet', sub: 'φ = M,   h = H', xl: 'T', yl: 'H',
+      draw(p) {
+        const X = T => p.a + T * p.w, Y = Hh => (py0 + py1) / 2 - Hh * (py1 - py0) / 2;
+        ctx.strokeStyle = '#bbb'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
+        curve(T => [X(T), Y(0)], 0.6, 1, 1); ctx.setLineDash([]);
+        ctx.strokeStyle = DARK; ctx.lineWidth = 3; curve(T => [X(T), Y(0)], 0.02, 0.6, 1);
+        rich('M > 0  ↑↑↑', X(0.03), Y(0.5), 12, '#555');
+        rich('M < 0  ↓↓↓', X(0.03), Y(-0.5), 12, '#555');
+        return [X(0.6), Y(0)];
+      },
+      path(p, r, hn) { return [p.a + (0.6 + 0.22 * r) * p.w, (py0 + py1) / 2 - 0.8 * hn * (py1 - py0) / 2]; } },
+    { x0: 315, title: 'Liquid–gas', sub: 'φ = ρ − ρ_{c},   lattice gas: n_{i} = (1 + s_{i})/2', xl: 'T', yl: 'P',
+      draw(p) {
+        const X = T => p.a + T * p.w, Y = P => py1 - P * (py1 - py0);
+        ctx.strokeStyle = '#bbb'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
+        curve(T => [X(T), Y(this.Pc(T))], 0.6, 0.95); ctx.setLineDash([]);
+        ctx.strokeStyle = DARK; ctx.lineWidth = 3; curve(T => [X(T), Y(this.Pc(T))], 0.1, 0.6);
+        rich('liquid', X(0.22), Y(0.72), 12, '#555', false, 'center');
+        rich('gas', X(0.55), Y(0.15), 12, '#555', false, 'center');
+        return [X(0.6), Y(this.Pc(0.6))];
+      },
+      Pc: T => 0.06 + 0.47 * Math.pow(Math.max(T - 0.1, 0) / 0.5, 1.4),
+      path(p, r, hn) {
+        const T = 0.6 + 0.2 * r;
+        return [p.a + T * p.w, py1 - (this.Pc(T) + 0.16 * hn) * (py1 - py0)];
+      } },
+    { x0: 620, title: 'QCD', sub: 'φ ~ n_{B} − n_{c} ~ −(σ − σ_{c})', xl: 'μ_{B}', yl: 'T',
+      draw(p) {
+        const X = m => p.a + m * p.w, Y = T => py1 - T * (py1 - py0), Tl = m => 0.8 * (1 - m * m);
+        ctx.strokeStyle = '#999'; ctx.setLineDash([5, 4]); ctx.lineWidth = 2;
+        curve(m => [X(m), Y(Tl(m))], 0, 0.6); ctx.setLineDash([]);
+        ctx.strokeStyle = DARK; ctx.lineWidth = 3; curve(m => [X(m), Y(Tl(m))], 0.6, 0.94);
+        rich('hadrons', X(0.25), Y(0.3), 12, '#555', false, 'center');
+        rich('QGP', X(0.72), Y(0.82), 12, '#555', false, 'center');
+        rich('crossover', X(0.03), Y(0.92), 11, '#888');
+        rich('1st order', X(0.86), Y(0.04), 11, '#888', false, 'center');
+        return [X(0.6), Y(Tl(0.6))];
+      },
+      // 基点沿相变线移动（r），再沿像素空间的法向移动（h）
+      path(p, r, hn) {
+        const m = 0.6 - 0.2 * r, hp = py1 - py0;
+        const bx = p.a + m * p.w, by = py1 - 0.8 * (1 - m * m) * hp;
+        const nx = 1.6 * m * hp, ny = -p.w, nn = Math.hypot(nx, ny);
+        return [bx + 30 * hn * nx / nn, by + 30 * hn * ny / nn];
+      } }
+  ];
+  panels.forEach(p => { p.a = p.x0 + 28; p.w = 245; });
+
+  function drawPanels() {
+    panels.forEach(p => {
+      rich(p.title, p.x0 + 140, 10, 15, DARK, true, 'center');
+      rich(p.sub, p.x0 + 140, 28, 11.5, '#777', false, 'center');
+      arrow(p.a, py1, p.a + p.w + 8, py1);
+      arrow(p.a, py1, p.a, py0 - 6);
+      rich(p.xl, p.a + p.w + 8, py1 + 12, 13, '#555', false, 'right');
+      rich(p.yl, p.a - 8, py0, 13, '#555', false, 'right');
+      const [cx, cy] = p.draw(p);
+
+      // 三条扫描路径：未开始的为虚线，已扫过的部分为实线
+      sweeps.forEach((sw, j) => {
+        const pt = hn_ => p.path(p, sw.r, hn_);
+        ctx.strokeStyle = sw.col; ctx.globalAlpha = 0.35; ctx.lineWidth = 1.2; ctx.setLineDash([2, 3]);
+        curve(pt, -1, 1, 20); ctx.setLineDash([]); ctx.globalAlpha = 1;
+        const end = endOf(j);
+        if (end !== null) { ctx.lineWidth = 2.5; curve(pt, -1, end, 30); }
+      });
+      dot(cx, cy, 5.5, RED);
+      rich(p === panels[2] ? 'CEP' : 'CP', cx + 9, cy - 10, 12, RED, true);
+      if (cur !== null) { const [mx, my] = p.path(p, sweeps[cur].r, hn); dot(mx, my, 5, sweeps[cur].col); }
+    });
+  }
+
+  // ---------- 下排左：共同的有效势 U(φ) ----------
+  const ux0 = 230, usx = 112, uy0 = 290, usy = 95;
+  const UX = x => ux0 + usx * x, UY = u => uy0 - usy * u;
+  let bxNow = null;
+
+  function drawPotential(r, h, bx) {
+    const U = x => r * x * x / 2 + x ** 4 / 4 - h * x, dU = x => r * x + x ** 3 - h;
+    rich('U(φ) = r/2 φ^{2} + u/4 φ^{4} − hφ', 30, 214, 14, DARK, true);
+    arrow(UX(-1.65), uy0, UX(1.7), uy0);
+    rich('φ', UX(1.7), uy0 + 12, 13, '#555', false, 'right');
+
+    ctx.save();
+    ctx.beginPath(); ctx.rect(20, 228, 420, 152); ctx.clip();
+    ctx.strokeStyle = '#1565c0'; ctx.lineWidth = 2.5;
+    curve(x => [UX(x), UY(U(x))], -1.6, 1.6, 160);
+    const mins = [];
+    for (let x = -1.6; x < 1.6; x += 0.005) if (dU(x) < 0 && dU(x + 0.005) >= 0) mins.push(x + 0.0025);
+    const xg = mins.reduce((p, q) => (U(q) < U(p) ? q : p), mins[0]);
+    mins.forEach(x => {
+      ctx.beginPath(); ctx.arc(UX(x), UY(U(x)), 4, 0, 2 * Math.PI);
+      ctx.strokeStyle = RED; ctx.lineWidth = 2; ctx.stroke();
+      if (U(x) - U(xg) < 1e-9) { ctx.fillStyle = RED; ctx.fill(); }
+    });
+    const rb = 9, kk = -(usy / usx) * dU(bx), nl = Math.hypot(kk, 1);
+    ball(UX(bx) + rb * kk / nl, UY(U(bx)) - rb / nl, rb);
+    ctx.restore();
+  }
+
+  // ---------- 下排右：序参量 φ(h) ----------
+  const fx0 = 680, fsx = 340, fy0 = 300, fsy = 52;
+  const FX = h => fx0 + fsx * h, FY = f => fy0 - fsy * f;
+
+  function drawResponse() {
+    rich('order parameter φ vs. ordering field h', 480, 214, 14, DARK, true);
+    arrow(FX(-0.52), fy0, FX(0.54), fy0);
+    arrow(fx0, FY(-1.45), fx0, FY(1.45));
+    rich('h', FX(0.54), fy0 + 12, 13, '#555', false, 'right');
+    rich('φ', fx0 - 8, FY(1.4), 13, '#555', false, 'right');
+
+    sweeps.forEach((sw, j) => {
+      const end = endOf(j);
+      if (end === null) return;
+      ctx.strokeStyle = sw.col; ctx.lineWidth = 2.5;
+      const branch = (a, b) => { if (b > a) curve(hn_ => [FX(hMax * hn_), FY(phiEq(sw.r, hMax * hn_))], a, b, 80); };
+      if (sw.r < 0) {                     // 一级相变：h = 0 处跳变，用竖虚线连接两支
+        branch(-1, Math.min(end, -1e-4));
+        if (end > 0) {
+          const f0 = phiEq(sw.r, 1e-9);
+          ctx.setLineDash([4, 3]); ctx.lineWidth = 1.5;
+          curve(s => [FX(0), FY(s)], -f0, f0, 1); ctx.setLineDash([]); ctx.lineWidth = 2.5;
+          branch(1e-4, end);
+        }
+      } else branch(-1, end);
+      if (end === 1) rich(sw.label, FX(hMax) + 6, FY(phiEq(sw.r, hMax)), 12, sw.col, true);
+    });
+    if (endOf(0) > 0) rich('jump', FX(0.02), FY(-0.25), 11, '#1565c0');
+    if (endOf(1) > 0) rich('φ ∝ h^{1/δ}', FX(-0.2), FY(0.9), 12, RED, true, 'center');
+  }
+
+  function draw(dt) {
+    // 清空状态下显示 h = 0、r < 0 的对称双势阱
+    const r = cur === null ? -1 : sweeps[cur].r, h = cur === null ? 0 : hMax * hn;
+    const target = phiEq(r, h);
+    // 小球向平衡位置弛豫（一级相变处从亚稳态翻越到真空）
+    bxNow = bxNow === null || dt === null ? target : bxNow + (target - bxNow) * (1 - Math.exp(-dt / 0.12));
+    ctx.clearRect(0, 0, W, H);
+    drawPanels();
+    ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(10, 198); ctx.lineTo(890, 198); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(455, 206); ctx.lineTo(455, 378); ctx.stroke();
+    drawPotential(r, h, bxNow);
+    drawResponse();
+    if (cur === null) rich('press a button below', 440, 214, 13, '#999', false, 'right');
+    else rich(`${sweeps[cur].label}: ${sweeps[cur].state}`, 440, 214, 13, sweeps[cur].col, true, 'right');
+  }
+
+  // 播放控制：按钮播放对应颜色的过程，播完停在最后一帧；离开本页时停止
+  const buttons = slide.querySelectorAll('.sweep-btn');
+  let start = null, last = null, raf = null;
+  function frame(now) {
+    if (start === null) start = now;
+    const t = (now - start) / 1000;
+    hn = -1 + 2 * clamp((t - pause) / dur);
+    draw(last === null ? null : (now - last) / 1000);
+    last = now;
+    if (t < pause + dur + hold) raf = requestAnimationFrame(frame);
+    else { done[cur] = true; raf = null; buttons.forEach(b => b.classList.remove('active')); }
+  }
+  function stop() {
+    cancelAnimationFrame(raf); raf = null;
+    buttons.forEach(b => b.classList.remove('active'));
+  }
+  function playSweep(k) {
+    stop();
+    done[k] = false; cur = k; hn = -1; bxNow = null;
+    buttons[k].classList.add('active');
+    start = null; last = null; raf = requestAnimationFrame(frame);
+  }
+  function clear() { stop(); done = [false, false, false]; cur = null; bxNow = null; draw(null); }
+
+  buttons.forEach(b => b.addEventListener('click', () => playSweep(+b.dataset.k)));
+  canvas.addEventListener('click', clear);
+  // 进入本页时从空白开始；离开时停止动画
+  function sync() { if (Reveal.getCurrentSlide() === slide) clear(); else stop(); }
+  Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
+  Reveal.on('slidechanged', sync);
+  draw(null);   // 静态画面（如导出 PDF）显示三条完整的 φ(h) 曲线
+})();
+</script>
+
+<!-- Ripples of the QCD critical point -->
+<script>
+(function () {
+  const slide = document.getElementById('ripple-slide');
+  const canvas = document.getElementById('ripple-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 900, H = 460, S = 2;
+  canvas.width = W * S; canvas.height = H * S;
+  ctx.scale(S, S);
+
+  const clamp = (x, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, x));
+  const MAGENTA = '#c71585', RED = '#d32f2f', GREEN = '#2e7d32', DARK = '#333';
+
+  // 相图（示意）：横轴 μ_B ∈ [0, 0.9] GeV，纵轴 T ∈ [0, 0.2] GeV
+  const px0 = 50, px1 = 570, py0 = 20, py1 = 440;
+  const X = mu => px0 + mu / 0.9 * (px1 - px0), Y = T => py1 - T / 0.2 * (py1 - py0);
+  const Tpc = mu => 0.156 - 0.1 * mu * mu - 0.03 * mu ** 4;     // 相变线
+  const Tfo = mu => 0.150 - 0.12 * mu * mu - 0.06 * mu ** 4;    // freeze-out 曲线
+  const muOf = s => 1.308 / (1 + 0.273 * s);                     // μ_B(√s)，Cleymans 等的参数化
+  const muC = 0.635, cx = X(muC), cy = Y(Tpc(muC));               // CEP
+
+  // 涟漪的椭圆坐标：沿相变线方向的半轴 a、法向半轴 b（像素），d = 1 为涟漪区边界
+  const slope = (-0.2 * muC - 0.12 * muC ** 3) * (py1 - py0) / 0.2 / ((px1 - px0) / 0.9);
+  const ang = Math.atan2(-slope, 1);                              // 相变线在屏幕上的倾角
+  const a = 150, b = 75, dS = 0.16;                               // dS：scaling 区大小
+  const dist = (x, y) => {
+    const u = (x - cx) * Math.cos(ang) + (y - cy) * Math.sin(ang);
+    const v = -(x - cx) * Math.sin(ang) + (y - cy) * Math.cos(ang);
+    return Math.hypot(u / a, v / b);
+  };
+  const amp = d => (d < dS ? 1 : Math.exp(-(d - dS) / 0.5) * clamp((1.3 - d) / 0.3));
+
+  function ellipse(d) { ctx.beginPath(); ctx.ellipse(cx, cy, a * d, b * d, ang, 0, 2 * Math.PI); }
+
+  // 带上下标的文字：_{...} 为下标，^{...} 为上标
+  function rich(str, x, y, size, col, bold = false, align = 'left') {
+    const parts = str.split(/(_\{[^}]*\}|\^\{[^}]*\})/).filter(Boolean).map(s =>
+      s.startsWith('_{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: size * 0.28 } :
+      s.startsWith('^{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: -size * 0.38 } :
+      { t: s, sz: size, dy: 0 });
+    const font = sz => `${bold ? 'bold ' : ''}${sz}px Arial`;
+    let w = 0;
+    parts.forEach(p => { ctx.font = font(p.sz); p.w = ctx.measureText(p.t).width; w += p.w; });
+    let xx = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillStyle = col;
+    parts.forEach(p => { ctx.font = font(p.sz); ctx.fillText(p.t, xx, y + p.dy); xx += p.w; });
+  }
+
+  function arrow(x0, y0, x1, y1, col = '#555') {
+    const t = Math.atan2(y1 - y0, x1 - x0);
+    ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x1, y1);
+    ctx.lineTo(x1 - 8 * Math.cos(t - 0.4), y1 - 8 * Math.sin(t - 0.4));
+    ctx.lineTo(x1 - 8 * Math.cos(t + 0.4), y1 - 8 * Math.sin(t + 0.4));
+    ctx.closePath(); ctx.fill();
+  }
+
+  function curve(f, lo, hi, n = 80) {
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) { const [x, y] = f(lo + (hi - lo) * i / n); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.stroke();
+  }
+
+  // ---------- 涟漪：椭圆环向外扩散，振幅随距离衰减 ----------
+  const lam = 0.15, speed = 0.09;                                  // 环间距、扩散速度（d 单位/秒）
+  function drawRipples(t) {
+    ctx.save();
+    ctx.beginPath(); ctx.rect(px0 + 1, py0, px1 - px0, py1 - py0 - 1); ctx.clip();
+    // 涟漪区的淡色底
+    ctx.save();
+    ctx.translate(cx, cy); ctx.rotate(ang); ctx.scale(a, b);
+    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 1.15);
+    g.addColorStop(0, 'rgba(199,21,133,0.20)'); g.addColorStop(0.6, 'rgba(199,21,133,0.07)'); g.addColorStop(1, 'rgba(199,21,133,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, 1.15, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+    // 向外扩散的环
+    const ph = (t * speed / lam) % 1;
+    for (let k = 0; ; k++) {
+      const d = dS + (k + ph) * lam;
+      if (d > 1.3) break;
+      const al = amp(d) * clamp((d - dS) / 0.06);
+      ctx.strokeStyle = `rgba(199,21,133,${0.85 * al})`; ctx.lineWidth = 2.2;
+      ellipse(d); ctx.stroke();
+    }
+    // 涟漪区边界
+    ctx.setLineDash([6, 5]); ctx.strokeStyle = 'rgba(199,21,133,0.6)'; ctx.lineWidth = 1.3;
+    ellipse(1); ctx.stroke(); ctx.setLineDash([]);
+    ctx.restore();
+
+    // scaling 区：很小的实心椭圆
+    ctx.save();
+    ctx.translate(cx, cy); ctx.rotate(ang); ctx.scale(a * dS, b * dS);
+    const gs = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
+    gs.addColorStop(0, 'rgba(211,47,47,0.95)'); gs.addColorStop(1, 'rgba(211,47,47,0.55)');
+    ctx.fillStyle = gs; ctx.beginPath(); ctx.arc(0, 0, 1, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+
+  // ---------- 相图 ----------
+  const sLabels = [200, 39, 19.6, 7.7, 3];
+  function drawDiagram() {
+    arrow(px0, py1, px1 + 12, py1);
+    arrow(px0, py1, px0, py0 - 8);
+    rich('μ_{B}', px1 + 12, py1 - 16, 15, '#555', false, 'right');
+    rich('T', px0 - 10, py0, 15, '#555', false, 'right');
+
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 2.5; ctx.setLineDash([7, 5]);
+    curve(m => [X(m), Y(Tpc(m))], 0, muC); ctx.setLineDash([]);
+    ctx.strokeStyle = DARK; ctx.lineWidth = 3.5;
+    curve(m => [X(m), Y(Tpc(m))], muC, 0.9);
+
+    ctx.strokeStyle = GREEN; ctx.lineWidth = 3;
+    curve(m => [X(m), Y(Tfo(m))], 0, 0.82);
+    sLabels.forEach(sv => {
+      const m = muOf(sv), x = X(m), y = Y(Tfo(m));
+      ctx.fillStyle = GREEN; ctx.beginPath(); ctx.arc(x, y, 3.5, 0, 2 * Math.PI); ctx.fill();
+      rich(String(sv), x + 2, y + 16, 12, GREEN, false, 'center');
+    });
+    rich('(√s_{NN} in GeV)', X(muOf(39)) - 6, Y(Tfo(muOf(39))) + 36, 12, GREEN);
+
+    rich('QGP', X(0.22), Y(0.185), 16, '#666', true, 'center');
+    rich('hadron gas', X(0.2), Y(0.05), 16, '#666', true, 'center');
+    rich('crossover', X(0.18), Y(Tpc(0.18)) - 13, 13, '#555', false, 'center');
+    rich('1st order', X(0.86) + 8, Y(Tpc(0.86)) - 24, 13, '#555', false, 'center');
+    rich('freeze-out', X(0.79) + 10, Y(Tfo(0.79)) + 4, 13, GREEN, true, 'left');
+
+    ctx.fillStyle = DARK; ctx.beginPath(); ctx.arc(cx, cy, 4, 0, 2 * Math.PI); ctx.fill();
+
+    // 标注：scaling 区与涟漪区
+    ctx.strokeStyle = RED; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(cx + 8, cy - 6); ctx.lineTo(cx + 62, cy - 92); ctx.stroke();
+    rich('CEP + scaling region', cx + 64, cy - 100, 13, RED, true);
+    // 涟漪区上缘（椭圆坐标 u = −0.5a, v = −1.1b）
+    const rx = cx - 0.5 * a * Math.cos(ang) + 1.1 * b * Math.sin(ang);
+    const ry = cy - 0.5 * a * Math.sin(ang) - 1.1 * b * Math.cos(ang);
+    rich('ripples', rx, ry - 8, 15, MAGENTA, true, 'center');
+  }
+
+  // ---------- 右侧说明 ----------
+  function drawLegend() {
+    const x0 = 612, tx = x0 + 44;
+    const item = (y, title, col, lines, icon) => {
+      icon(x0 + 16, y);
+      rich(title, tx, y, 15, col, true);
+      lines.forEach((l, i) => rich(l, tx, y + 21 + 19 * i, 13.5, '#444'));
+    };
+    item(50, 'Scaling region', RED, ['universal 3D Ising scaling,', 'only very close to the CEP'], (x, y) => {
+      ctx.fillStyle = 'rgba(211,47,47,0.85)'; ctx.beginPath(); ctx.ellipse(x, y, 12, 6, -0.4, 0, 2 * Math.PI); ctx.fill();
+    });
+    item(145, 'Ripples', MAGENTA, ['CEP-induced structure in', 'fluctuations far beyond the', 'scaling region (non-universal)'], (x, y) => {
+      ctx.strokeStyle = MAGENTA; ctx.lineWidth = 1.8;
+      [6, 11, 16].forEach((r, i) => { ctx.globalAlpha = 1 - 0.3 * i; ctx.beginPath(); ctx.ellipse(x, y + 4, r, r * 0.55, -0.4, 0, 2 * Math.PI); ctx.stroke(); });
+      ctx.globalAlpha = 1;
+    });
+    item(260, 'Freeze-out curve', GREEN, ['passes through the ripples,', 'not through the scaling region'], (x, y) => {
+      ctx.strokeStyle = GREEN; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x - 14, y - 4); ctx.quadraticCurveTo(x, y - 6, x + 14, y + 4); ctx.stroke();
+    });
+    ['⇒ Fluctuation measurements', 'along the freeze-out curve', 'can see the ripples of the CEP'].forEach((l, i) =>
+      rich(l, x0, 360 + 22 * i, 15, MAGENTA, true));
+  }
+
+  // ---------- freeze-out 上移动的点：在涟漪区内发光 ----------
+  const sHi = 200, sLo = 2.6, tStart = 0.5, tMove = 7, tLoop = tStart + tMove + 2.5;
+  function drawMarker(t) {
+    const s = clamp((t - tStart) / tMove);
+    const sv = Math.exp(Math.log(sHi) + (Math.log(sLo) - Math.log(sHi)) * s);
+    const m = muOf(sv), x = X(m), y = Y(Tfo(m)), A = amp(dist(x, y));
+    if (A > 0.05) {
+      const pulse = 0.6 + 0.4 * Math.sin(10 * t);
+      const g = ctx.createRadialGradient(x, y, 0, x, y, 8 + 22 * A);
+      g.addColorStop(0, `rgba(199,21,133,${0.7 * A * pulse})`); g.addColorStop(1, 'rgba(199,21,133,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 8 + 22 * A, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.fillStyle = GREEN; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(x, y, 7, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    if (A > 0.25) rich('feels the ripples', x - 14, y + 30, 13, MAGENTA, true, 'right');
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    drawRipples(t);
+    drawDiagram();
+    drawMarker(t);
+    drawLegend();
+    ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(595, 20); ctx.lineTo(595, 440); ctx.stroke();
+    rich('schematic', px1, py0 + 4, 12, '#999', false, 'right');
+  }
+
+  // 播放控制：只在本页可见时运行；涟漪持续扩散，freeze-out 上的点循环移动
+  let start = null, raf = null;
+  function frame(now) {
+    if (start === null) start = now;
+    draw((now - start) / 1000 % tLoop);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (!raf) { start = null; raf = requestAnimationFrame(frame); } }
+  function stop() { cancelAnimationFrame(raf); raf = null; }
+  function sync() { Reveal.getCurrentSlide() === slide ? play() : stop(); }
+
+  canvas.addEventListener('click', () => { stop(); play(); });
+  Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
+  Reveal.on('slidechanged', sync);
+  draw(tStart + 0.82 * tMove);   // 静态画面（如导出 PDF）：点位于涟漪区内
 })();
 </script>
 
