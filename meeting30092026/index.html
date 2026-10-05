@@ -83,14 +83,14 @@
 
 <body>
 <div class="reveal">
-<div class="deck-footer"><b>Shi Yin</b> &nbsp;·&nbsp; Alumni Seminar, 09.10.2026</div>
+<div class="deck-footer"><b>Shi Yin</b> &nbsp;·&nbsp; Alumni Seminar, 08.10.2026</div>
 <div class="slides">
 
 <!-- Title -->
 <section data-state="is-title">
   <h3>From critical scaling to baryon number fluctuations: probing the QCD critical point</h3>
   <p style="font-weight: bold;">Shi Yin</p>
-  <p style="color: mediumvioletred;">Alumni Seminar, 09.10.2026</p>
+  <p style="color: mediumvioletred;">Alumni Seminar, 08.10.2026</p>
   <!-- 参考文献容器（不需要可删除） -->
   <div style="color: blue; font-size: 20px; display: flex; justify-content: center; text-align: left; margin: 20px 0;">
     <span style="white-space: nowrap; margin-right: 10px;">Based on:</span>
@@ -113,8 +113,10 @@
   <h3>Outline</h3>
   <br>
   <ul>
-    <li>Section 1</li><br>
-    <li class="dim">Section 2</li><br>
+    <li>Heavy-ion collisions</li><br>
+    <li class="dim">QCD phase diagram</li><br>
+    <li class="dim">Critical point signatures: baryon number fluctuations</li><br>
+    <li class="dim">Scaling behavior of the CEP</li><br>
     <li class="dim">Summary and Outlook</li>
   </ul>
 </section>
@@ -129,6 +131,56 @@
 <section id="det-slide">
   <h3 style="margin-bottom: 0;">Particles entering the detector</h3>
   <canvas id="det-canvas" style="width: 900px; height: 440px; cursor: pointer;"></canvas>
+</section>
+
+<section id="count-slide">
+  <h3 style="margin-bottom: 0;">Counting particles in the detector</h3>
+  <div class="fig-row">
+    <figure>
+      <img src="fig1.svg" style="width:80%;">
+      <figcaption>STAR Collaboration, arXiv:2001.02852 </figcaption>
+    </figure>
+  </div>
+  <div class="fig-row" style="align-items: flex-start; gap: 40px;">
+    <ul class="sym-col">
+      <li>The probability distribution of net-proton</li>
+      <li>The distribution changes with the collision energy</li>
+      <li>Collision energy is related to the density</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 高能 vs 低能：左为高能（透明，中快度区净重子 ≈ 0），右为低能（阻止，重子堆积在中快度区）；
+     上为侧视图事件，下为净重子与介子的 dN/dy，循环播放，点击重新开始（代码见文件末尾） -->
+<section id="dens-slide">
+  <h3 style="margin-bottom: 0;">High vs low collision energy</h3>
+  <canvas id="dens-canvas" style="width: 900px; height: 446px; cursor: pointer;"></canvas>
+  <p style="font-size: 0.45em; color: blue; margin: 4px 0 0;">
+    Lower \(\sqrt{s_{NN}}\) &rArr; more baryon stopping &rArr; larger \(n_B\) and \(\mu_B\) at mid-rapidity
+    &rArr; scanning \(\sqrt{s_{NN}}\) scans the phase diagram along \(\mu_B\)
+  </p>
+  <figcaption style="text-align: center; margin-top: 6px;">Freeze-out \(\mu_B(\sqrt{s_{NN}})\), \(T(\mu_B)\): J. Cleymans, H. Oeschler, K. Redlich, S. Wheaton,
+    <a href="https://arxiv.org/abs/hep-ph/0511094" target="_blank" style="color: inherit; text-decoration: underline;">hep-ph/0511094</a></figcaption>
+</section>
+
+<section id="phase">
+  <h3 style="margin-bottom: 0;">QCD phase diagram</h3>
+  <div class="fig-row">
+    <figure>
+      <img src="phase1.jpg" style="width:100%;">
+      <figcaption>Lipei Du, Agnieszka Sorensen, Mikhail Stephanov, arXiv:2402.10183 </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="cumulants">
+  <h3 style="margin-bottom: 0;">Cumulants of the net-proton distribution</h3>
+  <div class="fig-row">
+    <figure>
+      <img src="phase1.jpg" style="width:100%;">
+      <figcaption>Lipei Du, Agnieszka Sorensen, Mikhail Stephanov, arXiv:2402.10183 </figcaption>
+    </figure>
+  </div>
 </section>
 
 <!-- 对撞 vs 固定靶动画：上为加速器、中为侧视图事件、下为 dN/dy 累积，循环播放，点击重新开始（代码见文件末尾） -->
@@ -198,6 +250,23 @@
   <canvas id="ripple-canvas" style="width: 900px; height: 460px; cursor: pointer;"></canvas>
   <figcaption style="text-align: center; margin-top: 14px;">W.-j. Fu, X. Luo, J. M. Pawlowski, F. Rennecke, <b>SY</b>,
     <a href="https://arxiv.org/abs/2308.15508" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:2308.15508</a></figcaption>
+</section>
+
+<!-- fRG：从 QCD 到低能有效理论。左为 RG 标度 k（对数）及各能区，中为各自由度的活跃程度，右为当前 k 下的自由度示意；
+     自动从 UV 扫到 IR 循环播放，在左/中部拖动可手动选择 k，点击右侧恢复自动播放（代码见文件末尾） -->
+<section id="frg-slide">
+  <h3 style="margin-bottom: 0;">fRG: from QCD to low-energy effective theories</h3>
+  <canvas id="frg-canvas" style="width: 900px; height: 420px; cursor: ns-resize;"></canvas>
+  <div class="eq" style="font-size: 0.5em; margin-top: -8px;">
+    \[ \partial_t\Gamma_k=\frac12\,\mathrm{STr}\Big[\big(\Gamma_k^{(2)}+R_k\big)^{-1}\partial_t R_k\Big],\qquad t=\ln\frac{k}{\Lambda},\qquad
+       \Gamma_{k=\Lambda}\simeq S_{\rm QCD}\ \xrightarrow{\ k\,\to\,0\ }\ \Gamma \]
+  </div>
+  <ul class="ising-list">
+    <li>A low-energy EFT is the QCD flow below its cutoff: its couplings are \(\Gamma_{k=\Lambda_{\rm EFT}}\), fixed by the flow from above</li>
+    <li>Dynamical hadronization: four-quark interactions \(\to\) mesonic fields \(\phi\sim\bar q q\), so one flow covers all scales</li>
+  </ul>
+  <figcaption style="text-align: center; margin-top: 6px;">e.g. W.-j. Fu, J. M. Pawlowski, F. Rennecke,
+    <a href="https://arxiv.org/abs/1909.02991" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:1909.02991</a></figcaption>
 </section>
 
 <!-- 单图 + 标注 -->
@@ -762,6 +831,303 @@ Reveal.initialize({
   Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
   Reveal.on('slidechanged', sync);
   draw(tFade - 0.1);   // 静态画面（如导出 PDF）显示完整事件
+})();
+</script>
+
+<!-- 高能 vs 低能：透明 vs 阻止 -->
+<script>
+(function () {
+  const slide = document.getElementById('dens-slide');
+  const canvas = document.getElementById('dens-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 900, H = 446, S = 2;
+  canvas.width = W * S; canvas.height = H * S;
+  ctx.scale(S, S);
+
+  const clamp = (x, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, x));
+  const MAGENTA = '#c71585', ORANGE = '#ef6c00', PROTON = '#d32f2f', MESON = '#1565c0';
+
+  // 每个事件用独立的可复现随机数（mulberry32）
+  function rng(k) {
+    let a = k * 7919 + 4242;
+    return () => {
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  const gauss = r => Math.sqrt(-2 * Math.log(1 - r())) * Math.cos(2 * Math.PI * r());
+  const gaussD = (y, mu, s, n) => n / (s * Math.sqrt(2 * Math.PI)) * Math.exp(-((y - mu) ** 2) / (2 * s * s));
+
+  // 物理参数：化学冻结线 μ_B(√s) = a / (1 + b√s)，T(μ_B) = c − dμ_B² − eμ_B⁴（Cleymans 等，单位 GeV）
+  const mN = 0.938, nN = 50, yMid = 0.5;                       // 每个核画出的参与核子数；中快度区 |y| < 0.5
+  const freeze = s => { const mu = 1.308 / (1 + 0.273 * s); return { mu, T: 0.166 - 0.139 * mu ** 2 - 0.053 * mu ** 4 }; };
+  // yc、sy：末态核子快度 ±yc 处的高斯分布（高能：快度损失 ≈ 2，低能：几乎完全阻止）
+  const cols = [
+    { x0: 0,   name: 'High energy', ex: 'e.g. RHIC top energy, LHC', sqrts: 200, yc: 3.4,  sy: 0.9,
+      nMes: 150, nPair: 8, tag: 'hot, n_{B} ≈ 0',   glowRGB: '255,170,40', glowV: 70,
+      notes: ['Nuclei pass through each other (transparency)', 'Mid-rapidity: matter made from the vacuum, p̄/p ≈ '] },
+    { x0: 450, name: 'Low energy',  ex: 'e.g. RHIC BES-II, SPS',      sqrts: 7.7, yc: 0.25, sy: 0.55,
+      nMes: 36,  nPair: 0, tag: 'dense, n_{B} ≫ 0', glowRGB: '199,21,133', glowV: 30,
+      notes: ['Nuclei are stopped: baryons pile up at mid-rapidity', 'Mid-rapidity: compressed baryon-rich matter, p̄/p ≪ 1'] }
+  ];
+  cols.forEach(c => {
+    c.gam = c.sqrts / (2 * mN); c.yb = Math.acosh(c.gam);
+    c.sig = Math.sqrt(Math.log(c.gam));                         // Landau 流体：介子 dN/dy 宽度 σ² = ln(√s / 2m_N)
+    Object.assign(c, freeze(c.sqrts));
+    c.ox = c.x0 + 225;
+  });
+  cols[0].notes[1] += Math.exp(-2 * cols[0].mu / cols[0].T).toFixed(2);
+
+  // 几何（像素）与时间（秒）
+  const oy = 152, half = 82, R = 54, v = 170, bxMax = 207;      // 侧视图束流轴、半高度、核半径、β = 1 的速度
+  const tc = 1.0, tFade = tc + 2.2, P = tc + 2.8, tauS = 0.1;    // 碰撞时刻、淡出、周期、阻止的弛豫时间
+
+  // 一个事件：核子在（洛伦兹收缩的）圆盘内均匀分布，碰到对面核后弛豫到末态快度；产生的粒子从中心出发
+  function makeEvent(c, k) {
+    const r = rng(2 * k + (c.x0 ? 1 : 0)), rx = Math.max(R / c.gam, 2.5), vb = v * Math.tanh(c.yb);
+    const nucleons = [], produced = [];
+    [1, -1].forEach(s => {
+      for (let i = 0; i < nN; i++) {
+        const rr = R * Math.sqrt(r()), ph = 2 * Math.PI * r();
+        const dx = rr * Math.cos(ph) * rx / R, z = rr * Math.sin(ph);
+        const y = clamp(s * c.yc + c.sy * gauss(r), -c.yb, c.yb);
+        const th = tc - (rx * Math.sqrt(1 - (z / R) ** 2) + s * dx) / (2 * vb);   // 碰到对面核前沿的时刻
+        nucleons.push({ s, dx, z, y, th, vb, col: s > 0 ? MAGENTA : ORANGE });
+      }
+    });
+    for (let i = 0; i < c.nMes + 2 * c.nPair; i++) {
+      const kind = i < c.nMes ? 0 : (i - c.nMes) % 2 ? 2 : 1;   // 0 介子，1 质子，2 反质子（成对产生）
+      produced.push({ kind, y: c.sig * gauss(r), z: 0.8 * R * (2 * r() - 1), vz: 22 * gauss(r) });
+    }
+    let nB = 0;                                                  // 本事件 |y| < 0.5 内的净重子数
+    nucleons.forEach(p => { if (Math.abs(p.y) < yMid) nB++; });
+    produced.forEach(p => { if (p.kind && Math.abs(p.y) < yMid) nB += p.kind === 1 ? 1 : -1; });
+    return { nucleons, produced, nB, rx, vb };
+  }
+
+  function nucleonX(c, p, tau) {
+    if (tau < p.th) return c.ox + p.dx + p.s * p.vb * (tau - tc);
+    const dt = tau - p.th, xh = c.ox + p.dx + p.s * p.vb * (p.th - tc), vf = v * Math.tanh(p.y);
+    return xh + vf * dt + (p.s * p.vb - vf) * tauS * (1 - Math.exp(-dt / tauS));
+  }
+
+  function dot(x, y, r, col, alpha = 1) {
+    ctx.globalAlpha = alpha;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fillStyle = col; ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+
+  function ring(x, y, r, col, alpha = 1) {
+    ctx.globalAlpha = alpha;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fillStyle = 'white'; ctx.fill();
+    ctx.strokeStyle = col; ctx.lineWidth = 1.3; ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  function glow(x, y, r, alpha, rgb) {
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, `rgba(${rgb},${alpha})`); g.addColorStop(1, `rgba(${rgb},0)`);
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  function text(str, x, y, col, font = '12px Arial', align = 'center') {
+    ctx.font = font; ctx.fillStyle = col; ctx.textAlign = align; ctx.textBaseline = 'middle';
+    ctx.fillText(str, x, y);
+  }
+
+  // 带上下标的文字：_{...} 为下标，^{...} 为上标；返回宽度
+  function rich(str, x, y, size, col, bold = false, align = 'left') {
+    const parts = str.split(/(_\{[^}]*\}|\^\{[^}]*\})/).filter(Boolean).map(s =>
+      s.startsWith('_{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: size * 0.28 } :
+      s.startsWith('^{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: -size * 0.38 } :
+      { t: s, sz: size, dy: 0 });
+    const font = sz => `${bold ? 'bold ' : ''}${sz}px Arial`;
+    let w = 0;
+    parts.forEach(p => { ctx.font = font(p.sz); p.w = ctx.measureText(p.t).width; w += p.w; });
+    let xx = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillStyle = col;
+    parts.forEach(p => { ctx.font = font(p.sz); ctx.fillText(p.t, xx, y + p.dy); xx += p.w; });
+    return w;
+  }
+
+  function nucleus(x, y, rx, ry, col, alpha) {
+    ctx.globalAlpha = alpha;
+    ctx.beginPath(); ctx.ellipse(x, y, rx, ry, 0, 0, 2 * Math.PI);
+    ctx.fillStyle = col; ctx.fill();
+    ctx.globalAlpha = Math.min(1, 3 * alpha);
+    ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  // 图例：粒子种类（两栏共用）
+  function drawLegend() {
+    const items = [
+      [x => dot(x, 56, 3, MAGENTA), x => dot(x, 56, 3, ORANGE), 'nucleons from nucleus 1 / 2'],
+      [x => dot(x, 56, 2.6, PROTON), null, 'produced p'],
+      [x => ring(x, 56, 2.6, PROTON), null, 'p̄'],
+      [x => dot(x, 56, 1.8, MESON, 0.8), null, 'mesons']
+    ];
+    ctx.font = '12px Arial';
+    const ws = items.map(it => (it[1] ? 18 : 10) + ctx.measureText(it[2]).width);
+    let x = W / 2 - (ws.reduce((a, b) => a + b) + 28 * (items.length - 1)) / 2;
+    items.forEach((it, i) => {
+      it[0](x + 3);
+      if (it[1]) it[1](x + 11);
+      text(it[2], x + (it[1] ? 18 : 10), 56, '#555', '12px Arial', 'left');
+      x += ws[i] + 28;
+    });
+  }
+
+  // 侧视图：一次碰撞事件
+  function drawSideView(c, tau, ev) {
+    const x0 = c.x0, ox = c.ox, fade = 1 - clamp((tau - tFade) / (P - tFade - 0.1));
+    ctx.save();
+    ctx.beginPath(); ctx.rect(x0 + 8, oy - half, 424, 2 * half); ctx.clip();
+    ctx.fillStyle = '#fafafa'; ctx.fillRect(x0 + 8, oy - half, 424, 2 * half);
+    ctx.setLineDash([6, 6]); ctx.strokeStyle = '#ccc'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0 + 8, oy); ctx.lineTo(x0 + 432, oy); ctx.stroke();
+    ctx.setLineDash([]);
+    text('side view', x0 + 14, oy - half + 10, '#999', 'italic 11px Arial', 'left');
+
+    // 中快度区：Bjorken 图像中 z = t·tanh y，故 |y| < 0.5 对应随时间变宽的区域
+    if (tau > tc) {
+      const bx = Math.min(v * (tau - tc) * Math.tanh(yMid), bxMax);
+      ctx.fillStyle = 'rgba(144,202,249,0.2)'; ctx.fillRect(ox - bx, oy - half, 2 * bx, 2 * half);
+      ctx.setLineDash([4, 3]); ctx.strokeStyle = '#90caf9'; ctx.lineWidth = 1;
+      ctx.strokeRect(ox - bx, oy - half, 2 * bx, 2 * half);
+      ctx.setLineDash([]);
+      if (bx > 32) text('|y| < 0.5', ox, oy - half + 10, MESON, '11px Arial');
+    }
+
+    // 入射核（洛伦兹收缩），接触后淡出，只留下核子
+    const tTouch = tc - ev.rx / ev.vb;
+    if (tau < tTouch + 0.15) {
+      const a = tau < tTouch ? 1 : 1 - (tau - tTouch) / 0.15, d = (tc - tau) * ev.vb;
+      nucleus(ox - d, oy, ev.rx, R, MAGENTA, 0.15 * a);
+      nucleus(ox + d, oy, ev.rx, R, ORANGE, 0.15 * a);
+      if (tau < tTouch - 0.1) {
+        text(`γ ≈ ${c.gam < 10 ? c.gam.toFixed(1) : Math.round(c.gam)}`, ox - d, oy - R - 10, MAGENTA, 'bold 12px Arial');
+        text(`γ ≈ ${c.gam < 10 ? c.gam.toFixed(1) : Math.round(c.gam)}`, ox + d, oy - R - 10, ORANGE, 'bold 12px Arial');
+      }
+    }
+    if (tau > tc && tau < tc + 1.2) {
+      const s = (tau - tc) / 1.2;
+      glow(ox, oy, 12 + c.glowV * (tau - tc), 0.75 * (1 - s), c.glowRGB);
+    }
+
+    // 产生的粒子，然后是核子（画在上层）
+    if (tau > tc) {
+      const dt = tau - tc;
+      ev.produced.forEach(p => {
+        const x = ox + v * Math.tanh(p.y) * dt, y = oy - p.z - p.vz * dt;
+        if (p.kind === 0) dot(x, y, 1.8, MESON, 0.75 * fade);
+        else if (p.kind === 1) dot(x, y, 2.6, PROTON, fade);
+        else ring(x, y, 2.6, PROTON, fade);
+      });
+    }
+    ev.nucleons.forEach(p => dot(nucleonX(c, p, tau), oy - p.z, 2.6, p.col, fade));
+
+    if (tau > tc + 0.2) {
+      ctx.globalAlpha = clamp((tau - tc - 0.2) / 0.3) * fade;
+      rich(c.tag, ox, oy + half - 12, 14, c.x0 ? MAGENTA : ORANGE, true, 'center');
+      ctx.globalAlpha = 1;
+    }
+    ctx.restore();
+
+    if (tau > tc + 0.6) {
+      ctx.globalAlpha = clamp((tau - tc - 0.6) / 0.3) * fade;
+      rich(`this event: net-baryon number in |y| < 0.5 = ${ev.nB}`, ox, oy + half + 14, 13, '#333', false, 'center');
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  // 快度分布（示意）：净重子与产生的介子，两栏用同一纵轴
+  const yMin = -6, yMax = 6, dMax = 70, py0 = 276, py1 = 346;
+  function drawRapidity(c) {
+    const x0 = c.x0 + 30, x1 = c.x0 + 405;
+    const X = y => x0 + (y - yMin) / (yMax - yMin) * (x1 - x0);
+    const Y = d => py1 - Math.min(d / dMax, 1) * (py1 - py0);
+
+    ctx.fillStyle = 'rgba(144,202,249,0.25)';
+    ctx.fillRect(X(-yMid), py0, X(yMid) - X(-yMid), py1 - py0);
+
+    const curve = (f, col, dash, lw) => {
+      ctx.setLineDash(dash); ctx.strokeStyle = col; ctx.lineWidth = lw;
+      ctx.beginPath();
+      for (let y = yMin; y <= yMax + 1e-9; y += 0.05) y === yMin ? ctx.moveTo(X(y), Y(f(y))) : ctx.lineTo(X(y), Y(f(y)));
+      ctx.stroke(); ctx.setLineDash([]);
+    };
+    curve(y => gaussD(y, 0, c.sig, c.nMes), MESON, [5, 3], 1.5);
+    curve(y => gaussD(y, c.yc, c.sy, nN) + gaussD(y, -c.yc, c.sy, nN), PROTON, [], 2.2);
+
+    text('dN/dy', x0, py0 - 10, '#333', '12px Arial', 'left');
+    ctx.strokeStyle = PROTON; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.moveTo(x1 - 168, py0 - 10); ctx.lineTo(x1 - 152, py0 - 10); ctx.stroke();
+    text('net baryons', x1 - 148, py0 - 10, PROTON, '12px Arial', 'left');
+    ctx.setLineDash([5, 3]); ctx.strokeStyle = MESON; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(x1 - 66, py0 - 10); ctx.lineTo(x1 - 50, py0 - 10); ctx.stroke();
+    ctx.setLineDash([]);
+    text('mesons', x1 - 46, py0 - 10, MESON, '12px Arial', 'left');
+
+    // 坐标轴、刻度与束流快度
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, py1); ctx.lineTo(x1, py1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x1 + 6, py1); ctx.lineTo(x1 - 2, py1 - 4); ctx.lineTo(x1 - 2, py1 + 4); ctx.closePath();
+    ctx.fillStyle = '#555'; ctx.fill();
+    text('y', x1 + 12, py1, '#333', 'italic 13px Arial', 'left');
+    for (let n = -6; n <= 6; n += 2) {
+      ctx.beginPath(); ctx.moveTo(X(n), py1); ctx.lineTo(X(n), py1 + 4); ctx.stroke();
+      text(String(n), X(n), py1 + 12, '#555');
+    }
+    [[-c.yb, ORANGE, '−y_{beam}'], [c.yb, MAGENTA, 'y_{beam}']].forEach(([y, col, label]) => {
+      ctx.beginPath(); ctx.moveTo(X(y), py1 - 8); ctx.lineTo(X(y) - 5, py1); ctx.lineTo(X(y) + 5, py1); ctx.closePath();
+      ctx.fillStyle = col; ctx.fill();
+      rich(label, X(y), py1 + 26, 12, col, true, 'center');
+    });
+  }
+
+  function draw(T) {
+    ctx.clearRect(0, 0, W, H);
+    rich('Same Au+Au, different √s_{NN}: the total baryon number (participants) is fixed, where it ends up in rapidity is not',
+         W / 2, 10, 13, '#888', false, 'center');
+    ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(W / 2, 24); ctx.lineTo(W / 2, H - 6); ctx.stroke();
+    drawLegend();
+
+    const k = Math.floor(T / P), tau = T - k * P;
+    cols.forEach(c => {
+      text(c.name, c.x0 + 10, 34, '#333', 'bold 17px Arial', 'left');
+      ctx.font = 'bold 17px Arial';
+      rich(`√s_{NN} = ${c.sqrts} GeV`, c.x0 + 20 + ctx.measureText(c.name).width, 35, 14, MAGENTA, true);
+      text(c.ex, c.x0 + 440, 35, '#888', '12px Arial', 'right');
+      drawSideView(c, tau, makeEvent(c, k));
+      drawRapidity(c);
+      rich(`Freeze-out: μ_{B} ≈ ${Number((c.mu * 1000).toPrecision(2))} MeV, T ≈ ${Math.round(c.T * 1000)} MeV`,
+           c.x0 + 10, 398, 14, MAGENTA, true);
+      rich('• ' + c.notes[0], c.x0 + 10, 418, 13, '#333');
+      rich('• ' + c.notes[1], c.x0 + 10, 436, 13, '#333');
+    });
+  }
+
+  // 播放控制：只在本页可见时运行
+  let start = null, raf = null;
+  function frame(now) {
+    if (start === null) start = now;
+    draw((now - start) / 1000);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (!raf) { start = null; raf = requestAnimationFrame(frame); } }
+  function stop() { cancelAnimationFrame(raf); raf = null; }
+  function sync() { Reveal.getCurrentSlide() === slide ? play() : stop(); }
+
+  canvas.addEventListener('click', () => { stop(); play(); });
+  Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
+  Reveal.on('slidechanged', sync);
+  draw(tc + 1.0);   // 静态画面（如导出 PDF）显示碰撞后的粒子分布
 })();
 </script>
 
@@ -2081,6 +2447,220 @@ Reveal.initialize({
   Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
   Reveal.on('slidechanged', sync);
   draw(tStart + 0.82 * tMove);   // 静态画面（如导出 PDF）：点位于涟漪区内
+})();
+</script>
+
+<!-- fRG：从 QCD 到低能有效理论 -->
+<script>
+(function () {
+  const slide = document.getElementById('frg-slide');
+  const canvas = document.getElementById('frg-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 900, H = 420, S = 2;
+  canvas.width = W * S; canvas.height = H * S;
+  ctx.scale(S, S);
+
+  const clamp = (x, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, x));
+  const DARK = '#333';
+
+  // RG 标度轴：k 从 10 GeV（上）到 0.05 GeV（下），对数刻度
+  const kTop = 10, kBot = 0.05, yTop = 34, yBot = 372, ax = 200;
+  const Yk = k => yTop + (Math.log10(kTop) - Math.log10(k)) / (Math.log10(kTop) - Math.log10(kBot)) * (yBot - yTop);
+  const kY = y => Math.pow(10, Math.log10(kTop) - clamp((y - yTop) / (yBot - yTop)) * (Math.log10(kTop) - Math.log10(kBot)));
+
+  // 各能区（边界为典型值，仅示意）
+  const regimes = [
+    { hi: 10,   lo: 2,    col: '#1565c0', name: 'perturbative QCD', ax: ['perturbative QCD'], l1: 'quarks + gluons', l2: 'Γ_{k} ≈ S_{QCD} (+ weak-coupling corrections)' },
+    { hi: 2,    lo: 0.8,  col: '#6a1b9a', name: 'transition regime', ax: ['transition regime'], l1: 'gluons decouple (mass gap)', l2: 'dynamical hadronization: q̄q → φ' },
+    { hi: 0.8,  lo: 0.3,  col: '#c71585', name: 'low-energy EFT (quark–meson)', ax: ['low-energy EFT', '(quark–meson)'],
+      l1: 'initial conditions at Λ_{EFT} from the QCD flow', l2: 'chiral symmetry breaking at k_{χ}: σ, π split' },
+    { hi: 0.3,  lo: 0.14, col: '#2e7d32', name: 'chiral perturbation theory', ax: ['chiral pert. theory'], l1: 'quarks gapped (M_{q} ≈ 350 MeV)', l2: 'pions dominate' },
+    { hi: 0.14, lo: 0.05, col: '#757575', name: 'k → 0: full effective action Γ', ax: ['k → 0', 'full effective action Γ'], l1: 'all fields gapped', l2: 'observables: masses, EoS, fluctuations' }
+  ];
+  const regimeOf = k => regimes.find(r => k > r.lo) || regimes[regimes.length - 1];
+  const kChi = 0.4;
+
+  // 各自由度的活跃程度 ~ k²/(k² + M²)，介子在 k ~ 1 GeV 以下通过动力学强子化出现
+  // k > k_χ：σ、π 简并，质量随 k 降低而减小；k < k_χ：手征破缺，π 保持轻（m_π），σ 和夸克获得质量
+  const emerge = k => 1 / (1 + (k / 0.9) ** 4);
+  const brk = k => Math.sqrt(clamp(1 - k / kChi));                  // 破缺程度，k_χ 处为 0
+  const mSym = k => 1.2 * Math.max(k - kChi, 0) / (1 - kChi);       // 对称相中 σ、π 的共同质量
+  const act = (k, m) => k * k / (k * k + m * m);
+  const dofs = [
+    { name: 'gluons', col: '#f9a825', act: k => act(k, 0.9) },
+    { name: 'quarks', col: '#e53935', act: k => act(k, 0.35 * brk(k)) },
+    { name: 'σ',      col: '#8e24aa', act: k => emerge(k) * act(k, k > kChi ? mSym(k) : 0.5 * brk(k)) },
+    { name: 'π',      col: '#1565c0', act: k => emerge(k) * act(k, k > kChi ? mSym(k) : 0.14) }
+  ];
+  const sx0 = 262, sw = 52, sgap = 14;
+
+  function rich(str, x, y, size, col, bold = false, align = 'left') {
+    const parts = str.split(/(_\{[^}]*\}|\^\{[^}]*\})/).filter(Boolean).map(s =>
+      s.startsWith('_{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: size * 0.28 } :
+      s.startsWith('^{') ? { t: s.slice(2, -1), sz: size * 0.72, dy: -size * 0.38 } :
+      { t: s, sz: size, dy: 0 });
+    const font = sz => `${bold ? 'bold ' : ''}${sz}px Arial`;
+    let w = 0;
+    parts.forEach(p => { ctx.font = font(p.sz); p.w = ctx.measureText(p.t).width; w += p.w; });
+    let xx = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillStyle = col;
+    parts.forEach(p => { ctx.font = font(p.sz); ctx.fillText(p.t, xx, y + p.dy); xx += p.w; });
+  }
+
+  // ---------- 左：k 轴与能区 ----------
+  function drawAxis(k) {
+    const cur = regimeOf(k);
+    regimes.forEach(r => {
+      const y0 = Yk(r.hi), y1 = Yk(r.lo), on = r === cur;
+      ctx.globalAlpha = on ? 0.22 : 0.08;
+      ctx.fillStyle = r.col; ctx.fillRect(14, y0, ax - 18, y1 - y0);
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(14, y0); ctx.lineTo(ax - 4, y0); ctx.stroke();
+      r.ax.forEach((l, i) => rich(l, 22, (y0 + y1) / 2 + 16 * (i - (r.ax.length - 1) / 2), 12.5, r.col, on));
+    });
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(ax, yBot); ctx.lineTo(ax, yTop - 10); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ax, yTop - 14); ctx.lineTo(ax - 4, yTop - 6); ctx.lineTo(ax + 4, yTop - 6); ctx.closePath();
+    ctx.fillStyle = '#555'; ctx.fill();
+    rich('RG scale k', ax, yTop - 24, 13, DARK, true, 'center');
+    [[10, '10 GeV'], [3, '3'], [1, '1'], [0.3, '0.3'], [0.1, '0.1']].forEach(([kv, lab]) => {
+      const y = Yk(kv);
+      ctx.beginPath(); ctx.moveTo(ax - 4, y); ctx.lineTo(ax + 4, y); ctx.stroke();
+      rich(lab, ax + 8, y, 11.5, '#555');
+    });
+    rich('UV', ax - 8, yTop + 6, 11, '#999', true, 'right');
+    rich('IR', ax - 8, yBot - 6, 11, '#999', true, 'right');
+    rich('k → 0', ax, yBot + 16, 12, '#555', false, 'center');
+  }
+
+  // ---------- 中：各自由度活跃程度的色带 ----------
+  function drawStrips() {
+    rich('active degrees of freedom', sx0 + 2 * sw + 1.5 * sgap, yTop - 24, 13, DARK, true, 'center');
+    dofs.forEach((d, i) => {
+      const x = sx0 + i * (sw + sgap);
+      for (let y = yTop; y < yBot; y += 2) {
+        ctx.globalAlpha = 0.08 + 0.85 * d.act(kY(y + 1));
+        ctx.fillStyle = d.col; ctx.fillRect(x, y, sw, 2);
+      }
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1; ctx.strokeRect(x, yTop, sw, yBot - yTop);
+      rich(d.name, x + sw / 2, yBot + 16, 13, d.col, true, 'center');
+    });
+    // χSB 的标度
+    const y = Yk(kChi), xr = sx0 + 4 * sw + 3 * sgap;
+    ctx.setLineDash([4, 3]); ctx.strokeStyle = '#c71585'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(sx0 - 6, y); ctx.lineTo(xr + 4, y); ctx.stroke(); ctx.setLineDash([]);
+    rich('k_{χ}', xr + 8, y, 12, '#c71585', true);
+  }
+
+  // ---------- 右：当前标度下的自由度示意 ----------
+  const zx = 735, zy = 168, zr = 128;
+  function rng(seed) { let a = seed; return () => (a = (a * 16807) % 2147483647) / 2147483647; }
+  const r0 = rng(17), place = () => { let x, y; do { x = 2 * r0() - 1; y = 2 * r0() - 1; } while (x * x + y * y > 0.8); return [x, y]; };
+  const parts = {
+    gluons: Array.from({ length: 14 }, () => ({ p: place(), a: 6.3 * r0(), w: 6.3 * r0() })),
+    quarks: Array.from({ length: 16 }, (_, i) => ({ p: place(), w: 6.3 * r0(), c: ['#e53935', '#43a047', '#1e88e5'][i % 3] })),
+    sigma:  Array.from({ length: 5 },  () => ({ p: place(), a: 6.3 * r0(), w: 6.3 * r0() })),
+    pions:  Array.from({ length: 12 }, () => ({ p: place(), w: 6.3 * r0() }))
+  };
+  const pos = (p, w, t, amp = 0.05) => [zx + zr * (p[0] + amp * Math.sin(1.7 * t + w)), zy + zr * (p[1] + amp * Math.cos(1.3 * t + 2 * w))];
+  const fade = (act, n, i) => clamp(act * n - i);
+
+  function drawZoom(k, t) {
+    rich('what lives at scale k', zx, yTop - 24, 13, DARK, true, 'center');
+    ctx.fillStyle = '#fafafa'; ctx.beginPath(); ctx.arc(zx, zy, zr, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#ccc'; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.save(); ctx.beginPath(); ctx.arc(zx, zy, zr - 1, 0, 2 * Math.PI); ctx.clip();
+    const [ag, aq, as, ap] = dofs.map(d => d.act(k));
+
+    parts.gluons.forEach((g, i) => {           // 胶子：波浪线
+      const al = fade(ag, 14, i); if (al <= 0) return;
+      const [x, y] = pos(g.p, g.w, t, 0.04), dx = Math.cos(g.a + 0.3 * t), dy = Math.sin(g.a + 0.3 * t);
+      ctx.globalAlpha = al; ctx.strokeStyle = '#f9a825'; ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let s = -14; s <= 14; s++) {
+        const o = 4 * Math.sin(s * 0.9 + 6 * t);
+        const xx = x + s * dx - o * dy, yy = y + s * dy + o * dx;
+        s === -14 ? ctx.moveTo(xx, yy) : ctx.lineTo(xx, yy);
+      }
+      ctx.stroke();
+    });
+    parts.quarks.forEach((q, i) => {           // 夸克：红绿蓝色荷
+      const al = fade(aq, 16, i); if (al <= 0) return;
+      const [x, y] = pos(q.p, q.w, t, 0.07);
+      ctx.globalAlpha = al; ctx.fillStyle = q.c; ctx.beginPath(); ctx.arc(x, y, 5, 0, 2 * Math.PI); ctx.fill();
+    });
+    parts.sigma.forEach((m, i) => {            // σ：夸克–反夸克束缚对
+      const al = fade(as, 5, i); if (al <= 0) return;
+      const [x, y] = pos(m.p, m.w, t, 0.05), dx = 9 * Math.cos(m.a + t), dy = 9 * Math.sin(m.a + t);
+      ctx.globalAlpha = al; ctx.strokeStyle = '#8e24aa'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x - dx, y - dy); ctx.lineTo(x + dx, y + dy); ctx.stroke();
+      ctx.fillStyle = '#8e24aa';
+      ctx.beginPath(); ctx.arc(x - dx, y - dy, 4.5, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.strokeStyle = '#8e24aa';
+      ctx.beginPath(); ctx.arc(x + dx, y + dy, 4.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    });
+    parts.pions.forEach((pi, i) => {           // π：轻的赝 Goldstone 玻色子
+      const al = fade(ap, 12, i); if (al <= 0) return;
+      const [x, y] = pos(pi.p, pi.w, t, 0.1);
+      ctx.globalAlpha = al; ctx.fillStyle = '#1565c0'; ctx.beginPath(); ctx.arc(x, y, 8, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 11px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('π', x, y + 0.5);
+    });
+    ctx.globalAlpha = 1;
+    ctx.restore();
+
+    const r = regimeOf(k);
+    rich(r.name, zx, zy + zr + 24, 15, r.col, true, 'center');
+    rich(r.l1, zx, zy + zr + 44, 13, '#444', false, 'center');
+    rich(r.l2, zx, zy + zr + 62, 13, '#444', false, 'center');
+  }
+
+  function draw(k, t) {
+    ctx.clearRect(0, 0, W, H);
+    drawAxis(k);
+    drawStrips();
+    // 当前 k：横线贯穿左、中两栏
+    const y = Yk(k), col = regimeOf(k).col;
+    ctx.strokeStyle = col; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(ax - 10, y); ctx.lineTo(sx0 + 4 * sw + 3 * sgap + 4, y); ctx.stroke();
+    ctx.fillStyle = col; ctx.beginPath(); ctx.arc(ax, y, 6, 0, 2 * Math.PI); ctx.fill();
+    const lab = k >= 1 ? `${k.toFixed(1)} GeV` : `${Math.round(k * 1000)} MeV`;
+    ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.fillRect(ax + 8, y - 22, 70, 16);
+    rich(`k = ${lab}`, ax + 10, y - 14, 12.5, col, true);
+    // 连到右侧放大图
+    ctx.strokeStyle = 'rgba(0,0,0,0.12)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(sx0 + 4 * sw + 3 * sgap + 4, y); ctx.lineTo(zx - zr * 0.7, zy - zr * 0.7); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sx0 + 4 * sw + 3 * sgap + 4, y); ctx.lineTo(zx - zr * 0.7, zy + zr * 0.7); ctx.stroke();
+    drawZoom(k, t);
+  }
+
+  // 自动播放：k 从 UV 对数匀速降到 IR，停留后循环；拖动左/中部手动选 k
+  const tStart = 0.8, tRun = 12, tLoop = tStart + tRun + 2.5;
+  const kAuto = t => Math.exp(Math.log(kTop * 0.9) + (Math.log(kBot * 1.2) - Math.log(kTop * 0.9)) * clamp((t - tStart) / tRun));
+  let start = null, raf = null, kManual = null, dragging = false;
+  function frame(now) {
+    if (start === null) start = now;
+    const t = (now - start) / 1000;
+    draw(kManual !== null ? kManual : kAuto(t % tLoop), t);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (!raf) { start = null; raf = requestAnimationFrame(frame); } }
+  function stop() { cancelAnimationFrame(raf); raf = null; }
+  function sync() { if (Reveal.getCurrentSlide() === slide) { kManual = null; play(); } else stop(); }
+
+  const yOf = e => { const b = canvas.getBoundingClientRect(); return (e.clientY - b.top) * H / b.height; };
+  const xOf = e => { const b = canvas.getBoundingClientRect(); return (e.clientX - b.left) * W / b.width; };
+  canvas.addEventListener('mousedown', e => {
+    if (xOf(e) > 600) { kManual = null; start = null; return; }   // 点击右侧：恢复自动播放
+    dragging = true; kManual = clamp(kY(yOf(e)), kBot, kTop);
+  });
+  canvas.addEventListener('mousemove', e => { if (dragging) kManual = clamp(kY(yOf(e)), kBot, kTop); });
+  window.addEventListener('mouseup', () => { dragging = false; });
+
+  Reveal.isReady() ? sync() : Reveal.on('ready', sync);   // 脚本运行时 Reveal 可能已就绪
+  Reveal.on('slidechanged', sync);
+  draw(0.6, 0);   // 静态画面（如导出 PDF）：低能有效理论区
 })();
 </script>
 
