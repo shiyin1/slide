@@ -114,7 +114,6 @@
   <br>
   <ul>
     <li>Heavy-ion collisions</li><br>
-    <li class="dim">QCD phase diagram</li><br>
     <li class="dim">Critical point signatures: baryon number fluctuations</li><br>
     <li class="dim">Scaling behavior of the CEP</li><br>
     <li class="dim">Summary and Outlook</li>
@@ -163,13 +162,27 @@
     <a href="https://arxiv.org/abs/hep-ph/0511094" target="_blank" style="color: inherit; text-decoration: underline;">hep-ph/0511094</a></figcaption>
 </section>
 
+<!-- 巨正则系综动画：接收度内粒子只占一小部分，逐事件统计；只播放一次，按 Replay 重播（代码见文件末尾） -->
+<section id="gce-slide">
+  <h3 style="margin-bottom: 0;">Why grand canonical ensemble?</h3>
+  <canvas id="gce-canvas" style="width: 900px; height: 440px;"></canvas>
+  <div style="text-align: right; width: 900px; margin: -10px auto 0;">
+    <button id="gce-replay" class="replay-btn">&#8635; Replay</button>
+  </div>
+</section>
+
+<!-- 对撞 vs 固定靶动画：上为加速器、中为侧视图事件、下为 dN/dy 累积，循环播放，点击重新开始（代码见文件末尾） -->
+<section id="fxt-slide">
+  <h3 style="margin-bottom: 0;">Collider vs Fixed target</h3>
+  <canvas id="fxt-canvas" style="width: 900px; height: 520px; cursor: pointer;"></canvas>
+</section>
+
 <section>
   <h3>Outline</h3>
   <br>
   <ul>
     <li class="dim" >Heavy-ion collisions</li><br>
-    <li>QCD phase diagram</li><br>
-    <li class="dim">Critical point signatures: baryon number fluctuations</li><br>
+    <li>Critical point signatures: baryon number fluctuations</li><br>
     <li class="dim">Scaling behavior of the CEP</li><br>
     <li class="dim">Summary and Outlook</li>
   </ul>
@@ -186,17 +199,64 @@
 </section>
 
 <section id="cumulants">
-  <h3 style="margin-bottom: 0;">Cumulants of the net-proton distribution</h3>
-  <div class="fig-row">
-    <figure>
-      <img src="cumulants.svg" style="width:120%;">
-      <figcaption>STAR Collaboration, arXiv:2001.02852 </figcaption>
-    </figure>
+  <h3 style="margin-bottom: 20px;">Cumulants of the net-proton distribution</h3>
+
+  <!-- 1. 核心修改：移除 preserveAspectRatio="none"，给 SVG 设定一个固定的高宽比比例 -->
+  <svg class="arrows" viewBox="0 0 100 100" style="width: 100%; height: auto; display: block; overflow: visible;">
+    <defs>
+      <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="red" />
+      </marker>
+    </defs>
+<foreignObject x="45" y="6" width="35" height="25">
+  <div xmlns="http://w3.org" style="font-size: 1.7px; text-align: left; color: black; line-height: 1.1;">
+    
+    <!-- 核心修改：使用 \begin{aligned} ... \end{aligned} 包裹多行公式 -->
+    \[
+    \begin{aligned}
+      \delta N_B &= N_B - \langle N_B \rangle \\
+      C_1        &= \langle N_B \rangle \\
+      C_2        &= \langle (\delta N_B)^2 \rangle \\
+      C_3        &= \langle (\delta N_B)^3 \rangle \\
+      C_4        &= \langle (\delta N_B)^4 \rangle - 3 \langle (\delta N_B)^2 \rangle^2
+    \end{aligned}
+    \]
   </div>
+</foreignObject>
+<foreignObject x="70" y="10" width="35" height="25">
+  <div xmlns="http://w3.org" style="font-size: 1.8px; text-align: left; color: black; line-height: 1.1;">
+    
+    <!-- 核心修改：使用 \begin{aligned} ... \end{aligned} 包裹多行公式 -->
+    \[
+    \begin{aligned}
+      S\sigma        &= C_3/C_2 \\
+      \kappa\sigma^2 &= C_4/C_2 
+    \end{aligned}
+    \]
+  </div>
+</foreignObject>
+    <!-- 2. 核心修改：利用 <image> 把第一张图（fig1.svg）放进网格中控制 -->
+    <!-- 下面的 x="15" y="5" 表示横坐标15，纵坐标5，宽30，高20。你可以随意微调这四个数 -->
+    <image href="fig1.svg" x="15" y="5" width="30" height="20" />
+
+    <!-- 3. 核心修改：利用 <image> 把第二张大图（cumulants.svg）放进网格中控制 -->
+    <!-- 放置在箭头下方（Y=45以后），宽度设置为占满 90% 的网格 -->
+    <image href="cumulants.svg" x="5" y="23" width="90" height="50" />
+    
+    <!-- 原有的两条红色箭头（在 100x100 的网格中定位） -->
+    <path d="M 30,20 30,28" stroke="red" stroke-width=".4" fill="none" marker-end="url(#arrow-red)" />
+    <path d="M 30,20 70,28" stroke="red" stroke-width=".4" fill="none" marker-end="url(#arrow-red)" />
+  </svg>
+
+  <!-- 4. 补充说明文字：由于图画进了SVG，文字用绝对定位挂在最下方即可 -->
+  <p style="font-size: 0.35em; color: gray; text-align: center; margin-top: 630px;">
+    STAR Collaboration, arXiv:2001.02852
+  </p>
 </section>
 
+
 <section>
-  <h3 style="margin-bottom: 0;">Non-monotonic behavior</h3>
+  <h3 style="margin-bottom: 0;">Non-monotonic behavior of 4th order cumulants</h3>
   <!-- 左列上下两张图，右列一张图 -->
   <div class="fig-row" style="align-items: center; gap: 40px;">
     <figure style="display: flex; flex-direction: column; align-items: center;">
@@ -210,29 +270,88 @@
   <figcaption style="text-align: center;">M. A. Stephanov, arXiv:1104.1627</figcaption>
 </section>
 
-<section id="fRG">
-  <h3 style="margin-bottom: 0;">How to investigate the phase structure in fRG?</h3>
-  <div class="fig-row">
-    <figure>
-      <img src="cumulants.svg" style="width:120%;">
-      <figcaption>STAR Collaboration, arXiv:2001.02852 </figcaption>
+<!-- fRG：从 QCD 到低能有效理论。左为 RG 标度 k（对数）及各能区，中为各自由度的活跃程度，右为当前 k 下的自由度示意；
+     自动从 UV 扫到 IR 循环播放，在左/中部拖动可手动选择 k，点击右侧恢复自动播放（代码见文件末尾） -->
+<section id="frg-slide">
+  <h3 style="margin-bottom: 0;">From QCD to low-energy effective theories</h3>
+  <div class="fig-row" style="align-items: flex-start; gap: 40px; text-align: left; margin-top: 10px;">
+    <!-- 核心修改：清空 ul 的默认 padding，并强制内容左对齐 -->
+    <ul class="left-col" style="padding-left: 20px; margin-left: 0; text-align: left;">
+      <li style="font-size: .55em; text-align: left;">Assume the system is in a state of equilibrium</li>
+      <li style="font-size: .55em; text-align: left;">Assume the system can be described by the grand canonical ensemble</li>
+    </ul>
+  </div>
+  <canvas id="frg-canvas" style="width: 900px; height: 420px; cursor: ns-resize; margin-top: 40px;"></canvas>
+  <!-- <div class="eq" style="font-size: 0.5em; margin-top: -8px;">
+    \[ \partial_t\Gamma_k=\frac12\,\mathrm{STr}\Big[\big(\Gamma_k^{(2)}+R_k\big)^{-1}\partial_t R_k\Big],\qquad t=\ln\frac{k}{\Lambda},\qquad
+       \Gamma_{k=\Lambda}\simeq S_{\rm QCD}\ \xrightarrow{\ k\,\to\,0\ }\ \Gamma \]
+  </div>
+  <ul class="ising-list">
+    <li>A low-energy EFT is the QCD flow below its cutoff: its couplings are \(\Gamma_{k=\Lambda_{\rm EFT}}\), fixed by the flow from above</li>
+    <li>Dynamical hadronization: four-quark interactions \(\to\) mesonic fields \(\phi\sim\bar q q\), so one flow covers all scales</li>
+  </ul>
+  <figcaption style="text-align: center; margin-top: 6px;">e.g. W.-j. Fu, J. M. Pawlowski, F. Rennecke,
+    <a href="https://arxiv.org/abs/1909.02991" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:1909.02991</a></figcaption>-->
+</section>
+
+<section id="LEFT-slide">
+  <h3 style="margin-bottom: 0;">Low energy effective field theory (LEFT)</h3>
+  <div class="fig-row" style="align-items: flex-start; gap: 40px; text-align: left; margin-top: 30px;">
+    <!-- 核心修改：清空 ul 的默认 padding，并强制内容左对齐 -->
+    <ul class="left-col" style="padding-left: 20px; margin-left: 0; text-align: left;">
+      <li style="font-size: .55em; text-align: left;">Polyakov-Quark-Meson (PQM) model within functional renormalization group (fRG)</li>
+    </ul>
+  </div>
+<foreignObject x="0" y="0" width="100" height="100">
+  <div xmlns="http://w3.org" style="font-size: 20px; text-align: left; color: black; line-height: 1.1;">    
+    <!-- 核心修改：使用 \begin{aligned} ... \end{aligned} 包裹多行公式 -->
+    \[
+    \begin{aligned}
+\Gamma_k[\phi,q,\bar{q}]=&\int_x \bigg\{Z_{q,k}\bar{q} \Big [\gamma_\mu \partial_\mu -\gamma_0(\mu+i g A_0) \Big ]q+\frac{1}{2}Z_{\phi,k}(\partial_\mu \phi)^2 \nonumber\\[2ex]
+&\hspace{.5cm}+h_k\,\bar{q}\,
+\left(\tau^0\sigma+\bm\tau
+\cdot\bm{\pi}\right)\,q +V_k(\rho,A_0)-c\sigma \bigg\}
+    \end{aligned}
+    \]
+  </div>
+</foreignObject>
+  <div class="fig-row" style="align-items: flex-start; gap: 40px; text-align: left; margin-top: 70px;">
+    <!-- 核心修改：清空 ul 的默认 padding，并强制内容左对齐 -->
+    <ul class="left-col" style="padding-left: 20px; margin-left: 0; text-align: left;">
+      <li style="font-size: .55em; text-align: left;">QCD assisted LEFT within fRG</li>
+    </ul>
+  </div>
+<foreignObject x="0" y="0" width="100" height="100">
+  <div xmlns="http://w3.org" style="font-size: 20px; text-align: left; color: black; line-height: 1.1;">    
+    <!-- 核心修改：使用 \begin{aligned} ... \end{aligned} 包裹多行公式 -->
+    \[
+    \begin{aligned}
+\Gamma_k[\phi,q,\bar{q}]=&\int_x \bigg\{Z_{q,k}\bar{q} \Big [\gamma_\mu \partial_\mu -\gamma_0(\mu+i g A_0) \Big ]q+\frac{1}{2}Z_{\phi,k}(\partial_\mu \phi)^2 \nonumber\\[2ex]
+&\hspace{.5cm}+{\color{red}{h_k}}\,\bar{q}\,
+\left(\tau^0\sigma+\bm\tau
+\cdot\bm{\pi}\right)\,q +V_k(\rho,A_0)-c\sigma \bigg\}
+    \end{aligned}
+    \]
+  </div>
+</foreignObject>
+  <div class="fig-row" style="align-items: flex-start; gap: 40px; text-align: left; margin-top: 10px;">
+    <!-- 核心修改：清空 ul 的默认 padding，并强制内容左对齐 -->
+    <ul class="left-col" style="padding-left: 20px; margin-left: 0; text-align: left;">
+      <l style="font-size: .55em; text-align: left; color: red;">Yukawa coupling input from fRG-QCD (use QCD data to improve the reliability of the model)</l>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 0;">Predictions of the fluctuations</h3>
+  <!-- 左列上下两张图，右列一张图 -->
+  <div class="fig-row" style="align-items: center; gap: 40px;">
+    <figure style="display: flex; flex-direction: column; align-items: center;">
+      <img src="flucmub0.svg" style="width: 750px; margin: 0;">
+      <img src="R42heatmap.svg" style="width: 500px; margin: 0;">
     </figure>
   </div>
-</section>
-
-<!-- 对撞 vs 固定靶动画：上为加速器、中为侧视图事件、下为 dN/dy 累积，循环播放，点击重新开始（代码见文件末尾） -->
-<section id="fxt-slide">
-  <h3 style="margin-bottom: 0;">Collider vs. fixed target</h3>
-  <canvas id="fxt-canvas" style="width: 900px; height: 520px; cursor: pointer;"></canvas>
-</section>
-
-<!-- 巨正则系综动画：接收度内粒子只占一小部分，逐事件统计；只播放一次，按 Replay 重播（代码见文件末尾） -->
-<section id="gce-slide">
-  <h3 style="margin-bottom: 0;">Why a grand canonical ensemble?</h3>
-  <canvas id="gce-canvas" style="width: 900px; height: 440px;"></canvas>
-  <div style="text-align: right; width: 900px; margin: -10px auto 0;">
-    <button id="gce-replay" class="replay-btn">&#8635; Replay</button>
-  </div>
+  <figcaption style="text-align: center;">Fu, Luo, Pawlowski, Rennecke, Yin, arXiv:2308.15508 </figcaption>
 </section>
 
 <!-- O(4) vs Z2：左为 Z2 双势阱，右为 O(4) 墨西哥帽；小球显示涨落模式，滑块调温度，勾选加入显式破缺（代码见文件末尾） -->
@@ -255,7 +374,7 @@
       <li>3D O(4) class: chiral transition (\(N_f=2,\ m_q=0\))</li>
     </ul>
   </div>
-  <p class="fragment" style="font-size: 0.45em; color: blue; margin: 8px 0 0;">
+  <p style="font-size: 0.45em; color: blue; margin: 8px 0 0;">
     \(h\neq0\): the pion direction stays curved, \(m_\pi^2=h/\sigma_0>0\) &rArr; only the \(\sigma\) direction can turn flat
     &rArr; a critical point at \(m_q\neq0\) (e.g. the QCD CEP) is Z<sub>2</sub>, not O(4)
   </p>
@@ -275,7 +394,7 @@
     <li>First-order line \(=\{h=0,\ r<0\}\): two degenerate minima (\(\uparrow/\downarrow\), liquid/gas, hadrons/quark matter)</li>
     <li>Same \(d=3\) and same order parameter &rArr; same exponents \(\beta\simeq0.326,\ \gamma\simeq1.237,\ \nu\simeq0.630,\ \delta\simeq4.79\)</li>
   </ul>
-  <p class="fragment" style="font-size: 0.45em; color: blue; margin: 6px 0 0;">
+  <p style="font-size: 0.45em; color: blue; margin: 6px 0 0;">
     In QCD the Z<sub>2</sub> is not a symmetry of the Lagrangian: it <b>emerges</b> at the CEP.
     \(\phi\) mixes \(\sigma\), \(n_B\) and \(\varepsilon\); &nbsp;\((T,\mu_B)\to(r,h)\) is a non-universal map
   </p>
@@ -287,23 +406,6 @@
   <canvas id="ripple-canvas" style="width: 900px; height: 460px; cursor: pointer;"></canvas>
   <figcaption style="text-align: center; margin-top: 14px;">W.-j. Fu, X. Luo, J. M. Pawlowski, F. Rennecke, <b>SY</b>,
     <a href="https://arxiv.org/abs/2308.15508" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:2308.15508</a></figcaption>
-</section>
-
-<!-- fRG：从 QCD 到低能有效理论。左为 RG 标度 k（对数）及各能区，中为各自由度的活跃程度，右为当前 k 下的自由度示意；
-     自动从 UV 扫到 IR 循环播放，在左/中部拖动可手动选择 k，点击右侧恢复自动播放（代码见文件末尾） -->
-<section id="frg-slide">
-  <h3 style="margin-bottom: 0;">fRG: from QCD to low-energy effective theories</h3>
-  <canvas id="frg-canvas" style="width: 900px; height: 420px; cursor: ns-resize;"></canvas>
-  <div class="eq" style="font-size: 0.5em; margin-top: -8px;">
-    \[ \partial_t\Gamma_k=\frac12\,\mathrm{STr}\Big[\big(\Gamma_k^{(2)}+R_k\big)^{-1}\partial_t R_k\Big],\qquad t=\ln\frac{k}{\Lambda},\qquad
-       \Gamma_{k=\Lambda}\simeq S_{\rm QCD}\ \xrightarrow{\ k\,\to\,0\ }\ \Gamma \]
-  </div>
-  <ul class="ising-list">
-    <li>A low-energy EFT is the QCD flow below its cutoff: its couplings are \(\Gamma_{k=\Lambda_{\rm EFT}}\), fixed by the flow from above</li>
-    <li>Dynamical hadronization: four-quark interactions \(\to\) mesonic fields \(\phi\sim\bar q q\), so one flow covers all scales</li>
-  </ul>
-  <figcaption style="text-align: center; margin-top: 6px;">e.g. W.-j. Fu, J. M. Pawlowski, F. Rennecke,
-    <a href="https://arxiv.org/abs/1909.02991" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:1909.02991</a></figcaption>
 </section>
 
 <!-- 单图 + 标注 -->
