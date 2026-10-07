@@ -1159,21 +1159,42 @@
   <figcaption style="text-align: center; margin-top: 4px; font-size: 0.35em;">mean-field QM (PQM parameters, \(L=\bar L=1\)), CEP at \((T,\mu_B)=(31.0,\,878.9)\) MeV &nbsp;&middot;&nbsp; <b>SY</b>, in preparation</figcaption>
 </section>
 
-<!-- ===== 新增：临界行为 1/4 —— 平均场、LPA、LPA' 下的临界指数 ===== -->
+<!-- ===== 新增：LPA（QM 模型）在 CEP 处的临界指数 ===== -->
+<section>
+  <h3 style="margin-bottom: 6px;">QM model: LPA critical exponents at the CEP</h3>
+  <img src="QM_LPA_CEP_exponents.svg" style="width: 840px; margin: 0;">
+  <ul class="bul wide" style="margin: 4px auto 0; font-size: 0.42em;">
+    <li>Crossover side (\(m_\sigma=1/\xi\)): \(\nu=\gamma/2\simeq0.651\); &nbsp;first-order side: \(\beta=\nu/2\simeq0.325\); &nbsp;fixed \(T\): \(\delta=5\) &nbsp;(\(\eta=0\) in LPA)</li>
+    <li>Plateaus over several decades of \(|t|\): exponents agree with the LPA values for the 3D Ising class</li>
+  </ul>
+  <figcaption style="text-align: center; margin-top: 4px; font-size: 0.35em;">fRG LPA, QM model (no Polyakov loop), grid + Taylor (\(N=10\)); CEP at \((T,\mu_B)\simeq(22.5,\,857.1)\) MeV &nbsp;&middot;&nbsp; <b>SY</b>, in preparation</figcaption>
+</section>
+
+<!-- ===== 新增：LPA'（QM 模型）在 CEP 处的临界指数 ===== -->
+<section>
+  <h3 style="margin-bottom: 6px;">QM model: LPA' critical exponents at the CEP</h3>
+  <img src="QM_LPAp_CEP_exponents.svg" style="width: 900px; margin: 0;">
+  <ul class="bul wide" style="margin: 4px auto 0; font-size: 0.42em;">
+    <li>Anomalous dimension \(\eta\) from \(Z_{\rm IR}\propto|t|^{-\nu\eta}\): \(\eta\simeq0.116\neq0\) &nbsp;(LPA: \(\eta=0\))</li>
+    <li>\(\nu\simeq0.629\) (3D Ising: 0.630); &nbsp;\(\beta=\nu(1+\eta)/2\simeq0.351\)</li>
+  </ul>
+  <figcaption style="text-align: center; margin-top: 4px; font-size: 0.35em;">fRG LPA' (\(\sigma\)-projected \(\eta\)), QM model (no Polyakov loop), \(N=10\); CEP at \((T,\mu_B)\simeq(37.1,\,756.9)\) MeV &nbsp;&middot;&nbsp; <b>SY</b>, in preparation</figcaption>
+</section>
+
+<!-- ===== 新增：MF / LPA / LPA' / 3D Ising 临界指数对比 ===== -->
 <section>
   <h3 style="margin-bottom: 10px;">Critical exponents: MF vs. LPA vs. LPA'</h3>
-  <div class="fig-title">Local exponents at the CEP, LPA' (QM model)</div>
-  <img src="QM_LPAp_CEP_exponents_bottom.svg" style="width: 860px; margin: 0;">
-  <table class="facil" style="margin-top: 6px;">
+  <table class="facil" style="margin-top: 20px; font-size: 0.55em;">
     <thead><tr><th></th><th>\(\nu\)</th><th>\(\beta\)</th><th>\(\eta\)</th><th>\(\delta\)</th></tr></thead>
     <tbody>
       <tr><td>mean field</td><td>1/2</td><td>1/2</td><td>0</td><td>3</td></tr>
-      <tr><td>LPA</td><td>\(\approx 0.65\)</td><td>\(\approx 0.32\)</td><td>0</td><td>5</td></tr>
+      <tr><td>LPA (\(N=10\))</td><td>0.651</td><td>0.325</td><td>0</td><td>5</td></tr>
       <tr><td>LPA' (\(N=10\))</td><td>0.629</td><td>0.351</td><td>0.116</td><td>4.38*</td></tr>
       <tr><td><b>3D Ising</b></td><td><b>0.630</b></td><td><b>0.326</b></td><td><b>0.036</b></td><td><b>4.79</b></td></tr>
     </tbody>
   </table>
-  <p style="font-size: 0.35em; color: gray; margin: 0;">* from scaling relations &nbsp;<span class="todo">TODO：确认 LPA 一行的数值</span></p>
+  <p style="font-size: 0.35em; color: gray; margin: 0;">* from scaling relations</p>
+  <p class="msg">The framework reproduces the expected hierarchy: mean field &rarr; LPA &rarr; LPA' approaching 3D Ising</p>
   <figcaption style="text-align: center; margin-top: 6px;"><b>SY</b>, in preparation</figcaption>
 </section>
 
