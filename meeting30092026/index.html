@@ -75,6 +75,17 @@
     .sweep-btn:hover, .sweep-btn.active { background: var(--c); color: white; }
     .reveal ul.ising-list { display: block; width: 880px; margin: 4px auto 0; font-size: 0.42em; line-height: 1.45; text-align: left; }
 
+    /* 新增页：7 部分提纲、要点列表、待补充提示 */
+    .reveal ul.outline7 { font-size: 0.72em; line-height: 1.3; }
+    .reveal ul.outline7 li { margin-bottom: 12px; }
+    .reveal ul.bul { width: 430px; margin: 0; font-size: 0.48em; line-height: 1.45; text-align: left; }
+    .reveal ul.bul.wide { width: 860px; }
+    .reveal ul.bul li { margin-bottom: 6px; }
+    .msg { font-size: 0.48em; color: blue; margin: 10px 0 0; }
+    .todo { color: #e65100; font-size: 0.8em; }
+    .reveal table.facil { font-size: 0.45em; margin: 10px auto; }
+    .reveal table.facil th, .reveal table.facil td { padding: 6px 18px; }
+
     /* 占位图：换成真正图片后删除 */
     .placeholder { display: flex; align-items: center; justify-content: center; width: 400px; height: 280px;
                    border: 2px dashed #bbb; color: #999; font-size: 0.5em; }
@@ -108,14 +119,164 @@
   <img src="fQCDLogoFR.png" style="width:20%; height:auto;">
 </section>
 
+<!-- ===== 新增：第一部分 QCD 相图与相变 ===== -->
+<section>
+  <h3>Outline</h3>
+  <ul class="outline7">
+    <li>QCD phase diagram and phase transitions</li>
+    <li class="dim">Heavy-ion collisions</li>
+    <li class="dim">Baryon number fluctuations</li>
+    <li class="dim">QCD-assisted low energy effective theory</li>
+    <li class="dim">Fluctuations near the liquid&ndash;gas transition</li>
+    <li class="dim">Universality class of the CEP</li>
+    <li class="dim">Summary and Outlook</li>
+  </ul>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Phases of strongly interacting matter</h3>
+  <!-- 水的相图 vs QCD 相图（示意）：一阶线 = 蓝色实线，临界点 = 红点，crossover = 灰色虚线 -->
+  <svg viewBox="0 0 900 330" style="width: 900px; height: 330px; font-family: Arial, sans-serif;">
+    <defs>
+      <marker id="pd-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#555" />
+      </marker>
+    </defs>
+
+    <!-- 水 -->
+    <g>
+      <text x="230" y="18" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">Water</text>
+      <path d="M50,290 H425" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#pd-arrow)" />
+      <path d="M50,290 V35" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#pd-arrow)" />
+      <text x="418" y="310" font-size="14" fill="#333">T</text>
+      <text x="30" y="45" font-size="14" fill="#333">P</text>
+      <!-- 升华线、熔化线（斜率为负）、汽化线 -->
+      <path d="M60,282 C100,270 130,250 155,215" stroke="#1565c0" stroke-width="3" fill="none" />
+      <path d="M155,215 L140,45" stroke="#1565c0" stroke-width="3" fill="none" />
+      <path d="M155,215 C215,175 270,140 320,105" stroke="#1565c0" stroke-width="3" fill="none" />
+      <!-- 临界点之后：crossover -->
+      <path d="M320,105 C350,85 380,70 410,60" stroke="#888" stroke-width="2" stroke-dasharray="6 5" fill="none" />
+      <circle cx="155" cy="215" r="5" fill="#333" />
+      <circle cx="320" cy="105" r="7" fill="#d32f2f" />
+      <text x="85" y="130" font-size="16" fill="#333">solid</text>
+      <text x="200" y="110" font-size="16" fill="#333">liquid</text>
+      <text x="270" y="235" font-size="16" fill="#333">gas</text>
+      <text x="335" y="45" font-size="12" fill="#888">supercritical</text>
+      <text x="168" y="230" font-size="12" fill="#333">triple point</text>
+      <text x="328" y="125" font-size="13" font-weight="bold" fill="#d32f2f">critical point</text>
+      <text x="328" y="141" font-size="11" fill="#d32f2f">647 K, 22 MPa</text>
+    </g>
+
+    <!-- QCD -->
+    <g transform="translate(460,0)">
+      <text x="230" y="18" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">QCD</text>
+      <path d="M50,290 H425" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#pd-arrow)" />
+      <path d="M50,290 V35" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#pd-arrow)" />
+      <text x="412" y="312" font-size="14" fill="#333">&mu;<tspan font-size="10" dy="3">B</tspan></text>
+      <text x="30" y="45" font-size="14" fill="#333">T</text>
+      <!-- 手征 crossover → CEP → 一阶线 -->
+      <path d="M50,85 C130,88 200,105 255,135" stroke="#888" stroke-width="2" stroke-dasharray="6 5" fill="none" />
+      <path d="M255,135 C310,170 345,220 365,290" stroke="#1565c0" stroke-width="3" fill="none" />
+      <circle cx="255" cy="135" r="7" fill="#d32f2f" />
+      <!-- 核物质液汽相变 -->
+      <path d="M296,290 L300,268" stroke="#1565c0" stroke-width="3" fill="none" />
+      <circle cx="300" cy="268" r="5" fill="#d32f2f" />
+      <text x="140" y="55" font-size="16" fill="#333">quark&ndash;gluon plasma</text>
+      <text x="100" y="210" font-size="16" fill="#333">hadron gas</text>
+      <text x="62" y="80" font-size="12" fill="#888">crossover</text>
+      <text x="200" y="128" font-size="13" font-weight="bold" fill="#d32f2f" text-anchor="end">CEP</text>
+      <text x="232" y="262" font-size="11" fill="#333" text-anchor="end">nuclear</text>
+      <text x="232" y="276" font-size="11" fill="#333" text-anchor="end">liquid&ndash;gas</text>
+      <path d="M236,266 L292,268" stroke="#999" stroke-width="1" fill="none" />
+      <!-- 色超导相边界（与 QGP 之间） -->
+      <path d="M333,215 C360,205 390,200 420,198" stroke="#1565c0" stroke-width="3" fill="none" />
+      <text x="372" y="240" font-size="12" fill="#333">color</text>
+      <text x="372" y="255" font-size="12" fill="#333">super-</text>
+      <text x="372" y="270" font-size="12" fill="#333">conductor</text>
+      <text x="40" y="306" font-size="11" fill="#888">vacuum</text>
+    </g>
+  </svg>
+  <ul class="bul wide" style="margin: 8px auto 0;">
+    <li>Water: the first-order liquid&ndash;gas line <b>ends</b> at a critical point; beyond it liquid and gas are connected by a crossover</li>
+    <li>QCD: hadrons \(\leftrightarrow\) quark&ndash;gluon plasma, crossover at small \(\mu_B\), conjectured first-order line ending at the <b>CEP</b></li>
+    <li>Both critical points (and the nuclear liquid&ndash;gas one) belong to the <b>3D Ising</b> universality class</li>
+  </ul>
+</section>
+
+<!-- 相变分类：三种情况下序参量随温度的变化（示意） -->
+<section>
+  <h3 style="margin-bottom: 10px;">Phase transitions in a nutshell</h3>
+  <svg viewBox="0 0 900 230" style="width: 900px; height: 230px; font-family: Arial, sans-serif;">
+    <defs>
+      <marker id="ax-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#555" />
+      </marker>
+    </defs>
+    <g transform="translate(20,0)">
+      <text x="140" y="22" text-anchor="middle" font-size="17" font-weight="bold" fill="#1565c0">first order</text>
+      <path d="M30,190 H265" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#ax-arrow)" />
+      <path d="M30,190 V40" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#ax-arrow)" />
+      <path d="M35,60 C90,62 125,70 150,82" stroke="#1565c0" stroke-width="3" fill="none" />
+      <path d="M150,185 H255" stroke="#1565c0" stroke-width="3" fill="none" />
+      <path d="M150,82 V185" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="5 4" fill="none" />
+      <text x="150" y="210" text-anchor="middle" font-size="14" fill="#333">T<tspan font-size="10" dy="3">c</tspan></text>
+      <text x="262" y="210" font-size="14" fill="#333">T</text>
+      <text x="38" y="45" font-size="13" fill="#333">order parameter</text>
+      <text x="200" y="120" text-anchor="middle" font-size="13" fill="#1565c0">jump</text>
+    </g>
+    <g transform="translate(320,0)">
+      <text x="140" y="22" text-anchor="middle" font-size="17" font-weight="bold" fill="#d32f2f">second order (critical point)</text>
+      <path d="M30,190 H265" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#ax-arrow)" />
+      <path d="M30,190 V40" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#ax-arrow)" />
+      <path d="M35,60 C95,62 128,85 142,125 C148,145 150,170 150,185 H255" stroke="#d32f2f" stroke-width="3" fill="none" />
+      <text x="150" y="210" text-anchor="middle" font-size="14" fill="#333">T<tspan font-size="10" dy="3">c</tspan></text>
+      <text x="262" y="210" font-size="14" fill="#333">T</text>
+      <text x="205" y="120" text-anchor="middle" font-size="13" fill="#d32f2f">&xi; &rarr; &infin;</text>
+    </g>
+    <g transform="translate(620,0)">
+      <text x="140" y="22" text-anchor="middle" font-size="17" font-weight="bold" fill="#2e7d32">crossover</text>
+      <path d="M30,190 H265" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#ax-arrow)" />
+      <path d="M30,190 V40" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#ax-arrow)" />
+      <path d="M35,60 C125,60 125,182 255,183" stroke="#2e7d32" stroke-width="3" fill="none" />
+      <text x="150" y="210" text-anchor="middle" font-size="14" fill="#333">T<tspan font-size="10" dy="3">pc</tspan></text>
+      <text x="262" y="210" font-size="14" fill="#333">T</text>
+      <text x="205" y="120" text-anchor="middle" font-size="13" fill="#2e7d32">smooth</text>
+    </g>
+  </svg>
+  <ul class="bul wide" style="margin: 10px auto 0;">
+    <li>Order parameters of QCD: chiral condensate \(\langle\bar q q\rangle\) (chiral symmetry), Polyakov loop \(L\) (confinement)</li>
+    <li>Critical point: end point of a first-order line, second-order transition with correlation length \(\xi\to\infty\)</li>
+    <li>Critical behavior is <b>universal</b>: it only depends on symmetry and dimension, not on the microscopic details</li>
+  </ul>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">What do we know about the QCD phase diagram?</h3>
+  <div class="fig-row" style="align-items: center; gap: 30px;">
+    <figure>
+      <img src="phase.svg" style="width: 470px; margin: 0;">
+    </figure>
+    <ul class="bul" style="width: 400px;">
+      <li>\(\mu_B=0\): chiral <b>crossover</b> at \(T_{pc}\approx 156\) MeV (lattice QCD)</li>
+      <li>\(\mu_B>0\): sign problem, lattice results limited to \(\mu_B/T\lesssim 2\text{&ndash;}3\)</li>
+      <li>Functional QCD (fRG, DSE) estimates of the CEP converge:
+        \[ 600\ \text{MeV}\lesssim \mu_{B,\rm CEP}\lesssim 650\ \text{MeV} \]</li>
+      <li style="color: blue;">Where is the CEP? Can experiments see it?</li>
+    </ul>
+  </div>
+  <figcaption style="text-align: center; margin-top: 6px;">fRG: Fu, Pawlowski, Rennecke (2019); DSE: Gao, Pawlowski (2020); Gunkel, Fischer (2021); lattice: WB, HotQCD</figcaption>
+</section>
+
 <!-- Outline：每进入一个新部分就复制一页，把当前条目的 class="dim" 去掉 -->
 <section>
   <h3>Outline</h3>
-  <br>
-  <ul>
-    <li>Heavy-ion collisions</li><br>
-    <li class="dim">Critical point signatures: baryon number fluctuations</li><br>
-    <li class="dim">Scaling behavior of the CEP</li><br>
+  <ul class="outline7">
+    <li class="dim">QCD phase diagram and phase transitions</li>
+    <li>Heavy-ion collisions</li>
+    <li class="dim">Baryon number fluctuations</li>
+    <li class="dim">QCD-assisted low energy effective theory</li>
+    <li class="dim">Fluctuations near the liquid&ndash;gas transition</li>
+    <li class="dim">Universality class of the CEP</li>
     <li class="dim">Summary and Outlook</li>
   </ul>
 </section>
@@ -177,13 +338,33 @@
   <canvas id="fxt-canvas" style="width: 900px; height: 520px; cursor: pointer;"></canvas>
 </section>
 
+<!-- ===== 新增：第二部分 实验装置一览 ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">Scanning the phase diagram: experiments</h3>
+  <table class="facil">
+    <thead><tr><th>Experiment</th><th>Mode</th><th>\(\sqrt{s_{NN}}\) [GeV]</th></tr></thead>
+    <tbody>
+      <tr><td>STAR BES-II (RHIC)</td><td>collider</td><td>7.7 &ndash; 27</td></tr>
+      <tr><td>STAR FXT (RHIC)</td><td>fixed target</td><td>3.0 &ndash; 13.7</td></tr>
+      <tr><td>HADES (GSI)</td><td>fixed target</td><td>2.4 &ndash; 2.55</td></tr>
+      <tr><td>NA61/SHINE (CERN SPS)</td><td>fixed target</td><td>5.1 &ndash; 17.3</td></tr>
+      <tr><td>CBM (FAIR, future)</td><td>fixed target</td><td>2.9 &ndash; 4.9</td></tr>
+      <tr><td>MPD (NICA, future)</td><td>collider</td><td>4 &ndash; 11</td></tr>
+    </tbody>
+  </table>
+  <p class="msg">Lower \(\sqrt{s_{NN}}\) &rArr; larger \(\mu_B\) at freeze-out: the beam energy scan scans the phase diagram along the freeze-out curve</p>
+  <p class="todo" style="font-size: 0.4em;">TODO：核对表中能量范围</p>
+</section>
+
 <section>
   <h3>Outline</h3>
-  <br>
-  <ul>
-    <li class="dim" >Heavy-ion collisions</li><br>
-    <li>Critical point signatures: baryon number fluctuations</li><br>
-    <li class="dim">Scaling behavior of the CEP</li><br>
+  <ul class="outline7">
+    <li class="dim">QCD phase diagram and phase transitions</li>
+    <li class="dim">Heavy-ion collisions</li>
+    <li>Baryon number fluctuations</li>
+    <li class="dim">QCD-assisted low energy effective theory</li>
+    <li class="dim">Fluctuations near the liquid&ndash;gas transition</li>
+    <li class="dim">Universality class of the CEP</li>
     <li class="dim">Summary and Outlook</li>
   </ul>
 </section>
@@ -254,6 +435,23 @@
   </p>
 </section>
 
+<!-- ===== 新增：第三部分 为什么看高阶累积量 ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">Why higher-order cumulants?</h3>
+  <div class="eq" style="font-size: 0.5em;">
+    \[ \chi_n^B=\frac{\partial^n\,(p/T^4)}{\partial(\mu_B/T)^n},\qquad C_n=VT^3\chi_n^B,\qquad
+       R_{nm}^B=\frac{\chi_n^B}{\chi_m^B}:\quad S\sigma=R_{32}^B,\quad \kappa\sigma^2=R_{42}^B \]
+  </div>
+  <ul class="bul wide" style="margin: 10px auto 0;">
+    <li>Cumulants = derivatives of the QCD pressure: direct link between theory and measurements</li>
+    <li>Ratios cancel the unknown volume \(V\); baseline without correlations (Skellam / HRG): \(R_{42}^B=1\)</li>
+    <li>Near the CEP higher orders grow with higher powers of the correlation length:
+      \[ C_2\sim\xi^{2},\qquad C_3\sim\xi^{4.5},\qquad C_4\sim\xi^{7} \]</li>
+    <li>Caveats: net-proton vs. net-baryon, finite size and time (\(\xi\lesssim 2\text{&ndash;}3\) fm), baryon number conservation</li>
+  </ul>
+  <figcaption style="text-align: center; margin-top: 8px;">M. A. Stephanov, Phys. Rev. Lett. 102, 032301 (2009), arXiv:0809.3450</figcaption>
+</section>
+
 
 <section>
   <h3 style="margin-bottom: 0;">Non-monotonic behavior of 4th order cumulants</h3>
@@ -268,6 +466,20 @@
     </figure>
   </div>
   <figcaption style="text-align: center;">M. A. Stephanov, arXiv:1104.1627</figcaption>
+</section>
+
+<!-- ===== 新增：第四部分提纲 ===== -->
+<section>
+  <h3>Outline</h3>
+  <ul class="outline7">
+    <li class="dim">QCD phase diagram and phase transitions</li>
+    <li class="dim">Heavy-ion collisions</li>
+    <li class="dim">Baryon number fluctuations</li>
+    <li>QCD-assisted low energy effective theory</li>
+    <li class="dim">Fluctuations near the liquid&ndash;gas transition</li>
+    <li class="dim">Universality class of the CEP</li>
+    <li class="dim">Summary and Outlook</li>
+  </ul>
 </section>
 
 <!-- fRG：从 QCD 到低能有效理论。左为 RG 标度 k（对数）及各能区，中为各自由度的活跃程度，右为当前 k 下的自由度示意；
@@ -299,12 +511,31 @@
   <div class="fig-row" style="align-items: flex-start; gap: 40px; text-align: left; margin-top: 30px;">
     <!-- 核心修改：清空 ul 的默认 padding，并强制内容左对齐 -->
     <ul class="left-col" style="padding-left: 20px; margin-left: 0; text-align: left;">
-      <li style="font-size: .55em; text-align: left;">Polyakov-Quark-Meson (PQM) model within functional renormalization group (fRG)</li>
+      <li style="font-size: .55em; text-align: left;margin-bottom: 15px;">Linear sigma model (only mesons)</li>
+      <li style="list-style: none; font-size: .45em; text-align: left; color: red; margin-left: 0; margin-top: 4px; margin-bottom: 20px;">
+        Suitable for describing the scaling behavior and universality class
+      </li>
+      <li style="font-size: .55em; text-align: left;margin-bottom: 15px;">NJL model (only quarks)</li>
+      <li style="list-style: none; font-size: .45em; text-align: left; color: red; margin-left: 0; margin-top: 4px; margin-bottom: 20px;">
+        Suitable for describing the chiral symmetry breaking and the color superconductivity
+      </li>
+      <li style="font-size: .55em; text-align: left;margin-bottom: 15px;">(Polyakov-) Quark-Meson model (mesons+quarks)</li>
+      <li style="list-style: none; font-size: .45em; text-align: left; color: red; margin-left: 0; margin-top: 4px; margin-bottom: 20px;">
+        The ideal framework for phenomenology, bridging critical fluctuations and thermal dynamics
+      </li>
     </ul>
   </div>
-<foreignObject x="0" y="0" width="100" height="100">
-  <div xmlns="http://w3.org" style="font-size: 20px; text-align: left; color: black; line-height: 1.1;">    
-    <!-- 核心修改：使用 \begin{aligned} ... \end{aligned} 包裹多行公式 -->
+</section>
+
+<section id="LEFT-pqm-slide">
+  <h3 style="margin-bottom: 0;">Low energy effective field theory (LEFT)</h3>
+  <!-- 两条要点和公式放在同一列里，要点左对齐 -->
+  <div style="display: table; margin: 30px auto 0; text-align: left;">
+    <ul style="padding-left: 20px; margin: 0;">
+      <li style="font-size: .55em;">Polyakov-Quark-Meson (PQM) model within functional renormalization group (fRG)</li>
+    </ul>
+  <div style="font-size: 20px; color: black; line-height: 1.1;">
+    <!-- 使用 \begin{aligned} ... \end{aligned} 包裹多行公式 -->
     \[
     \begin{aligned}
 \Gamma_k[\phi,q,\bar{q}]=&\int_x \bigg\{Z_{q,k}\bar{q} \Big [\gamma_\mu \partial_\mu -\gamma_0(\mu+i g A_0) \Big ]q+\frac{1}{2}Z_{\phi,k}(\partial_\mu \phi)^2 \nonumber\\[2ex]
@@ -314,32 +545,55 @@
     \end{aligned}
     \]
   </div>
-</foreignObject>
-  <div class="fig-row" style="align-items: flex-start; gap: 40px; text-align: left; margin-top: 70px;">
-    <!-- 核心修改：清空 ul 的默认 padding，并强制内容左对齐 -->
-    <ul class="left-col" style="padding-left: 20px; margin-left: 0; text-align: left;">
-      <li style="font-size: .55em; text-align: left;">QCD assisted LEFT within fRG</li>
+    <ul style="padding-left: 20px; margin: 30px 0 0;">
+      <li style="font-size: .55em;">Baryon number fluctuations</li>
     </ul>
-  </div>
-<foreignObject x="0" y="0" width="100" height="100">
-  <div xmlns="http://w3.org" style="font-size: 20px; text-align: left; color: black; line-height: 1.1;">    
-    <!-- 核心修改：使用 \begin{aligned} ... \end{aligned} 包裹多行公式 -->
+  <!-- 巨热力学势 → 压强 → 重子数涨落 -->
+  <div style="font-size: 20px; color: black; line-height: 1.1;">
     \[
     \begin{aligned}
-\Gamma_k[\phi,q,\bar{q}]=&\int_x \bigg\{Z_{q,k}\bar{q} \Big [\gamma_\mu \partial_\mu -\gamma_0(\mu+i g A_0) \Big ]q+\frac{1}{2}Z_{\phi,k}(\partial_\mu \phi)^2 \nonumber\\[2ex]
-&\hspace{.5cm}+{\color{red}{h_k}}\,\bar{q}\,
-\left(\tau^0\sigma+\bm\tau
-\cdot\bm{\pi}\right)\,q +V_k(\rho,A_0)-c\sigma \bigg\}
+    \Omega[T,\mu_B]&=V_{k=0}(\rho,A_0)-c\sigma\,\Big|_{\rm EoM},\qquad p=-\Omega[T,\mu_B]\\[2ex]
+    \chi_n^B&=\frac{\partial^n}{\partial(\mu_B/T)^n}\,\frac{p}{T^4}\,,\qquad
+    R_{nm}^B=\frac{\chi_n^B}{\chi_m^B}
     \end{aligned}
     \]
   </div>
-</foreignObject>
-  <div class="fig-row" style="align-items: flex-start; gap: 40px; text-align: left; margin-top: 10px;">
-    <!-- 核心修改：清空 ul 的默认 padding，并强制内容左对齐 -->
-    <ul class="left-col" style="padding-left: 20px; margin-left: 0; text-align: left;">
-      <l style="font-size: .55em; text-align: left; color: red;">Yukawa coupling input from fRG-QCD (use QCD data to improve the reliability of the model)</l>
+  </div>
+</section>
+
+<!-- ===== 新增：第四部分 QCD 输入（Yukawa 耦合、胶子背景） ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">QCD-assisted LEFT: input from fRG-QCD</h3>
+  <img src="QCD_FlowEquation.svg" style="width: 620px; margin: 0;">
+  <div class="fig-row" style="align-items: center; gap: 30px; margin-top: 10px;">
+    <figure>
+      <img src="hQCD-k.svg" style="width: 400px; margin: 0;">
+    </figure>
+    <ul class="bul">
+      <li>LEFT = QCD flow below \(\Lambda=700\) MeV: the glue sector decouples (gluon mass gap)</li>
+      <li>Thermal Yukawa coupling from 2+1 flavor fRG-QCD:
+        \[ h_k(T)=h_0\,\frac{h_k^{\rm QCD}(T)}{h_0^{\rm QCD}(0)} \]</li>
+      <li>Glue background: Polyakov loop potential from Yang&ndash;Mills, rescaled to QCD</li>
+      <li>Remaining parameters \(\nu_\Lambda,\ \lambda_\Lambda,\ h_0,\ c_\sigma\) fixed by vacuum observables</li>
     </ul>
   </div>
+  <figcaption style="text-align: center; margin-top: 6px;">Fu, Luo, Pawlowski, Rennecke, <b>SY</b>, arXiv:2308.15508; &nbsp;Fu, Pawlowski, Rennecke, arXiv:1909.02991</figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Benchmark and phase structure</h3>
+  <div class="fig-row" style="align-items: flex-start; gap: 30px;">
+    <figure>
+      <img src="DeltalR.svg" style="width: 420px; margin: 0;">
+      <div class="fig-title">Chiral condensate: agrees with lattice and fRG-QCD</div>
+    </figure>
+    <figure>
+      <img src="PhaseStructure2023.svg" style="width: 420px; margin: 0;">
+      <div class="fig-title">CEP at \((T,\mu_B)_{\rm CEP}=(98,\,643)\) MeV</div>
+    </figure>
+  </div>
+  <p class="msg">QCD input moves the CEP into the functional QCD range (600&ndash;650 MeV); &nbsp;conventional (P)QM models: \(\mu_{B,\rm CEP}>850\) MeV</p>
+  <figcaption style="text-align: center; margin-top: 6px;">Fu, Luo, Pawlowski, Rennecke, <b>SY</b>, arXiv:2308.15508</figcaption>
 </section>
 
 <section>
@@ -347,11 +601,201 @@
   <!-- 左列上下两张图，右列一张图 -->
   <div class="fig-row" style="align-items: center; gap: 40px;">
     <figure style="display: flex; flex-direction: column; align-items: center;">
-      <img src="flucmub0.svg" style="width: 750px; margin: 0;">
+      <img src="flucmub0.svg" style="width: 850px; margin: 0;">
       <img src="R42heatmap.svg" style="width: 500px; margin: 0;">
     </figure>
   </div>
   <figcaption style="text-align: center;">Fu, Luo, Pawlowski, Rennecke, Yin, arXiv:2308.15508 </figcaption>
+</section>
+
+<!-- ===== 新增：第四部分 沿冻结线的涨落与峰 ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">Fluctuations along the freeze-out curve</h3>
+  <div class="fig-row" style="align-items: center; gap: 30px;">
+    <figure>
+      <img src="chi-CE.svg" style="width: 500px; margin: 0;">
+    </figure>
+    <ul class="bul" style="width: 360px;">
+      <li>Global baryon number conservation (canonical corrections) included for \(\sqrt{s_{NN}}\lesssim 11.5\) GeV</li>
+      <li>Non-monotonic \(R_{42}^B\) for 7.7&ndash;200 GeV, consistent with STAR</li>
+      <li>Prominent <b>peak</b> at \(3\lesssim\sqrt{s_{NN}}\lesssim 7.7\) GeV: the fixed-target range</li>
+      <li>Hyper-order \(R_{51}^B,\ R_{62}^B\) turn negative at lower \(\sqrt{s_{NN}}\)</li>
+    </ul>
+  </div>
+  <figcaption style="text-align: center; margin-top: 6px;">Fu, Luo, Pawlowski, Rennecke, <b>SY</b>, arXiv:2308.15508</figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">What does the peak tell us?</h3>
+  <div class="fig-row" style="align-items: center; gap: 20px;">
+    <figure>
+      <img src="R42-sqrtS-CEP-CE.svg" style="width: 440px; margin: 0;">
+    </figure>
+    <figure style="display: flex; flex-direction: column; align-items: center;">
+      <img src="peakposition-muBCEP.svg" style="width: 330px; margin: 0;">
+      <img src="muBpeak-muBCEP.svg" style="width: 330px; margin: 0;">
+    </figure>
+  </div>
+  <ul class="bul wide" style="margin: 6px auto 0;">
+    <li>Peak <b>position</b> (\(\sqrt{s_{NN}}\approx 5\text{&ndash;}6\) GeV) is set mainly by the freeze-out curve</li>
+    <li>Peak <b>height</b> depends on \(\mu_{B,\rm CEP}-\mu_{B,\rm peak}\), growing strongly below \(\sim\)100 MeV</li>
+  </ul>
+  <p class="msg">The height of the peak encodes the location of the CEP</p>
+</section>
+
+<!-- ===== 新增：第五部分 液汽相变附近的涨落（缺图用占位符） ===== -->
+<section>
+  <h3>Outline</h3>
+  <ul class="outline7">
+    <li class="dim">QCD phase diagram and phase transitions</li>
+    <li class="dim">Heavy-ion collisions</li>
+    <li class="dim">Baryon number fluctuations</li>
+    <li class="dim">QCD-assisted low energy effective theory</li>
+    <li>Fluctuations near the liquid&ndash;gas transition</li>
+    <li class="dim">Universality class of the CEP</li>
+    <li class="dim">Summary and Outlook</li>
+  </ul>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">The nuclear liquid&ndash;gas transition</h3>
+  <div class="fig-row" style="align-items: center; gap: 40px;">
+    <!-- 液汽相变附近的相图（示意，坐标大致按 PDM 结果）：x = 70 + (μB-500)*0.68，y = 290 - 2T -->
+    <svg viewBox="0 0 440 340" style="width: 440px; height: 340px; font-family: Arial, sans-serif;">
+      <defs>
+        <marker id="lg-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#555" />
+        </marker>
+      </defs>
+      <!-- 坐标轴与刻度 -->
+      <path d="M70,290 H425" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#lg-arrow)" />
+      <path d="M70,290 V25" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#lg-arrow)" />
+      <g stroke="#555" stroke-width="1">
+        <path d="M70,290 v5 M138,290 v5 M206,290 v5 M274,290 v5 M342,290 v5 M410,290 v5" />
+        <path d="M70,290 h-5 M70,210 h-5 M70,130 h-5 M70,50 h-5" />
+      </g>
+      <g font-size="11" fill="#333" text-anchor="middle">
+        <text x="70" y="308">500</text><text x="138" y="308">600</text><text x="206" y="308">700</text>
+        <text x="274" y="308">800</text><text x="342" y="308">900</text><text x="410" y="308">1000</text>
+      </g>
+      <g font-size="11" fill="#333" text-anchor="end">
+        <text x="61" y="294">0</text><text x="61" y="214">40</text><text x="61" y="134">80</text><text x="61" y="54">120</text>
+      </g>
+      <text x="240" y="330" text-anchor="middle" font-size="13" fill="#333">&mu;<tspan font-size="9" dy="3">B</tspan><tspan dy="-3"> [MeV]</tspan></text>
+      <text x="22" y="170" text-anchor="middle" font-size="13" fill="#333" transform="rotate(-90 22 170)">T [MeV]</text>
+
+      <!-- 液汽一阶线（从饱和点 μB≈923 MeV 到 CEP），CEP 之后的 crossover（χ2 峰） -->
+      <path d="M357.6,290 C355,278 351,266 347.4,256" stroke="#1565c0" stroke-width="3" fill="none" />
+      <path d="M347.4,256 C335,240 300,200 274,170 C245,140 200,100 151.6,60" stroke="#888" stroke-width="2" stroke-dasharray="6 5" fill="none" />
+      <circle cx="347.4" cy="256" r="6" fill="#d32f2f" />
+      <circle cx="357.6" cy="290" r="4" fill="#1565c0" />
+
+      <!-- 由 STAR FXT 低阶涨落提取的冻结点（示意） -->
+      <g fill="#333">
+        <rect x="134" y="76" width="8" height="8" /><rect x="181.6" y="92" width="8" height="8" />
+        <rect x="229" y="128" width="8" height="8" /><rect x="266.6" y="162" width="8" height="8" />
+      </g>
+
+      <!-- 文字 -->
+      <text x="150" y="245" font-size="15" fill="#333">nucleon gas</text>
+      <text x="364" y="215" font-size="13" fill="#333">nuclear</text>
+      <text x="364" y="231" font-size="13" fill="#333">liquid</text>
+      <text x="338" y="250" text-anchor="end" font-size="12" font-weight="bold" fill="#d32f2f">LG CEP</text>
+      <text x="338" y="264" text-anchor="end" font-size="11" fill="#d32f2f">T<tspan font-size="8" dy="2">c</tspan><tspan dy="-2"> &asymp; 15&ndash;20 MeV</tspan></text>
+      <text x="350" y="284" text-anchor="end" font-size="10" fill="#1565c0">n<tspan font-size="7" dy="2">0</tspan><tspan dy="-2">, &mu;</tspan><tspan font-size="7" dy="2">B</tspan><tspan dy="-2"> &asymp; 923 MeV</tspan></text>
+
+      <!-- 图例 -->
+      <g font-size="11" fill="#333">
+        <path d="M285,40 h22" stroke="#1565c0" stroke-width="3" />
+        <text x="312" y="44">first order</text>
+        <path d="M285,58 h22" stroke="#888" stroke-width="2" stroke-dasharray="6 5" />
+        <text x="312" y="62">crossover (&chi;<tspan font-size="8" dy="-4">B</tspan><tspan font-size="8" dx="-6" dy="7">2</tspan><tspan dy="-3"> peak)</tspan></text>
+        <rect x="292" y="72" width="8" height="8" fill="#333" />
+        <text x="312" y="80">freeze-out (STAR FXT)</text>
+      </g>
+    </svg>
+    <ul class="bul">
+      <li>\(T=0\): nuclear matter appears at \(\mu_B\approx m_N-16\) MeV \(\approx 923\) MeV (saturation density \(n_0\approx 0.16\ \text{fm}^{-3}\))</li>
+      <li>First-order line between nucleon gas and nuclear liquid, ending at a CEP with \(T_c\approx 15\text{&ndash;}20\) MeV</li>
+      <li>Same Z<sub>2</sub> (3D Ising) universality class as the QCD CEP</li>
+      <li>Low-energy collisions (\(\sqrt{s_{NN}}\lesssim 4\) GeV) freeze out close to this region</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Parity-doublet model (PDM)</h3>
+  <div class="fig-row" style="align-items: center; gap: 30px;">
+    <div>
+      <div class="eq" style="font-size: 0.42em;">
+        \[ \begin{aligned}
+        \mathcal{L}_F&=\bar N_1\big(\gamma_\mu\partial_\mu+g_1(\sigma+i\gamma_5\vec\tau\cdot\vec\pi)\big)N_1
+          +\bar N_2\big(\gamma_\mu\partial_\mu+g_2(\sigma-i\gamma_5\vec\tau\cdot\vec\pi)\big)N_2\\[1ex]
+        &\quad+m_0\big(\bar N_1\gamma_5N_2-\bar N_2\gamma_5N_1\big)
+        \end{aligned} \]
+        \[ m_\pm=\tfrac12\sqrt{(g_1+g_2)^2\sigma^2+4m_0^2}\pm\tfrac{g_1-g_2}{2}\,\sigma \]
+      </div>
+      <ul class="bul" style="width: 470px;">
+        <li>Nucleon \(N(939)\) and its parity partner \(N^*(1535)\); chirally invariant mass \(m_0\)</li>
+        <li>\(\omega\) exchange: repulsion; parameters fitted to nuclear matter at saturation</li>
+        <li>\(m_0=600\) MeV from LG critical temperature and neutron star maximum mass</li>
+        <li>Mean field, grand canonical; reliable for \(T\lesssim 120\) MeV</li>
+      </ul>
+    </div>
+    <figure>
+      <img src="PDM-TcMass.svg" style="width: 380px; margin: 0;">
+    </figure>
+  </div>
+  <figcaption style="text-align: center; margin-top: 6px;">Recchi and <b>SY</b>, arXiv:2609.17328</figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Fluctuations near the liquid&ndash;gas transition</h3>
+  <div class="fig-row" style="align-items: center; gap: 24px;">
+    <figure>
+      <img src="PDM-phasePDM_all.svg" style="width: 560px; margin: 0;">
+    </figure>
+    <ul class="bul" style="width: 320px;">
+      <li>Dilute gas: \(R_{42}^B=1\) (Skellam)</li>
+      <li>Strong sign changes of \(R_{42}^B,\ R_{51}^B,\ R_{62}^B\) toward the LG critical point</li>
+      <li>Freeze-out at high \(\mu_B\) is poorly known. Three scenarios:
+        <br>&bull; constant \(\sigma_0=88\) MeV
+        <br>&bull; peak of \(\chi_2^B\)
+        <br>&bull; extracted from \(R_{21},\ R_{31}\) (STAR FXT)</li>
+    </ul>
+  </div>
+  <figcaption style="text-align: center; margin-top: 6px;">Recchi and <b>SY</b>, arXiv:2609.17328</figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Comparison with low-energy data</h3>
+  <div class="fig-row" style="align-items: center; gap: 24px;">
+    <figure>
+      <img src="PDM-fluc_sqrts_all.svg" style="width: 560px; margin: 0;">
+    </figure>
+    <ul class="bul" style="width: 320px;">
+      <li>FXT data below 7.7 GeV: \(R_{42}<1\)</li>
+      <li>QCD-assisted LEFT (quarks + mesons, gray): \(R_{42}^B\to1\) at low energy</li>
+      <li>PDM with freeze-out extracted from \(R_{21},\ R_{31}\) (blue) agrees with preliminary STAR FXT data for \(\sqrt{s_{NN}}\lesssim 4\) GeV</li>
+      <li>Not yet included: non-equilibrium, baryon number conservation, protons vs. neutrons</li>
+    </ul>
+  </div>
+  <p class="msg">Nucleon interactions and the LG transition may contribute significantly to fluctuations at low collision energies</p>
+  <figcaption style="text-align: center; margin-top: 6px;">Recchi and <b>SY</b>, arXiv:2609.17328</figcaption>
+</section>
+
+<!-- ===== 新增：第六部分提纲 ===== -->
+<section>
+  <h3>Outline</h3>
+  <ul class="outline7">
+    <li class="dim">QCD phase diagram and phase transitions</li>
+    <li class="dim">Heavy-ion collisions</li>
+    <li class="dim">Baryon number fluctuations</li>
+    <li class="dim">QCD-assisted low energy effective theory</li>
+    <li class="dim">Fluctuations near the liquid&ndash;gas transition</li>
+    <li>Universality class of the CEP</li>
+    <li class="dim">Summary and Outlook</li>
+  </ul>
 </section>
 
 <!-- O(4) vs Z2：左为 Z2 双势阱，右为 O(4) 墨西哥帽；小球显示涨落模式，滑块调温度，勾选加入显式破缺（代码见文件末尾） -->
@@ -400,12 +844,71 @@
   </p>
 </section>
 
+<!-- ===== 新增：第六部分 临界标度、QCD 到 Ising 的映射、临界区大小 ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">Critical scaling near the CEP</h3>
+  <div class="fig-row" style="align-items: center; gap: 40px;">
+    <div>
+      <div class="eq" style="font-size: 0.5em;">
+        \[ \xi\sim|r|^{-\nu},\qquad \phi\sim(-r)^{\beta},\qquad \chi\sim|r|^{-\gamma},\qquad \phi\big|_{r=0}\sim h^{1/\delta} \]
+        \[ \phi=h^{1/\delta}f_G(z),\qquad z=r\,h^{-1/(\beta\delta)} \]
+      </div>
+      <ul class="bul">
+        <li>Close to the CEP all singular behavior follows from <b>one</b> universal scaling function \(f_G(z)\)</li>
+        <li>Cumulants \(\leftrightarrow\) derivatives of \(f_G\): universal sign pattern of \(\kappa_4\)</li>
+        <li>Non-universal: amplitudes and the size of the scaling region</li>
+      </ul>
+    </div>
+    <div class="placeholder" style="width: 380px; height: 320px; text-align: center;"><div>Scaling function \(f_G(z)\)<br>3D Ising</div></div>
+  </div>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Mapping QCD onto the Ising model</h3>
+  <div class="fig-row" style="align-items: center; gap: 40px;">
+    <div class="placeholder" style="width: 420px; height: 340px; text-align: center;"><div>Ising coordinates \((r,h)\) drawn<br>in the QCD phase diagram \((T,\mu_B)\)</div></div>
+    <ul class="bul">
+      <li>Near the CEP: linear map \((T,\mu_B)\to(r,h)\)
+        \[ \begin{pmatrix} r\\ h\end{pmatrix}=M\begin{pmatrix} T-T_{\rm CEP}\\ \mu_B-\mu_{B,\rm CEP}\end{pmatrix} \]</li>
+      <li>\(r\)-axis tangent to the first-order line; the \(h\)-axis direction is not fixed by symmetry</li>
+      <li>Angles and scales of \(M\) are <b>non-universal</b>: they have to be computed in QCD</li>
+    </ul>
+  </div>
+  <figcaption style="text-align: center; margin-top: 8px;">e.g. Parotto et al., arXiv:1805.05249</figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">How large is the critical region?</h3>
+  <div class="fig-row" style="align-items: center; gap: 30px;">
+    <div class="placeholder" style="width: 420px; height: 300px; text-align: center;"><div>Effective exponents vs. distance to the CEP<br>(fRG)</div></div>
+    <div class="placeholder" style="width: 420px; height: 300px; text-align: center;"><div>Scaling region in the \((T,\mu_B)\) plane</div></div>
+  </div>
+  <ul class="bul wide" style="margin: 14px auto 0;">
+    <li class="todo">TODO：从 fRG 提取有效临界指数，与 3D Ising 比较</li>
+    <li class="todo">TODO：标度区的大小，以及冻结线是否经过标度区</li>
+  </ul>
+  <figcaption style="text-align: center; margin-top: 8px;"><b>SY</b>, in preparation</figcaption>
+</section>
+
 <!-- Ripples of the QCD critical point：CEP 周围的涟漪（示意），中心为很小的 scaling 区，freeze-out 曲线穿过涟漪区；循环播放，点击重新开始（代码见文件末尾） -->
 <section id="ripple-slide">
   <h3 style="margin-bottom: 0;">Ripples of the QCD critical point</h3>
   <canvas id="ripple-canvas" style="width: 900px; height: 460px; cursor: pointer;"></canvas>
   <figcaption style="text-align: center; margin-top: 14px;">W.-j. Fu, X. Luo, J. M. Pawlowski, F. Rennecke, <b>SY</b>,
     <a href="https://arxiv.org/abs/2308.15508" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:2308.15508</a></figcaption>
+</section>
+
+<!-- ===== 新增：总结与展望 ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">Summary and Outlook</h3>
+  <ul class="bul wide" style="font-size: 0.5em;">
+    <li>QCD phase diagram: crossover at \(\mu_B=0\); functional QCD locates the CEP at \(\mu_B\approx 600\text{&ndash;}650\) MeV</li>
+    <li>Heavy-ion collisions scan the phase diagram; baryon number cumulants are sensitive to the correlation length</li>
+    <li>QCD-assisted LEFT: CEP at \((98,\,643)\) MeV, a peak of \(R_{42}^B\) at \(\sqrt{s_{NN}}\approx 5\text{&ndash;}6\) GeV whose height encodes the CEP location</li>
+    <li>Liquid&ndash;gas transition (PDM): agrees with preliminary STAR FXT \(R_{42}\) for \(\sqrt{s_{NN}}\lesssim 4\) GeV &rArr; nucleon interactions matter at low energies</li>
+    <li>The QCD CEP is in the 3D Ising class, but its scaling region is small: experiments see the non-universal &ldquo;ripples&rdquo; <span class="todo">TODO：补充结论</span></li>
+    <li style="color: blue;">Outlook: non-equilibrium dynamics, net-proton vs. net-baryon, BES-II / FXT and future CBM data <span class="todo">TODO</span></li>
+  </ul>
 </section>
 
 <!-- 单图 + 标注 -->

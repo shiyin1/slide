@@ -1,0 +1,173 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "main.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.1/TcMass_data.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.2/fluc_PDM_main.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.2/fluc_PDM_mub860.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.3/Andronic_freezeout.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.3/CP_LG.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.3/LG_line.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.3/STAR_extracted.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.3/chi2_peak.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.3/grid_T.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.3/grid_mub.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.3/heatmaps.tar.xz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.3/iso_sigma.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R42_HADES.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R42_STAR_BESII.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R42_STAR_FXT.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R42_fRG.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R42_fix.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R51_STAR_BESII.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R51_STAR_FXT.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R51_STAR_extracted.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R51_pdm_chi2_peak.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R51_pdm_iso_sigma.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R62_STAR_BESII.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R62_STAR_FXT.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R62_STAR_extracted.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R62_fRG.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R62_pdm_chi2_peak.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.4/R62_pdm_iso_sigma.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.5/frg_R42_muB0.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.5/hotqcd2017_R42_muB0.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.5/hotqcd2020_R42_muB0.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.5/hrg_R42_muB0.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.5/pdm_R42_muB0.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.5/wb2018_R42_muB0.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.6/CP_LG_point.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.6/LG_line_m0=600.dat"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.6/heatmaps.tar.xz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.7/data_R21.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.7/data_R31.csv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/Fig.7/data_points.csv"
+      }
+   ],
+   "spec_version" : 1,
+   "texlive_version" : "2025",
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}
