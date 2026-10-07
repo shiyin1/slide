@@ -453,33 +453,6 @@
         <polygon points="0 0, 10 3.5, 0 7" fill="red" />
       </marker>
     </defs>
-<foreignObject x="45" y="6" width="35" height="25">
-  <div xmlns="http://w3.org" style="font-size: 1.7px; text-align: left; color: black; line-height: 1.1;">
-    
-    <!-- 核心修改：使用 \begin{aligned} ... \end{aligned} 包裹多行公式 -->
-    \[
-    \begin{aligned}
-      \delta N_B &= N_B - \langle N_B \rangle \\
-      C_1        &= \langle N_B \rangle \\
-      C_2        &= \langle (\delta N_B)^2 \rangle \\
-      C_3        &= \langle (\delta N_B)^3 \rangle \\
-      C_4        &= \langle (\delta N_B)^4 \rangle - 3 \langle (\delta N_B)^2 \rangle^2
-    \end{aligned}
-    \]
-  </div>
-</foreignObject>
-<foreignObject x="70" y="10" width="35" height="25">
-  <div xmlns="http://w3.org" style="font-size: 1.8px; text-align: left; color: black; line-height: 1.1;">
-    
-    <!-- 核心修改：使用 \begin{aligned} ... \end{aligned} 包裹多行公式 -->
-    \[
-    \begin{aligned}
-      S\sigma        &= C_3/C_2 \\
-      \kappa\sigma^2 &= C_4/C_2 
-    \end{aligned}
-    \]
-  </div>
-</foreignObject>
     <!-- 2. 核心修改：利用 <image> 把第一张图（fig1.svg）放进网格中控制 -->
     <!-- 下面的 x="15" y="5" 表示横坐标15，纵坐标5，宽30，高20。你可以随意微调这四个数 -->
     <image href="fig1.svg" x="15" y="5" width="30" height="20" />
@@ -492,6 +465,27 @@
     <path d="M 30,20 30,28" stroke="red" stroke-width=".4" fill="none" marker-end="url(#arrow-red)" />
     <path d="M 30,20 70,28" stroke="red" stroke-width=".4" fill="none" marker-end="url(#arrow-red)" />
   </svg>
+
+  <!-- 公式用普通 HTML 绝对定位（放在 SVG foreignObject 里 Safari/最小字号设置下会不显示）；SVG 1 单位 = 9.6px -->
+  <div style="position: absolute; left: 432px; top: 58px; width: 336px; z-index: 21; font-size: 16px; line-height: 1.1; text-align: left; color: black;">
+    \[
+    \begin{aligned}
+      \delta N_B &= N_B - \langle N_B \rangle \\
+      C_1        &= \langle N_B \rangle \\
+      C_2        &= \langle (\delta N_B)^2 \rangle \\
+      C_3        &= \langle (\delta N_B)^3 \rangle \\
+      C_4        &= \langle (\delta N_B)^4 \rangle - 3 \langle (\delta N_B)^2 \rangle^2
+    \end{aligned}
+    \]
+  </div>
+  <div style="position: absolute; left: 672px; top: 96px; width: 336px; z-index: 21; font-size: 17px; line-height: 1.1; text-align: left; color: black;">
+    \[
+    \begin{aligned}
+      S\sigma        &= C_3/C_2 \\
+      \kappa\sigma^2 &= C_4/C_2
+    \end{aligned}
+    \]
+  </div>
 
   <!-- 4. 补充说明文字：由于图画进了SVG，文字用绝对定位挂在最下方即可 -->
   <p style="font-size: 0.35em; color: gray; text-align: center; margin-top: 630px;">
