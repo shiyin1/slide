@@ -1,0 +1,682 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Moat Regime - CRC 2810</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+
+  <style>
+    /* 页面标题：与 AlumniSeminar / CPOD2026 相同的 Rockwell 风格 */
+    .reveal h2, .reveal h3 { font-family: 'Rockwell'; text-transform: none; }
+    .reveal h3 { font-size: 0.9em; }
+
+    /* 边框：画在 .slides 容器上（960×700），所有页共用 */
+    :root { --accent1: #c71585; }
+    .reveal .slides::before { content: ''; position: absolute; pointer-events: none;
+                              inset: -16px -22px -16px -22px; border: 1.5px solid #e6cfe0; border-radius: 16px;
+                              box-shadow: 0 2px 14px rgba(199,21,133,0.08); }
+
+    /* 页脚：标题页隐藏（标题页 section 带 data-state="is-title"） */
+    .deck-footer { position: absolute; left: 24px; bottom: 6px; z-index: 30; font-size: 13px; color: #999;
+                   font-family: 'Source Sans Pro', Helvetica, sans-serif; }
+    .deck-footer b { color: var(--accent1); font-weight: 600; }
+    .reveal-viewport.is-title .deck-footer { display: none; }
+
+    /* 多图并排容器 */
+    .fig-row { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 20px; }
+    .reveal figure { position: relative; margin: 0; }
+
+    /* 图上方/下方的小标题 */
+    .fig-title { position: relative; z-index: 11; font-size: 0.5em; font-weight: bold; color: #333; }
+    .fig-title.red { color: red; }
+
+    /* 图注（引用） */
+    .reveal figcaption { position: relative; z-index: 11; font-size: 0.5em; color: gray; line-height: 1.1; margin-top: 0; }
+    .reveal figcaption a { color: inherit; text-decoration: underline; }
+
+    /* 公式块 */
+    .eq { font-size: 0.5em; }
+
+    /* Outline 中未激活的条目 */
+    .reveal ul.outline { font-size: 0.72em; line-height: 1.3; }
+    .reveal ul.outline li { margin-bottom: 12px; }
+    .reveal li.dim { opacity: 0.3; }
+
+    /* 要点列表、结论提示 */
+    .reveal ul.bul { width: 430px; margin: 0; font-size: 0.46em; line-height: 1.45; text-align: left; }
+    .reveal ul.bul.wide { width: 880px; }
+    .reveal ul.bul li { margin-bottom: 6px; }
+    .msg { font-size: 0.48em; color: blue; margin: 10px 0 0; }
+
+    /* 交互页的控件（与 AlumniSeminar 的 O(4) vs Z2 页一致） */
+    .sym-ctrl { display: flex; justify-content: center; align-items: center; gap: 40px;
+                font-size: 0.42em; font-family: Arial, sans-serif; color: #333; }
+    .sym-ctrl input[type=range] { width: 260px; vertical-align: middle; accent-color: #c71585; }
+
+    /* Riemann 面网格：行 = μ，列 = sheet */
+    .sheet-grid { display: grid; grid-template-columns: 90px repeat(3, 260px); gap: 2px 8px; justify-content: center;
+                  align-items: center; font-size: 0.42em; color: #333; }
+    .sheet-grid img { width: 260px; margin: 0; }
+    .sheet-grid .rowlab { text-align: right; font-weight: bold; line-height: 1.3; white-space: nowrap; }
+  </style>
+</head>
+
+<body>
+<div class="reveal">
+<div class="deck-footer"><b>Shi Yin</b> &nbsp;·&nbsp; CRC 2810</div>
+<div class="slides">
+
+<!-- Title -->
+<section data-state="is-title">
+  <h3>Dissecting the moat regime at low energies</h3>
+  <p style="font-weight: bold;">Shi Yin</p>
+  <p style="color: mediumvioletred;">CRC 2810</p>
+  <!-- 参考文献容器 -->
+  <div style="color: blue; font-size: 20px; display: flex; justify-content: center; text-align: left; margin: 20px 0;">
+    <span style="white-space: nowrap; margin-right: 10px;">Based on:</span>
+    <div>
+      1. Rennecke and <b>SY</b>, <i>I: Renormalization and the phase structure</i>, <a href="https://arxiv.org/abs/2510.06712" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:2510.06712</a> <br>
+      2. Rennecke and <b>SY</b>, <i>II: Correlations</i>, <a href="https://arxiv.org/abs/2609.32563" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:2609.32563</a>
+    </div>
+  </div>
+  <p style="font-size: smaller;">With the help of
+    <img src="Claude%20Logo%20PNG%20SVG%20Vector.png" alt="Claude" style="height: 1.15em; width: auto; margin: 0 0 0 6px; vertical-align: -0.22em;">
+  </p>
+  <img src="CRC-TR211long.svg" style="width:15%; height:auto; margin-right:150px;">
+  <img src="image.jpeg" style="width:25%; height:auto; margin-right:100px;">
+  <img src="fQCDLogoFR.png" style="width:20%; height:auto;">
+</section>
+
+<!-- Outline：每进入一个新部分就复制一页，把当前条目的 class="dim" 去掉 -->
+<section>
+  <h3>Outline</h3>
+  <ul class="outline">
+    <li>The moat regime</li>
+    <li class="dim">Quark&ndash;meson model and renormalization</li>
+    <li class="dim">Shape of the moat regime in the phase diagram</li>
+    <li class="dim">Moats in meson correlations</li>
+    <li class="dim">Friedel oscillations and analytic structure</li>
+    <li class="dim">Quarks, Summary and Outlook</li>
+  </ul>
+</section>
+
+<!-- ===== 第一部分：moat regime 是什么 ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">The moat regime</h3>
+  <div class="eq">
+    \[ \Sigma_\phi(p_0=0,\boldsymbol{p}) = Z^\perp_\phi\,\boldsymbol{p}^2+\bar m_\phi^2+\dots,\qquad
+       Z^\perp_\phi=\frac{\partial\,\Sigma_\phi(0,\boldsymbol{p})}{\partial\boldsymbol{p}^2}\bigg|_{\boldsymbol{p}=0} \]
+  </div>
+  <ul class="bul wide" style="margin: 6px auto 0;">
+    <li>Moat regime: the static energy of mesons is <b>minimal at nonzero</b> spatial momentum \(\Leftrightarrow\) \(Z^\perp_\phi<0\)
+      &nbsp;(Pisarski, Skokov, Tsvelik 2021)</li>
+    <li>Found in functional QCD at large density (Fu, Pawlowski, Rennecke 2019; Fu <i>et al.</i> 2024)</li>
+    <li>Superordinate feature of spatially modulated phases: inhomogeneous phases, liquid crystals, quantum pion liquid
+      &mdash; an instability \(\Sigma_\phi(0,p_{\rm min})=0\) signals modulated order</li>
+    <li>Possible signals in heavy-ion collisions: HBT / two-particle correlations, dilepton rate</li>
+    <li>Mechanism: <b>particle&ndash;hole</b> fluctuations of quarks around the Fermi surface &rArr; generic, can be studied in models</li>
+  </ul>
+  <p class="msg">But in low-energy models the mesons are put in by hand: renormalization and the quark&ndash;meson interaction must be under control</p>
+  <ul class="bul wide" style="margin: 14px auto 0;">
+    <li><b>Part I:</b> renormalization and the shape of the moat regime &nbsp;&nbsp; <b>Part II:</b> meson/quark correlations, screening, analytic structure</li>
+  </ul>
+</section>
+
+<!-- 玩具模型：Σ(p) = m² + Z⊥p² + Wp⁴；滑块调 Z⊥，显示静态能量、复动量平面上的极点和屏蔽势（代码见文件末尾） -->
+<section id="moat-slide">
+  <h3 style="margin-bottom: 0;">A toy moat: static energy, poles and screening</h3>
+  <div class="eq" style="margin: 4px 0 0;">
+    \[ \Sigma(\boldsymbol{p}) = m^2+Z^\perp\boldsymbol{p}^2+W\boldsymbol{p}^4,\qquad
+       V(r)\propto\frac{1}{r}\int_0^\infty\!dp\,\frac{p\,\sin(pr)}{\Sigma(p)} \]
+  </div>
+  <canvas id="moat-canvas" style="width: 900px; height: 300px;"></canvas>
+  <div class="sym-ctrl">
+    <label>Z<sub>&perp;</sub> <input id="moat-z" type="range" min="-1" max="1.2" step="0.01" value="1" list="moat-ticks"> <span id="moat-z-val" style="display: inline-block; width: 130px; text-align: left;">1.00</span></label>
+    <datalist id="moat-ticks"><option value="-0.63"></option><option value="0"></option></datalist>
+  </div>
+  <ul class="bul wide" style="margin: 8px auto 0;">
+    <li>Poles of the static propagator in the complex \(|\boldsymbol{p}|\) plane: \(\mathrm{Im}\to\) screening length, \(\mathrm{Re}\to\) oscillation</li>
+    <li>Moat: complex poles \(p_{\rm pole}=\pm p_0+i\,m_{\rm scr}\) with \(p_0\approx p_{\rm min}\) &rArr; \(V(r)\sim e^{-m_{\rm scr}r}\sin(p_0 r)/r\);
+      &nbsp;at \(Z^\perp<-2\sqrt{W}m\) the poles hit the real axis: inhomogeneous instability</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Outline</h3>
+  <ul class="outline">
+    <li class="dim">The moat regime</li>
+    <li>Quark&ndash;meson model and renormalization</li>
+    <li class="dim">Shape of the moat regime in the phase diagram</li>
+    <li class="dim">Moats in meson correlations</li>
+    <li class="dim">Friedel oscillations and analytic structure</li>
+    <li class="dim">Quarks, Summary and Outlook</li>
+  </ul>
+</section>
+
+<!-- ===== 第二部分：QM 模型与重整化（文章 I） ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">Quark&ndash;meson model in RPA</h3>
+  <div class="eq">
+    \[ \mathcal{L}=\bar q\big[\gamma_\mu\partial_\mu-\gamma_0\mu\big]q+\tfrac12(\partial_\mu\phi)^2
+       +h\,\bar q\big(T^0\sigma+i\gamma_5\mathbf{T}\cdot\boldsymbol{\pi}\big)q+U(\rho)-c\sigma+\mathcal{L}_{\rm ct} \]
+  </div>
+  <div class="fig-row" style="align-items: center; gap: 30px; margin-top: 6px;">
+    <ul class="bul" style="width: 400px;">
+      <li>\(N_f=2\), \(\phi=(\sigma,\boldsymbol\pi)\), \(\rho=\phi^2/2\), \(U(\rho)=-\nu\rho+\tfrac{\lambda}{2}\rho^2\)</li>
+      <li>Mean field: \(V(\rho)=U(\rho)-\frac{T}{\mathcal V}\ln\det\mathcal M(\sigma)\) &rArr; gap equation for \(m_f=h\sigma_0/2\)</li>
+      <li>RPA: one quark loop with the mean-field quark mass</li>
+      <li>Vacuum: \(f_\pi=92\), \(\bar m_\pi=136\), \(\bar m_\sigma=480\), \(m_f=300\) MeV</li>
+      <li>CEP at \((T,\mu)_{\rm CEP}\approx(30,\,290)\) MeV</li>
+    </ul>
+    <div>
+      <img src="meson-prop-equ.svg" style="width: 420px; margin: 0;">
+      <div class="eq" style="font-size: 0.45em;">
+        \[ \Sigma_\pi=p^2+m_\pi^2+\Pi^\pi_{\rm RPA}(p;T,\mu) \]
+        \[ \Sigma_\pi=Z^\parallel_\pi\,p_0^2+Z^\perp_\pi\,\boldsymbol p^2+\bar m_\pi^2 \]
+      </div>
+    </div>
+  </div>
+  <p class="msg">\(Z^\perp_\pi<0\) signals the moat regime; pions, the lightest hadrons, are its most sensitive probe</p>
+  <figcaption style="text-align: center; margin-top: 8px;">Rennecke, <b>SY</b>, <a href="https://arxiv.org/abs/2510.06712" target="_blank">arXiv:2510.06712</a></figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Renormalization of \(Z^\perp\)</h3>
+  <div class="fig-row" style="align-items: center; gap: 30px;">
+    <ul class="bul" style="width: 440px;">
+      <li>Dimensional regularization + \(\overline{\rm MS}\): \(\nu(M),\lambda(M)\) fixed by vacuum observables &rArr; thermodynamics is \(M\)-independent</li>
+      <li>Momentum-dependent part of \(\Pi^\pi\) needs a <b>kinetic counterterm</b> \(\tfrac12\delta_Z(\partial_\mu\phi)^2\): \(Z\) is power-counting marginal
+        \[ Z^{\perp}_{\pi,\rm vac}(0)=1-\frac{h^2N_c}{8\pi^2}\Big[\bar C+\ln\frac{m_f}{M}\Big] \]</li>
+      <li>Renormalization condition \(Z^\perp_\pi(p=0;T=0,\mu=0)=1\) &rArr; \(\bar C(M)=\ln(M/m_f^{\rm vac})\)</li>
+    </ul>
+    <figure>
+      <img src="ZM.svg" style="width: 420px; margin: 0;">
+      <div class="fig-title">\(\bar C=0\): strong \(M\) dependence; inset: RG consistent</div>
+    </figure>
+  </div>
+  <p class="msg">Thermal contributions to \(Z^\perp\) are \(M\)-independent and negative &rArr; where the moat regime sits is decided by the renormalization condition</p>
+  <figcaption style="text-align: center; margin-top: 8px;">Rennecke, <b>SY</b>, <a href="https://arxiv.org/abs/2510.06712" target="_blank">arXiv:2510.06712</a></figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Vacuum-subtracted \(\overline{\rm MS}\) scheme</h3>
+  <div class="eq">
+    \[ \Pi^{\pi,\rm vs}_{\rm vac}(p;m_f)=\Pi^{\pi,\overline{\rm MS}}_{\rm vac}(p;m_f)-\Pi^{\pi,\overline{\rm MS}}_{\rm vac}\big(p_0=0,\mathrm{Re}\,\boldsymbol p;m_f^{\rm vac}\big)+\Pi^{\pi,\overline{\rm MS}}_{\rm vac}(0;m_f^{\rm vac}) \]
+  </div>
+  <div class="fig-row" style="align-items: flex-start; gap: 20px;">
+    <figure>
+      <img src="renorm_compare_vac.svg" style="width: 390px; margin: 0;">
+    </figure>
+    <figure>
+      <img src="renorm_compare.svg" style="width: 390px; margin: 0;">
+    </figure>
+  </div>
+  <ul class="bul wide" style="margin: 6px auto 0;">
+    <li>\(\overline{\rm MS}\): \(\Sigma_\pi\) turns negative at large \(\boldsymbol p\), even in vacuum &rArr; unphysical instability</li>
+    <li>VS: trivial static propagator in vacuum, \(\Sigma_\pi=\boldsymbol p^2+\bar m_\pi^2\) &rArr; curvature = screening = pole mass; moat location unchanged</li>
+    <li>Only \(\mathrm{Re}\,\boldsymbol p\) is subtracted: frequency dependence and analytic structure are untouched</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Outline</h3>
+  <ul class="outline">
+    <li class="dim">The moat regime</li>
+    <li class="dim">Quark&ndash;meson model and renormalization</li>
+    <li>Shape of the moat regime in the phase diagram</li>
+    <li class="dim">Moats in meson correlations</li>
+    <li class="dim">Friedel oscillations and analytic structure</li>
+    <li class="dim">Quarks, Summary and Outlook</li>
+  </ul>
+</section>
+
+<!-- ===== 第三部分：相图中的 moat regime（文章 I） ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">Moat regime in the phase diagram</h3>
+  <div class="fig-row" style="align-items: flex-end; gap: 20px;">
+    <figure>
+      <img src="ZM300.svg" style="width: 390px; margin: 0;">
+    </figure>
+    <figure>
+      <img src="phaseM300.svg" style="width: 450px; margin: 0;">
+    </figure>
+  </div>
+  <ul class="bul wide" style="margin: 8px auto 0;">
+    <li>\(Z^\perp_\pi\) decreases with \(\mu\); for \(\mu\gtrsim\mu_{\rm CEP}\) it is negative at small and intermediate \(T\): the moat regime lies
+      <b>adjacent to the phase boundary</b> in the chirally restored phase</li>
+    <li>The \(Z^\perp_\pi=0\) contour follows the chiral transition and merges with it at the CEP: the quark determinant contributes
+      identically to \(\lambda\) and \(Z^\perp\) (Nickel 2009)</li>
+    <li>\(\Sigma_\pi>0\) everywhere: no inhomogeneous instability (light \(\bar m_\sigma=480\) MeV)</li>
+  </ul>
+  <figcaption style="text-align: center; margin-top: 6px;">Rennecke, <b>SY</b>, <a href="https://arxiv.org/abs/2510.06712" target="_blank">arXiv:2510.06712</a></figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Proper vs improper renormalization</h3>
+  <div class="fig-row" style="align-items: flex-start; gap: 20px;">
+    <figure>
+      <img src="phaseM300.svg" style="width: 420px; margin: 0;">
+      <div class="fig-title">\(Z=1\): proper renormalization condition</div>
+    </figure>
+    <figure>
+      <img src="phaseM500.svg" style="width: 420px; margin: 0;">
+      <div class="fig-title red">\(Z=1.75\): unphysical</div>
+    </figure>
+  </div>
+  <ul class="bul wide" style="margin: 8px auto 0;">
+    <li>\(Z=1.75\) mimics a change of \(M\) without a condition for \(Z^\perp\): pole mass \(m_{p,\pi}=\bar m_\pi/\sqrt Z\approx103\) MeV</li>
+    <li>\(Z^\perp_\pi\) is shifted by a constant 0.75: no moat regime for \(T<300\) MeV, \(\mu<400\) MeV</li>
+    <li>Chiral phase boundary unchanged: \(Z\) does not feed back into the effective potential in RPA</li>
+  </ul>
+  <p class="msg">Scheme/scale dependencies reported in the literature are likely due to incomplete renormalization of the self-energy</p>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Large \(T\): creation&ndash;annihilation vs particle&ndash;hole</h3>
+  <div class="fig-row" style="align-items: flex-start; gap: 20px;">
+    <figure>
+      <img src="highT.svg" style="width: 390px; margin: 0;">
+    </figure>
+    <figure>
+      <img src="highTmu320.svg" style="width: 390px; margin: 0;">
+    </figure>
+  </div>
+  <div class="eq" style="font-size: 0.45em;">
+    \[ Z^\perp_\pi(0;T)\ \xrightarrow{\,T\to\infty\,}\ -\frac{h^2N_c}{8\pi^2}\ln\frac{T}{M} \]
+  </div>
+  <ul class="bul wide" style="margin: 0 auto;">
+    <li><b>CA</b> (relativistic creation&ndash;annihilation) drives \(Z^\perp_\pi<0\) at large \(T\), even at \(\mu=0\)</li>
+    <li><b>PH</b> (particle&ndash;hole, Landau damping) generates the genuine moat at small \(T\), large \(\mu\) &mdash; as in FRG-QCD</li>
+  </ul>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">In-medium Yukawa coupling</h3>
+  <div class="fig-row" style="align-items: center; gap: 20px;">
+    <figure>
+      <img src="quark-meson-loop-equ.svg" style="width: 300px; margin: 0 0 10px;">
+      <img src="hT.svg" style="width: 340px; margin: 0;">
+    </figure>
+    <figure>
+      <img src="phaseyukawainput.svg" style="width: 500px; margin: 0;">
+    </figure>
+  </div>
+  <ul class="bul wide" style="margin: 8px auto 0;">
+    <li>One-loop \(h(T,\mu)\) decreases with \(T\) like in FRG-QCD; RPA: \(h=\) const. &rArr; CA contributions suppressed at large \(T\)</li>
+    <li>\(h_{\rm vac}=7.5\) (\(m_f\approx350\) MeV): moat regime only near the CEP and first-order line, qualitatively like QCD</li>
+    <li>\(h_{\rm vac}\gtrsim9\): back to the RPA picture; &nbsp;\(h_{\rm vac}\lesssim6.5\): no moat regime at all</li>
+  </ul>
+  <p class="msg">The moat regime at \(\mu=0\) is an artifact of the constant quark&ndash;meson coupling</p>
+</section>
+
+<section>
+  <h3>Outline</h3>
+  <ul class="outline">
+    <li class="dim">The moat regime</li>
+    <li class="dim">Quark&ndash;meson model and renormalization</li>
+    <li class="dim">Shape of the moat regime in the phase diagram</li>
+    <li>Moats in meson correlations</li>
+    <li class="dim">Friedel oscillations and analytic structure</li>
+    <li class="dim">Quarks, Summary and Outlook</li>
+  </ul>
+</section>
+
+<!-- ===== 第四部分：其他介子与介子关联（文章 II） ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">Moats in other mesons</h3>
+  <div class="fig-row" style="align-items: center; gap: 30px;">
+    <div>
+      <div class="eq" style="font-size: 0.45em;">
+        \[ \begin{aligned}
+          \sigma&:\ h_\sigma\,\bar q\,T^0\sigma\,q &
+          \eta&:\ h_\eta\,\bar q\,T^0 i\gamma_5\eta\,q\\
+          \rho&:\ h_\rho\,\bar q\,\mathbf T\gamma_\mu\rho^\mu q &
+          a_1&:\ h_{a_1}\bar q\,\mathbf T i\gamma_\mu\gamma_5 a_1^\mu q
+        \end{aligned} \]
+      </div>
+      <ul class="bul" style="width: 400px;">
+        <li>\(h_\phi=h_\pi\), VS scheme for all channels</li>
+        <li>\(Z^\perp=1\) in vacuum for the heavier chiral partner; the lighter one follows from chiral symmetry</li>
+        <li>All \(Z^\perp_\phi\) decrease at large \(\mu\) &rArr; <b>every meson</b> develops a moat, at species-dependent densities</li>
+        <li>\(Z^\perp_\eta=Z^\perp_\pi\) in RPA: the anomaly is quadratic in the meson fields for \(N_f=2\)</li>
+      </ul>
+    </div>
+    <figure>
+      <img src="Zmu_othermeson.svg" style="width: 420px; margin: 0;">
+    </figure>
+  </div>
+  <p class="msg">Particle&ndash;hole fluctuations contribute to all channels &rArr; more channels for experimental searches</p>
+  <figcaption style="text-align: center; margin-top: 8px;">Rennecke, <b>SY</b>, <a href="https://arxiv.org/abs/2609.32563" target="_blank">arXiv:2609.32563</a></figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Static two-point function and thermodynamics</h3>
+  <div class="fig-row" style="align-items: center; gap: 30px;">
+    <div>
+      <div class="eq" style="font-size: 0.42em;">
+        \[ \chi^{-1}_{\phi\phi}(\boldsymbol p)=\frac{\delta^2 f[\phi]}{\delta\phi(\boldsymbol p)\delta\phi(-\boldsymbol p)}=\Sigma_\phi(0,\boldsymbol p) \]
+        \[ \chi_{XY}=\frac{\partial^2 f}{\partial X\partial Y}-2\!\int_{\boldsymbol p}\frac{\partial\,\delta f}{\partial X\delta\phi(\boldsymbol p)}\,G_\phi(0,\boldsymbol p)\,\frac{\partial\,\delta f}{\partial Y\delta\phi(\boldsymbol p)} \]
+      </div>
+      <ul class="bul" style="width: 430px;">
+        <li>Any structure of the static propagator is inherited by susceptibilities: the moat regime affects <b>thermodynamics</b></li>
+        <li>\(T=30\) MeV: \(\Sigma_\pi\) jumps into the moat across the first-order transition; \(p_{\rm min}\) grows with \(\mu\)</li>
+        <li>The pion mass grows faster than the moat deepens &rArr; \(\Sigma_\pi>0\), no instability</li>
+      </ul>
+    </div>
+    <figure>
+      <img src="gammapion_mu_T30.svg" style="width: 420px; margin: 0;">
+    </figure>
+  </div>
+  <figcaption style="text-align: center; margin-top: 8px;">Rennecke, <b>SY</b>, <a href="https://arxiv.org/abs/2609.32563" target="_blank">arXiv:2609.32563</a></figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Pion spectral function: the moat is spacelike</h3>
+  <div class="fig-row" style="align-items: flex-start; gap: 20px;">
+    <figure>
+      <img src="spec_mu250_T100.svg" style="width: 400px; margin: 0;">
+      <div class="fig-title">outside: \(T=100\), \(\mu=250\) MeV</div>
+    </figure>
+    <figure>
+      <img src="spec_mu320_T30.svg" style="width: 400px; margin: 0;">
+      <div class="fig-title red">moat regime: \(T=30\), \(\mu=320\) MeV</div>
+    </figure>
+  </div>
+  <ul class="bul wide" style="margin: 8px auto 0;">
+    <li>Timelike: pion peak with normal dispersion, broadened above the \(q\bar q\) threshold &mdash; unaffected by the moat</li>
+    <li>Spacelike: Landau damping (particle&ndash;hole) &rArr; enhancement at \(0\le\omega<|\boldsymbol p|\), \(|\boldsymbol p|>0\), connected to \(p_{\rm min}\) at \(\omega=0\)</li>
+    <li>Collective excitation (&ldquo;moaton&rdquo;), not a quasiparticle &mdash; fully consistent with FRG-QCD (Fu <i>et al.</i> 2024)</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Outline</h3>
+  <ul class="outline">
+    <li class="dim">The moat regime</li>
+    <li class="dim">Quark&ndash;meson model and renormalization</li>
+    <li class="dim">Shape of the moat regime in the phase diagram</li>
+    <li class="dim">Moats in meson correlations</li>
+    <li>Friedel oscillations and analytic structure</li>
+    <li class="dim">Quarks, Summary and Outlook</li>
+  </ul>
+</section>
+
+<!-- ===== 第五部分：Friedel 振荡、屏蔽势与解析结构（文章 II） ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">Is the moat a Friedel oscillation?</h3>
+  <div class="fig-row" style="align-items: flex-start; gap: 20px;">
+    <figure>
+      <img src="pmin.svg" style="width: 390px; margin: 0;">
+    </figure>
+    <figure>
+      <img src="Ethermal.svg" style="width: 390px; margin: 0;">
+    </figure>
+  </div>
+  <div class="eq" style="font-size: 0.45em;">
+    \[ p_F=\sqrt{\mu^2-m_f^2},\qquad \Pi^\pi_{\rm thermal}(p;T=0,\mu)\ni\frac{p}{2}\big(\sqrt{p^2+4m_f^2}-2\mu\big)\ln\left|\frac{p+2p_F}{p-2p_F}\right| \]
+  </div>
+  <ul class="bul wide" style="margin: 0 auto;">
+    <li>Branch point at \(p=2p_F\): particle&ndash;hole excitations change from gapless to gapped &rArr; kink, Friedel oscillations</li>
+    <li>\(p_{\rm min}/2p_F\lesssim1/3\) at \(\mu=320\) MeV, \(\lesssim0.6\) at \(\mu=450\) MeV: the moat is <b>not</b> set by \(2p_F\)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Quark&ndash;antiquark screening potential</h3>
+  <div class="fig-row" style="align-items: center; gap: 30px;">
+    <div>
+      <div class="eq" style="font-size: 0.45em;">
+        \[ V(r)=\frac{h^2}{2\pi^2r}\int_0^\infty\!dp\,\frac{p\,\sin(pr)}{\Sigma_\pi(p)} \]
+        \[ V_F(r)\sim\frac{\sin(2p_F r)}{r^3} \qquad\text{(long range, power law)} \]
+        \[ \Sigma_\pi\simeq Z_1(\boldsymbol p^2-p_{\rm min}^2)^2+m_{\rm eff}^2\ \Rightarrow\ V_{\rm moat}(r)\sim\frac{e^{-m_{\rm scr}r}}{r}\sin(p_0r) \]
+      </div>
+      <ul class="bul" style="width: 440px;">
+        <li>Moat modulations live in the exponentially suppressed <b>short-range</b> part</li>
+        <li>Visible only if decay length \(\gg\) period:
+          \(\ l^2/\lambda^2\simeq p_{\rm min}^4Z_1/(\pi^2m_{\rm eff}^2)\) &rArr; close to an inhomogeneous instability</li>
+        <li>Here the moat is shallow: oscillations swallowed by the decay; long-range tail = Friedel</li>
+      </ul>
+    </div>
+    <figure>
+      <img src="Vr.svg" style="width: 400px; margin: 0;">
+      <div class="fig-title">\(T=0\): \(\mu=290\) (inset), 301, 400 MeV</div>
+    </figure>
+  </div>
+  <figcaption style="text-align: center; margin-top: 8px;">Rennecke, <b>SY</b>, <a href="https://arxiv.org/abs/2609.32563" target="_blank">arXiv:2609.32563</a></figcaption>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 6px;">Analytic structure in the complex \(|\boldsymbol p|\) plane</h3>
+  <div class="sheet-grid">
+    <div></div>
+    <div><b>Sheet 1</b> (principal)</div>
+    <div><b>Sheet 2</b> \(\sqrt{p^2+4m_f^2}\to-\sqrt{\cdot}\)</div>
+    <div><b>Sheet 3</b> \(\ln\to\ln+2\pi i\)</div>
+    <div class="rowlab">\(\mu=301\) MeV<br><span style="font-weight: normal;">no moat</span></div>
+    <img src="Riemannsheet1MSbarmu301.svg">
+    <img src="Riemannsheet2MSbarmu301.svg">
+    <img src="Riemannsheet3MSbarmu301.svg">
+    <div class="rowlab" style="color: #c71585;">\(\mu=400\) MeV<br><span style="font-weight: normal;">moat</span></div>
+    <img src="Riemannsheet1MSbarmu400.svg">
+    <img src="Riemannsheet2MSbarmu400.svg">
+    <img src="Riemannsheet3MSbarmu400.svg">
+  </div>
+  <ul class="bul wide" style="margin: 4px auto 0; font-size: 0.42em;">
+    <li>Outside: imaginary screening poles and cuts from \(\pm2im_f\) on the principal sheet</li>
+    <li>Moat: cuts move to the origin, poles pushed to unphysical sheets &mdash; real poles on Sheet 2 (&ldquo;virtual instabilities&rdquo;), complex poles on Sheet 3</li>
+    <li>\(T=0\), \(\overline{\rm MS}\); qualitatively identical in the VS scheme (only \(\mathrm{Re}\,\boldsymbol p\) subtracted)</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Outline</h3>
+  <ul class="outline">
+    <li class="dim">The moat regime</li>
+    <li class="dim">Quark&ndash;meson model and renormalization</li>
+    <li class="dim">Shape of the moat regime in the phase diagram</li>
+    <li class="dim">Moats in meson correlations</li>
+    <li class="dim">Friedel oscillations and analytic structure</li>
+    <li>Quarks, Summary and Outlook</li>
+  </ul>
+</section>
+
+<!-- ===== 第六部分：夸克关联与总结（文章 II） ===== -->
+<section>
+  <h3 style="margin-bottom: 10px;">Quarks are insensitive to the moat</h3>
+  <img src="quark-prop-equ.svg" style="width: 440px; margin: 0;">
+  <div class="fig-row" style="align-items: flex-start; gap: 20px; margin-top: 6px;">
+    <figure>
+      <img src="Zpsi.svg" style="width: 380px; margin: 0;">
+      <div class="fig-title">\(Z^\perp_q(\pi T,0)\); vertical lines: entering the moat</div>
+    </figure>
+    <figure>
+      <img src="Eq_quark.svg" style="width: 380px; margin: 0;">
+      <div class="fig-title">\(\Sigma^{\rm scalar}_q(\pi T,\boldsymbol p)\), \(T=10\) MeV</div>
+    </figure>
+  </div>
+  <ul class="bul wide" style="margin: 6px auto 0;">
+    <li>Solid: full RPA pion; dashed: momentum-independent self-energy only &mdash; no extra change when entering the moat</li>
+    <li>Symmetry-restoring static <b>bosonic</b> fluctuations enhanced, symmetry-breaking <b>fermionic</b> ones unaffected</li>
+  </ul>
+  <p class="msg">The chiral phase boundary and the CEP could be pushed to larger \(\mu_B\) and smaller \(T\), even without inhomogeneous instabilities</p>
+</section>
+
+<section>
+  <h3 style="margin-bottom: 10px;">Summary and Outlook</h3>
+  <div style="width: 880px; margin: 0 auto; text-align: left;">
+    <p style="font-size: 0.55em; font-weight: bold; margin: 6px 0 2px;">Summary</p>
+    <ul class="bul wide" style="font-size: 0.44em; margin: 0;">
+      <li>\(Z^\perp\) needs its own <b>renormalization condition</b>; with it the moat regime is RG consistent. VS scheme removes the unphysical large-momentum instability</li>
+      <li>The moat regime lies next to the chiral phase boundary and merges with it at the CEP; the moat at large \(T\) (CA) is an artifact of a constant <b>Yukawa coupling</b></li>
+      <li><b>All mesons</b> (\(\pi,\sigma,\eta,\rho,a_1\)) can show moat behavior; it is a <b>spacelike</b> enhancement of the spectral function</li>
+      <li>Moat modulations are short-range and distinct from <b>Friedel oscillations</b>; they are tied to complex poles on unphysical Riemann sheets</li>
+      <li><b>Quarks</b> are essentially insensitive to the moat regime</li>
+    </ul>
+    <p style="font-size: 0.55em; font-weight: bold; color: blue; margin: 14px 0 2px;">Outlook</p>
+    <ul class="bul wide" style="font-size: 0.44em; margin: 0; color: blue;">
+      <li>Feed the moat regime back self-consistently: how much do the chiral phase boundary and the CEP move?</li>
+      <li>Track the complex moat poles through the phase diagram at \(T>0\): reconstruction from lattice data at small density?</li>
+      <li>Physical renormalization conditions for \(Z^\perp\), e.g. from lattice screening masses</li>
+    </ul>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+Reveal.initialize({
+  hash: true,
+  margin: 0.1,          // 留出边框的位置
+  slideNumber: 'c/t',
+  plugins: [ RevealMath.KaTeX ]
+});
+</script>
+
+<!-- 玩具 moat：左为静态能量 Σ(p)，中为复动量平面上的极点，右为屏蔽势 V(r)/V(0) -->
+<script>
+(function () {
+  const canvas = document.getElementById('moat-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 900, H = 300, S = 2;
+  canvas.width = W * S; canvas.height = H * S;
+  ctx.scale(S, S);
+
+  const MAGENTA = '#c71585', BLUE = '#1565c0', GREEN = '#2e7d32', RED = '#d32f2f', ORANGE = '#e65100';
+
+  // 单位 m = 1；Σ = 1 + Z p² + Wp p⁴。Z < 2√Wp 时极点离开虚轴，Z < 0 时进入 moat，Z = −2√Wp 时失稳
+  const Wp = 0.1, Zvac = 1, Zdis = 2 * Math.sqrt(Wp);
+  const sigma = (Z, p) => 1 + Z * p * p + Wp * p ** 4;
+
+  // 复数运算（[re, im]）
+  const csub = (a, b) => [a[0] - b[0], a[1] - b[1]];
+  const cmul = (a, b) => [a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0]];
+  const cdiv = (a, b) => { const d = b[0] * b[0] + b[1] * b[1]; return [(a[0] * b[0] + a[1] * b[1]) / d, (a[1] * b[0] - a[0] * b[1]) / d]; };
+  const cexp = a => { const e = Math.exp(a[0]); return [e * Math.cos(a[1]), e * Math.sin(a[1])]; };
+  function csqrt([re, im]) {
+    const r = Math.hypot(re, im);
+    return [Math.sqrt((r + re) / 2), (im < 0 ? -1 : 1) * Math.sqrt(Math.max((r - re) / 2, 0))];
+  }
+
+  // p² = −x，Wp x² − Z x + 1 = 0；s = √x（Re s ≥ 0），极点在 p = ±i s 及其共轭
+  function poles(Z) {
+    let D = Z * Z - 4 * Wp;
+    if (Math.abs(D) < 1e-12) D = 0;                  // 临界点：二重极点
+    const x = D >= 0 ? [[(Z - Math.sqrt(D)) / (2 * Wp), 0], [(Z + Math.sqrt(D)) / (2 * Wp), 0]]
+                     : [[Z / (2 * Wp), -Math.sqrt(-D) / (2 * Wp)], [Z / (2 * Wp), Math.sqrt(-D) / (2 * Wp)]];
+    return x.map(csqrt);
+  }
+
+  // 部分分式 + ∫ p sin(pr)/(p²+s²) dp = π/2 e^{−sr}：V(r)/V(0) = (e^{−s₁r} − e^{−s₂r}) / ((s₂ − s₁) r)
+  function vr(Z, r) {
+    const [s1, s2] = poles(Z), ds = csub(s2, s1);
+    if (Math.hypot(ds[0], ds[1]) < 1e-6) return cexp([-s1[0] * r, -s1[1] * r])[0];
+    const num = csub(cexp([-s1[0] * r, -s1[1] * r]), cexp([-s2[0] * r, -s2[1] * r]));
+    return cdiv(num, cmul(ds, [r, 0]))[0];
+  }
+
+  // 坐标框：返回数据坐标 → 像素坐标的映射
+  function frame(x0, y0, w, h, xr, yr, title, xlab, ylab) {
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 1.2;
+    ctx.strokeRect(x0, y0, w, h);
+    ctx.fillStyle = '#333'; ctx.font = 'bold 14px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText(title, x0 + w / 2, y0 - 10);
+    ctx.font = '13px Arial';
+    ctx.fillText(xlab, x0 + w / 2, y0 + h + 20);
+    ctx.save(); ctx.translate(x0 - 14, y0 + h / 2); ctx.rotate(-Math.PI / 2); ctx.fillText(ylab, 0, 0); ctx.restore();
+    return [x => x0 + (x - xr[0]) / (xr[1] - xr[0]) * w, y => y0 + h - (y - yr[0]) / (yr[1] - yr[0]) * h];
+  }
+
+  function curve(fx, fy, f, xr, col, lw, dash) {
+    ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.setLineDash(dash || []);
+    ctx.beginPath();
+    for (let i = 0; i <= 300; i++) {
+      const x = xr[0] + (xr[1] - xr[0]) * i / 300;
+      i ? ctx.lineTo(fx(x), fy(f(x))) : ctx.moveTo(fx(x), fy(f(x)));
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  function clip(x0, y0, w, h) { ctx.save(); ctx.beginPath(); ctx.rect(x0, y0, w, h); ctx.clip(); }
+
+  function draw(Z) {
+    ctx.clearRect(0, 0, W, H);
+    const crit = Math.abs(Z + Zdis) < 1e-9, unstable = Z < -Zdis && !crit;
+    const col = crit ? ORANGE : unstable ? RED : Z < 0 ? MAGENTA : Z < Zdis ? GREEN : BLUE;
+
+    // ---------- 静态能量 ----------
+    const [ax, ay] = frame(50, 30, 240, 200, [0, 3], [-2, 4], 'Static energy Σ(p) / m²', '|p| / m', '');
+    clip(50, 30, 240, 200);
+    ctx.fillStyle = 'rgba(211,47,47,0.07)'; ctx.fillRect(50, ay(0), 240, 230 - ay(0));   // Σ < 0：非均匀失稳
+    ctx.strokeStyle = '#ccc'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(ax(0), ay(0)); ctx.lineTo(ax(3), ay(0)); ctx.stroke();
+    curve(ax, ay, p => sigma(Zvac, p), [0, 3], '#bbb', 2, [6, 5]);
+    curve(ax, ay, p => sigma(Z, p), [0, 3], col, 3);
+    if (Z < 0) {
+      const pm = Math.sqrt(-Z / (2 * Wp));
+      ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(ax(pm), ay(-2) - 20); ctx.lineTo(ax(pm), ay(sigma(Z, pm))); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = col; ctx.beginPath(); ctx.arc(ax(pm), ay(sigma(Z, pm)), 4, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = col; ctx.font = '13px Arial'; ctx.textAlign = 'center'; ctx.fillText('p_min', ax(pm), ay(-2) - 6);
+    }
+    ctx.restore();
+    ctx.fillStyle = '#333'; ctx.font = '12px Arial'; ctx.textAlign = 'center';
+    [0, 1, 2, 3].forEach(v => ctx.fillText(v, ax(v), 230 + 14));
+
+    // ---------- 复平面上的极点 ----------
+    const R = 3.5;
+    const [bx, by] = frame(350, 30, 200, 200, [-R, R], [-R, R], 'Poles of G(p) in complex |p|', 'Re p / m', 'Im p / m');
+    ctx.strokeStyle = '#ccc'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(bx(-R), by(0)); ctx.lineTo(bx(R), by(0)); ctx.moveTo(bx(0), by(-R)); ctx.lineTo(bx(0), by(R)); ctx.stroke();
+    clip(350, 30, 200, 200);
+    ctx.strokeStyle = RED; ctx.lineWidth = 2.5;
+    poles(Z).forEach(([sr, si]) => {                 // p = ±i s 与 ±i s*：(±Im s, ±Re s)
+      [[-si, sr], [si, -sr], [si, sr], [-si, -sr]].forEach(([x, y]) => {
+        const px = bx(x), py = by(y);
+        ctx.beginPath(); ctx.moveTo(px - 5, py - 5); ctx.lineTo(px + 5, py + 5); ctx.moveTo(px + 5, py - 5); ctx.lineTo(px - 5, py + 5); ctx.stroke();
+      });
+    });
+    ctx.restore();
+
+    // ---------- 屏蔽势 ----------
+    const [cx, cy] = frame(620, 30, 260, 200, [0, 12], [-1, 1], 'Screening potential V(r) / V(0)', 'r m', '');
+    ctx.strokeStyle = '#ccc'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cx(0), cy(0)); ctx.lineTo(cx(12), cy(0)); ctx.stroke();
+    clip(620, 30, 260, 200);
+    curve(cx, cy, r => vr(Zvac, Math.max(r, 1e-4)), [0, 12], '#bbb', 2, [6, 5]);
+    curve(cx, cy, r => vr(Z, Math.max(r, 1e-4)), [0, 12], col, 3);
+    ctx.restore();
+    ctx.fillStyle = '#333'; ctx.font = '12px Arial'; ctx.textAlign = 'center';
+    [0, 4, 8, 12].forEach(v => ctx.fillText(v, cx(v), 230 + 14));
+
+    // ---------- 当前区域的说明 ----------
+    const txt = crit ? `critical: Σ(p_min) = 0 at p_min = ${Math.sqrt(-Z / (2 * Wp)).toFixed(2)} m, double pole on the real axis ⇒ onset of modulated order`
+              : unstable ?`inhomogeneous instability: Σ(p) < 0 around p_min = ${Math.sqrt(-Z / (2 * Wp)).toFixed(2)} m, real poles ⇒ undamped modulation`
+              : Z < 0 ? `moat: minimum at p_min = ${Math.sqrt(-Z / (2 * Wp)).toFixed(2)} m, complex poles ⇒ damped oscillations`
+              : Z < Zdis ? 'complex poles ⇒ damped oscillations, but Σ(p) still monotonic (disorder line crossed)'
+              : 'normal: purely imaginary poles ⇒ Yukawa-like screening';
+    ctx.fillStyle = col; ctx.font = 'bold 15px Arial'; ctx.textAlign = 'center';
+    ctx.fillText(txt, W / 2, 280);
+    ctx.fillStyle = '#999'; ctx.font = '12px Arial'; ctx.textAlign = 'right';
+    ctx.fillText('dashed: vacuum Z⊥ = 1;  W = 0.1/m²', W - 20, 298);
+  }
+
+  const zIn = document.getElementById('moat-z');
+  function update() {
+    let Z = +zIn.value;
+    if (Math.abs(Z + Zdis) < 0.006) Z = -Zdis;      // 滑到 −0.63 时吸附到临界值 −2√Wp，Σ(p_min) 恰好为 0
+    document.getElementById('moat-z-val').textContent = Z === -Zdis ? `${Z.toFixed(3)} (critical)` : Z.toFixed(2);
+    draw(Z);
+  }
+  zIn.addEventListener('input', update);
+  update();
+})();
+</script>
+
+</body>
+</html>
