@@ -68,7 +68,7 @@
 
 <body>
 <div class="reveal">
-<div class="deck-footer"><b>Shi Yin</b> &nbsp;·&nbsp; CRC 2810</div>
+<div class="deck-footer"><b>Shi Yin</b> &nbsp;·&nbsp; Dissecting the moat regime at low energies</div>
 <div class="slides">
 
 <!-- Title -->
@@ -85,9 +85,9 @@
       2. Rennecke and <b>SY</b>, <i>II: Correlations</i>, <a href="https://arxiv.org/abs/2609.32563" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:2609.32563</a>
     </div>
   </div>
-  <!-- <p style="font-size: smaller;">With the help of
+  <p style="font-size: smaller;">With the help of
     <img src="Claude%20Logo%20PNG%20SVG%20Vector.png" alt="Claude" style="height: 1.15em; width: auto; margin: 0 0 0 6px; vertical-align: -0.22em;">
-  </p> -->
+  </p>
   <img src="CRC-TR211long.svg" style="width:15%; height:auto; margin-right:150px;">
   <img src="image.jpeg" style="width:25%; height:auto; margin-right:100px;">
   <img src="fQCDLogoFR.png" style="width:20%; height:auto;">
@@ -107,6 +107,39 @@
 </section>
 
 <!-- ===== 第一部分：moat regime 是什么 ===== -->
+<!-- 介子两点函数：真空 O(4) 对称 → 有限 T, μ 下 p0 与 |p| 分离；两种参数化 -->
+<section>
+  <h3 style="margin-bottom: 10px;">Meson two-point function in the medium</h3>
+  <div class="eq">
+    \[ G_\phi(p)=\big\langle\phi(p)\,\phi(-p)\big\rangle_c=\frac{1}{\Sigma_\phi(p)},\qquad p=(p_0,\boldsymbol p) \]
+  </div>
+  <ul class="bul wide" style="margin: 6px auto 0;">
+    <li>Vacuum: \(O(4)\) invariance &rArr; \(\Sigma_\phi(p_0^2+\boldsymbol p^2)\)</li>
+    <li>\(T,\mu>0\): heat bath breaks \(O(4)\) &rArr; \(\Sigma_\phi(p_0,|\boldsymbol p|;T,\mu)\), frequency and spatial momentum separately</li>
+  </ul>
+  <div class="fig-row" style="align-items: flex-start; gap: 30px; margin-top: 16px;">
+    <div style="width: 430px;">
+      <div class="fig-title">Self-energy parametrization</div>
+      <div class="eq" style="font-size: 0.45em;">
+        \[ \Sigma_\phi(p)=p^2+m_\phi^2+\Pi_\phi(p;T,\mu) \]
+      </div>
+      <ul class="bul" style="width: 430px;">
+        <li>\(\Pi_\phi\): quark loop (RPA), finite momentum</li>
+      </ul>
+    </div>
+    <div style="width: 430px;">
+      <div class="fig-title">\(Z\) parametrization</div>
+      <div class="eq" style="font-size: 0.45em;">
+        \[ \Sigma_\phi(p)=Z^\parallel_\phi\,p_0^2+Z^\perp_\phi\,\boldsymbol p^2+\bar m_\phi^2 \]
+      </div>
+      <ul class="bul" style="width: 430px;">
+        <li>\(Z^\parallel\neq Z^\perp\) in the medium, \(Z^\parallel=Z^\perp\) in vacuum</li>
+      </ul>
+    </div>
+  </div>
+  <p class="msg">\(Z^\perp_\phi<0\) &hArr; \(\Sigma_\phi(0,\boldsymbol p)\) decreases at small \(|\boldsymbol p|\): moat</p>
+</section>
+
 <section>
   <h3 style="margin-bottom: 10px;">The moat regime</h3>
   <div class="eq">
@@ -117,12 +150,14 @@
     <li>Moat regime: the static energy of mesons is <b>minimal at nonzero</b> spatial momentum \(\Leftrightarrow\) \(Z^\perp_\phi<0\)
       &nbsp;(Pisarski, Skokov, Tsvelik 2021)</li>
     <li>Found in functional QCD at large density (Fu, Pawlowski, Rennecke 2019; Fu <i>et al.</i> 2024)</li>
+    <li>Self-consistent functional QCD with <b>full momentum dependence</b>: moat regime and an <b>inhomogeneous instability</b> region
+      (Pawlowski, Rennecke, Sattler, <a href="https://arxiv.org/abs/2512.20510" target="_blank" style="color: inherit; text-decoration: underline;">arXiv:2512.20510</a>)</li>
     <li>Superordinate feature of spatially modulated phases: inhomogeneous phases, liquid crystals, quantum pion liquid
       &mdash; an instability \(\Sigma_\phi(0,p_{\rm min})=0\) signals modulated order</li>
     <li>Possible signals in heavy-ion collisions: HBT / two-particle correlations, dilepton rate</li>
     <li>Mechanism: <b>particle&ndash;hole</b> fluctuations of quarks around the Fermi surface &rArr; generic, can be studied in models</li>
   </ul>
-  <p class="msg">But in low-energy models the mesons are put in by hand: renormalization and the quark&ndash;meson interaction must be under control</p>
+  <p class="msg">Beyond quantitative predictions of the moat regime, we want to understand from the underlying mechanisms what actually happens in it</p>
   <ul class="bul wide" style="margin: 14px auto 0;">
     <li><b>Part I:</b> renormalization and the shape of the moat regime &nbsp;&nbsp; <b>Part II:</b> meson/quark correlations, screening, analytic structure</li>
   </ul>
